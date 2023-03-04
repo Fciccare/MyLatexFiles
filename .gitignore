@@ -1,5 +1,6 @@
-basic.aux
-basic.log
-basic.out
-basic.synctex.gz
-basic.synctex.toc
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.synctex.toc
+*.toc
