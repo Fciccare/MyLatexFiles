@@ -1,0 +1,9 @@
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.synctex.toc
+*.toc
+Lezione01/*.toc
+Lezione01/*.aux
+Lezione01/*.log
