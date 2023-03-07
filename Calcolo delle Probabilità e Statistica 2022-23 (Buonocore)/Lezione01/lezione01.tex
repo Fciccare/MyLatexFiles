@@ -1,9 +1,10 @@
 \section{Lezione 01 - 06/03/2023}
 
 \subsection{Il Gioco della Zara con 2 Dadi}
-Il gioco della Zara consiste nello scegliere un numero e lanciare in questo caso due dadi (il gioco originale ne prevede tre), se la somma dei due dadi corrisponde al numero scelto di vince.
-2 dadi onesti danno luogo a 2 punteggi da 1 a 6: $P_1, P_2$\\
-Ora rappresentiamo graficamente le coppie di tutti i possibili casi:
+Prevede l'utilizzo di due dadi (nel gioco originale tre), a turno ogni giocatore chiama un numero e lancia i dadi.\\
+Se la somma dei dadi è pari al numero scelto si vince.\\
+2 dadi onesti danno luogo a 2 punteggi da 1 a 6: $P_1, P_2$.\\
+Possiamo rappresentiamo graficamente le coppie di tutti i possibili casi:
 
 \begin{center}
 \begin{tabular}{ cc }
@@ -20,7 +21,7 @@ Ora rappresentiamo graficamente le coppie di tutti i possibili casi:
  \hline
 \end{tabular} &
 
-$\xrightarrow[]{Z}$
+$\xrightarrow[]{Z_2}$
 
 \begin{tabular}{ |c|c|c|c|c|c| } 
  \hline
@@ -35,30 +36,60 @@ $\xrightarrow[]{Z}$
 
 \end{tabular}
 \end{center}
-
-Possiamo notare che coppie possibili sono 36, poiché ogni dado ha 6 faccie, quindi 6*6=36 possibili risultati.
-Formalizziamo nel seguente modo: $$\Omega=\{(1,1), (1,2), ..., (6,6)\}$$
-Questo insieme $\omega$ prende il nome di \textbf{SPAZIO CAMPIONE}.\\
-Come si può facilmente notare i risultati possibili sono compresi tra 2 e 12 (inclusi), possiamo formalizzarlo nel seguente modo:
-$$ S_z = \{2,3,4,5,6,7,8,9,10,11,12\} $$
-Questo insieme $S_z$ prende il nome di \textbf{SPETTRO}.\\
-La possibilità di trovare un numero non appartente a questo insieme è nulla.\\
+Possiamo notare che coppie possibili sono 36, poiché ogni dado ha 6 faccie, quindi $6^2=6*6=36$ possibili risultati.\\
+Espriamo il "Lanciare i dadi" come $\xi$ (e tondo) cioè \textbf{ESPERIMENTO ALEATORIO}.\\
+L'insieme dei possibili risultati di $\xi$ si può esprimere così: 
+$$ \Omega=\{(i,j):i,j=1,2,..,6\}=\{(1,1), (1,2), ..., (6,6)\} $$
+Questo insieme $\Omega$ (omega) prende il nome di \textbf{SPAZIO CAMPIONE}.\\
+La coppia $ (i,j) \in \Omega $ è chiamato \textbf{PUNTO CAMPIONE}.\\  
+Per ogni esper. ale. $\xi$ bisogna prendere una \textbf{FAMIGLIA DI EVENTI:} 
+$$\text{(f tondo)}\:\:\mathcal{F} = \mathcal{P}(\Omega)$$
+In questo caso tutti i possibili sottoinsiemi cioè l'insieme delle parti dello spazio campione. \\
+$Z_2\footnotemark$ (Zara due) è una funzione che preso un punto campione restituisce la somma delle ordinate, è definita nel suguente modo:
+$$ Z_2: \Omega \rightarrow \mathcal{R} $$
+\footnotetext{Il pedice 2 sta ad indicare che stiamo considerando due dadi, è utile per distunguirlo da un eventuale $Z_3$, ma può essere anche omesso.}
+\centerline{(tutte le funzioni finiscono sempre in $\mathcal{R}$)}
+Come si può facilmente notare i risultati possibili sono compresi tra 2 e 12 (inclusi). \\
+Possiamo formalizzarlo nel seguente modo:
+$$ {S_Z}_2 = \{2,3,4,5,6,7,8,9,10,11,12\} $$
+Questo insieme ${S_Z}_2$ prende il nome di \textbf{SPETTRO}.\\
+La possibilità di trovare un numero non appartente a questo insieme è nulla.
+\newpage
 Per calcolare la probabiltà ci basta mettere a rapporto i seguenti dati:
-$$ \frac{\text{POSSIBILITÀ DI N}}{\text{SPAZIO CAMPIONE}} $$ 
+\begin{equation*}
+\frac{\text{\#\footnotemark OCCORRENZE DI N}}{\text{\# SPAZIO CAMPIONE}} =
+\frac{\#{Z^{-1}_2}(\{N\})}{\#\Omega}
+\end{equation*}
+\footnotetext{\# indica la cardanalità, è usato come sostituto di $\parallel$}
 Poniamo che voglia sapere la probabilità che la somma dei 2 dadi faccia 4, allora diremo che la \textbf{LA PROBABILITÀ DELL'EVENTO:}
-$$ P(Z=4) = \frac{3}{36} $$
-Il 3 è stato ricavato contando quante volte appare 4 nella tabella.\\
+\begin{equation*}
+\mathcal{P}(Z=4) =
+\frac{\#{Z^{-1}_2}(\{4\})}{\#\Omega} =
+\frac{\# \{ (1,3),(2,2),(3,1) \} }{\#\Omega} =
+\frac{3}{36}
+\end{equation*}
+\begin{center}
+(l'antimmagine finisce sempre in $\mathcal{P}(\Omega)$ e mai in $\Omega$)
+\end{center}
+%Il 3 è stato ricavato contando quante volte appare 4 nella tabella.\\
 Possiano notare che il numero con la più alta probabilità è il 7, poiché figura sei volte, quindi $ \frac{6}{36} $.\\
-Possiamo rappresentare la probabilità di ogni numero:
-$$ P(Z=2) = \frac{1}{36} = P(Z=12) $$
-$$ P(Z=3) = \frac{2}{36} = P(Z=11) $$
-$$ P(Z=4) = \frac{3}{36} = P(Z=10) $$
-$$ P(Z=5) = \frac{4}{36} = P(Z=9)  $$
-$$ P(Z=6) = \frac{5}{36} = P(Z=8)  $$
-$$ P(Z=7) = \frac{6}{36} $$
-Espriamo $\xi$ come \textbf{ESPERIMENTO AELEATORIO (casuale)}\\
-Possiamo riassumere questo esprimento con la seguente terna:
-$$ (\Omega, P(\Omega), P) \xrightarrow[]{Z} (R, , P_z) $$
+Possiamo rappresentare la probabilità di ogni numero dello spettro:
+$$ \mathcal{P}(Z=2) = \frac{1}{36} = \mathcal{P}(Z=12) $$
+$$ \mathcal{P}(Z=3) = \frac{2}{36} = \mathcal{P}(Z=11) $$
+$$ \mathcal{P}(Z=4) = \frac{3}{36} = \mathcal{P}(Z=10) $$
+$$ \mathcal{P}(Z=5) = \frac{4}{36} = \mathcal{P}(Z=9)  $$
+$$ \mathcal{P}(Z=6) = \frac{5}{36} = \mathcal{P}(Z=8)  $$
+$$ \mathcal{P}(Z=7) = \frac{6}{36} $$
+%%Possiamo riassumere questo esprimento con la seguente terna:
+%%$$ (\Omega, P(\Omega), P) \xrightarrow[]{Z} (R, , P_z) $$
+Inoltre possiamo notare che a parte la diagonale secondaria, la matrice è speculare, cioé ogni numero opposto ha la stessa probabilità di uscire.\\ %possiamo dire che 12 è issoprimo di 2.
+Possiamo verificare che la probabilità che esca un numero pari è uguale ai dispari:
+$$ Pari = 2*(\frac{1}{36}) + 2*(\frac{3}{36}) + 2*(\frac{5}{36}) = \frac{18}{36} = \frac{1}{2}$$
+$$ Dispari = 2*(\frac{2}{36}) + 2*(\frac{4}{36}) + 1*(\frac{6}{36}) = \frac{18}{36} = \frac{1}{2}$$\\
+Possiamo affermare che, ogni probabilità è compresa tra 0 e 1 e che la
+probabilità dello spazio campione è \textbf{sempre} uguale 1 (condizione di normalizzazzione), cioè la somma delle probabilità di tutti i valori dello spettro dello spazio campione ($\Omega$) deve essere uguale a 1.
+
+
 
  
 
