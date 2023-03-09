@@ -3,9 +3,12 @@
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
 \usepackage{eucal}
+\usepackage{cancel}
 %\usepackage{amsmath}
 %\usepackage{amsfonts}
 \usepackage{mathtools}
+\newcommand{\verteq}{\rotatebox{90}{$\,=$}}
+\newcommand{\equalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\verteq}{#2}}{#1}}
 %\usepackage{lipsum}
 \usepackage{hyperref}
 \hypersetup{linktoc=all}
@@ -17,6 +20,7 @@
 \maketitle
 \tableofcontents
 
-\include{Lezione01/lezione01}
+\include{Lezioni/lezione01}
+\include{Lezioni/lezione02}
 
 \end{document}

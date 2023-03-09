@@ -1,0 +1,59 @@
+\section{Lezione 02 - 08/03/2023}
+
+\subsection{Regola Moltiplicativa}
+Se una procedura di scelta si può suddividere in $r$ sottoprocedure allora il numero $n$ delle possibili scelte è dato da:
+$$ n = n_1*n_2*...*n_r$$
+Dove $i=1,2,...,r$ rappresenta il numero delle possibili scelte nella sottoprecedura i-sima.\\
+\subsubsection{Esempio Cartellini Camicie}
+Vogliamo sapere quanti cartellini delle camicie dobbiamo fabbricare avendo i seguenti dati:
+4 Taglie, 2 Foggie, 7 Colori.\\
+Usando la regola moltiplicativa poniamo $r=3$ avendo tre possibili varianti, $n_1=4$ per le taglie, $n_2=2$ per le foggie, $n_3=7$ per i colori, ora calcoliamo il totale:
+$$ n = n_1*n_2*n_3 = 4*2*7 = 56 \:\:\: \textbf{CARTELLINI} $$
+
+\subsection{Fattoriale}
+%Sia $n$ un intero positivo. Il prodotto dei primi $n$ interi positivi è chiamato fattoriale di n e si pone come
+Il fattoriale di $n>=0$ si esprime come $n!$ ed è definita come il prodotto di tutti i numeri precendenti, definiamo tramite ricorsione:
+\begin{equation*}
+n! = 
+\begin{cases}
+1 \: \: \: \text{SE} \: \: \: n=0\\
+n*(n-1)! \: \: \: \text{SE} \: \: \: n>0
+\end{cases}
+\end{equation*}
+Esempio: 
+$$6! = 1*2*3*4*5*6 = 720$$
+$$ \frac{13!}{11!} = \frac{13*12*\cancel{11!}}{\cancel{11!}} = 13*12 = 156 $$
+$$ \frac{n!}{(n-1)!} = \frac{n(n-1)!}{(n-1)!} = n $$
+\newpage
+
+\subsection{Coifficiente Binomiale}
+Presi $n e k$ con $k<=n$, possiamo definire il cofficiente binomiale in questo modo:
+$$ \binom{n}{k} = \frac{n!}{k!(n-k)!} $$
+Esempio:
+$$ \binom{6}{4} = \frac{6!}{4!(6-4)!} = \frac{6!}{4!*2!} = \frac{6*5*\cancel{4!}}{\cancel{4!}*2!} = \frac{\cancel{6}^3*5}{\cancel{2}} = 3*5 = 15 $$
+Propietà:
+$$ \binom{n}{k} = \binom{n}{n-k} $$
+Esempio:
+$$ \binom{12}{4} = \frac{12!}{4!*\equalto{(12-4)!}{8!}} = \frac{\cancel{12}^{\cancel{3}}*11*\cancel{10}^5*9*\cancel{8!}}{\cancel{2}*\cancel{3}*\cancel{4}*\cancel{8!}} = 5*9*11 = 495 = \frac{12!}{8!*\equalto{(12-8)!}{4!}} = \binom{12}{8} $$
+Propietà:
+Se $k<n$ 
+$$ \binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k} $$
+Esempio:
+$$ \textbf{ESEMPIP QUI}$$
+Propietà:
+$$ \binom{n+1}{k} = \binom{n}{k} + \binom{n}{k-1}  $$
+Esempio con $n=6, k=3$:
+\begin{equation*}
+\resizebox{\textwidth}{!}
+{%
+$\binom{7}{3} = \frac{7*\cancel{6}*5*\cancel{4!}}{\cancel{3!}*\cancel{4!}} = 7*5 = 35 = 20+15 =\frac{\cancel{2}*\cancel{3}*4*5*\cancel{6}}{\cancel{6} * \cancel{6}} + \frac{\cancel{6}^3*5*\cancel{4!}}{\cancel{2}*\cancel{4!}} = \frac{6!}{3!*3!} + \frac{6!}{2!*4!} = \binom{6}{3} + \binom{6}{2}$%
+}
+\end{equation*}
+
+\subsection{Coifficiente Multinomiale}
+Sia $n$ un intero positivo e $n_1,n_2...n_r$ interi tali che $n_1+n_2+...+n_r = n$, possiamo scrivere il coifficiente multinomilae in questo modo:
+$$ \binom{n}{n_1,n_2,...,n_r} = \frac{n!}{n_1!*n_2!*...*n_r!} $$
+Esempio:
+$$ \binom{7}{2,3,2} = \frac{7!}{2!*3!*2!} = \frac{7*6*5*\cancel{4}*\cancel{3!}}{\cancel{4}*\cancel{3!}} = 210 \:\:\:(2+3+2 = 7) $$
+
+
