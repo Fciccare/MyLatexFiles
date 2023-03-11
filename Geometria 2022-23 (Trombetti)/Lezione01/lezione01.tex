@@ -4,14 +4,14 @@
 
 \subsubsection{Prodotto Cartesiano}
 
+Presi $S,T \neq \emptyset$, possiamo definire il prodotto cartesiano:
 \begin{equation*}
-S,T \neq \emptyset $$ $$ SxT = \{(s,t)/ s \in S, t \in T\}
+SxT = \{(s,t)/ s \in S, t \in T\}
 \end{equation*}
-
 \begin{equation*}
 S^2 = SxS = \{(s,t)/ s \in S, t \in T\}
 \end{equation*}
-
+Da non confendere con la definizione di diagonale: $ S^2 = SxS = \{(s,s)/ s \in S\} $.
 
 \subsubsection{Coppie}
 La definizione di coppia è la seguente:
@@ -20,18 +20,37 @@ La definizione di coppia è la seguente:
 \end{equation*}
 
 Negli insiemi l'ordine non conta $ \{s,t\} = \{t,s\}$, invece nelle coppie è rilevante, infatti due coppie sono uguali se e solo  sono ordinatamente uguali:
-$$ (s,t) = (s^1, t^1) \leftrightarrow s=s^1\:,\: t=t^1 $$
+$$ (s,t) = (s^\prime, t^\prime) \Leftrightarrow s=s^\prime, t=t^\prime $$
 
 Andiamo a dimostrare questa affermazione: 
 
 \begin{itemize}
-\item DIM $\leftarrow$: BANALE
-\item DIM $\rightarrow$:
+\item DIM $\Leftarrow$: BANALE
+\item DIM $\Rightarrow$
+$ (s,t) = (s^\prime, t^\prime) \Leftrightarrow \{\{s,t\}, \{s\}\} = \{\{s^\prime,t^\prime\}, \{s^\prime\}\} $\\
+Ragioniamo per casi:
 	\begin{itemize}
-		\item[a] SE $s=t$
-		\item[b] SE $s \neq t$
+		\item[a] SE $s=t$:\\
+			$$ \text{Sx:} \{\{s,t\}, \{s\}\} \Rightarrow \{\{s,s\},\{s\}\} \Rightarrow \{s\} $$
+			$$ \text{Dx:} \{\{s^\prime,t^\prime\}, \{s^\prime\}\} \Rightarrow \{\{s^\prime,s^\prime\},\{s^\prime\}\} \Rightarrow \{s^\prime\} $$
+		\item[b] SE $s \neq t$:\\
+			Usiamo le definizioni di uguaglianza tra insiemi:
+			$$\{s\} = \{s^\prime\} \Rightarrow s=s^\prime$$
+			$$\{s,t\} = \{s^\prime,t^\prime\} \wedge s=s^\prime \:\: \Rightarrow t = t^\prime$$
 	\end{itemize}
 \end{itemize}
 
+% $ a \bullet b $
 
+
+
+\subsubsection{Operaziona Interna}
+
+
+
+\subsubsection{Operaziona Esterna}
+
+\subsubsection{Prodotto Scalare Standard}
+
+\subsubsection{Matrice in R}
 
