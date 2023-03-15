@@ -1,0 +1,32 @@
+\section{Lezione 03 - 13/03/2023}
+
+\subsection{Permutazioni}
+Ogni n-disposizione semplice è detta essere una permutazione degli n elementi di S\\
+(Possiamo considerare le permutazioni un caso speciale delle 
+\hyperref[sec:disposizioni]{disposizioni semplici}, cioè avviene quando $n=k$)
+$$ (se \: k=n) \: \: \: P_n = D_{n,n} = \frac{n!}{\equalto{(n-n)!}{0!=1}} = n!  $$
+
+\subsection{Permutazioni con Ripezioni}
+Sia $n=k_1+k_2+...+k_r$, Una n-selezione di S avente $k_1$ elementi uguali al primo elemento di S, $k_2$ elementi uguali al secondo elemento di S e cosi via fino a $k_r$ è detta una $(k_1,k_2,...,k_r)$-permutazioni con ripetizioni.\\
+Il numbero di tutte le $(k_1,k_2,...,k_r)$-permutazioni con ripetizioni di S è dato da:
+$$ P^{(r)}_n = \frac{n!}{k_1! * k_2! * ... * k_r!} = \binom{n}{k_1,...,k_r} \: \: (k_1+...+k_r)=r$$
+
+\subsection{Esempi Permutazioni}
+$$ S=\{A,I,O,S\} \: \#S=4 \: k=n=4  $$
+Possiamo formare varie parole: OASI, SAIO, SOIA..., possiamo calcolarle:
+$$ P_4 = 4! = 24  $$
+
+Poniamo caso che vogliamo sapere le possibili combinazioni di $ARCANE$, possiamo notare che la $A$ si ripete 2 volte, per calcore dobbiamo usare:
+$$ \frac{6!}{2!} = 360 $$
+il $2!$ si riferisce a quante volte appare la lettera $A$.
+
+\subsection{Combinazioni Semplici}
+Sia $k<=n$, una k-combinazione semplice di S si ottine indentificando tutte le k-disposizioni semplici di S avente i medesimi elementi posti in differente ordine (in altri termini l'ordine di presentazione degli elementi è ininfluente).\\
+Il numero di tutte le k-combinazioni semplici è dato da:
+$$ C_{n,k} = \binom{n}{k} \: \: \: (con\:k<=n)$$
+
+\subsection{Combinazioni con Ripetizioni}
+Una k-combinazione con ripetizione di S si ottiene identificando tutte le k-disposizioni con ripetizioni di S aventi i medesii elementi posti in un differente ordine (in altri termini è ammessa la ripetizioni di qualche elemento di S e l'ordine è ininfluente).\\
+Il numero di tutte le k-combinazioni con ripetizioni di S è dato da:
+$$ C_{n,k}^{(r)} = \binom{n+k-1}{k} $$
+
