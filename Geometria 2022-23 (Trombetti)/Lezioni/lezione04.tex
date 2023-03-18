@@ -1,0 +1,53 @@
+\section{Lezione 04 - 17/03/2023}
+
+\subsection{Spazi Vettoriali su R}
+Sia $V$ un insieme non vuoto, definiamo due operazioni:
+\begin{enumerate}
+\item [] Interna $ +: VxV -> V $ (somma vettoriale) 
+\item [] Esterna $ \cdot: RxV -> V $ (scalare per un vettore)  R è campo
+\end{enumerate}
+Posto $(V,+,\cdot)$ si dice \textbf{spazio vettoriale su R} $\Leftrightarrow$
+
+\begin{enumerate}
+\item $ (V,+) $ è un gruppo abeliano, quindi:
+	\subitem Associatività
+	\subitem Commutatività
+	\subitem Neutro
+	\subitem Tutti gli elementi invertibili
+\item $ \forall \underline{v} \in V $ tale che $ \underline{v} \cdot 1 = \underline{v}$ (associtività mista)
+\item $ \forall h,k \in R$, $\forall \underline{v} \in V$ tale che $ (hk)\underline{v} = h(k\underline{v})$
+\item $ \forall h,k \in R$, $\forall \underline{v} \in V$ tale che $ (h+k)\cdot\underline{v} = h\cdot\underline{v} + k\cdot\underline{v}$ (distrub. tra $\cdot$ e $+$ in $R$)
+\item $ \forall h,k \in R$, $\forall \underline{v} \in V$ tale che $ h(\underline{v}+\underline{w}) = h\cdot\underline{v} + h\cdot\underline{v}$  (distrub. tra $\cdot$ e $+$ in $V$)
+\end{enumerate}
+
+\subsection{Esempi Spazi Vettoriali}
+
+\subsubsection{Spazio Vettoriale numerico di ordine n}
+Verifichiamo che $(R^n,+,\cdot)$ sia uno spazio vettoriale, ma prima facciamo un esempio:
+$$ (1,2,3) + (0,1,2) = (1,3,5) \:\:\:\:\:\:\: 3(3,2,4)=(9,6,12)$$
+Andiamo a verificare che sia spazio vettoriale:
+\begin{enumerate}
+\item $ (R^n, +) $ gruppo abeliano:
+	\subitem * Associatività e Commutatività banalmente eraditati da $+$
+	\subitem * Neutro: $\underline{0} = (0,0,...,0)$
+	\subitem * Inverso: $-(x_1,...,x_n) = (-x_1,-x_2,...,-x_n)$
+\item Banale ereditatà di $\cdot$
+\item $ (hk)(x_1,...,x_n) = (hkx_1,...,hkx_n) = h(kx_1,...,kx_n) = h(k(x_1,...,x_n))$
+\item DA DIMOSTARE
+\item DA DIMOSTARE
+\end{enumerate}
+
+\subsubsection{Spazio Vettoriale di una matrice di ordine m,n}
+Possiamo considerare $(M_{m,n}(R), +, \cdot)$ come una lunga riga, quindi si accomuna al caso precedente.
+\subsubsection{Spazio Vettoriale polinomiale}
+
+\subsubsection{Spazio Vettoriale polinomiale di al più n}
+
+\subsubsection{Spazio Vettoriale dei vettori geometrici in un punto O}
+
+
+
+ 
+
+
+
