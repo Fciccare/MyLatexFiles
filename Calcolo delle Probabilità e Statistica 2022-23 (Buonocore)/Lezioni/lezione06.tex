@@ -1,0 +1,50 @@
+\section{Lezionie 06 - 20/03/2023}
+
+\subsection{SigmaAlgebra Generata (DA REVISIONARE)}
+Sia $C$ una classe su $\Omega$, esiste una $\sigma$-algebra $F$ che contiene $\phi$ ed è contenuta in tutte le $\sigma$-algebra che contengono $\phi$.\\
+Tale minima $\sigma$-algebra contenente $C$ si dice \textbf{GENERATA DA $\phi$}.\\
+In primo luogo esiste, per ogni $C$, una $\sigma$-algebra che la contiene e l'insieme delle parti.
+Dopo di ciò:\\
+\begin{center}
+$ F = \bigcap_{i \in I} F_i $ con $i \in I$
+\end{center}
+
+\subsubsection{Esempio}
+Poniamo di lanciare due dadi onesti, assumiamo i possibili risultati:
+$$ A = \{2,4,6\} \:\:\:\:\:\: B=\{5,6\}$$
+Considerando la famiglia $G$ in questo modo:
+$$ G = \{A,B\}$$
+Possiamo considerare la $\sigma$-algebra generata da una famiglia:
+$$ \sigma(G)$$
+Per trovarci gli atomi dobbiamo andare a intersercare tutte le possibili combinazioni tra $A$ e $B$:\\
+$$ A \cap B = \{6\}$$
+$$ A \cap B^C = \{2,4\}$$
+$$ A^C \cap B = \{5\}$$
+$$ A^C \cap B^C = \{1,3\}$$
+Abbiamo trovato \textbf{4 atomi}, per ottenere tutto l'insieme dobbiamo andare a intersecare gli atomi a due a due:
+$$ \sigma(G) = \{ \{6\},  \{5\}, \{2,4\},  \{1,3\}, \{5,6\}, \{1,3,5\}, \{2,4,5\}, \{1,3,6\}, \{2,4,6\}, $$ 
+$$ \{1,2,3,4\}, \{1,3,5,6\}, \{2,4,5,6\}, \{1,2,3,4,6\}, \{1,2,3,4,5\}, \Omega, \emptyset \}\}  $$
+\begin{center}
+$ \emptyset,\Omega \in \sigma(G)$ per come abbiamo dimostrato un paio di lezioni fa.
+\end{center}
+
+\subsection{Probabilità di Laplace}
+Sia $\Omega$ è finito, ed un evento appartente a una famiglia di eventi $E \in F$, allora la probabilità dell'evento $E$ si può rappresentare nel seguente modo:
+$$ P_c(E) = \frac{\#E}{\#\Omega} $$
+Questa è un ottima definizione ma solo se c'è simmetria.
+
+\subsection{Frequentista (Statistica)}
+Se un esperimento aleatorio $E$ si ripete un numero numerabile di volte, possiamo considerare il rapporto:
+$$ n \in N \:\:\: P_f(E) = \frac{n_E}{n}$$
+$n$ è il numero delle ripetizioni di $E$\\
+$n_E$ è il numero delle prove tra le quali $E_n$ si è presentato.\\
+Questo definizione però è molto approsimativa, quella più corretta e precisa è:\\
+ \[ P_f(E) = \lim_{n\to\infty} \frac{n_E}{n} >= 0 \]
+ 
+ 
+
+
+
+
+
+
