@@ -1,0 +1,47 @@
+\section{Lezione 07 - 22-03-2023}
+
+\subsection{Soggettività}
+
+\subsection{Recap Probabilità}
+Quindi riassumento possiamo esprimere la probabilità tramite tre diverse definizioni:
+\begin{itemize}
+\item Classica/Laplace: Se c'è simmetria.
+\item Frequentistica/Statistica: Se l'esperimento si può ripetere infinite volte.
+\item Soggettiva: Quando l'esperimento si può eseguire una sola volta.
+\end{itemize}
+
+\subsection{Impostazione Assiomatica}
+Gli eventi sono sottoinsiemi di uno spazio $\Omega$ e formano una $\sigma$-algebra $F$:
+\begin{itemize}
+\item[a)] $ F \neq \emptyset$
+\item[b)] $ A \in F \Rightarrow A^C \in F $
+\item[c)] $ \forall n \in F, \forall n \in N \Rightarrow \bigcup_{n=1}^{\infty} A_n \in F $
+\end{itemize}
+Una misura di probabilità sullo spazio $\Omega$ è una funzione $P: F -> R$ tale che:
+\begin{itemize}
+\item[d)] $\forall A \in F, P(A) >= 0 \:\:\: (\text{ma} < \infty$
+\item[e)] $ P(\Omega) = 1 $
+\item[f)] $ \text{se} \{A_n: n \in N \} \subseteq F: (i \neq j ) \: A_i \cap A_j \neq \emptyset \Rightarrow P(\bigcup_{n=1}^{\infty}A_n) = \sum_{n=1}^{\infty}P(A_n)$
+\end{itemize}
+La tripla $(\Omega, F, P)$ prende il nome di \textbf{spazio di probabilità}.
+
+\subsection{Conseguenze immediate degli assiomi}
+\subsubsection{Teorema 01}
+Teorema 01: $ P(\emptyset) = 0 $\\
+Dim:\\
+Il vuoto è un evento in quanto complementare del certo. Inoltre il vuoto può essere visto come unione numerabile di insiemi vuoti (per una delle propietà di indentità):
+$$ \emptyset = \emptyset \uplus \emptyset \emptyset \uplus ... = \uplus_{n=1}^{\infty} \emptyset $$
+Dall'assioma $f)$ si ottiene allora:
+$$ P(\emptyset) = P(\bigcup_{n=1}^{\infty} \emptyset = \sum_{n=1}^{\infty} P(\emptyset) = P(\emptyset) + P(\emptyset) + ...$$
+e per l'assioma $d)$ l'unico numero che soddisfa la precedente relazione è $P(\emptyset)=0$
+\subsubsection{Teorema 02}
+Se $A_1 \in F, A_2 \in F, ..., A_n \in F$ e $A_i \cap A_j = \emptyset$ per $i \neq j$ allora:
+$$ P(\uplus_{i=1}^n A_i) = \sum_{i=1}^n P(A_i)$$
+Dim:\\
+Poniamo $B_1 = A_1, B_2 = A_2,...,B_n = A_n$ e $B_{n+1} = B_{n+2} = ... = \emptyset$
+Ovviamente riesce $B_i \cap B_j = \emptyset$ per $i \neq j$ per cui dall'assioma $f)$ si ha:
+$$ P(\uplus_{i=i}^{\infty} B_i) = \sum_{i=i}^{\infty} P(B_i)$$
+Dall'altra parte:
+
+
+
