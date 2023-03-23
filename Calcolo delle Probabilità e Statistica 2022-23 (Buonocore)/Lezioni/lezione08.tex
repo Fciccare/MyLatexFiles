@@ -1,0 +1,63 @@
+\section{Lezione 08 - 23/03/2023}
+
+\subsection{Recap}
+Sia $\phi$ e la terna: $(\Omega, F, P)$ spazio di probabilità:\\
+Assiomi:
+\begin{itemize}
+\item[a)] $F$ non è vuota
+\item[b)] $F$ è stabile rispetto al complemento
+\item[c)] $F$ è stabile rispetto a $\cup_{n \in N}()$
+\item[d)] $P$ è non negativa e finita
+\item[e)] $P(\Omega) = 1$
+\item[f)] è qualcosa additiva
+\end{itemize}
+Teoremi:
+\begin{itemize}
+\item[1)] $P(\emptyset) = 0$
+\item[2)] $P$ è finita additiva
+\item[3)] $P[(\cdot)^C] = 1-P(\cdot)$
+\item[4)] $P(\cdot) <= 1$
+\item[5)] $P$ è monotona
+\end{itemize}
+
+\subsection{Spazi di Probabilità Numerabili}
+$iii)$ $\Omega = \{a_1, a_2,...\}, F = P(\Omega)$
+sia $n \in N, p_n:= P({a_n})$
+\begin{itemize}
+\item[1)] $n \in N, p_n >= 0$
+\item[2)] $ \sum_{n=1}^{\infty} p_n = 1$
+\end{itemize}
+boh: $ \sum_{n=0}^{\infty} h^n = \frac{1}{1-h}$
+
+\subsection{Spazio di Probabilità infiniti}
+$iv)$ $\#\Omega > \#N$ \\
+$$ \Omega = (0,1)$$
+$$ F = \{ (a,b): a<b ^ a,b \in 0,1 \} $$
+Questa cosa si dice \textbf{sigma algebra di barel dell'intervallo 0,1}.\\
+$$ P[(a,b)] = \frac{1}{b-a} = b-a $$
+
+\subsection{Eventi non Incompatibili}
+$ \forall A \in F, \forall B \in F $ si ha:
+$$ P(A \cup B) = P(A) + P(B) - P(A\capB)$$
+(se $A$ e $B$ sono disgiunti allora abbiamo la finita additività).\\
+Dim: 
+$$ A \cup B = A \cup (B \cap A^C) $$
+Inoltre dalla relazione:
+$$ B=B \cap \Omega = B \cap (A \uplus A^C) = (B \cap A) \uplus (A^C)$$
+si ricava, per la finita additività di $P$:
+$$ P(B) = P(B \cap A) + P(B \cap A^C)$$
+$$ P(B \cap A^C) = P(B) - P(A \cap B)$$
+In definitiva:
+$$ P(A \cup B) = P(A) + P(B \cap A^C) = P(A) + P(B) - P(A \cap B)$$
+Osservazione:\\
+Se $A \cap B = \emptyset$ allora $P(A \cap B) = P(\emptyset) = 0$ e il risultato coincide con la finita additività.
+
+\subsection{Teorema 7}
+$\forall A \in F$, $\forall B \in F$ e $\forall C \in F$ si ha:
+$$ P(A \cup B \cup C) = P(A) + P(B) + P(C) - [P(A \cap B) + P(A \cap C) + P(B \cap C)] + P(A \cap B \cap C)$$
+Dim: \\
+Applicando le propietà delle operazioni insiemistiche ed il risultato precedenti si ha:
+$$ P(A \cup B \cup C) = P[(A \cup B) \cup C)] = P(A \cup B) + P(C) - P[(A \cup B) \cup C]$$
+$$ P(A) + P(B) - P(A \cap B) + P(C) - P[(A \cap C) \cup (B \cap C)]$$
+$$ P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P[(A \cap C) \cap (B \cap C))]$$
+$$ P(A) + P(B) +P(C) - P[(A \cap B) + P (A \cap C) + P(B \cap C)] + P(A \cap B \cap C)$$

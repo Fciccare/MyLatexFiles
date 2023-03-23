@@ -34,6 +34,7 @@ $$ \emptyset = \emptyset \uplus \emptyset \emptyset \uplus ... = \uplus_{n=1}^{\
 Dall'assioma $f)$ si ottiene allora:
 $$ P(\emptyset) = P(\bigcup_{n=1}^{\infty} \emptyset = \sum_{n=1}^{\infty} P(\emptyset) = P(\emptyset) + P(\emptyset) + ...$$
 e per l'assioma $d)$ l'unico numero che soddisfa la precedente relazione è $P(\emptyset)=0$
+
 \subsubsection{Teorema 02}
 Se $A_1 \in F, A_2 \in F, ..., A_n \in F$ e $A_i \cap A_j = \emptyset$ per $i \neq j$ allora:
 $$ P(\uplus_{i=1}^n A_i) = \sum_{i=1}^n P(A_i)$$
@@ -42,6 +43,39 @@ Poniamo $B_1 = A_1, B_2 = A_2,...,B_n = A_n$ e $B_{n+1} = B_{n+2} = ... = \empty
 Ovviamente riesce $B_i \cap B_j = \emptyset$ per $i \neq j$ per cui dall'assioma $f)$ si ha:
 $$ P(\uplus_{i=i}^{\infty} B_i) = \sum_{i=i}^{\infty} P(B_i)$$
 Dall'altra parte:
+$$ \uplus_1^{\infty} B_i = B_1 \uplus B_2 \uplus ... \uplus B_n \uplus B_{n+1} \uplus B_{n+2} \uplus ... $$
+$$ = (A_1 \uplus A_2 \uplus ... \uplus A_n) \cup (\emptyset \uplus \emptyset \uplus ...) $$
+$$ = (A_1 \uplus A_2 \uplus ... \uplus A_n)\uplus \emptyset $$
+$$ = \uplus{n=1}^n A_i $$
+e:
+$$ \sum_{i=1}^{\infty} P(B_i) = P(B_1) + P(B_2) + ... + P(B_n) + P(B_{n+1}) + ... $$ 
+$$ = P(A_1) + P(A_2) + ... + P(A_n) + P(\emptyset) + P(\emptyset) + ... $$
+$$ = \sum_{i=1}^n P(A_i) + (0+0+...)$$
+$$ = \sum_{i=1}^n P(A_i) $$
+La tesi segue da $(i), (ii), (iii)$.\\
+La misura di probabilità $P$ e quindi anche finitamente additiva.
 
+\subsubsection{Teorema 03}
+$\forall A \in F, P(A^C) = 1 - P(A)$
+Dim: \\
+Per ogni $A \in F$ si ha $\Omega = A \cup A^C $ per cui essendo $P$ finitamente additivita si ha:
+$$ P(\Omega) = P(A \cup A^C) = P(A)+P(A^C)$$
+Ricordando l'assioma: $e) P(\Omega)=1$ otteniamo infine:
+$$ 1 = P(A)+P(A^C) \Rightarrow P(A^C) = 1 - P(A)$$
+
+\subsubsection{Teorema 04}
+$\forall A \in F, P(A) <=1$
+Dim:\\
+Dal precedente risultato e dall'assioma $d)$ discende immediatamente:
+$$ P(A)= 1-P(A^C) <= 1$$
+
+\subsubsection{Teorema 05}
+Se $A \in F$ e $B \in F$ sono tali che $A \subseteq B$ allora $P(A) <= P(B)$.
+Dim: \\
+Risulta allora:
+$$ B = B \cap \Omega = B \cap (A \cup A^C) = (B \cap A) \uplus (B \cap A^C) = A \uplus (B \cap A^C)$$
+in quanto dall'ipotesi $A \subseteq B$ si ha $B \cap A = A$.\\
+Dalla finita additività di $P$ e dall'assioma $d)$ si ha che:
+$$ P(B) = P(A) + P(B \cap A^C) >= P(A)$$
 
 
