@@ -38,7 +38,7 @@ $$ P[(a,b)] = \frac{1}{b-a} = b-a $$
 
 \subsection{Eventi non Incompatibili}
 $ \forall A \in F, \forall B \in F $ si ha:
-$$ P(A \cup B) = P(A) + P(B) - P(A\capB)$$
+$$ P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
 (se $A$ e $B$ sono disgiunti allora abbiamo la finita additività).\\
 Dim: 
 $$ A \cup B = A \cup (B \cap A^C) $$
@@ -52,7 +52,7 @@ $$ P(A \cup B) = P(A) + P(B \cap A^C) = P(A) + P(B) - P(A \cap B)$$
 Osservazione:\\
 Se $A \cap B = \emptyset$ allora $P(A \cap B) = P(\emptyset) = 0$ e il risultato coincide con la finita additività.
 
-\subsection{Teorema 7}
+\subsection{Teorema 07}
 $\forall A \in F$, $\forall B \in F$ e $\forall C \in F$ si ha:
 $$ P(A \cup B \cup C) = P(A) + P(B) + P(C) - [P(A \cap B) + P(A \cap C) + P(B \cap C)] + P(A \cap B \cap C)$$
 Dim: \\
@@ -61,3 +61,47 @@ $$ P(A \cup B \cup C) = P[(A \cup B) \cup C)] = P(A \cup B) + P(C) - P[(A \cup B
 $$ P(A) + P(B) - P(A \cap B) + P(C) - P[(A \cap C) \cup (B \cap C)]$$
 $$ P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P[(A \cap C) \cap (B \cap C))]$$
 $$ P(A) + P(B) +P(C) - P[(A \cap B) + P (A \cap C) + P(B \cap C)] + P(A \cap B \cap C)$$
+
+\subsection{Teorema 08}
+Se $A_i \in F$ per $i = 1,2,...,n$ si ha:
+$$ P(\bigcup_{i=i}^n A_i) = \sum_{i=i}^n P(A_i) - \sum_{i<j} P(Ai \cap A_j) + \sum_{i<j<k} P(A_i \cap A_j \cap A_k) +...+ (-1)^{n+1} P(A_1 \cap A_2 \cap ... \cap A_n)$$
+Questo risultato è noto come \textbf{formula di inclusione-esclusione}.
+
+\subsection{Teorema 09}
+Sia $A_n \in F$, $\forall n \in N$.\\
+Per ogni intero $k$ si ha:
+$$ P(\bigcup_{n=1}^k A_n) <= \sum_{n=1}^k P(A_n) $$
+Dim:\\
+La relazione è vera per $k=2$. Infatti da:
+$$ A_1 \cup A_2 = A_1 \cup (A_2 \cap A_1^C) $$
+per la finita additività di $P$ si ottiene:
+$$ P(A_1 \cup A_2) = P(A_1) + P(A_2 \cap A_1^C) <= P(A_1) + P(A_2) $$
+L'ultimo passaggio deriva dall'essere:
+$$ A_2 \cap A_1^C \subseteq A_2 $$
+Supponiamo ora la tesi vera per $k-1$:
+$$ P(\bigcup_{n=1}^k A_n) = P[(\bigcup_{n=1}^k A_n) \cup A_k ] <= P(\bigcup_{n=1}^{k-1} A_n)+P(A_k) <= $$
+$$ <= \sum_{n=1}^{k-1} P(A_n) + P(A_k) = \sum_{n=1}^k P(A_n)$$
+La tesi è vera per il principio di induzione matematica.
+
+\subsection{Teorema 10}
+Sia $A_n \in F$, $\forall n \in N$. Si ha:
+$$  P(\bigcup_{n=1}^{\infty} A_n) <= \sum_{n=1}^{\infty} P(A_n) $$
+Dim:\\
+Poniamo:
+$$ B_1 = A_1 $$
+$$ B_2 = A_2 \cap A_1^C $$
+$$ B_3 = A_3 \cap (A_1^c \cap A_2^c) $$
+$$ ... $$
+$$ B_n = A_n \cap (A_1^c \cap A_2^c ... \cap A_{n-1}^c) = A_n \cap $$
+
+\subsection{Test}
+$$ \mathbb{P} $$
+$$ \mathbb{N} $$
+$$ \mathbb{F} $$
+
+
+
+
+
+
+
