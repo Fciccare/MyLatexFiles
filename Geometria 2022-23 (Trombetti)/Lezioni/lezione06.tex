@@ -1,0 +1,68 @@
+\section{Lezione 06 - 24-03-2023}
+
+\subsection{Propietà Sottospazio Vettoriale}
+
+\begin{itemize}
+\item[$W \underline{<} V$ è stabile rispetto alla somma di $n$ oggetti]
+Siano $\underline{w}_1, ... , \underline{w}_n \in W$ si ha $w_1 + w_2 \in W \Rightarrow$ 
+\item[Famiglia di sottospazi vettoriali]
+Sia $ \mathbb{L}$ una famiglia di sottospazi di $V$, l'intersezione dei sottospazi della famiglia $\mathbb{L}$ è un sottospazio e si indica: 
+$$ \bigcap_{L \in \mathbb{L}} L $$
+L'intersezione di una qualunque famiglia di sottospazi è un sottospazio.\\
+Dimostriamolo: 
+	\subitem Neutro: Il neutro è un elemento comune, quindi è sempre contenuto.
+	\subitem Stab $+$: Siano $ \underline{v},\underline{w} \in \bigcap_{L \in \mathbb{L}} L \Rightarrow \forall L \in \mathbb{L} \Rightarrow \underline{v},\underline{w} \in L \Rightarrow \underline{v}+\underline{w} \in \bigcap_{L \in \mathbb{L}} L $
+	\subitem Stab $\cdot$: Siano $ \underline{v} \in \bigcap_{L \in \mathbb{L}} L, h \in \mathbb{R} \Rightarrow \forall L \in \mathbb{L} \Rightarrow \underline{v},\underline{w} \in L \Rightarrow \underline{v}+\underline{w} \in \bigcap_{L \in \mathbb{L}} L $
+\end{itemize}
+
+\subsection{Sottospazio Generato}
+Sia $ S \subseteq V $, indicheremo con $<S>$ il \textbf{sotto spazio generato da S}.\\
+$$ <S> = \bigcap_{L \in \mathbb{L}_s} L$$
+In altri termini: è il più piccolo sottospazio rispetto all'intersezione.
+
+\subsubsection{Esempi:}
+\begin{itemize}
+\item[•] $ <H> = H $ SEMPRE!
+\item[•] $ <\{\underline{0}\} = \{\underline{0}\} $
+\item[•] $ <V> = V $ 
+\item[•] $ <\emptyset> = {0} $ Singleton dell'elemento neutro, poiché appartiene ad ogni elemento.
+\end{itemize}
+
+$ S= H \cup K $ con $H,K \underline{<} V$
+$$ <H \cup K> = H+K = \{\underline{h}+\underline{k} / \underline{h} \in H, \underline{k} \in K \} $$
+Dim:
+Come sempre per dimostrare l'uguaglianza dobbiamo dimostare la doppia inclusione:
+$$ <H \cup K> \subseteq \textbf{al contrario } H+K = \{\underline{h}+\underline{k} / \underline{h} \in H, \underline{k} \in K \} $$
+non ho capito\\
+
+Dimostriamo che sia spazio vettoriale:
+\begin{itemize}
+\item[Neutro] $$ \underline{0} = \underline{0}^{\text{preso da H}} + \underline{0}^{\text{preso da K}} $$
+\item[Stabile $+$] $$ (\underline{h} + \underline{k}) + (\underline{h}^' + \underline{k}^') \in H+K $$
+$$ (h+h^') + (k+k^') $$
+\item[Stabile $\cdot$] $$ \alpha(\underline{h}+\underline{k}) = \alpha\underline{h} + \alpha \underline{k}  $$
+\end{itemize}
+
+\subsubsection{Esempio}
+$$ H=\{(0,k) / x \in \mathbb{R}\} \;\;\; K=\{(y,0) / y \in \mathbb{R} \} $$
+$$ <H \cup K> = H+K = (0+y, x+0) = \mathbb{R}^2 $$
+
+\subsection{Propietà Sottospazio Generato}
+Posto $H,K \underline{<} V$, allora valgono le seguenti propietà:
+\begin{itemize}
+\item[•] $ H \quad K = H \cap K = \{ \underline{0} \} \;(\text{neutro}) $ Si dicono in somma diretta.
+\item[•] $ H + K = V$ allora $H,K$ si dicono supplementari
+\item[•] $ H \quad K = V$ allora si dicono complementari (in altri termini devono essere in somma diretta e supplementari).\footnote{È un concetto un po' strano, perché vuol dire somma normale (quindi caso 2), ma ricandoci che l'intersezione da il neutro (quindi caso 1)}
+\end{itemize}
+
+\subsubsection{Esempio}
+Posti $\{ \underline{0} \}$ e $V$:
+\begin{itemize}
+\item[Somma diretta]: $ \{ \underline{0} \} \quad V = \{ \underline{0} \} \cap V = \{ \underline{0} \}$
+\item[Supplementari]: $  \{ \underline{0} \} + V = V$
+\item[Complementare]: Dato che è sia somma diretta che supplementare
+\end{itemize}
+
+
+
+
