@@ -1,0 +1,141 @@
+\section{Lezione 05 - 22/03/2023}
+
+\subsection{Spazi Vettoriali del Vettore Geometrico libero}
+
+\subsection{Propietà Spazi Vettoriali}
+Preso $(V, + , \cdot)$ Spazio Vettoriali andiamo a definire le sugueni propietà:
+\begin{itemize}
+
+\item[1)] $ \underline{v} + \underline{w} = \underline{z} \Rightarrow \underline{v} = \underline{z} - \underline{w} = \underline{z} + (- \underline{w})$\\
+Dim:\\
+Sommiamo l'opposto di $\underline{w}$ ambi i membri:
+$$ (\underline{v} + \underline{w}) + (- \underline{w}) = \underline{z} + (- \underline{w}) \Rightarrow \underline{v} = \underline{z} - \underline{w}$$
+\item[2)] $ \underline{v} + \underline{w} = \underline{w} \Rightarrow \underline{v} = \underline{0}$ \textbf{NEUTRO}
+\item[3)] $ \forall \underline{v} \in V, \forall h \in \mathbb{R} $ \\
+$$ 0 \cdot \underline{v} = \underline{0} = h \cdot \underline{0} $$
+Dim primo lato:\\
+$ 0 \cdot \underline{v} = (0+0) \underline{v} = 0 \cdot \underline{v} + 0 \cdot \underline{v} \Rightarrow 0 \cdot \underline{v} = \underline{0} $\\
+Dim secondo lato:\\
+$ h \cdot \underline{0} = h \cdot (\underline{0} + \underline{0}) = h \cdot \underline{0} + h \cdot \underline{0} \Rightarrow h \cdot \underline{0} = \underline{0} $
+\item[4)]$ \forall \underline{v} \in V, \forall h \in \mathbb{R} $ \textbf{Legge annullamento del prodotto}\\
+$ h\underline{v} = \underline{0} \Leftrightarrow h=0 \:\:\: \text{oppure} \:\:\: \underline{v} = \underline{0} $ \\
+Dim $\Leftarrow$: Vale per la $3)$ \\
+Dim $\Rightarrow$: $ h \cdot \underline{v} = \underline{0} $\\
+Poniamo $h \neq 0$ e moltiplichiamo ambi i membri per $h^{-1}$: \\
+$ h^{-1}(h \cdot \underline{v}) = h^{-1} \underline{0} \Rightarrow (h^{-1} h) \underline{v} = \underline{v} $
+\item[5)] $ h(-\underline{v}) = -(h \underline{v}) = (-h)\underline{v} $\\
+Dim: $ (-h)\underline{v} = -(h\underline{v}) $:
+Dobbiamo dimostare che sia opposto, quindi:\\ 
+$ (-h)\underline{v} + h\underline{v} = 0 $\\
+$ (-h+h)\underline{v} = 0 \underline{v}$\\
+Dim: $ h(-\underline{v)} = -(h \underline{v}) $\\
+$ h(-\underline{v}) + h\underline{v} = h(-\underline{v} + \underline{v}) = h \cdot \underline{0} = \underline{0} $
+\item[6)] $ (-1)\underline{v} = - \underline{v}$ Corollario immediato
+\item[7)] $ (\underline{v} + \underline{w}) + \underline{z} = \underline{v} + (\underline{w} + \underline{z})$ \\
+Dato che l'associatività si può sempre ridurre a due elementi, possiamo assumere la associatività generalizzata, questo ci permette di omettere le parentesi.
+\item[8)] Lo stesso concetto del punto $7)$ si può applicare per la commutatività, quindi se vale per due elementi vale anche per $n$ elementi, quindi possiamo ordinare gli elementi come ci pare.
+\item[9)] Stesso concetto del punto $7) e 8)$ vale anche per la distrubitività.
+\end{itemize}
+
+\subsection{Proporzionalità}
+Presi $\underline{v}, \underline{w} \in V$ \textbf{si dicono proporzionali} $\Leftrightarrow$
+$$ \exists h \neq 0 \;\;\; \underline{v} = h \underline{w}$$
+La proporzionalità è una \textbf{Relazione di Equivalenza}, quindi valgono le tre propietà:
+\begin{itemize}
+\item[]Riflessiva: $\underline{v} = 1 \underline{v}$
+\item[]Simmetrica: $\underline{v} = h \underline{w} \Rightarrow h^{-1}\underline{v} = \underline{w}$
+\item[]Transitiva: $ \underline{v} = h \underline{w} \; \text{e} \; \underline{w} = k \underline{z} \Rightarrow \underline{v} = h(k\underline{z}) = (hk)\underline{z} $ ($h,k \neq 0$)
+\end{itemize}
+
+\subsubsection{Esempi}
+Indicheremo con la tilde $\sim$ la proporzionalità.
+\begin{itemize}
+\item[$R^3$] $$ (1,2,0) \sim (2,4,0) $$ $$ (1,2,0) \not \sim (0,0,0) $$
+\item[$Rx$] $$ 1+x^{40} \sim 2+2x^{40} $$
+\end{itemize}
+
+\subsection{Combinazione Lineare}
+$\underline{v}$ è combinazione lineare dei vettori $\underline{v}_1, \underline{v}_2,...,\underline{v}_n$ $\Leftrightarrow$
+$$ \exists h_1,...,h_n \in \mathbb{R}: \; \underline{v} = h_1 \cdot \underline{v}_1 + ... + h_n \cdot \underline{v}_n $$ 
+(Sia i vettori $\underline{v}$ che gli scalari $h$ possono essere diversi tra loro)
+
+\subsubsection{Esempi}
+\begin{itemize}
+\item[$R^3$] $$ (1,2,1) \; \text{è combinazione lineare} \; (2,4,2) \; \text{con } h=2$$
+\item[$R^2$] $$ (1,2) \; \text{è combinazione lineare di} \; (1,1), (0,1) $$ $$ (1,2)=1(1,1)+1(0,1) $$ 
+\item[$R^3$] $$ (1,2,1) \; \text{è combinazione lineare di} \; (1,2,0),(0,1,1),(1,1,1) \text{?} $$
+$$ (1,2,1) = x_1(1,2,0)+x_2(0,1,1)+x_3(1,1,1) $$
+Come possiamo notare in questo caso non è immediato trovare la soluzione, quindi possiamo ricorrere a un sistema lineare:
+$$ \systeme{x_1 + x_3 = 1, 2x_1 + x_2 + x_3 = 2, x_2 + x_3 = 1} \systeme{... , 2x_1 = 1, ...} \systeme{..., x_1 = \frac{1}{2}, ...} \systeme{\frac{1}{2}+x_3 = 1, ..., ...} \systeme{x_3 = -\frac{1}{2}, x_1 = \frac{1}{2}, x_2 = \frac{1}{2}} $$
+\item[$Rx$] $1+x+x^2$ è combinazione lineare di $1+x, 1+x^2$
+$$ 1+x+x^2 = h(1+x)+k(1+x^2) = kx^2+hx+(h+k) $$
+$$ \systeme{h+k=1, h=1, k=1} Non ha soluzione $$
+\end{itemize}
+
+\subsection{SottoSpazi Vettoriali}
+Preso $V$ spazio vettoriale, e $H \subseteq V$.
+Dim: \\
+\begin{itemize}
+\item[] $H$ stabile (chiuso) rispetto a $+$ 
+$$ \forall \underline{v},\underline{w} \in H \Rightarrow \underline{v}+\underline{w} \in H $$
+\item[] $H$ stabile (chiuso) rispetto a $\cdot$
+$$ \forall h \in \mathbb{R}, \forall \underline{v} \in H  \; h\underline{v} \in H$$ 
+\end{itemize}
+H sottospazio vettoriale se è stabile $+$ e $\cdot$
+\begin{itemize}
+\item[$+_H$]: $HxH -> H$ $(\underline{v}, \underline{w}) -> \underline{v} +_v \underline{w}$
+\item[$\cdot_H$]: $\mathbb{R}xH -> H$ $(h, \underline{v}) -> h \cdot_v \underline{v}$ 
+\end{itemize}
+Per semplicità d'ora in poi ometteremo i pedici, quindi ora dimostriamo che $(H, +, \cdot)$ sia sottospazio vettoriale:
+\begin{itemize}
+\item[•] $(H,+)$ gruppo abeliano
+	 \subitem Commutativa: $ \underline{v} +_h \underline{w} = \underline{v} +_v \underline{w} = \underline{w} +_v \underline{v} = \underline{w} +_h \underline{v} $
+	 \subitem Associtività: IDEM
+	 \subitem Neutro: $ \underline{v} \cdot 0 = \underline{0} \in H $ Poiché stabile
+	 \subitem Opposto: $ (-1)\underline{v} = -\underline{v} $
+\item[•] $1 \cdot_h \underline{v} = 1 \cdot \underline{v} = \underline{v}$
+\item[•] Distrubitività 1: DA FARE
+\item[•] Distrubitività 2: DA FARE
+\end{itemize}
+$$ \textbf{IL VETTORE NULLO C'È SEMPRE!!!}$$
+
+\subsubsection{SottoSpazi Banali}
+D'ora in poi indicheremo i sottospazi con $ \underline{<} $, esistono sempre due sottospazi banali:
+\begin{itemize}
+\item[1)] $(\{\underline{0}\, +, \cdot\})$  $\{\underline{0}\} \underline{<} V$
+\item[2)] $ V \underline{<} V$ Estremamente banale
+\end{itemize} 
+DA CHEKKARE: Ricordare anche che l'unico sottospazio finito possibile è $ \{\underline{0}, \underline{v}_1,..., \underline{v}_n\} = \{\underline{0}\} $
+
+\subsubsection{Esempi}
+Per dimostare che un insieme sia sottospazio bisogna sempre verificare che sia \textbf{non vuoto}, \textbf{stabile rispetto a $+$ e $\cdot$}
+\begin{itemize}
+\item[$R^3$] $$H_1 = \{(x,y,z) \in R^3 / x=y \}$$ \footnote{Truchetto per gli esercizi: se un sottospazio è costituito da un equazione ed è lineare ed omogenea quasi sempre è sottospazio caso contrario no}
+	\subitem Non vuoto: banale
+	\subitem Stabile $+$: $$(x_1, y_1, z_1) + (x_2, y_2, z_2) = (x_1+x_2, y_1+y_2, z_1+z_2)$$
+	Rispetta le propietà poiché $x_1+x_2 = y_1+y_2$ essendo $x_1=y_1$ e $x_2 = y_2$
+	\subitem Stabile $\cdot$: $$ h(x_1, y_1, z_1) = (hx_1, hy_1, hz_1) (hx_1 = hy_1)$$
+\item[$R_{2,2}$]  $$ \{ \begin{pmatrix} 0 & 0\\ 0 & 0 \end{pmatrix},  \begin{pmatrix} 1 & 0\\ 0 & 1 \end{pmatrix}, \begin{pmatrix} 0 & 1\\ 1 & 0 \end{pmatrix}, \begin{pmatrix} 1 & 1\\ 1 & 1 \end{pmatrix} \} \underline{<} \mathbb{R}^2 $$ 
+Questo insieme non è sottospazione vettoriale poiché non è stabile $+$:
+$$ \begin{pmatrix} 1 & 1\\ 1 & 1 \end{pmatrix}  + \begin{pmatrix} 1 & 1\\ 1 & 1 \end{pmatrix}  = \begin{pmatrix} 2 & 2\\ 2 & 2 \end{pmatrix} \not \in $$
+\item[$R^3$] $$ H = \{ (x,y,z) \in R^3 / x=y^2 \} \underline{<} R^3 $$ 
+Non è lineare quindi molto probabilmente non è sottospazio:
+$$ \textbf{Controesempio: }  (2,4,0) + (3,9,0) = (5,15,0) \textbf{ MA } 5 = 15 \neq 5^2 $$
+\item[$R^3$] $$ H = \{ (x,y,z) \in R^3 / x+y+z=1 \} \underline{<} R^3 $$ 
+Non è omogeneo quindi molto probabilmente non è sottospazio:
+$$ \textbf{Controesempio }  (1,0,0) + (0,0,1) = (1,0,1) \textbf{ MA } 1+0+1 \neq 1 $$
+\item[$R_2x \underline{<} R_3x \underline{<} ... \underline{<} Rx$]
+$$ \{p(x) \in R_4x / \text{grado} p(x) = 3\} $$
+Il neutro ha necessariamente grado diverso da 3 quindi non può essere sottospazio
+\item[•] $$ \{p(x) \in R_4x / \text{grado} p(x) = 3 \text{oppure grado } p(x) = 0 \} $$
+Ora ammette neutro ma non è comunque stabile poiché $(x^3+3)+(-x^3+5) = 8 \neq H$
+\item[•] $$ \{P(x) \in Rx / p(-x) = p(x) \}$$
+Stiamo considerando tutti i polinomi pari poiché $-x^{n \text{pari} = x^n}$\\
+È sottospazio poiché la somma tra pari rimane pari, idem il prodotto.
+\item[Caso particolare] $$ \{(0,x) / x \in \mathbb{R} \} \cup \{(y,0) / y \in \mathbb{R} \} \underline{<} \mathbb{R}^2 $$
+Questo non è sottospazio vettoriale poiché non è stabile rispetto al $+$ poiché $(0,1)+(1,0) = (1,1) \not \in$\\
+Però presi singolarmente sono sottospazi ma la loro unione no.
+\end{itemize}
+
+
+
