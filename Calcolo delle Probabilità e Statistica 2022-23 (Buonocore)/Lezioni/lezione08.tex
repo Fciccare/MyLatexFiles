@@ -15,10 +15,26 @@ Teoremi:
 \begin{itemize}
 \item[1)] $P(\emptyset) = 0$
 \item[2)] $P$ è finita additiva
-\item[3)] $P[(\cdot)^C] = 1-P(\cdot)$
-\item[4)] $P(\cdot) <= 1$
+\item[3)] $P[(A)^C] = 1-P(A)$
+\item[4)] $P(A) <= 1$
 \item[5)] $P$ è monotona
 \end{itemize}
+
+\subsection{Spazi di Probabilità Finiti}
+$i)$ Posto $\Omega = \{a_1, a_2,...\}, F = \mathbb{P}(\Omega)$, posto $ i=1,2,...,n$ avremo:
+$$  \mathbb{P}(\{a_i\}) = \textit{p}_i \;\;\; \textbf{"probabilità di \{$a_i$\}"} $$
+Bisognerà avere:
+\begin{itemize}
+\item[1)] $ \textit{p}_i \underline{>} 0, i=1,2,...n $
+\item[2)] $ \textit{p}_1 +   \textit{p}_2 +  ... +  \textit{p}_n  = 1 $
+\end{itemize}
+La probabilità di un qualsiasi evento $A$ sarà dunque definita come la somma delle probabilità degli elementi di $A$.
+
+\subsection{Spazi Equiprobabili finiti}
+$ii)$ Posto $\Omega = \{a_1, a_2,...\}, F = P(\Omega)$, basta porre:
+$$ \textit{p}_i = \frac{1}{n} \;\;\; \text{ per } i=1,2,...,n $$
+Per ogni evento $A$ la probabilità sarà definita:
+$$ \mathbb{P}(A) = \frac{\#A}{n} $$
 
 \subsection{Spazi di Probabilità Numerabili}
 $iii)$ $\Omega = \{a_1, a_2,...\}, F = P(\Omega)$
@@ -29,21 +45,40 @@ sia $n \in N, p_n:= P({a_n})$
 \end{itemize}
 boh: $ \sum_{n=0}^{\infty} h^n = \frac{1}{1-h}$
 
-\subsection{Spazio di Probabilità infiniti}
+\subsection{Spazio di Probabilità infiniti non Numerabili (da rivedere)}
 $iv)$ $\#\Omega > \#N$ \\
 $$ \Omega = (0,1)$$
 $$ F = \{ (a,b): a<b ^ a,b \in 0,1 \} $$
 Questa cosa si dice \textbf{sigma algebra di barel dell'intervallo 0,1}.\\
 $$ P[(a,b)] = \frac{1}{b-a} = b-a $$
 
+\subsection{Esempi Spazi di Probabilità Numberabili}
+\subsubsection{Esempio 01}
+Si ponga lo scalare $\lambda > 0 $  e $ n \in \mathbb{N}_0 $ definiamo: 
+$$ \textit{p}_n = e^{-\lambda} \frac{\lambda^n}{n!} $$
+Per verificare che sia una spazio di probabilità \textbf{numerabile}, dobbiamo verificare la $1)$ e la $2)$.
+\begin{itemize}
+\item[1)] È banalmente verificata poiché sono tutte quantità positive:
+$$  e^{- \lambda} > 0, \;\;\; n! > 0, \;\;\; \lambda^n > 0 $$
+\item[2)] Basta verificare che la serie di termine generale $\textit{p}_n$ si somma a 1:
+$$ \sum_{n=0}^{\infty} \textit{p}_n = \sum_{n=0}^{\infty} e^{-\lambda} \frac{\lambda^n}{n!} = e^{-\lambda} \sum_{n=0}^{\infty} \frac{\lambda^n}{n!} = e^{-\lambda} * e^{\lambda} = 1 $$
+L'ultimo passaggio si ottiene ricordando lo sviluppo in serie di Mc Laurin della funzione $e^x$.
+\end{itemize}
+\subsubsection{Esempio 02}
+Si ponga, con $\textit{p} \in (0,1)$, $n \in \mathbb{N}$, $\textit{p}^{\prime}_n = \textit{p} (1-\textit{p}){n-1}$.\\
+Procedendo come nell'esempio precedente, basta verificare che la serie di termini generale $\textit{p}^{\prime}_n$ si somma a 1:
+$$  \sum_{n=1}^{\infty} \textit{p}^{\prime}_n = \sum_{n=1}^{\infty} \textit{p} (1- \textit{p})^{n-1} = \textit{p} \sum_{n=1}^{\infty} (1-\textit{p})^{n-1} = \textit{p} \sum_{m=0}^{\infty}  (1-\textit{p})^m = \textit{p} \frac{1}{1-(1-\textit{p})} = \textit{p} \frac{1}{\textit{p}} = 1$$
+L'ultimo passaggio si ottiene ricordando la serie geometrica di ragione $h \in (-1,1)$ si somma a $\frac{1}{1-h}$
+
 \subsection{Eventi non Incompatibili}
+\subsubsection{Teorema 06}
 $ \forall A \in F, \forall B \in F $ si ha:
 $$ P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
 (se $A$ e $B$ sono disgiunti allora abbiamo la finita additività).\\
 Dim: 
 $$ A \cup B = A \cup (B \cap A^C) $$
 Inoltre dalla relazione:
-$$ B=B \cap \Omega = B \cap (A \uplus A^C) = (B \cap A) \uplus (A^C)$$
+$$ B=B \cap \Omega = B \cap (A \uplus A^C) = (B \cap A) \uplus (B \cap A^C)$$
 si ricava, per la finita additività di $P$:
 $$ P(B) = P(B \cap A) + P(B \cap A^C)$$
 $$ P(B \cap A^C) = P(B) - P(A \cap B)$$
@@ -52,52 +87,53 @@ $$ P(A \cup B) = P(A) + P(B \cap A^C) = P(A) + P(B) - P(A \cap B)$$
 Osservazione:\\
 Se $A \cap B = \emptyset$ allora $P(A \cap B) = P(\emptyset) = 0$ e il risultato coincide con la finita additività.
 
-\subsection{Teorema 07}
+\subsubsection{Teorema 07}
 $\forall A \in F$, $\forall B \in F$ e $\forall C \in F$ si ha:
-$$ P(A \cup B \cup C) = P(A) + P(B) + P(C) - [P(A \cap B) + P(A \cap C) + P(B \cap C)] + P(A \cap B \cap C)$$
+$$ P(A \cup B \cup C) = P(A) + P(B) + P(C) \;\; - [P(A \cap B) + P(A \cap C) + P(B \cap C)] \;\; + P(A \cap B \cap C)$$
 Dim: \\
 Applicando le propietà delle operazioni insiemistiche ed il risultato precedenti si ha:
-$$ P(A \cup B \cup C) = P[(A \cup B) \cup C)] = P(A \cup B) + P(C) - P[(A \cup B) \cup C]$$
-$$ P(A) + P(B) - P(A \cap B) + P(C) - P[(A \cap C) \cup (B \cap C)]$$
-$$ P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P[(A \cap C) \cap (B \cap C))]$$
+$$ P(A \cup B \cup C) = P[(A \cup B) \cup C)] = P(A \cup B) + P(C) - P[(A \cup B) \cup C] = $$
+$$ P(A) + P(B) - P(A \cap B) + P(C) - P[(A \cap C) \cup (B \cap C)]  = $$
+$$ P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P[(A \cap C) \cap (B \cap C))] = $$
 $$ P(A) + P(B) +P(C) - P[(A \cap B) + P (A \cap C) + P(B \cap C)] + P(A \cap B \cap C)$$
 
-\subsection{Teorema 08}
+\subsubsection{Teorema 08 (Caso Generale)}
 Se $A_i \in F$ per $i = 1,2,...,n$ si ha:
 $$ P(\bigcup_{i=i}^n A_i) = \sum_{i=i}^n P(A_i) - \sum_{i<j} P(Ai \cap A_j) + \sum_{i<j<k} P(A_i \cap A_j \cap A_k) +...+ (-1)^{n+1} P(A_1 \cap A_2 \cap ... \cap A_n)$$
 Questo risultato è noto come \textbf{formula di inclusione-esclusione}.
 
-\subsection{Teorema 09}
-Sia $A_n \in F$, $\forall n \in N$.\\
-Per ogni intero $k$ si ha:
-$$ P(\bigcup_{n=1}^k A_n) <= \sum_{n=1}^k P(A_n) $$
-Dim:\\
-La relazione è vera per $k=2$. Infatti da:
-$$ A_1 \cup A_2 = A_1 \cup (A_2 \cap A_1^C) $$
-per la finita additività di $P$ si ottiene:
-$$ P(A_1 \cup A_2) = P(A_1) + P(A_2 \cap A_1^C) <= P(A_1) + P(A_2) $$
-L'ultimo passaggio deriva dall'essere:
-$$ A_2 \cap A_1^C \subseteq A_2 $$
+
+%\subsubsection{Teorema 09}
+%Sia $A_n \in F$, $\forall n \in N$.\\
+%Per ogni intero $k$ si ha:
+%$$ P(\bigcup_{n=1}^k A_n) <= \sum_{n=1}^k P(A_n) $$
+%Dim:\\
+%La relazione è vera per $k=2$. Infatti da:
+%$$ A_1 \cup A_2 = A_1 \cup (A_2 \cap A_1^C) $$
+%per la finita additività di $P$ si ottiene:
+%$$ P(A_1 \cup A_2) = P(A_1) + P(A_2 \cap A_1^C) <= P(A_1) + P(A_2) $$
+%L'ultimo passaggio deriva dall'essere:
+%$$ A_2 \cap A_1^C \subseteq A_2 $$
 Supponiamo ora la tesi vera per $k-1$:
-$$ P(\bigcup_{n=1}^k A_n) = P[(\bigcup_{n=1}^k A_n) \cup A_k ] <= P(\bigcup_{n=1}^{k-1} A_n)+P(A_k) <= $$
-$$ <= \sum_{n=1}^{k-1} P(A_n) + P(A_k) = \sum_{n=1}^k P(A_n)$$
-La tesi è vera per il principio di induzione matematica.
+%$$ P(\bigcup_{n=1}^k A_n) = P[(\bigcup_{n=1}^k A_n) \cup A_k ] <= P(\bigcup_{n=1}^{k-1} A_n)+P(A_k) <= $$
+%$$ <= \sum_{n=1}^{k-1} P(A_n) + P(A_k) = \sum_{n=1}^k P(A_n)$$
+%La tesi è vera per il principio di induzione matematica.
 
-\subsection{Teorema 10}
-Sia $A_n \in F$, $\forall n \in N$. Si ha:
-$$  P(\bigcup_{n=1}^{\infty} A_n) <= \sum_{n=1}^{\infty} P(A_n) $$
-Dim:\\
-Poniamo:
-$$ B_1 = A_1 $$
-$$ B_2 = A_2 \cap A_1^C $$
-$$ B_3 = A_3 \cap (A_1^c \cap A_2^c) $$
-$$ ... $$
-$$ B_n = A_n \cap (A_1^c \cap A_2^c ... \cap A_{n-1}^c) = A_n \cap $$
+%\subsubsection{Teorema 10}
+%Sia $A_n \in F$, $\forall n \in N$. Si ha:
+%$$  P(\bigcup_{n=1}^{\infty} A_n) <= \sum_{n=1}^{\infty} P(A_n) $$
+%Dim:\\
+%Poniamo:
+%$$ B_1 = A_1 $$
+%$$ B_2 = A_2 \cap A_1^C $$
+%$$ B_3 = A_3 \cap (A_1^c \cap A_2^c) $$
+%$$ ... $$
+%$$ B_n = A_n \cap (A_1^c \cap A_2^c ... \cap A_{n-1}^c) = A_n \cap $$
 
-\subsection{Test}
-$$ \mathbb{P} $$
-$$ \mathbb{N} $$
-$$ \mathbb{F} $$
+%\subsection{Test}
+%$$ \mathbb{P} $$
+%$$ \mathbb{N} $$
+%$$ \mathbb{F} $$
 
 
 
