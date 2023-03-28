@@ -1,0 +1,97 @@
+\section{Lezione 09 - 27-03-2023}
+
+\subsection{Problema delle Concordanze (formula inclusione-esclusione)}
+Sia $n \in \mathbb{N}$ il numero dei cartoncini numerati da $1$ ad $n$ andiamo ad indicarli con $k$.\\
+Si verifica una \textbf{concordanza} quando la $i$-esimo cartoncini porta $i$.\\
+Esempio: se il quinto cartoncino riporta il numero $5$ allora 	questa è una concordanza.\\
+Vogliamo verificare tre casi:
+\begin{itemize}
+\item[1)] Determinare la probabilità di avere 0 concordanze
+\item[2)] Determinare la probabilità di avere almeno 1 concordanza
+\item[3)] Determinare la probabilità di avere esattamente 1 concordanza
+\end{itemize}
+Definiamo un paio di boh:
+$$ E_{k,n}: \; \text{"Esattamente k-concordanze"} $$
+$$ E_{0,n}: \; \text{"Nessuna Concordanze"} $$
+$$ A: \; \text{"Almeno una corcordanza"} $$
+$$ A^c = E_{0,n}: \; \text{Il negato di "almeno una corcanza" è "nessuna ..."}$$
+$$ C_i: \; \text{"Concordanza alla chiamata i-esima"} $$
+\subsubsection{Probablità di avere almeno 1 corcordanza}
+Possiamo definire insiemisticamente \textbf{almeno una corcondanza}, nel segunte modo: 
+$$ A: \bigcup_{i=i}^n C_i$$
+$$ \text{almeno uno in insiemestica (tipo or) è: } \cup $$
+Per esprimere la probabilità di $A$ dobbiamo usare la formula di \textbf{unione-esclusione}:
+$$ P(A): \sum_{i=1}^n \mathbb{P}(C_i) - \sum_{i<j}^n \mathbb{P}(C_i \cap C_j) + \sum_{i<j<k}^n \mathbb{P}(C_i \cap C_j \cap C_k) + ... + (-1)^{n+1} \mathbb{P} (C_1 \cap ... \cap C_n) $$
+Dato che siamo troppo vagi, andiamo a esprimere la probabilità dei vari termini tramite Laplace:
+$$ \mathbb{P}(C_i) = \frac{(n-1)!}{n!} = ... = \frac{1}{n} $$
+Il denomitore è $n!$ poiché sono tutte le possibili mischiate.\\
+Il numeratore invece è $(n-1)!$ poiché abbiamo una posizione fissate e le altre $n-1$ libere.\\
+Se vogliamo fare un esempio concreto se consideriamo $\mathbb{P}(C_1)$ quindi si verifica una concordanza al primo posto cioè quando alla prima alzata corrisponde il numero $1$, abbiamo la prima posizione bloccata (dalla concordanza) e le altre $n-1$ posizioni con numeri liberi, possiamo generalizzare questo caso a tutti i numeri quindi ad $i$.\\
+Proseguendo col secondo membro applichiamo lo stesso ragionamento:
+$$ \mathbb{P}(C_i \cap C_j) = \frac{(n-2)!}{n!} = \frac{(n-2)!}{n*(n-1)*(n-2)!} = \frac{1}{n(n-1)}  $$
+Abbiamo applicato la stesso ragionamento cioè, se consideriamo $ P(C_1 \cap C_2)$ (ricordiamo che $\cap$ vuol dire and), quindi abbiamo il numero $1$ alla prima alzata e il numero $2$ alla seconda alzata, quindi $2$ posti occupati e $n-2$ posti liberi.\\
+Quindi possiamo applicare questo ragionamento con $1,2,3...n$ elementi.\\
+Quindi andando a sostituire:
+$$ \mathbb{P}(A) = \frac{1}{n} \sum_{i=i}^n 1 - \frac{(n-2)!}{n!} * \sum_{i=i}^n \sum_{j=i+1}^n 1 + \frac{(n-3)!}{n!} * \sum_{i=1}^n \sum_{j=i+1}^n \sum_{k=j+1}^n 1 + ... + (-1)^{n+1} * \frac{(n-n)!}{n!} $$
+Possiamo fare un paio di considerazioni:
+$$ \sum_{i=i}^n 1 = n $$
+$$ \sum_{i=i}^n \sum_{j=i+1}^n 1 $$
+Quest'ultimo possiamo considerarlo come le $2-$selezioni senza ripetizioni (semplici) in cui conta l'ordine quindi:
+$$ \sum_{i=i}^n \sum_{j=i+1}^n = \binom{n}{2} $$
+Questo ragionamento possiamo applicare a tutte le sommatorie, quindi:
+$$ \mathbb{P}(A) = \frac{1}{n} * n - \frac{(n-2)!}{n!} * \binom{n}{2} + \frac{(n-3)!}{n!} * \binom{n}{3} + ... + (-1)^{n+1} \frac{(n-n)!}{n!} $$
+Svogliamo i binomiale (aggiungo quadre per mantenere ordine):
+$$ \mathbb{P}(A) = \frac{n}{n} - [ \frac{(n-2)!}{n!} * \frac{n!}{2!(n-2)!} ] +  [ \frac{(n-3)!}{n!} * \frac{n!}{3! (n-3)!} ] + ... + (-1)^{n+1} \frac{(n-n)!}{n!} $$
+Facciamo le varie semplificazioni:
+$$ \mathbb{P}(A) = 1 - \frac{1}{2!} + \frac{1}{3!} + ... + (-1)^{n+1} \frac{1}{n!} $$
+Possiamo esprimere questa formula finale anche col simbolo di sommatoria:
+$$ \mathbb{P}(A) = \sum_{i=1}^n ((-1)^{i+1} * \frac{1}{i!}) $$
+Piccola considerazione:
+$$ \textbf{cose sul numero di nepero ecc... da aggiungere} $$
+\subsubsection{Probabilità 0 concordanze}
+Piccolo recap:\\
+Siamo riusciuti a ricavare la formula per verificare \textbf{la probabilità di avere almeno 1 concordanza}, da qui segue banalemente per come abbiamo detto prima cioè che la negazione di "almeno una" è "nessuna" la \textbf{la probabilità di avere 0 concordanze}:
+$$ \mathbb{P}(A^c) = \mathbb{P}(E_{0,n}) = 1 - \mathbb{P}(A) $$
+
+\subsubsection{Probabilità di avere K concordanze}
+Da aggiungere quando carica i foglietti
+
+\subsection{Proseguimento Teoremi Eventi non Incompatibili}
+\subsubsection{Teorema 09}
+Sia $A_n \in F$, $\forall n \in N$.\\
+Per ogni intero $k$ si ha:
+$$ P(\bigcup_{n=1}^k A_n) <= \sum_{n=1}^k P(A_n) $$
+Dim per induzione:\\
+Poniamo la base induttiva $k=2$, la relazione è vera, infatti da:
+$$ A_1 \cup A_2 = A_1 \cup (A_2 \cap A_1^C) $$
+per la finita additività di $P$ si ottiene:
+$$ P(A_1 \cup A_2) = P(A_1) + P(A_2 \cap A_1^C) <= P(A_1) + P(A_2) $$
+L'ultimo passaggio deriva dall'essere:
+$$ A_2 \cap A_1^C \subseteq A_2 $$
+Supponiamo ora la tesi vera per $k-1$ (passo induttivo):
+$$ P(\bigcup_{n=1}^k A_n) = P[(\bigcup_{n=1}^k A_n) \cup A_k ] <= P(\bigcup_{n=1}^{k-1} A_n)+P(A_k) <= $$
+$$ <= \sum_{n=1}^{k-1} P(A_n) + P(A_k) = \sum_{n=1}^k P(A_n)$$
+La tesi è vera per il principio di induzione matematica.
+
+\subsubsection{Teorema 10 (Disuguaglianza di Boole) [DA RIVEDERE UN PO']}
+Sia $A_n \in F$, $\forall n \in N$. Si ha:
+$$  P(\bigcup_{n=1}^{\infty} A_n) <= \sum_{n=1}^{\infty} P(A_n) $$
+Dim:\\
+Poniamo:
+$$ B_1 = A_1 $$
+$$ B_2 = A_2 \cap A_1^C $$
+$$ B_3 = A_3 \cap (A_1^c \cap A_2^c) $$
+$$ ... $$
+$$ B_n = A_n \cap (A_1^c \cap A_2^c ... \cap A_{n-1}^c) = A_n \cap $$
+
+\subsection{Eventi quasi Impossibili/Certi}
+
+
+
+
+
+
+
+
+
+
