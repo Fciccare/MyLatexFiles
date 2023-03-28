@@ -23,7 +23,7 @@ $$ \text{almeno uno in insiemestica (tipo or) è: } \cup $$
 Per esprimere la probabilità di $A$ dobbiamo usare la formula di \textbf{unione-esclusione}:
 $$ P(A): \sum_{i=1}^n \mathbb{P}(C_i) - \sum_{i<j}^n \mathbb{P}(C_i \cap C_j) + \sum_{i<j<k}^n \mathbb{P}(C_i \cap C_j \cap C_k) + ... + (-1)^{n+1} \mathbb{P} (C_1 \cap ... \cap C_n) $$
 Dato che siamo troppo vagi, andiamo a esprimere la probabilità dei vari termini tramite Laplace:
-$$ \mathbb{P}(C_i) = \frac{(n-1)!}{n!} = ... = \frac{1}{n} $$
+$$ \mathbb{P}(C_i) = \frac{(n-1)!}{n!} = \frac{(n-1)!}{n*(n-1)!} = \frac{1}{n} $$
 Il denomitore è $n!$ poiché sono tutte le possibili mischiate.\\
 Il numeratore invece è $(n-1)!$ poiché abbiamo una posizione fissate e le altre $n-1$ libere.\\
 Se vogliamo fare un esempio concreto se consideriamo $\mathbb{P}(C_1)$ quindi si verifica una concordanza al primo posto cioè quando alla prima alzata corrisponde il numero $1$, abbiamo la prima posizione bloccata (dalla concordanza) e le altre $n-1$ posizioni con numeri liberi, possiamo generalizzare questo caso a tutti i numeri quindi ad $i$.\\
@@ -85,6 +85,23 @@ $$ ... $$
 $$ B_n = A_n \cap (A_1^c \cap A_2^c ... \cap A_{n-1}^c) = A_n \cap $$
 
 \subsection{Eventi quasi Impossibili/Certi}
+\begin{itemize}
+\item[•] Se $B \in \mathbb{F}$ è un evento per il quale riesce $\mathbb{P}(B) = 0$ diremo che esso è un evento \textbf{quasi impossibile}.
+\item[•] Se $C \in \mathbb{F}$ è un evento per il quale riesce $\mathbb{P}(C) = 1$ diremo che esso è un evento \textbf{quasi certo}.
+\end{itemize}
+Differenziamo questi casi con il quasi poiché gli eventi impossibili sono rispettivamente il $\emptyset$ e $\Omega$.\\
+Un esempio di evento quasi impossibile è il lancio di un moneta un numero indefinito di volte, il cui risultato è sempre Testa.
+
+\begin{itemize}
+\item[•] a) $\mathbb{P}(B) = 0 \Rightarrow \systeme{\mathbb{P}(A \cap B) = 0, \mathbb{P}(A \cup B) = \mathbb{P}(A);} $
+\item[•] b) $ \mathbb{P}(C) = 1 \Rightarrow \systeme{\mathbb{P}(A \cup C) = 1,  \mathbb{P}(A \cap C) = \mathbb{P}(A);} $
+\end{itemize}
+
+\subsubsection{Dimostazione}
+A lezione non ha dimostrato ma su i suoi foglietti sì. (aggiungerli)
+
+
+
 
 
 
