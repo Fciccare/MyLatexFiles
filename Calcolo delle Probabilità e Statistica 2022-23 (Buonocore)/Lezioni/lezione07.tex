@@ -20,12 +20,21 @@ Quindi riassumento possiamo esprimere la probabilità tramite tre diverse defini
 \item Soggettiva: Quando l'esperimento si può eseguire una sola volta.
 \end{itemize}
 
+\subsection{Propietà Comuni}
+Sia $A$ un evento, queste tre propietà di verificano in tutte e tre le definizioni:
+\begin{itemize}
+\item[•] $ \mathbb{P}_{c,f,s}(A) >= 0 $
+\item[•] $ \mathbb{P}_{c,f,s}(\Omega) = 1 $
+\item[•] $ \mathbb{P}_{c,f,s}(A \uplus B) = \mathbb{P}_{c,f,s}(A) + \mathbb{P}_{c,f,s}(B) \;\;\; \textbf{FINITA ADDITIVITÀ} $ 
+%$ \mathcal{F}  \mathscr{F} $
+\end{itemize}
+
 \subsection{Impostazione Assiomatica}
 Gli eventi sono sottoinsiemi di uno spazio $\Omega$ e formano una $\sigma$-algebra $F$:
 \begin{itemize}
 \item[a)] $ F \neq \emptyset$
 \item[b)] $ A \in F \Rightarrow A^C \in F $
-\item[c)] $ \forall n \in F, \forall n \in N \Rightarrow \bigcup_{n=1}^{\infty} A_n \in F $
+\item[c)] $ \forall n \in F, \forall i \in N \Rightarrow \bigcup_{i=1}^{\infty} A_n \in F $
 \end{itemize}
 Una misura di probabilità sullo spazio $\Omega$ è una funzione $P: F -> R$ tale che:
 \begin{itemize}

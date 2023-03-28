@@ -17,16 +17,21 @@ Dimostriamolo:
 
 \subsection{Sottospazio Generato}
 Sia $ S \subseteq V $, indicheremo con $<S>$ il \textbf{sotto spazio generato da S}.\\
-$$ <S> = \bigcap_{L \in \mathbb{L}_s} L$$
+$$ <S> = \bigcap_{L \in \mathbb{L}_s} L $$ 
+$$ \mathbb{L}_s = \{W \underline{<} V / S \subseteq W \} $$
+$$ \textbf{Intersezione dei sottospazi di V che contengono S} $$
 In altri termini: è il più piccolo sottospazio rispetto all'intersezione.
 
-\subsubsection{Esempi:}
+\subsubsection{Esempi}
+Poniamo $ H \underline{<} V $
 \begin{itemize}
 \item[•] $ <H> = H $ SEMPRE!
 \item[•] $ <\{\underline{0}\} = \{\underline{0}\} $
 \item[•] $ <V> = V $ 
 \item[•] $ <\emptyset> = {0} $ Singleton dell'elemento neutro, poiché appartiene ad ogni elemento.
 \end{itemize}
+
+\subsection{Casi di Sottospazi Generati}
 
 $ S= H \cup K $ con $H,K \underline{<} V$
 $$ <H \cup K> = H+K = \{\underline{h}+\underline{k} / \underline{h} \in H, \underline{k} \in K \} $$
@@ -38,8 +43,8 @@ non ho capito\\
 Dimostriamo che sia spazio vettoriale:
 \begin{itemize}
 \item[Neutro] $$ \underline{0} = \underline{0}^{\text{preso da H}} + \underline{0}^{\text{preso da K}} $$
-\item[Stabile $+$] $$ (\underline{h} + \underline{k}) + (\underline{h}^' + \underline{k}^') \in H+K $$
-$$ (h+h^') + (k+k^') $$
+\item[Stabile $+$] $$ (\underline{h} + \underline{k}) + (\underline{h}^{'} + \underline{k}^{'}) \in H+K $$
+$$ (h+h^{'}) + (k+k^{'}) $$
 \item[Stabile $\cdot$] $$ \alpha(\underline{h}+\underline{k}) = \alpha\underline{h} + \alpha \underline{k}  $$
 \end{itemize}
 
@@ -50,34 +55,68 @@ $$ <H \cup K> = H+K = (0+y, x+0) = \mathbb{R}^2 $$
 \subsection{Propietà Sottospazio Generato}
 Posto $H,K \underline{<} V$, allora valgono le seguenti propietà:
 \begin{itemize}
-\item[•] $ H \quad K = H \cap K = \{ \underline{0} \} \;(\text{neutro}) $ Si dicono in somma diretta.
+\item[•] $ H \oplus K \; \textbf{si dicono in somma diretta se} \; H \cap K = \{ \underline{0} \} \;(\text{neutro}) $
 \item[•] $ H + K = V$ allora $H,K$ si dicono supplementari
-\item[•] $ H \quad K = V$ allora si dicono complementari (in altri termini devono essere in somma diretta e supplementari).\footnote{È un concetto un po' strano, perché vuol dire somma normale (quindi caso 2), ma ricandoci che l'intersezione da il neutro (quindi caso 1)}
+\item[•] $ H \oplus K = V$ allora si dicono complementari (in altri termini devono essere in somma diretta e supplementari).\footnote{È un concetto un po' strano, perché vuol dire somma normale (quindi caso 2), ma ricordandoci che l'intersezione da il neutro (quindi caso 1)}
 \end{itemize}
 
 \subsubsection{Esempio}
 Posti $\{ \underline{0} \}$ e $V$:
 \begin{itemize}
-\item[Somma diretta]: $ \{ \underline{0} \} \quad V = \{ \underline{0} \} \cap V = \{ \underline{0} \}$
+\item[Somma diretta]: $ \{ \underline{0} \} \oplus V = \{ \underline{0} \} \cap V = \{ \underline{0} \}$
 \item[Supplementari]: $  \{ \underline{0} \} + V = V$
 \item[Complementare]: Dato che è sia somma diretta che supplementare
 \end{itemize}
+In generale, $ H \underline{<} K \Rightarrow H + K = K $
+%AGGIUNGERE ALTRI ESEMPI 
 
 \subsection{Dipendenza/Indipendenza Lineare}
-Sia $V$ uno spazio e vettore e siano $\underline{v}_1, \underline{v}_2, ..., \underline{v} \in V$, sono detti \textbf{linearmente dipendenti} (o legati) $\Leftrightarrow$
+Sia $V$ uno spazio vettoriale e siano $\underline{v}_1, \underline{v}_2, ..., \underline{v} \in V$, sono detti \textbf{linearmente dipendenti} (o legati) $\Leftrightarrow$
 $$ \exists \alpha_1, \alpha_2, ..., \alpha_n \neq (0,0,...,0) = \alpha_1\underline{v_1} + ... + \alpha_n+\underline{v}_n = \underline{0}$$
 La loro combinazione lineare deve essere il vettore nullo.
 Se tali scalari non esistono allora si dice che sono \textbf{linearmente indipendenti} (o liberi), l'unica soluzione valida è quella formata da tutti zero: $0\underline{v}_1+...+0\underline{v}_n = \underline{0}$.
 $$ \textbf{Se non sono dipendenti} \Rightarrow \textbf{Sono indipendenti}$$
 
 \subsubsection{Esempio}
+Posto $ \mathbb{R}^2 $ facciamo i seguenti esempi:
+$$ (1,1),(1,0),(3,0) \; \textbf{sono dipendenti} \; 0(1,1)+(-3)(1,0)+1(3,0) = (0,0) $$
+$$ (1,1),(1,0) \; \textbf{sono indipendenti} \; x(1,1) + y(1,0) = (0,0) \; \text{MA unica soluzione possibile (0,0) quindi sono indipendendenti} $$
 
 \subsection{Propietà dipendenza lineare}
 \begin{itemize}
-\item[1)] $\underline{0}$ dipende smpre da qualunque sistema
+\item[1)] $\underline{0}$ dipende sempre da qualunque sistema
 $$ \underline{0} = 0\underline{v}_1+...+0\underline{v}_n $$
-\item[2)] $ \forall i \underline{v}_i $ dipende da $ \underline{w}_1,...,\underline{w}_n$ \footnote{Una specie di transitività della dipendenza}
-$$  $$
+\item[2)] Sia $\underline{v}$ dipendente da $\underline{v}_1,...,\underline{v}_n$ e ciascun $\underline{v}_i$ dipende da $\underline{w}_1,...,\underline{w}_m \Rightarrow \underline{v} $ dipende da $\underline{w}_1,...,\underline{w}_m$ \footnote{Una specie di transitività della dipendenza} \\
+Dim: \\
+$$ \underline{v} = \alpha_1\underline{v}_1 + ... + \alpha_n\underline{v}_n \; \text{(dipende come da tesi)}$$
+$$ \forall i, \: \underline{v}_i = \beta_{i,1} \underline{w}_1 + ... + \beta_{i,m} \underline{w}_n \text{(ogni $v_i$ dipende a sua volta da un $w_i$)}$$
+$$ \underline{v} = \alpha_1(\beta_{i,1} \underline{w}_1 + ... + \beta_{i,m} \underline{w}_n) + ... + \alpha_n (\beta_{n,1} \underline{w}_1 + ... + \beta_{n,m} \underline{w}_n) $$
+$$ \underline{v} = \gamma_1\underline{w_1} + ... + \gamma_m \underline{w}_m \text{(compattiamo)}$$
+\item[3)] $\underline{v}_i$ dipende da $\underline{v}_1,...,\underline{v}_n$ 
+$$ \underline{v}_i = 0\underline{v}_1 + ... + 0\underline{v}_n $$
+\item[4)] $ \underline{v}, \underline{w} $ dipende da $\underline{v}_1,...,\underline{v}_n \Rightarrow \underline{v}+\underline{w} $ dipende da $\underline{v}_1,...,\underline{v}_n$\\
+Dim:\\
+$$ \underline{v} = \alpha_1\underline{v}_1 + ... + \alpha_n\underline{v}_n $$
+$$ \underline{w} = \beta_1\underline{w}_1 + ... + \beta_n\underline{w}_n $$
+$$ \underline{v} + \underline{w} = (\alpha_1 + \beta_1)\underline{v}_1 + ... + (\alpha_n + \beta_n)\underline{v}_n $$
+\item[5)] $ \underline{v} $ dipende da $\underline{v}_1,...,\underline{v}_n \Rightarrow h\underline{v} $ dipende da $\underline{v}_1,...,\underline{v}_n$
+
+\subsection{Relazione con la Generazione}
+Posti $\underline{v}_1,...,\underline{v}_n \in V$ allora:
+$$ <\underline{v}_1,...,\underline{v}_n> = \{h_1\underline{v}_1,...,h_n\underline{v}_n / h_i \in R \} \; \textbf{Copertura Lineare}$$
+In altre parole:
+$$ \underline{v} \in <\underline{v}_1,...,\underline{v}_n> \:\text{se}\: \underline{v} \: \text{dipende dai vettori} \: \underline{v}_1,...,\underline{v}_n  $$
+Dim sottospazio:
+\begin{itemize}
+\item[•] Neutro: vale per la $1)$ 
+\item[•] Stabile $+$: vale per la $4)$
+\item[•] Stabile $\cdot$: vale per la $5)$
+\end{itemize}
+
+\subsubsection{Esempio}
+boh non si è capito nulla in classe
+
+
 \end{itemize}
 
 
