@@ -1,0 +1,116 @@
+\section{Lezione 07 - 29/03/2023}
+
+\subsection{Sottospazi Equivalenti}
+Siano $S_1,S_2 \le V $ si dicono \textbf{equivalente} se e solo se generano lo stesso sottospazio vettoriale quindi:
+$$ \Leftrightarrow <S_1> = <S_2> $$
+($<S_1>,<S_2>$ si dicono sistema di generatori)
+
+\subsubsection{Esempi}
+Presi $\underline{v}, \underline{v}, \underline{0}, \underline{w}$ equivale a $\underline{v}, \underline{w}$?\\
+Dobbiamo andare a verificare che ogni elemento di $S_1$ si possa scrivere come combinazione lineare di $S_2$, quindi dobbiamo andare a verificare la doppia inclusione.\\
+In questo possiamo notare come vale l'equivalenza poiché, possiamo levare la doppia ripetizione di $\underline{v}$ dal $S_1$, e $\underline{0}$ essendo il neutro deve essere necessariamene presente per essere sottospazio, quindi vale la doppia inclusione.\\
+
+Ponendoci in $\mathbb{R}^3$ consideriamo il seguente sottospazio:
+$$ <(1,2,1),(2,4,2),(0,0,1),(1,2,50)> $$
+Possiamo notare come $(2,4,2)$ e $(1,2,50)$ sono combinazioni lineari, questo ci permette di eleminarli, quindi:
+$$ <(1,2,1),(0,0,1)> \; \; \textbf{Base}$$
+Questi due elementi sono indipendenti poiché l'unica combinazione possibile è $h=k=0$.\\
+
+Consideriamo $\mathbb{R}^n$ come sempre possiamo considerare la matrice come una lunga riga.
+$$
+\begin{pmatrix}
+1 & 2 & 1 \\
+2 & 4 & 2 \\
+0 & 0 & 1 \\
+1 & 2 & 50\\
+\end{pmatrix}
+\rightarrow
+\begin{pmatrix}
+1 & 2 & 1 \\
+0 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 0 & 49\\
+\end{pmatrix}
+\rightarrow
+\begin{pmatrix}
+1 & 2 & 1 \\
+0 & 0 & 1 \\
+0 & 0 & 49 \\
+0 & 0 & 0\\
+\end{pmatrix}
+\rightarrow
+\begin{pmatrix}
+1 & 2 & 1 \\
+0 & 0 & 1 \\
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+\end{pmatrix}
+$$
+Le trasformazioni di riga ($E_1,E_2,E_3,E_4$) mantendono i sottospazi.\\
+Le righe non nulla di una matrice sono sempre sistemi indipendenti.\\
+Poniamoci in $\mathbb{R}_2[x]$ e prendeniamo:
+$$ <x^2+2x+1, 2x^2+4x+2, 1, x^2+2x+50> $$
+Possiamo consideraro anche solo i termini senza le incognite:
+$$ <(1,2,1),(2,4,2),(0,0,1),(1,2,50)> $$
+Possiamo portarla in forma matriciale:
+$$ 
+\begin{pmatrix}
+1 & 2 & 1 \\
+2 & 4 & 2 \\
+0 & 0 & 1 \\
+1 & 2 & 50 \\
+\end{pmatrix}
+$$
+E possiamo portarla a gradini:
+$$
+\begin{pmatrix}
+1 & 2 & 1 \\
+0 & 0 & 1 \\
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+\end{pmatrix}
+$$
+Quello che ci viene alla fine è:
+$$ <x^2+2x+1, 1> $$
+
+\subsection{Osservazioni sulla in/dipendenza}
+\subsubsection{Dipendenza}
+Sia $v_1,...,v_n \in V$ \footnote{Consideriamo $n \ge 2$ perché se $n = 1$ i casi di riducono unicamente a: $ \underline{v} \neq \underline{0} $ indipendente e $ \underline{v} = \underline{0} $ dipendente} sono linearmente dipendenti $ \Leftrightarrow \exists i: \underline{v}_i $ dipende dai rimanenti.
+Dim:\\
+Per ipotesi sappiamo: 
+$$ \exists h_1,...,h_n \neq (0,0,...0): h_1\underline{v}_1 + ... + h_n\underline{v}_n = \underline{0} $$
+Supponiamo $h_1 \neq 0$ allora:
+$$ \underline{v_1} = h_1^{-1}(-h_2\underline{v}_2 + ... + (-h_n)\underline{v}_n $$
+Quindi $\underline{v}_1$ è combinazione lineare di $\underline{v}_2,...,\underline{v}_n$ quindi dipende da questi vettori.\\
+(vale anche il viceversa).
+
+\subsubsection{Indipendenza}
+Per scrivere l'indipendenza ci basta unicamente fare il negato della dipendenza:\\
+$ v_1,...,v_n \in V $ sono indipendenti $ \Leftrightarrow \forall \underline{v}_i: \underline{v}_i$ non dipende da: $\underline{v}_1,...,\underline{v}_n $\\
+
+\subsubsection{Propietà}
+Sia $V$ spazio vettoriale, definiamo le seguenti propietà:
+\begin{itemize}
+\item[•] Se $\underline{v}_1,...,\underline{v}_n$ dipendono aggiungere $\underline{w}_1,...,\underline{w}_n$ fa rimanere la dipendenza.
+
+\item[•] Se $\underline{v}_1,...,\underline{v}_n, \underline{w}_1,...,\underline{w}_n$ sono indipendenti allora andando a restringere a $\underline{v}_1,...,\underline{v}_n$ rimane indipendente.
+
+\item[•] Se $\underline{v}_1,...,\underline{v}_n$ sono indipendenti allora c'è \textbf{l'unicità di scrittura}.\\
+Dim:
+$$ \textbf{da aggiungere} $$
+
+\item[•] Presi $W_1,W_2 \le V$ e per ipotesi in somma diretta $W_1 \cap W_2 = \{\underline{0}\}$ e presi $\underline{0} \neq \underline{v} \in W_1$ e $\underline{0} \neq \underline{w} \in W_2$ allora $\underline{v}$ e $\underline{w}$ \textbf{sono indipendenti}.\\
+Dim:
+$$ \textbf{da aggiungere} $$
+
+\item[•] Generalizziamo il caso precendente
+
+\item[•] La somma direta implica l'unicità di scrittura
+
+\end{itemize}
+
+
+
+
+
+
