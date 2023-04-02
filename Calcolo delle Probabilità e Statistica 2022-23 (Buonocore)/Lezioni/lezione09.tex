@@ -20,7 +20,7 @@ $$ C_i: \; \text{"Concordanza alla chiamata i-esima"} $$
 Possiamo definire insiemisticamente \textbf{almeno una corcondanza}, nel segunte modo: 
 $$ A: \bigcup_{i=i}^n C_i$$
 $$ \text{almeno uno in insiemestica (tipo or) è: } \cup $$
-Per esprimere la probabilità di $A$ dobbiamo usare la formula di \textbf{unione-esclusione}:
+Ovviamente, nulla vieta che nella stessa effettuazione dell’esperimento si possono verificare due o più concordanze; pertanto, per esprimere la probabilità di $A$ è necessario applicare la formula di inclusione-esclusione:
 $$ P(A): \sum_{i=1}^n \mathbb{P}(C_i) - \sum_{i<j}^n \mathbb{P}(C_i \cap C_j) + \sum_{i<j<k}^n \mathbb{P}(C_i \cap C_j \cap C_k) + ... + (-1)^{n+1} \mathbb{P} (C_1 \cap ... \cap C_n) $$
 Dato che siamo troppo vagi, andiamo a esprimere la probabilità dei vari termini tramite Laplace:
 $$ \mathbb{P}(C_i) = \frac{(n-1)!}{n!} = \frac{(n-1)!}{n*(n-1)!} = \frac{1}{n} $$
@@ -36,7 +36,7 @@ $$ \mathbb{P}(A) = \frac{1}{n} \sum_{i=i}^n 1 - \frac{(n-2)!}{n!} * \sum_{i=i}^n
 Possiamo fare un paio di considerazioni:
 $$ \sum_{i=i}^n 1 = n $$
 $$ \sum_{i=i}^n \sum_{j=i+1}^n 1 $$
-Quest'ultimo possiamo considerarlo come le $2-$selezioni senza ripetizioni (semplici) in cui conta l'ordine quindi:
+Quest'ultimo possiamo considerarlo come le $2-$selezioni senza ripetizioni (semplici) in cui non conta l'ordine quindi:
 $$ \sum_{i=i}^n \sum_{j=i+1}^n = \binom{n}{2} $$
 Questo ragionamento possiamo applicare a tutte le sommatorie, quindi:
 $$ \mathbb{P}(A) = \frac{1}{n} * n - \frac{(n-2)!}{n!} * \binom{n}{2} + \frac{(n-3)!}{n!} * \binom{n}{3} + ... + (-1)^{n+1} \frac{(n-n)!}{n!} $$
@@ -53,8 +53,16 @@ Piccolo recap:\\
 Siamo riusciuti a ricavare la formula per verificare \textbf{la probabilità di avere almeno 1 concordanza}, da qui segue banalemente per come abbiamo detto prima cioè che la negazione di "almeno una" è "nessuna" la \textbf{la probabilità di avere 0 concordanze}:
 $$ \mathbb{P}(A^c) = \mathbb{P}(E_{0,n}) = 1 - \mathbb{P}(A) $$
 
-\subsubsection{Probabilità di avere K concordanze}
-Da aggiungere quando carica i foglietti
+\subsubsection{Probabilità di avere esattamente K concordanze}
+Indichiamo con:
+\begin{itemize}
+\item[$E_{k,n}$] l'evento che si presenti essattemente $k$ concoranze.
+\item[$A_{k,n}$] l'evento che si verifichino corcodanze nelle prime $k$ e nessuna concordanze nelle $n-k$ chiamate.
+\end{itemize}
+Applicando la formula di Laplace otteniamo:
+$$ \mathbb{P}(A_{k,n}) = \frac{(n-k)! \cdot \mathbb{P}(E_{0,n-k})}{n!} $$
+aggiungere discorso:
+$$ \mathbb{P}(E_{k,n}) = \binom{n}{k}\mathbb{P}(A_{k,n}) = \frac{n!}{k!(n-k)!} \frac{(n-k)!}{n!} \mathbb{P}(E_{0,n-k)} = \frac{1}{k!}\mathbb{P}(E_{0,n-k}) = \frac{1}{k!} \sum_{i=0}^{n-k} (-1)^i \frac{1}{i!} $$
 
 \subsection{Proseguimento Teoremi Eventi non Incompatibili}
 \subsubsection{Teorema 09}
@@ -99,6 +107,10 @@ Un esempio di evento quasi impossibile è il lancio di un moneta un numero indef
 
 \subsubsection{Dimostazione}
 A lezione non ha dimostrato ma su i suoi foglietti sì. (aggiungerli)
+
+$$ \mathscr{F} $$
+$$ \mathscr{L} $$
+$$ \mathscr{E} $$
 
 
 

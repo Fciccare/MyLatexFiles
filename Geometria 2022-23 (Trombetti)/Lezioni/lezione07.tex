@@ -80,7 +80,7 @@ Dim:\\
 Per ipotesi sappiamo: 
 $$ \exists h_1,...,h_n \neq (0,0,...0): h_1\underline{v}_1 + ... + h_n\underline{v}_n = \underline{0} $$
 Supponiamo $h_1 \neq 0$ allora:
-$$ \underline{v_1} = h_1^{-1}(-h_2\underline{v}_2 + ... + (-h_n)\underline{v}_n $$
+$$ \underline{v_1} = h_1^{-1}(-h_2\underline{v}_2 + ... + (-h_n)\underline{v}_n) $$
 Quindi $\underline{v}_1$ è combinazione lineare di $\underline{v}_2,...,\underline{v}_n$ quindi dipende da questi vettori.\\
 (vale anche il viceversa).
 
@@ -95,19 +95,32 @@ Sia $V$ spazio vettoriale, definiamo le seguenti propietà:
 
 \item[•] Se $\underline{v}_1,...,\underline{v}_n, \underline{w}_1,...,\underline{w}_n$ sono indipendenti allora andando a restringere a $\underline{v}_1,...,\underline{v}_n$ rimane indipendente.
 
-\item[•] Se $\underline{v}_1,...,\underline{v}_n$ sono indipendenti allora c'è \textbf{l'unicità di scrittura}.\\
-Dim:
-$$ \textbf{da aggiungere} $$
+\item[•] Se $\underline{v}_1,...,\underline{v}_n$ sono indipendenti allora c'è \textbf{l'unicità di scrittura}.
+$$ \underline{v} = h_1\underline{v}_1,...,h_n\underline{v}_n $$
+$$ \underline{v} = k_1\underline{v}_1,...,k_n\underline{v}_n $$
+$$ \Rightarrow h_1 = k_1 $$
+Dim:\\
+Spostiamo tutto da un lato e raggrupiamo:
+$$ (h_1-k_1)\underline{v}_1+...+(h_n-k_n)\underline{v}_n = \underline{0} $$
+$$ h_i-k_i = 0 \Leftrightarrow h_i = k_i $$
 
 \item[•] Presi $W_1,W_2 \le V$ e per ipotesi in somma diretta $W_1 \cap W_2 = \{\underline{0}\}$ e presi $\underline{0} \neq \underline{v} \in W_1$ e $\underline{0} \neq \underline{w} \in W_2$ allora $\underline{v}$ e $\underline{w}$ \textbf{sono indipendenti}.\\
 Dim:
 $$ \textbf{da aggiungere} $$
 
-\item[•] Generalizziamo il caso precendente
+\item[•] Generalizziamo il caso precendente considerando $W_1 \oplus W_2 \oplus ... \oplus W_n$ cioé $W_1 \cap (W_2+...+W_n) = \{\underline{0}\} $ e prendiamo un vettore a loro corrispondente diversi da zero, diremo $\underline{v}_1,...,\underline{v}_n$ che sono indipendenti.\\
+Dim:
+$$ h_1\underline{v}_1,...,h_n\underline{v}_n = \underline{0} $$
+Spostiamo tutto da un lato:
+$$ \equalto{h_1\underline{v}_1}{W_1} = \equalto{-h_2\underline{v}_2 +...+ (-h_n\underline{v}_n)}{W_2+...+W_n} = \underline{0} $$
+$$ h_1\underline{v}_1 = \underline{0} \Rightarrow h_1 = 0 $$ 
 
-\item[•] La somma direta implica l'unicità di scrittura
+\item[•] La somma diretta implica l'unicità di scrittura
+
 
 \end{itemize}
+
+
 
 
 
