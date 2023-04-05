@@ -1,0 +1,48 @@
+\section{Lezione 10 - 29/03/2023}
+
+\subsection{Variabile Aeleatoria}
+
+\subsection{Lancio moneta un numero indifinità di volte}
+Poniamo uno spazio campione: 
+$$\Omega_2 = \{T,C\} x \{T,C\} = \{T,C\}^2 = \{TC,TT,CC,CT\}$$
+Queste sono $2$-selezioni, possiamo estendere questo caso fino ad $n$:
+$$\Omega_n = \{T,C\}^n = \{ w = w_1w_2...w_n, i=1,2,...,n, w_i \in \{T,C\} \}$$
+Nel caso nostro dobbiamo considerare l'infinito:
+$$ \Omega = \{T,C\}^{\infty} $$
+Andiamo a considerare le varie possibilità:
+$$ \mathbb{P}(\{TTT...T...\}) = 0 $$
+$$ \mathbb{P}(\{T\}) = \frac{1}{2} $$
+$$ \mathbb{P}(\{TT\}) = \frac{1}{4} $$
+$$ \mathbb{P}(\{TTT\}) = \frac{1}{8} $$
+$$ \mathbb{P}(\{TTT...T^n\}) = \frac{1}{2^n} $$
+Se consideriamo l'ultimo caso all'aumentare di $n$ quindi delle teste il valore si avvicina sempre di più a $0$, quindi il caso di tutte teste possiamo dire è praticamente zero.\\
+Quindi ci verrebbe da dire che la probababilità di tutte teste sia il limite tendente a zero, \textbf{ma questo non è vero!}.
+$$ \mathbb{P}(\{TTT...T...\}) = \displaystyle\lim_{n\ \rightarrow\ \infty}\mathbb{P}\{TTT...T\} = \displaystyle\lim_{n\ \rightarrow\ \infty} \frac{1}{2^n} = 0 $$
+$$ \mathbb{P(\displaystyle\lim_{n\ \rightarrow\ \infty}\mathbb{P}\{TTT...T\})} $$
+Possiamo notare col il limite sia all'interno della probabilità quindi non possiamo affermare che vale quell'uguaglianza, però è intuitivamente corretto.\\
+Poniamo una variabile aleatoria che assuma $2$ valori in base al caso:
+\begin{equation*}
+X_1 = 
+\begin{cases}
+0 \: \: \: \text{Se esce $C=T^c$ al primo lancio} \\
+1 \: \: \: \text{Se esce $T$ al primo lancio}  
+\end{cases}
+\end{equation*}
+Poniamo di lanciare due volte la moneta e una volta esce testa e l'altra volta esce croce:
+$$ \mathbb{P}(X_1=1) = \textit{p} $$
+$$ \mathbb{P}(X_1=0) = 1-\textit{p} \text{complemento}$$
+Con $\textit{p}$ indichiamo la probabilità che esca $T$ ed è compresa tra 0,1 esclusi $\textit{p} \in [0,1]$.\\
+La possibilità esce testa o che esca croce è la stessa quindi possiamo dire che sono \textbf{somiglianti}.\\
+Poniamo il caso:
+\begin{itemize}
+\item[$n=2$] $S_2=X_1+X_2$ (somma aeleatoria) abbiamo 3 possibili output:
+\item CC = 0 = (1-\textit{p})(1-\textit{p})
+\item CT,TC = 1 = 2\textit{p}(1-\textit{p})
+\item TT = 2 = \textit{p}\textit{p}
+\item[$n=3$]
+\end{itemize}
+
+
+
+
+
