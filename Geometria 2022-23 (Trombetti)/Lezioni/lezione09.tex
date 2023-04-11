@@ -5,6 +5,57 @@ Sia $V$ uno spazio vettoriale finitamente generato, definiamo le seguenti propos
 \begin{itemize}
 \item[1)] $W \le V \Rightarrow W$ finitamente generato.\\
 Dim:\\
-Poniamo per assurdo che $W$ non sia finitamente generabile 
+Poniamo per assurdo che $W$ non sia finitamente generabile, questo significa che esiste un $\underline{v}_1 \in W$ ne consegue: $<\underline{v}_1> \neq W$.\\
+Quindi esiste un $\underline{v}_2 \in W \setminus <\underline{v}_1>$ con $\underline{v}_1$ e $\underline{v}_2$ indipendenti, ne consgue sempre che $<\underline{v}_1, \underline{v}_2> \neq W$ altrimenti sarebbe finitamente generabile.\\
+Quindi continuando con lo stesso procedimento arriviamo a trovare $n+1$ vettori indipendenti, arrivimo ad un assurdo, ne consegue che \textbf{$W$ SIA FINITAMENTE GENERABILE.}
 
+\item[2)] dim($W$) $\le$ dim($V$)
+
+\item[3)] $W = V \Leftrightarrow$ dim($W$) = dim($V$) = $n$\\
+Dim $\Rightarrow$: OVVIO\\
+Dim $\Leftarrow$:\\
+Prendiamo una base per $W$: $\underline{e}_1, \underline{e}_2,...,\underline{e}_n$, essendo una base è indipendente sia per $W$ e $V$, per i teoremi visti a lezione scorsa???, è base anche per $V$.
 \end{itemize}
+
+
+\subsection{Corollari}
+Sia $V$ S.V.F.G e $W \le Z \le V$, definiamo i seguenti corollari:
+\begin{itemize}
+\item[1)] $W \le Z \Rightarrow$ dim($W$) $\le$ dim($Z$)
+\item[1)] $W = Z \Rightarrow$ dim($W$) = dim($Z$)
+\end{itemize}
+
+\subsection{Teorema}
+Se $H_1,...,H_n \le V$ sono sottospazi in somma diretta allora:
+$$ \text(H_1 \oplus ... \oplus H_n) = \text{dim}H_1,...+\text{dim}H_n $$
+Dim:\\
+Prendiano delle basi per ogni sottospazio:\\
+$H_1$: $\underline{e}_{1,1},...,\underline{e}_{1,v_1}$ con $\underline{v}_1=$dim($H_1$)
+$H_2$: $\underline{e}_{2,1},...,\underline{e}_{2,v_2}$ con $\underline{v}_2=$dim($H_2$)
+...
+$H_n$: $\underline{e}_{n,1},...,\underline{e}_{n,v_n}$ con $\underline{v}_n=$dim($H_n$)
+(il primo pedice identifica lo spazio vettoriale, il secondo il numero dell’elemento)\\
+
+
+\subsection{Relazione di Grossman}
+È utile quando due sottospazi non sono in somma diretta.\\
+Siano $H,K \le V$ allora la loro dimensione è data da:
+$$ \text{dim}H+K = \text{dim}H +\text{dim}K - \text{dim} H \cap K$$
+La formula di solito si usa al contrario poiché calcolare $\text{dim} H \cap K$ è molto complesso.\\
+Esempio:
+$ <(1,0),(1,3)> \cap <(1,0),(4,5)> \neq <(1,0)> \; \text{NON FARE ALL'ESAME} $ la risposta corretta è $\mathbb{R}^2$.\\
+Questo poiché: $\text{dim}H = 2$, $\text{dim}K = 2$, $\text{dim}H+K = 2$ quindi $\text{dim} H \cap K = 2$.\
+\textbf{Dim:}\\
+DA INSERIRE
+\subsubsection{Esempio}
+\begin{itemize}
+\item[$\mathbb{R}^3$] Poniamo caso $H = <(1,2,3),(1,2,1)>$ e $K = <(0,0,1),(1,1,0)>$ abbiamo che:
+	\item dim$H$=2
+	\item dim$K$=2
+	\item dim$H+K$=$<(1,2,3),\cancel{(1,1,1)},(0,0,1),(1,1,0)> = 3$
+	\item dim$H \cap K = 1 = <(1,1,1)>$ (dalla relazione di Grossman)
+	$$ <(1,1,1)> \le H \cap K $$
+\end{itemize}
+
+
+
