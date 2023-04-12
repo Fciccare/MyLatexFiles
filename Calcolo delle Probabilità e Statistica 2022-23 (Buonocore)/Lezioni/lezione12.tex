@@ -1,0 +1,34 @@
+\section{Lezione 12 - 12/04/2023}
+
+\subsection{Relazione Indipendenza e Condizionamento}
+Presi $A,B \in \mathtt{R}$ con $\mathbb{P}(A) > 0$ e $\mathbb{P}(B) > 0$ valgono le seguenti definizioni:
+\begin{itemize}
+\item[a)] $\mathbb{P}(A \cap B) = \mathbb{P}(A) \mathbb{P}(B)$
+\item[b)] $\mathbb{P}(A|B) = \mathbb{P}(A)$
+\item[c)] $\mathbb{P}(B|A) = \mathbb{P}(B)$
+\end{itemize}
+\footnote{Nella scorsa lezione abbiamo definito la probabilità condizionata con $P_B(A)$ ma d'ora in poi useremo quest'altra $P(A|B)$}
+\textbf{DIM:} $ a \Rightarrow b \Rightarrow b \Rightarrow c \Rightarrow a$
+\begin{itemize}
+\item[$a \Rightarrow b$)] $\mathbb{P}(A|B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)} =^\text{a)} \frac{\mathbb{P}(A) \mathbb{P}(B)}{\mathbb{P}(B)} = \mathbb{P}(A)$
+
+\item[$b \Rightarrow c$)]$ \mathbb{P}(B|A) =  \frac{\mathbb{P}(B \cap A)}{\mathbb{P}(A)} = \frac{\text{\hlcyan{$\mathbb{P}(A \cap B)$}}}{\mathbb{P}(A)} \frac{\mathbb{P}(B)}{\text{\hlcyan{$\mathbb{P}(B)$}}} = \frac{\text{\hlcyan{$\mathbb{P}(A|B)$}} \mathbb{P}(B)}{\mathbb{P}(A)} =^\text{b)} \frac{\mathbb{P}(A) \mathbb{P}(B)}{\mathbb{P}(A)} = \mathbb{P}(B)$
+
+\item[$c \Rightarrow b$)] $ \mathbb{P}(A \cap B) = \mathbb{P}(B \cap A) = \frac{\mathbb{P}(B \cap A) \mathbb{P}(A)}{\mathbb{P}(A)} = \mathbb{P}(B|A) \mathbb{P}(A) =^\text{c)} \mathbb{P}(A) \mathbb{P}(B)$
+
+\end{itemize}
+
+Riassumendo: Eventi indipedenti la probabilità condizionata è uguale alla probabilità senza condizionamento.\\
+
+\subsection{Probabilità Composta}
+Dalla definizione di probabilità condizionata segue la cosidetta legge delle \textbf{probabilità composta}:
+$$ \mathbb{P}(A \cap B) = \mathbb{P}(B) \mathbb{P}(A|B)  $$
+Osservazioni:\\
+La legge delle probabilità composte vale anche se $\mathbb{P}(B) = 0$.\\
+Se c'è indipendenza si riduce a $\mathbb{P}(B) \mathbb{P}(B)$.\\
+\subsubsection{Estensione a 3 casi}
+Avendo definito per due valori possiamo come sempre associare a due a due:
+$$ \mathbb{P}(A \cap B \cap C) = \mathbb{P}(C) \mathbb{P}(B|C) \mathbb{P}(A| B \cap C) $$
+Dim:
+$$ \mathbb{P}(A \cap B \cap C) = \mathbb{P}[A \cap (B \cap C)] = \mathbb{P}(B \cap C) \mathbb{P}(A| B \cap C) = \mathbb{P}(C) \mathbb{P}(B|C) \mathbb{P}(A| B \cap C) $$
+
