@@ -1,0 +1,219 @@
+\section{Lezione 10 - 12/04/2023}
+
+\subsection{Componenti}
+Sia $V$ spazio vettoriale prendiamo un riferimento (base ordinata): $\mathbb{R} = (\underline{e}_1,...,\underline{e}_n)$, e prendiamo un vettore $\underline{v} \in V$ allora $\underline{v}$ si potrà scrivere come combinazione lineare: 
+$$\underline{v} = h_1 \underline{e}_1+...+h_n\underline{e}_n$$
+Chiamiamo i cofficienti $h$ come \textbf{componenti}, più nello specifico:
+$$ (h_1,...,h_n) \; \text{n-pla delle componenti} \; \underline{v} \; \text{nel riferimento} \; \mathbb{R} $$
+\subsubsection{Esempi}
+TODO: INSERIRE ESEMPIO
+
+\subsection{Cambiamento di Riferimento (Formula di Passaggio)}
+Presi due riferimenti vogliamo portare un vettore scritto come combinazione linere delle componenti del "vecchio" riferimento al "nuovo" riferimento.\\
+Consideriamo: 
+$$ \mathbb{R}_1 = (\underline{e}_1,...,\underline{e}_n) \; \text{VECCHIO RIFERIMENTO} $$
+$$ \mathbb{R}_2 = (\underline{f}_1,...,\underline{f}_n) \;  \text{NUOVO RIFERIMENTO}$$
+Consideriamo un vettore $\underline{v}$ del vecchio riferimento:
+$$ \underline{v} = k_1\underline{e}_1+...+k_n\underline{e}_n $$
+Come abbiamo visto prima le componenti di questo vettore sono: $(k_1,..,k_n)$\\
+Cominciamo ad esperimere $\underline{e}_1,..,\underline{e}_n$ come combinazione lineare del nuovo riferimento:
+$$\underline{e}_1 = h_{1,1}\underline{f}_1+...+h_{1,n}\underline{f}_n $$
+$$ ... $$
+$$\underline{e}_n = h_{n,1}\underline{f}_1+...+h_{n,m}\underline{f}_n $$
+Il primo pedice indica il vettore, il secondo lo scorrimento.\\
+Andiamo a sostituire la nuova comb. lin. di $\underline{e}_1$ in $\underline{v}$:
+$$ \underline{v} = k_1(h_{1,1}\underline{f}_1,+...+h_{1,n}\underline{f}_n)+..+k_n(h_{n,1}\underline{f}_1,+...+h_{n,m}\underline{f}_n) $$
+Ora mettiamo in evidenza $\underline{f}$:
+$$ \underline{v} = \underline{f}_1\equalto{(k_1 h_{1,1}+...+k_n h_{1,n})}{k_1^{\prime}}+...+\underline{f}_n\equalto{(k_1 h_{n,1}+...+k_n h_{n,m})}{k_n^{\prime}} $$
+Quindi $(k_1^{\prime},...,k_n^{\prime})$ le componenti di $\underline{v}$ in $\mathbb{R}_2$
+In definitiva avremmo:
+$$ k_1^{\prime} = (k_1 h_{1,1}+...+k_n h_{1,n})  $$
+$$ ... $$
+$$ k_n^{\prime} = (k_1 h_{n,1}+...+k_n h_{n,m})  $$
+
+\subsubsection{Matrice di Passaggio}
+Un altro metodo oltre la "formula di passaggio" è la "matrice di passaggio"\\
+Andiamo ad esprimere 
+
+\subsubsection{Esempio}
+Posti in $\mathbb{R}^3$ consideriamo i seguenti riferimenti:
+$$ \mathbb{R}_1 = ((1,2,3),(4,5,6),(0,0,2) \; \text{VECCHIO RIFERIMENTO} $$
+$$ \mathbb{R}_2 = ((0,1,0),(0,1,1),(1,1,1)) \;  \text{NUOVO RIFERIMENTO}$$
+Usiamo il metodo della "matrice di passaggio", cominciamo col esprimere i vecchie riferimenti in favori dei nuovi:
+$$ (1,2,3) = -1(0,1,0) + 2(0,1,1)+1(1,1,1) $$
+$$ (4,5,6) = -1(0,1,0) + 2(0,1,1)+4(1,1,1) $$
+$$ (0,0,2) = -2(0,1,0) + 2(0,1,1)+0(1,1,1) $$
+Ora costruiamo la matrice (per colonna):
+$$\begin{pmatrix}
+-1 & -1 & -2 \\
+2 & 2 & 2 \\
+1 & 4 & 0 \\
+\end{pmatrix}$$
+Ora basta fare il prodotto righe per colonne di un qualsiasi vettore che vogliamo "trasportare":
+$$ 
+\begin{pmatrix}
+-1 & -1 & -2 \\
+2 & 2 & 2 \\
+1 & 4 & 0 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 \\
+0 \\
+0 \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+-1 \\
+2 \\
+1 \\
+\end{pmatrix}
+$$
+
+\subsection{Ultima Osservazione Spazi Vettoriali}
+Consideriamo: 
+$$ \mathbb{R}^3: < (1,1,1),(0,1,5),(2,3,4),(2,2,2),(4,5,6) >$$
+Vogliamo trovare una base (procediamo con la riduazione a gradini):
+$$ 
+\begin{pmatrix}
+1 & 1 & 1 \\
+0 & 1 & 5 \\
+2 & 3 & 4 \\
+2 & 2 & 2 \\
+4 & 5 & 6 \\
+\end{pmatrix}
+\rightarrow
+\begin{pmatrix}
+1 & 1 & 1 \\
+0 & 1 & 5 \\
+0 & 1 & 2 \\
+0 & 0 & 0 \\
+0 & 1 & 2 \\
+\end{pmatrix}
+\rightarrow
+\begin{pmatrix}
+1 & 1 & 1 \\
+0 & 1 & 5 \\
+0 & 1 & 2 \\
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+\end{pmatrix}
+\rightarrow
+\begin{pmatrix}
+1 & 1 & 1 \\
+0 & 1 & 2 \\
+0 & 1 & 5 \\
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+\end{pmatrix}
+\rightarrow
+\begin{pmatrix}
+1 & 1 & 1 \\
+0 & 1 & 2 \\
+0 & 0 & 3 \\
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+\end{pmatrix}
+$$
+Quindi la base sarà:
+$$ <(1,1,1),(0,1,2),(0,0,3) $$
+\begin{itemize}
+\item[•] Avendo $3$ pivot $\Rightarrow dim = 3$
+\item[•] Le righe non nulle di una matrice a gradini \textbf{sono indipendenti}
+\end{itemize}
+
+\subsection{Determinanti (matrice quadrata)}
+Il determinante esiste solo e solamente per matrici quadrate; il determinante si definisce per ricorsione\footnote{Attenzione da non confondere "dimostrazione per induzione" con "definizione per induzione"}.\\
+
+\subsubsection{Matrice Complementare}
+La matrice complemenare di $A(i,j)$ consiste nell'eliminare la $i$ riga e $j$ colonna.\\
+Esempio $A(2,2)$:
+\begin{center}
+\stackMath
+\stackinset{c}{}{c}{0\baselineskip}{\rule{4.4\baselineskip}{.4pt}}{%
+\stackinset{c}{0\baselineskip}{c}{}{\rule{.4pt}{4.0\baselineskip}}{%
+\begin{pmatrix}
+2 & 3 & 4 \\
+1 & 0 & 0 \\
+5 & 0 & 1 \\
+\end{pmatrix}}}
+$\Rightarrow
+\begin{pmatrix}
+2 & 4 \\
+5 & 1 
+\end{pmatrix}$
+\end{center}
+
+\subsubsection{Complemento Algebrico}
+Il complemento algebrico di elemento $a_{i,j}$ della matrice è definito:
+$$ A_{i,j} = (-1)~{i+j} det(A(i,j)) $$
+Si indica con un "A grande" : $A_{i,j}$\\
+Esempio, consideriamo una matrice:
+$$ 
+\begin{pmatrix}
+a_{1,1} & a_{1,2} & \dots & a_{1,n} \\
+a_{2,1} & a_{2,2} & \dots & a_{2,n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n,1} & a_{n_2} & \dots & a_{n,n} \\
+\end{pmatrix}
+$$
+Allora possiamo ricavare il determinante:
+$$ a_{1,1}A_{1,1}+a_{1,2}A_{1,2}+...+a_{1,n+1}A_{1,n+1} = det A $$
+$$ a_{2,1}A_{2,1}+a_{2,2}A_{2,2}+...+a_{2,n+1}A_{2,n+1} = det A $$
+$$ ... $$
+$$ a_{n,1}A_{n,1}+a_{n,2}A_{n,2}+...+a_{n,n+1}A_{n,n+1} = det A $$
+\begin{center}
+\textbf{TUTTI QUESTI VALORI SONO UGUALI}
+\end{center}
+Questo procedimento è stato effettuato sulle righe, ma si può applicare uguale alle colonne.
+
+\subsection{Determinante per Casi}
+
+\subsubsection{Matrice 2x2}
+Per le matrici $2x2$ il determinante si ottiene come diagonale primare - diagonale secondaria\\
+Per le matrici $2x2$ il determinante si ottiene come diagonale primare - diagonale secondaria\\
+\begin{equation}
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix}
+= a*d - b+c
+\end{equation}
+
+\subsubsection{Matrice 3x3 - Regola di Sorrus}
+Avendo una matrice $3x3$ "duplichiamo" la prima e la seconda colonna  e li posiniamo infondo
+$$
+\begin{vmatrix}
+a_{11} & a_{12} & a_{13}\\
+a_{21} & a_{22} & a_{23}\\
+a_{31} & a_{32} & a_{33}
+\end{vmatrix}
+\rightarrow
+\begin{pmatrix}
+a_{11} & a_{12} & a_{13} & a_{11} & a_{12}\\
+a_{21} & a_{22} & a_{23} & a_{21} & a_{22}\\
+a_{31} & a_{32} & a_{33} & a_{31} & a_{32}
+\end{pmatrix}
+$$
+Da cui otteniamo:
+$$ a_{11}a_{22}a_{33} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32} - (a_{13}a_{22}a_{31} + a_{11}a_{23}a_{23} + a_{12}a_{21}a_{33})$$
+Esempio:
+$$ 
+\begin{vmatrix}
+1 & 1 & 1 \\
+0 & 1 & 1 \\
+2 & 2 & 2
+\end{vmatrix}
+= 2+2+0-(2+0+2) = 0
+$$
+
+\subsection{Propietà sul Determinante}
+Dimostrazioni(dove neccessarie) ed esempi omessi (per ora)
+\begin{itemize}
+\item[•] Se una riga dipende dalle rimanenti allora il determinante è zero
+\item[•] Se una matrice ha due righe uguale allora il determinante è zero
+\item[•] Se il determinante è diverso da zero allora righe indipendenti
+\item[•] Se scambiamo due righe il determinante cambia di segno
+\item[•] Teorema di Cauchy-Binet: $det(AB) = det(A) * det(B)$
+\item[•] $det A$ = $det A^t$
+\end{itemize}
+
