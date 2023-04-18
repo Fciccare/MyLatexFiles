@@ -1,0 +1,65 @@
+\section{Lezione 11 - 03/04/2023}
+
+\subsection{Indipendenza}
+Due eventi $A,B \in \mathtt{I}$ si dicono \textbf{indipendeti} $\Leftrightarrow$:
+$$ \mathbb{P}(A \cap B) = \mathbb{P}(A) \mathbb{P}(B) $$
+
+\subsubsection{Esempio Carte}
+Da un mazzo di carte (francesi 52 carte) si estrae una carta, consideriamo questi eventi:
+\begin{itemize}
+\item[•] $A:$"Esce un asso"
+\item[•] $B:$"Esce una carta di cuori"
+\end{itemize}
+Per verificare l'indipendenza dobbiamo calcore tre probabilità: $\mathbb{P}(A),\mathbb{P}(b),\mathbb{P}(A \cap B)$:
+\begin{itemize}
+\item[•]$\mathbb{P}(A \cap B) = \frac{1}{52}$\footnote{Poiché c'è simmetria possiamo applicare Laplace}
+\item[•]$\mathbb{P}(A) = \frac{4}{52}$
+\item[•]$\mathbb{P}(B) = \frac{13}{52}$
+\end{itemize}
+Andiamo a verificare:
+$$ \mathbb{P}(A) * \mathbb{P}(B) = \frac{4}{52}*\frac{13}{52} = \frac{52}{52*52} = \frac{1}{52} = \mathbb{P}(A \cap B) $$
+Siamo riusciuti a verificare che \textbf{sono indipendenti}
+
+\subsubsection{Esempio Dado}
+Consideriamo il lancio di dado onesto, consideriamo i seguenti esempi:
+\begin{itemize}
+\item[•]$A=\{5,6\}$ Punteggio Alto
+\item[•]$A=\{2,4,6\}$ Punteggio Pari
+\end{itemize}
+Andiamo a verificare l'indipendenza:
+\begin{itemize}
+\item[•]$\mathbb{P}(A) = \frac{2}{6}$
+\item[•]$\mathbb{P}(B) = \frac{3}{6}$
+\item[•]$\mathbb{P}(A)\mathbb{P}(B) = \frac{2}{6}*\frac{3}{6} = \frac{1}{6}$
+\item[•]$A \cap B = \{6\} \Rightarrow \mathbb{P}(A \cap B) = \frac{1}{6}$
+\end{itemize}
+Anche in questo caso c'è \textbf{indipendenza}.
+
+\subsection{Conseguenze Indipendenza}
+Se $A$ e $B$ sono indipendenti allora:
+\begin{itemize}
+\item[1)] $A$ e $B^c$ sono indipendenti
+\item[2)] $A^c$ e $B$ sono indipendenti
+\item[3)] $A^c$ e $B^c$ sono indipendenti
+\end{itemize}
+Dim:
+$A = A \cap \Omega = A \cap (B \cup B^c) = (A \cap B) \uplus (A \cap B^c)$
+$$ \mathbb{P}(A) =^{fin. add.} \mathbb{P}(A \cap B)+\mathbb{P}(A \cap B^c) =^{indipendenza} \mathbb{P}(A)\mathbb{P}(B) + \mathbb{P}(A \cap B^c) \Rightarrow$$ 
+$$\mathbb{P}(A \cap B^c) = \mathbb{P}(A)-\mathbb{P}(A)\mathbb{P}(B) = \mathbb{P}(A)[1-\mathbb{P}(B)] = \mathbb{P}(A)\mathbb{P}(A^c)  $$
+
+\subsection{Indipendenza tra n Eventi}
+Abbiamo visto l'indipendenza tra due eventi, andiamo a generalizzare.\\
+$A_1,A_2,...,A_n \in \mathtt{F}$ sono indipendenti $\Leftrightarrow$
+$$ \mathbb{P}(A_1 \cap A_2 \cap ... \cap A_n) = \mathbb{P}(A_1)*\mathbb{P}(A_2)*...*\mathbb{P}(A_n) $$
+
+\subsubsection{Caso Particolare}
+Non è detto che l'indipendenza valga a coppia valga anche in totale (TODOscrivere meglio).\\
+Poniamo 
+
+\subsection{Condizionamento}
+Posto $B$ un evento non quasi impossibile ($\mathbb{P}(B) >0$) definiamo il condizionamento:
+$$ \mathbb{P}_B(A) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)} = \frac{\mathbb{P}(A)\mathbb{P}(B)}{\mathbb{P}(B)} $$
+
+
+
+
