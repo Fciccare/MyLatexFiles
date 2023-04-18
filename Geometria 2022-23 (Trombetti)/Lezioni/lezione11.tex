@@ -1,0 +1,70 @@
+\section{Lezione 11 - 14/04/2023}
+
+\subsection{Operazioni di Riga riguarda il Determinante}
+Le operazioni di riga preservano la non nullità del determinante ma non il valore.
+\begin{itemize}
+\item[$E_1$]: Scambiare due rige fa cambiare il segno
+\item[$E_2$]: Bisogna moltiplicare per uno scalare anche il determinante (da rivdere)
+\end{itemize}
+
+\subsection{Determinante di una Matrice a Gradini}
+Il modo più semplice per riusciure a calcolare il determinante di una matriace è portarla a gradini, poiché il determinante è \textbf{il prodotto della diagonale principale}.\\
+$$ 
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 2 & 2 \\
+0 & 0 & 3
+\end{pmatrix} 
+\Rightarrow det = 1*2*3 = 6 \Rightarrow Indipendente
+$$
+
+\subsection{Inveribilità}
+Presa una matrice $A \in \mathbb{R}_{n,n}$ esiste una matrice $B \in R_{n,n}$ tale che:
+$$ AB = I_n = BA $$
+Vale solo se il determinante è diverdo da zero.
+$$ |A| \neq 0 \Leftrightarrow \exists inversa B=A^{-1} $$
+$A^{-1}$ è unica.
+Dim unicità:
+$$ B_1=B_1I_N=B_1(AB_2)=(B_1A)B_2=I_nB_2=B_2 $$
+Dim $\Rightarrow$:
+$$ AB = I_n \Rightarrow det(AB) = det(I_n) = 1 $$
+Dim $\Leftarrow$:
+TODO:FINIRE
+
+\subsection{Minore di una Matrice (sottomatrice quadrata)}
+Indichiamo il minore come:
+$$ A_{(i_1,...,i_h; j_1,...,j_n)} $$
+\begin{itemize}
+\item[]$i_1,...,i_h$ indica le righe
+\item[]$j_1,...,j_n$ indica le colonne
+\end{itemize}
+Consideriamo la seguente matrice:
+$$
+\begin{pmatrix}
+2 & 3 & 0 \\
+0 & 1 & 2 \\
+1 & 0 & 0
+\end{pmatrix}
+$$
+$$ A_{(2,3;2,3)} = \begin{pmatrix}
+1 & 2\\
+0 & 0
+\end{pmatrix} $$
+I minori valgono anche sulle matrice rettangolari ma i minori rimangono sottomatrici quadrate.\\
+
+\subsection{Grado Massimo}
+
+
+\subsection{Orlato}
+Se abbiamo un minore che non è di grado massimo, possiamo orlarlo aggiungendo una riga e una colonna.\\
+Un orlato rimane un minore, e si più orlare un orlato.\\
+Riprendiamo l'esempio di sopra, eravamo rimasti che $A_{(2,3;2,4)}$ non fosse di grado massimo, andiamo ad orlarlo:
+$$ A_{(1,2,3;2,3,4)} = \begin{pmatrix}
+1 & 1 & 1 \\
+2 & 2 & 2 \\
+0 & 1 & 1 \\
+\end{pmatrix} $$
+Abbiamo raggiunto una matrice di grado massimo orlando cioè abbiamo aggiunto la $1$ riga e la $3$ colonna.\\
+
+\subsection{Minore Fondamentale}
+

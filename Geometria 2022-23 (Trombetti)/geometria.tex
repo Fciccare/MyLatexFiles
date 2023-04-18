@@ -13,6 +13,10 @@
 %\usepackage{lipsum}
 \usepackage{hyperref}
 \usepackage{stackengine}
+\usepackage{soul}
+\usepackage{color}
+\DeclareRobustCommand{\hlcyan}[1]{{\sethlcolor{cyan}\hl{#1}}}
+\DeclareRobustCommand{\hlblue}[1]{{\sethlcolor{blue}\hl{#1}}}
 \newcommand{\verteq}{\rotatebox{90}{$\,=$}}
 \newcommand{\equalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\verteq}{#2}}{#1}}
 \hypersetup{linktoc=all}
@@ -33,5 +37,6 @@
 \include{Lezioni/lezione08}
 \include{Lezioni/lezione09}
 \include{Lezioni/lezione10}
+\include{Lezioni/lezione11}
 
 \end{document}
