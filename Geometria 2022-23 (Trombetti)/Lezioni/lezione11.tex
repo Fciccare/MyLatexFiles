@@ -18,7 +18,7 @@ $$
 \Rightarrow det = 1*2*3 = 6 \Rightarrow Indipendente
 $$
 
-\subsection{Inveribilità}
+\subsection{Invertilità di una Matrice}
 Presa una matrice $A \in \mathbb{R}_{n,n}$ esiste una matrice $B \in R_{n,n}$ tale che:
 $$ AB = I_n = BA $$
 Vale solo se il determinante è diverdo da zero.
@@ -53,7 +53,21 @@ $$ A_{(2,3;2,3)} = \begin{pmatrix}
 I minori valgono anche sulle matrice rettangolari ma i minori rimangono sottomatrici quadrate.\\
 
 \subsection{Grado Massimo}
-
+Un minore si dice di \textbf{grado massimo} se il suo grado coincide con $min\{n,m\}$.\\
+Una matrice non quadrata ha sempre più di un minore di ordine massimo, mentre una matrice quadrata ha un solo minore di ordine massimo ed è la matrice stessa.
+\subsubsection{Esempio}
+$$
+\begin{pmatrix}
+1 & 1 & 1 & 1 \\
+2 & 2 & 2 & 2 \\
+0 & 0 & 1 & 1 
+\end{pmatrix}
+$$
+Consideriamo:
+$$ A_{(2,3;2,4)} = \begin{pmatrix}
+2 & 2 \\ 0 & 1
+\end{pmatrix}$$
+Questo non di grado massimo poichè il grado massimo è $min\{3,4\} = 3$
 
 \subsection{Orlato}
 Se abbiamo un minore che non è di grado massimo, possiamo orlarlo aggiungendo una riga e una colonna.\\
@@ -64,7 +78,85 @@ $$ A_{(1,2,3;2,3,4)} = \begin{pmatrix}
 2 & 2 & 2 \\
 0 & 1 & 1 \\
 \end{pmatrix} $$
-Abbiamo raggiunto una matrice di grado massimo orlando cioè abbiamo aggiunto la $1$ riga e la $3$ colonna.\\
+Abbiamo raggiunto una matrice di grado massimo orlando cioè abbiamo aggiunto la $1$ riga e la $3$ colonna.
 
 \subsection{Minore Fondamentale}
+Si definisce \textbf{minore fondamentale} un minore che rispetta queste propietà:
+\begin{itemize}
+\item[1)] $det \neq 0$
+\item[2)] Tutti i suoi orlati hanno $det = 0$  
+\end{itemize}
+\textbf{ESISTONO SEMPRE I MINORI FONDAMENTALI}\\
+Non ci sono sempre minori fondamentali, ad esempio la matrice nulla non ha minori fondamentali, ma, se la matrice non è nulla allora esiste sempre almeno un minore fondamentale. Il minore fondamentale non è necessariamente unico.\\
+Se un minore di ordine massimo ha determinante diverso da zero allora esso è un minore fondamentale
+
+\subsubsection{Algoritmo per trovare Minore Fondamentale}
+Un modo semplice per trovare un \textbf{minore fonmentale} è cominciare sempre da un minore molto piccolo e poi andare ad orlarlo fino a raggiugere il grado massimo.\\
+Cominciamo con prendere una matrice:
+$$ \begin{pmatrix}
+1 & 1 & $\hlcyan{1}$ & 0 \\
+2 & 3 & 4 & 0 \\
+1 & 1 & 1 & 0 
+\end{pmatrix} $$
+Andiamo a prendere un minore "piccolo" con determinante diverso da zero:
+$$ A_{(1;3)} = (1) \; \text{con det} \neq 0 $$
+Abbiamo escludo gli "zeri" poiché il loro determinante è zero.\\
+Procediamo con nostro "algoritmo" andando ad orlarlo:
+$$ A_{(1;3)} \rightarrow A_{(1,2;3,4)} = \begin{pmatrix} 1 & 0 \\ 4 & 0 \end{pmatrix} det = 0 $$
+Avendo trovato $det = 0 = (1*0)-(0*4)$ dobbiamo scegliere un altro orlato:
+$$ A_{(1;3)} \rightarrow A_{(1,2;2,3)} = \begin{pmatrix} 1 & 1 \\ 3 & 4 \end{pmatrix} det = 1 $$
+Abbiamo raggiunto un buon candidato ora dobbiamo vericare che tutti i suoi orlati abbiano $det = 0$, in questo caso il suo unico orlato è:
+$$ A_{(1,2;3,4)} \rightarrow A_{(1,2,3;1,2,3)} = \begin{pmatrix}
+ 1 & 1 & 1 \\
+ 1 & 3 & 4 \\
+ 1 & 1 & 1
+\end{pmatrix} \; \text{ unico orlato con }  det=0$$
+Quindi in definitiva:
+$$ A_{(1,2;2,3)} = \begin{pmatrix} 1 & 1 \\ 3 & 4 \end{pmatrix} $$ 
+$$ \textbf{MINORE FONDAMENTALE}$$
+
+\subsection{Teorema degli Orlati (NO DIM)}
+Sia $A \in \mathbb{R}_{n,m} $ matrice rettangolare e $A(i_1,...,i_h; j_1,...,j_n)$ minore fondamentale allora $\Rightarrow$:
+$$ \underline{a}_{1,1},...,\underline{a}_{i,n}$$
+Sono una base dello spazio vettoriale generato dalle \textbf{righe}.\\
+(Esiste equivalente per colonne)
+Conseguanza di ciò:
+$$ \textbf{dim Righe Generate = dim Colonne Generate} $$
+
+\subsubsection{Rango}
+$$ \textbf{Rango = dim(Minore Fondamentale)} $$
+Da questo sappiamo che i pivot di una matrice a gradini corrisponde alla dimensione, quindi al \textbf{rango}.
+
+\subsubsection{Corollari derivati}
+\begin{itemize}
+\item[•] Il rango di riga è sempre uguale al rango di colonna, inoltre il rango di $A$ è uguale al numero di pivot di una matrice a gradini equivalente per righe.
+\item[•] Tutti i minori fondamentali hanno lo stesso grado
+\item[•] Il determinante di una matrice quadrata è diversa da zero se e solo se le righe (o colonne) sono indipedenti
+\item[•] $det A = 0 \Leftrightarrow \; \text{righe (o colonne) dipendenti}$
+\end{itemize}
+
+\subsection{Criteri di compatibilità sistemi di equazioni lineare}
+Consideriamo un sistema lineare:
+$$
+\syssubstitute{A{a_{11}}B{a_{21}}C{a_{m1}}D{a_{1n}}E{a_{2n}}F{a_{mn}}X{x_{n}}}
+\systeme{
+  A x_1 +...+ D X  = c_1,
+  B x_1 +...+ E X = c_2,
+  C x_1 +...+ F X = c_n
+}
+$$
+Possiamo scriverlo in forma matrice nel seguenti modo $AX=C$:
+$$ A = \begin{pmatrix} a_{11} & \dots & a_{1n} \\ \vdots & \ddots & \vdots \\ a_{n1} & \dots & a_{n1} \end{pmatrix} \; X = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} \; C =  \begin{pmatrix} c_1 \\ \vdots \\ c_n \end{pmatrix} $$
+Possiamo esprimere per $C$ e spezzarla:
+$$ 
+C = x_1 \begin{pmatrix} a_{11} \\ \vdots \\ a_{n1} \end{pmatrix} +...+ x_n \begin{pmatrix} a_{1m} \\ \vdots \\ a_{nm} \end{pmatrix}
+$$
+Quindi se c’è una soluzione la colonna dei termini noti quindi se c’è una soluzione la colonna dei termini noti.\\
+\subsubsection{Primo Criterio di Compatibilità}
+Un sistema S  è compatibile $\Leftrightarrow$ la colonna dei termini noti è combinazione lineare della matrice incompleta (è soluzione).
+
+
+
+
+
 
