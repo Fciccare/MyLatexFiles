@@ -1,0 +1,47 @@
+\section{Lezione 12 - 19/04/2023}
+
+\subsection{Teorema di Rouché-Capelli}
+Il teorema di Rouché-Capelli anche noto come secondo sistema di compatibilità afferma che un sistema $S$ è compatibile $\Leftrightarrow$ il rango della matrice incompleta è uguale al rango della matrice completa.
+$$
+\syssubstitute{A{a_{11}}B{a_{21}}C{a_{m1}}D{a_{1n}}E{a_{2n}}F{a_{mn}}X{x_{n}}}
+\systeme{
+  A x_1 +...+ D X  = c_1,
+  B x_1 +...+ E X = c_2,
+  C x_1 +...+ F X = c_n
+}
+\; \text{è compatibile} \Leftrightarrow
+v(A) = v(A^{\prime})
+$$
+
+\textbf{DIM $\Rightarrow$:}
+Per il primo principio compatibilità:
+$$ 
+\begin{pmatrix}
+c_1 \\ \vdots \\ c_n
+\end{pmatrix}
+=
+y_1 \begin{pmatrix}
+a_{11} \\ \vdots \\ a_{n1}
+\end{pmatrix}
++...+
+y_n \begin{pmatrix}
+a_{1m} \\ \vdots \\ a_{nm}
+\end{pmatrix}
+$$
+$$ (c_1,...,c_n) \; \text{DIPENDE DALLE COLONNE}$$
+DA FINIRE
+\textbf{DIM $\Leftarrow$:}
+Partiamo da "i due ranghi sono uguali" allora per il teorema degli orlati hanno lo stesso ordine/grado $(L)$.\\
+Consideriamo una matrice:
+$$
+\begin{pmatrix}
+a_{11} & \dots & a_{1n} &\aug& c_1 \\
+\vdots & \ddots & \vdots &\aug& \vdots \\
+a_{n1} & \dots & a_{nm} &\aug& c_n 
+\end{pmatrix}
+$$
+Consideriamo un minore fondamentale della matrice incompleta (base), ma dalla ipotesi lo è anche per la matrice completa.\\
+
+
+
+
