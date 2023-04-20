@@ -173,7 +173,7 @@ $$ x_1 = \frac{c_1A_{11}+...+c_nA_{n1}}{|A|} $$
 %$$ \; \vdots $$
 $$ x_n = \frac{c_1A_{1n}+...+c_nA_{nm}}{|A|} $$
 
-\subsubsection{Metodo Semplificato}
+\subsection{Cramer Semplificato}
 Un metodo più semplice prevede di far utilizzo di una matrice ausiliaria andando a sostituire alla $i$-sima colonna i termini noti.\\
 Nello specifico se vogliamo calcolarci $x_1$ andremo a sostituire alla prima colonna, la colonna dei termini noti in questo modo:
 $$
@@ -213,17 +213,107 @@ B_1 =
 $$
 
 $$
-x_2 = \frac{h-1}{7h-3} 
+B_2 = 
+\begin{pmatrix}
+1 & 2 & h \\
+2 & 1 & 1 \\
+1 & 0 & 1 
+\end{pmatrix} \; |B_2| = h+4-1-4
+\; \; \; \; \; x_2 = \frac{h-1}{7h-3} 
 $$
 
 $$
-x_3 = \frac{10}{7h-3} 
+B_3 = 
+\begin{pmatrix}
+1 & 1 & 2 \\
+2 & 3 & 1 \\
+1 & 5 & 0 
+\end{pmatrix} \; |B_3| = 1+20-6-5
+\; \; \; \; \; x_3 = \frac{10}{7h-3} 
 $$
 
+\subsection{Caso n equazioni, m incognite}
+Consideriamo un sistema lineare con $n$ equazioni e $m$ incognite:
+$$
+\syssubstitute{A{a_{11}}B{a_{21}}C{a_{n1}}D{a_{1m}}E{a_{2n}}F{a_{nm}}X{x_{m}}}
+S=
+\systeme{
+  A x_1 +...+ D X  = c_1,
+  C x_1 +...+ F X = c_n
+}
+$$
+Usiamo Rushé-Capelli per verificare la compatibilità del sistema (supponiamo di sì), sempre per lo stesso teorema abbiamo trovato un minore fondamentale, essendo una base possiamo rimuovere tutte le righe aldifuori di quelle del minore fondamentale, quindi siamo rimasti con solo righe indipendenti, portiamo tutte le colonne che non fanno parte del minore fondamentale dal lato dei termini noti (tipo variabili liberi), possiamo considerare tutto quello che c'è a destra come un solo numero, in questo modo ci siamo riportati nel caso di $n$ equazioni, $n$ incognite quindi possiamo applicare Cramer come abbiamo visto sopra.
 
+\subsubsection{Esempio}
+Per capire meglio consideriamo il seguente sistema:
+$$ 
+\systeme
+{
+x+y+z = 2,
+2x+3y+z=1,
+3x+4y+2z=3
+}
+$$
+Possiamo "subito" individuare il minore fondamentale e cancellare le righe al difuori:
+$$ 
+\systeme
+{
+\mathcolorbox{cyan}{x+y}+z = 2,
+\mathcolorbox{cyan}{2x+3y}+z=1
+}
+$$
+Portiamo a "destra" tutte le colonne al difuori del minore fondamentale ($det = 1$):
+$$ 
+\systeme
+{
+x+y = 2-z,
+2x+3y=1-z
+}
+$$
+Consideriamo tutti i valori a "destra" come un solo numero:
+$$ 
+\systeme
+{
+x+y = c_1,
+2x+3y=c_2
+}
+$$
+Ora possiamo applicare Cramer essendo $n$-equazioni, $n$-incognite:
+%\footnote{Da come si nota era già  $n$-equazioni, $n$-incognite, ma il prof ha fatto questo esempio a lezione}:
+$$ 
+x = \frac{|B_1|}{|A|} = \frac{|\begin{pmatrix}c_1 & 1 \\ c_2 & 3\end{pmatrix}1} = (c_1*3)-c_2
+$$
+$$
+y = \frac{|B_2|}{|A|} = \frac{|\begin{pmatrix}1 & c_1  \\ 2 & c_2\end{pmatrix}1} = c_2-(2*c_1)
+$$
+Ora possiamo a sostituire in $c_1$ e $c_2$ i valori originali:
+$$ x = (2-z)*3 -(1-z) = 6-3z-1+z = -2z +5  $$
+$$ y = (1-z)-2*(2-z) = 1-z-4+2z = z-3$$
+Quindi alla fine il sistema $S$ ha:
+$$ \infty^1 SOLUZIONI \;\;\; \overline{S} = \{(-2z+5,z-3,z)/ z \in \mathbb{R}\}$$
+Si può procedere anche in maneria più semplice tramite sostituzione.
 
+\subsection{Sistemi Lineari Omogenei}
+Sia $S$ un sistema lineare omogeneo (zero come termini noti) di questo tipo:
+$$
+\syssubstitute{A{a_{11}}B{a_{21}}C{a_{n1}}D{a_{1m}}E{a_{2n}}F{a_{nm}}X{x_{m}}}
+S=
+\systeme{
+  A x_1 +...+ D X  = 0,
+  C x_1 +...+ F X = 0
+}
+$$
+Possiamo anche esprimerlo come $S: AX=0$.\\
+Vogliamo dimostrare che l ’insieme delle soluzioni rappresenta un sottospazio vettoriale di $\mathbb{R}^m$, ovvero $\overline{S} \le \mathbb{R}^m$.\\
 
+\textbf{Dim:}
+\begin{itemize}
+\item[] \textbf{Vettore Nullo:}\\
+Banale poiché ogni sistema \textbf{omogeneo} ammette almeno la soluzione banale $(0,...,0)$.
+\item[] \textbf{Stabile $+$:}\\
+Per verificare che sia stabile rispetto alla somma prendiamo due soluzioni $Y_1,Y_2 \in \overline{S} \Rightarrow Y_1+Y_2 \in \overline{S}$ (righe) che essendo soluzioni del sistema omogeneo possiamo scrivere
 
+\end{itemize}
 
 
 
