@@ -41,6 +41,189 @@ a_{n1} & \dots & a_{nm} &\aug& c_n
 \end{pmatrix}
 $$
 Consideriamo un minore fondamentale della matrice incompleta (base), ma dalla ipotesi lo è anche per la matrice completa.\\
+Allora per il teorema degli orlati: le colonne del minore fondamentale formano un sistema di generatori di tutta la matrice allora il sistema è compatibile-
+
+\subsubsection{Esempio Parametrico}
+Consideriamo il seguente sistema:
+$$ 
+\systeme{
+x+y+zh = 2,
+2x+3y+z = 1,
+x+5y+z = 0
+}
+$$
+Abbiamo un fattore \textbf{parametrico} cioé $h$, vogliamo sapere per quali valori di $h$ il sistema è compatibile:\\
+Potremmo procedere con la risoluzione a gradini ma ci viene più facile con Rusché-Capelli, costruiamo la matrice:
+$$ 
+\begin{pmatrix}
+1 & 1 & h & \aug & 2 \\
+2 & 3 & 1 & \aug & 1 \\
+1 & 5 & 1 & \aug & 0
+\end{pmatrix}
+$$
+Comincio a trovare il minore fondamentale della matrice incompleta, come sempre iniziamo dal "basso" quindi consideriamo $1$ nella posizione $3;1$ e andiamo ad orlarlo:
+$$
+A(2,3;1,2) = 
+\begin{pmatrix}
+2 & 3 \\
+1 & 5
+\end{pmatrix}
+$$
+Dalla definizione di minore fondamentale abbiamo bisogno che il suo determinante sia diverso da zero ($2*5-1*3 \neq 0$) e che tutti i suoi orlati abbiano determinante uguale a 0, in questo caso l'unico orlato possibile (della matrice incompleta) è:
+$$
+A(1,2,3;1,2,3) = 
+\begin{pmatrix}
+1 & 1 & h \\
+2 & 3 & 1 \\
+1 & 5 & 1
+\end{pmatrix}
+$$
+Per calcolare il determinante usiamo $Sorrus$ ci verrà:
+$$ 3+1+10h - 3h-2-5 = 7h-3 $$
+Essendo che il determinante è anch'esso parametrico abbiamo due casi:
+\begin{itemize}
+\item[] SE $h=\frac{3}{7}$ allora il $det = 0$ quindi il rango sarà $2$
+\item[] SE $h \neq \frac{3}{7}$ allora il $det \neq 0$ quindi il rango sarà $3$
+\end{itemize}
+(Ovviamente nel caso $h \neq \frac{3}{7}$ il minore fondamentale è la matrice stessa)
+Ora dobbiamo trovare il rango della matrice completa, come sempre dobbiamo trovare un minore fondamentale:
+$$ 
+A(1,2,3;1,2,4) =
+\begin{pmatrix}
+1 & 1 & 2 \\
+2 & 3 & 1 \\
+1 & 5 & 0
+\end{pmatrix}
+$$
+Il determinante è diverso da zero quindi è un minore fondamentale, quindi il rango della matrice completa è $3$.\\
+Per il teorema di Rusché-Capelli il sistema è compatibile se e solo se il rango delle due matrice combacia ma essendo il rango della matrice incompleta parametrico abbiamo due casi:
+\begin{itemize}
+\item[]SE $h = \frac{3}{7}$ $ 3 \neq 2 $ INCOMPATIBILE
+\item[]SE $h \neq \frac{3}{7}$ $ 3 \neq 3 $ COMPATIBILE (rango massimo)
+\end{itemize}
+Sappiamo che per $h \neq \frac{3}{7}$ il sistema è compatibile ora bisogna trovare le soluzioni, usiamo la seguente tecnica:
+$$ AX=C $$
+Sappiamo che $A$ ha determinante diverso da zero allora è invertibile allora sfruttando quello che abbiamo visto a 9.3, sappiamo che le soluzioni $X=A^{-1}C$, allora:
+$$ 
+A^{-1} =  \frac{1}{7h-3} 
+\begin{pmatrix}
+A_{11} & A_{21} & A_{31} \\
+A_{12} & A_{22} & A_{32} \\
+A_{13} & A_{23} & A_{33}
+\end{pmatrix}
+$$
+Ricordiamo che $A_{11}...$ sono i complementi algebrichi.
+$$ 
+A^{-1} =
+\begin{pmatrix}
+-2 & 1-h5 & 1-3h \\
+1 & 1h & 1*2h \\
+7 & 4 & 1
+\end{pmatrix}
+$$
+Quindi ora possiamo esprimere $X$ come:
+$$
+X = \begin{pmatrix}
+X \\ X \\ X
+\end{pmatrix}
+=
+\begin{pmatrix}
+-2 & 1-h5 & 1-3h \\
+1 & 1h & 1*2h \\
+7 & 4 & 1
+\end{pmatrix}
+*
+\begin{pmatrix}
+2 \\ 1 \\ 0
+\end{pmatrix}
+$$
+
+\subsection{Regola di Cramer}
+La Regola(Metodo) di Cramer ci dà una mano nel trovare le soluzione di sistema di equazione di \textbf{n equazione, n incognite}.\\
+Se ci sono $n$ equazioni ed $n$ incognite sappiamo che la matrice
+incompleta è una matrice quadrata, e poiché le righe della matrice quadrata sono indipendenti poiché fanno sempre parte del minore fondamentale, la matrice $A$ ha determinante diverso da zero, questo implica che possiamo invertirla, quindi:
+$$ AX=C \Rightarrow X=A^{-1}C $$
+Esperiamiamo:
+$$ 
+\begin{pmatrix}
+X_1 \\ \vdots \\ X_n
+\end{pmatrix}
+= 
+\frac{1}{detA = |A|}
+\begin{pmatrix}
+A_{11} & A_{21} & \dots & A_{n1} \\
+A_{12} & \ddots & \dots & \vdots \\
+A_{1m} & A_{23} & \dots & A_{nm}
+\end{pmatrix}
+\begin{pmatrix}
+C_1 \\ \vdots \\ C_n
+\end{pmatrix}
+=
+$$
+$$ 
+=
+\begin{pmatrix}
+C_1A_{11}+C_2A_{21}+...+C_nA_{n1} \\
+\vdots \\
+C_1A_{1m}+C_2A_{2m}+...+C_nA_{nm} 
+\end{pmatrix}
+$$
+Infine dalla eguaglianza:
+$$ x_1 = \frac{c_1A_{11}+...+c_nA_{n1}}{|A|} $$
+%$$ \; \vdots $$
+$$ x_n = \frac{c_1A_{1n}+...+c_nA_{nm}}{|A|} $$
+
+\subsubsection{Metodo Semplificato}
+Un metodo più semplice prevede di far utilizzo di una matrice ausiliaria andando a sostituire alla $i$-sima colonna i termini noti.\\
+Nello specifico se vogliamo calcolarci $x_1$ andremo a sostituire alla prima colonna, la colonna dei termini noti in questo modo:
+$$
+B_1 = 
+\begin{pmatrix}
+c_{11} & a_{12} & \dots & a_{1n} \\
+c_{21} & \ddots & \vdots & \vdots \\
+\vdots & \vdots & \ddots & \vdots \\
+c_{n1} & \dots & \dots & a_{nn}
+\end{pmatrix}
+$$
+Ne consegue che a $B_2$ andrà sostituita la seconda colonna e così via...\\
+Tornando a $B_1$ se andiamo a calcolare il determinante della prima colonna (che è anche il determinante della matrice stessa) otteremo:
+$$ c_1A_{11}+...+c_nA_{n1} $$
+che è proprio il numeratore della regola di Cramer, quindi possiamo semplificare nel seguenti modo:
+$$ x_1 = \frac{|B_1|}{|A|} $$
+
+\subsubsection{Esempio}
+Riprendiamo l'esempio di prima:
+$$
+(h \neq \frac{3}{7}) \; S =  
+\systeme{
+x+y+zh = 2,
+2x+3y+z = 1,
+x+5y+z = 0
+}
+$$
+Dato che ci troviamo nella situazione di $n$ equazioni, $n$ incognite possiamo applicare Cramer, ci aiutiamo usando la matrice ausilaria:
+$$ 
+B_1 = 
+\begin{pmatrix}
+2 & 1 & h \\
+1 & 3 & 1 \\
+0 & 5 & 1 
+\end{pmatrix} \; |B_1| = 5h-5
+\; \; \; \; \; x_1 = \frac{5h-5}{7h-3} 
+$$
+
+$$
+x_2 = \frac{h-1}{7h-3} 
+$$
+
+$$
+x_3 = \frac{10}{7h-3} 
+$$
+
+
+
+
+
 
 
 
