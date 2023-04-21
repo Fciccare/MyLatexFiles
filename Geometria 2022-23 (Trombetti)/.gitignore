@@ -7,3 +7,5 @@
 Lezioni/*.toc
 Lezioni/*.aux
 Lezioni/*.log
+geometria.fdb_latexmk
+geometria.fls

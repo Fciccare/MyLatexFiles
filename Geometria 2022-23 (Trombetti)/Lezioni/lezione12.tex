@@ -281,10 +281,10 @@ $$
 Ora possiamo applicare Cramer essendo $n$-equazioni, $n$-incognite:
 %\footnote{Da come si nota era già  $n$-equazioni, $n$-incognite, ma il prof ha fatto questo esempio a lezione}:
 $$ 
-x = \frac{|B_1|}{|A|} = \frac{|\begin{pmatrix}c_1 & 1 \\ c_2 & 3\end{pmatrix}1} = (c_1*3)-c_2
+x = \frac{|B_1|}{|A|} = \frac{|\begin{pmatrix}c_1 & 1 \\ c_2 & 3\end{pmatrix}|}{1} = (c_1*3)-c_2
 $$
 $$
-y = \frac{|B_2|}{|A|} = \frac{|\begin{pmatrix}1 & c_1  \\ 2 & c_2\end{pmatrix}1} = c_2-(2*c_1)
+y = \frac{|B_2|}{|A|} = \frac{|\begin{pmatrix}1 & c_1  \\ 2 & c_2\end{pmatrix}|}{1} = c_2-(2*c_1)
 $$
 Ora possiamo a sostituire in $c_1$ e $c_2$ i valori originali:
 $$ x = (2-z)*3 -(1-z) = 6-3z-1+z = -2z +5  $$
@@ -314,7 +314,7 @@ Banale poiché ogni sistema \textbf{omogeneo} ammette almeno la soluzione banale
 
 \item[] \textbf{Stabile $+$:}\\
 Per verificare che sia stabile rispetto alla somma prendiamo due soluzioni $Y_1,Y_2 \in \overline{S} \Rightarrow Y_1+Y_2 \in \overline{S}$ (righe) che essendo soluzioni del sistema omogeneo possiamo scrivere:
-$$AY_1^t = 0 AY_2^t$$
+$$AY_1^t = 0 = AY_2^t$$
 $$A(Y_1^t+Y_2^t) = A((Y_1+Y_2)^t) \Rightarrow Y_1+Y_2 \in \overline{S} $$
 \item[] \textbf{Stabile $\cdot$:}\\
 $$ A(hY_1^t) = h(AY_1^t) = h0 = 0 \Rightarrow hY_1^t \in \overline{S} $$
@@ -325,8 +325,8 @@ Consideriamo il seguente sistema:
 $$ 
 \systeme
 {
-x+y+2z+t=0,
-x+2y+z+5t=0
+\mathcolorbox{cyan}{x+y}+2z+t=0,
+\mathcolorbox{cyan}{x+2y}+z+5t=0
 }
 $$
 Troviamo il minore fondamentale (base), come abbiamo visto sopra spostiamo a destra tutto quello al difuori dalle colonne del m.f.:
@@ -397,7 +397,6 @@ Avendo una soluzione per $S$ e tutte le soluzione di $S_0$ possiamo scrivere:
 $$ \overline{S} = (0,1,0,0) + <(-3,1,1,0),(3,-4,0,1)> $$
 Scriviamolo sottoforma di combinazione lineare:
 $$ \overline{S} = \{(0,1,0,0) + h(-3,1,1,0)+k(3,-4,0,1)/h,k \in \mathbb{R}\} $$
-
 
 
 
