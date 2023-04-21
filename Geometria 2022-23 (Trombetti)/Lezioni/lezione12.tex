@@ -308,12 +308,97 @@ Vogliamo dimostrare che l ’insieme delle soluzioni rappresenta un sottospazio 
 
 \textbf{Dim:}
 \begin{itemize}
+
 \item[] \textbf{Vettore Nullo:}\\
 Banale poiché ogni sistema \textbf{omogeneo} ammette almeno la soluzione banale $(0,...,0)$.
-\item[] \textbf{Stabile $+$:}\\
-Per verificare che sia stabile rispetto alla somma prendiamo due soluzioni $Y_1,Y_2 \in \overline{S} \Rightarrow Y_1+Y_2 \in \overline{S}$ (righe) che essendo soluzioni del sistema omogeneo possiamo scrivere
 
+\item[] \textbf{Stabile $+$:}\\
+Per verificare che sia stabile rispetto alla somma prendiamo due soluzioni $Y_1,Y_2 \in \overline{S} \Rightarrow Y_1+Y_2 \in \overline{S}$ (righe) che essendo soluzioni del sistema omogeneo possiamo scrivere:
+$$AY_1^t = 0 AY_2^t$$
+$$A(Y_1^t+Y_2^t) = A((Y_1+Y_2)^t) \Rightarrow Y_1+Y_2 \in \overline{S} $$
+\item[] \textbf{Stabile $\cdot$:}\\
+$$ A(hY_1^t) = h(AY_1^t) = h0 = 0 \Rightarrow hY_1^t \in \overline{S} $$
 \end{itemize}
+
+\subsubsection{Esempio (Continuo Spiegazione)}
+Consideriamo il seguente sistema:
+$$ 
+\systeme
+{
+x+y+2z+t=0,
+x+2y+z+5t=0
+}
+$$
+Troviamo il minore fondamentale (base), come abbiamo visto sopra spostiamo a destra tutto quello al difuori dalle colonne del m.f.:
+$$
+\systeme
+{
+x+y = -2z-t,
+x+2y= -z-5t
+} 
+$$
+Applicando Cramer o per sostituzione troviamoci l'incognite:
+$$
+\systeme
+{
+x = -3z+3t,
+y = z-4t
+}
+$$
+Quindi abbiamo che l'insieme delle soluzione $\overline{S}$ è \textbf{sottospazio}:
+$$ \infty^2 \;\;\;\;\; \overline{S}=\{(-3z+3t,z-4t,z,t)/ z,t \in \mathbb{R}\} $$
+Potendo scegliere $z$ e $t$ in maniera arbitraria scegliamo i valori che rendano i vettori indipendenti,(usualmente si pone a $1$ una variabile e $0$ sulle altre prendendo tutte le possibilità).\\
+Quindi per:
+\begin{itemize}
+\item[]$z=1,t=0 \Rightarrow (-3,1,1,0)$
+\item[]$z=0,t=1 \Rightarrow (3,-4,0,1)$
+\end{itemize}
+Non ci resta che verificare che $<(-3,1,1,0),(3,-4,0,1)>$ sia sistema di generatore per dire che sia base:
+TODO: LO È PER CRAMER CAPIRE IL PERCHÉ
+
+\subsection{Sistema Omogeneo Associato}
+Considerando un sistema $S$ (potenzialmente non omogeneo) esiste una relazione con un sistema omogeneo $S_0$ ad esso associato.\\
+Esprimiamolo in forma matriciale:
+$$ S: AX=C \;\;\;\;\; S_0: AX=0 $$
+Enunciamo il seguente teorema: \textbf{Preso $Y \in S$ una soluzione del sistema $S$} allora:
+\begin{itemize}
+\item[1)] $\forall Z \in \overline{S}_0 \Rightarrow Y+Z \in \overline{S} $\\ \textbf{DIM:}\\
+$A(Y+Z)= AY + AZ = C+0 = C$
+\item[2)] $\forall Y^{\prime} \in \overline{S} \exists Z \in \overline{S}_0: Y^{\prime}=Y+Z$\\
+\textbf{DIM:}\\
+$Z=Y^{\prime}-Y \;\;\;\; AZ=A(Y^{\prime}-Y) = AY^{\prime}-AY = C-C = 0$
+\end{itemize}
+
+Questo teorema ci dice che se voglio descrivere l’insieme delle soluzioni del mio sistema $S$ basta trovarmi una singola soluzione per $S$ dopodiché vado a considerare il sistema omogeneo associato $S_0$, di quest’ultimo vado a trovare l’insieme delle soluzioni; e tutte le altre soluzioni si possono descrivere come somma dell’unica soluzione che mi sono trovato più una qualunque combinazione lineare degli elementi della base dello spazio delle soluzioni del sistema omogeneo.
+
+\subsubsection{Esempio}
+Consideriamo il sistema $S$ e i suo sistema omogeneo associato $S_0$:
+$$
+S=
+\systeme
+{
+x+y+2z+t=1,
+x+2y+z+5t=2
+}
+$$
+$$
+S_0=
+\systeme
+{
+x+y+2z+t=0,
+x+2y+z+5t=0
+}
+$$
+Prendiamo una soluzione per $S$ cioé $x=0,y=1$ cioè la $n$-plua:
+$$ (0,1,0,0) $$
+Invece la soluzione per $S_0$ ce la siamo già trovati precendente cioè:
+$$ \overline{S}_0 = <(-3,1,1,0),(3,-4,0,1)> $$
+Avendo una soluzione per $S$ e tutte le soluzione di $S_0$ possiamo scrivere:
+$$ \overline{S} = (0,1,0,0) + <(-3,1,1,0),(3,-4,0,1)> $$
+Scriviamolo sottoforma di combinazione lineare:
+$$ \overline{S} = \{(0,1,0,0) + h(-3,1,1,0)+k(3,-4,0,1)/h,k \in \mathbb{R}\} $$
+
+
 
 
 
