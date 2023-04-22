@@ -1,0 +1,100 @@
+\section{Lezione 13 - 21/04/2023}
+
+\subsection{Caso n-1 equazioni, m incognite}
+Consideriamo un sistema con $n-1$ equazioni \textbf{(indipendenti)} e $m$ incognite omogeneo:
+$$ 
+\syssubstitute{A{a_{11}}B{a_{21}}C{a_{n-1,1}}D{a_{1n}}E{a_{2n}}F{a_{n-1,n}}X{x_{n}}}
+S=
+\systeme{
+  A x_1 +...+ D X  = 0,
+  C x_1 +...+ F X = 0
+}
+$$
+Grazie alla teoria studiata sappiamo che la $dim(\overline{S})=1$ poiché è uguale "numero delle incognite che stanno fuori dal minore fondamentale" ovvero il numero di incognite meno il rango(incompleta).\\
+Se consideriamo la matrice:
+$$ 
+A = 
+\begin{pmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots & \ddots & \vdots \\
+a_{n-1,m} & \dots & a_{n-1,m}
+\end{pmatrix}
+$$
+Consideriamo $\lambda_i$ il determinante della matrice quadrata formate se leviamo una $i$ colonna.\\
+Per ipotesi almeno uno di questi $\lambda$ è diverso da zero, quindi non è banale:
+$$ (\lambda_1,\lambda_2,...,\lambda_n) $$
+Quindi la soluzione del nostro sistema sarà $n$-upla dei $\lambda$ presi a segni alterni:
+$$ (\lambda_1,-\lambda_2,...,(-1)^{n-1} \lambda_n) $$
+
+\subsubsection{Dimostrazione}
+DA INSERIRE
+
+\subsubsection{Esempio}
+Consideriamo il seguente sistema:
+$$ 
+S = 
+\systeme
+{
+2x+3y+z = 0,
+x+4y+2z=0
+}
+$$
+Calcoliamo i vari $\lambda_i$:
+$$ \lambda_1 = det \begin{pmatrix} 3 & 1 \\ 4 & 2 \end{pmatrix} = (3*2)-4 = 2 $$
+$$ \lambda_2 = det \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix} = (2*2)-1 = 3 $$
+$$ \lambda_3 = det \begin{pmatrix} 2 & 3 \\ 1 & 4 \end{pmatrix} = (2*4)-3 = 5 $$
+$$ \overline{S}=<(\lambda_1,-\lambda_2,\lambda_3)> = <(2,-3,5)> $$
+
+
+\subsection{Applicazioni Lineari}
+Un'applicazione lineare o anche mappa (lineare) o omomorfismo (lineare) è una applicazione definita su spazi vettoriali:
+$$ f: V \rightarrow W $$
+Viene detta \textbf{lineare}:
+\begin{itemize}
+\item[1)] Lineare rispetto al somma (l’immagine della somma è uguale alla somma delle immagini):
+$$ \forall \underline{v}, \underline{w} \in V: f(\underline{v}+\underline{w}) = f(\underline{v}) + f(\underline{w}) $$
+\item[2)] Lineare rispetto al prodotto:
+$$ \forall h \in \mathbb{R}: f(h\underline{v}) = h f(\underline{v}) $$
+\end{itemize}
+
+Oltre alle applicazioni lineari cioé omomorfismi esistoni altri varianti:
+\begin{itemize}
+\item[Momorfismo)] Se la funzione è \textbf{iniettiva} (omomorfismo iniettivo)
+\item[Epimorfismo)] Se la funzione è \textbf{suriettiva} (omomorfismo surriettivo)
+\item[Isomorfismo)] Se la funzione è \textbf{biettiva} (omomorfismo biettivo)
+\item[Endomorfismo)] Se dominio e codominio combaciano $V = W$ (omomorfismo in se stesso)
+\item[Automorfismo)] Isomorfismo con dominio e codominio uguali (endomorfismo biettivo)
+\end{itemize}
+
+\subsubsection{Esempi}
+\begin{itemize}
+\item[•] Consideriamo la funzione identità $f: V \rightarrow V \; (\underline{v} \rightarrow \underline{v})$\\
+È una applicazione (mappa) lineare poiché le due propietà sono banalmente dimostrate, è un \textbf{Automorfismo}
+
+\item[•] Consideriamo la funzione nulla $f: V \rightarrow V \; (\underline{v} \rightarrow \underline{0})$\\
+Come prima le due propietà sono banalmente dimostrate, no iniet e surr, quindi è un \textbf{endomorfismo}
+
+\item[•] Consideriamo la funzione $f: \mathbb{R}^3 \rightarrow \mathbb{R}^3 \; (x,y,z) \rightarrow (x,x+y,z)$\\
+Verifichiamo le prime due propietà:
+
+\subitem • Lineare somma:
+$$ f(x,y,z)+f(x_1,y_1,z_1) = f((x,y,z)+(x_1,y_1,z_1)) $$
+$$ (x,x+y,z)+(x_1,x_1+y_1,z_1) = f((x+x_1,y+y_1,z+z_1))$$
+$$ (x+x_1,(x+x_1)+(y+y_1),z+z_1) = (x+x_1,(x+x_1)+(y+y_1),z+z_1) $$
+
+\subitem • Lineare prodotto:
+$$ f(h(x,y,z)) = hf(x,y,z)$$
+$$ f((hx,hy,hz)) = h(x,x+y,z)$$
+$$ (hx,hx+hy,hz) = (hx,h(x+y),z)$$
+
+\subitem • Iniettiva:
+$$ f(x,y,z) + f(x_1,y_1,z_1) \Rightarrow (x,x+y,z) = (x_1,x_1+y_1,z_1) $$
+
+\subitem • Surriettiva:
+$$ f(a,b,c) = (x,y,z) \Rightarrow (a,a+b,c) \; \;\; c=z, a=x, b \rightarrow y-x$$
+
+Quindi è un \textbf{Automorfismo}
+
+\end{itemize}
+
+
