@@ -2,13 +2,99 @@
 
 \subsection{Propietà}
 Consideriamo una funzione lineare $f: V \rightarrow W$ elenchiamo le seguenti propietà:
+
 \begin{itemize}
+
+
 \item[1)] $f(\underline{0}_v) = \underline{0}_w$
+
+
 \item[2)] $f(h_1\underline{v}_1+...+h_n\underline{v}_n) = h_1f(\underline{v}_1)+...+h_nf(\underline{v}_n)$
+
+
 \item[3)] $\underline{v} \; \text{dipende da} \; \underline{v}_1,...,\underline{v}_n \Rightarrow f(\underline{v}) \; \text{dipende da} \; f(\underline{v}_1),...,f(\underline{v}_n)$\\
 $\textbf{DIM:}$
-$$  $$
+$$ \underline{v} = h_1\underline{v}_1+...+h_n\underline{v}_n $$
+$$ f(\underline{v}) = f(h_1\underline{v}_1+...+h_n\underline{v}_n) =^{2)} h_1f(\underline{v}_1)+...+h_nf(\underline{v}_n)$$
+
+\item[3.1)] $f$ conserva dipendenza lineare MA NON L'INDIPENDENZA
+$$ \underline{v}_1,...,\underline{v}_n \;DIP\; \Rightarrow f(\underline{v}_1),...,f(\underline{v}_n) \;DIP\; $$
+$$ \exists \underline{v}_i \;DIP\; \underline{v}_1,...,\underline{v}_{i+1},...,\underline{v}_n \Rightarrow f(\underline{v}_i) \;DIP DA\; f(\underline{v}_1),...,f(\underline{v}_{i+1}),...,f(\underline{v}_n)$$
+
+\item[4)] $f(<S>) = <f(S)> = <f(\underline{v}_1),...,f(\underline{v}_n))>$\\
+
+Andiamo a dimostare la prima uguaglianza nel solito modo:
+\subitem DIM $\subseteq$:
+$$ \underline{v} \in f(<S>) $$
+$$ \exists \underline{w} \in <S> \underline{v} = f(\underline{w})$$
+$$ \underline{w} = h_1\underline{v}_1+...+h_n\underline{v}_n$$
+$$ f(\underline{w}) = h_1f(\underline{v}_1)+...+h_nf(\underline{v}_n) \in <f(S)>$$
  
+\subitem DIM $\supseteq$:
+$$ \underline{w} \in <f(S)> $$
+$$ \underline{w} = h_1f(\underline{v}_1)+...+h_nf(\underline{v}_n)$$
+$$ f(h_1\underline{v}_1+...+h_n\underline{v}_n) \in f(<S>)$$
+$$ \underline{w} \in f(<S>) $$
+
+\item[5)] $H \le V \rightarrow f(H) \le W$\\
+Dimostriamo sia sottospazio vettoriale:
+
+\subitem Non vuoto:
+$$ \underline{0} \Rightarrow f(\underline{0})= \underline{0} \in H $$
+\subitem Stabilità Somma:
+$$ \underline{w},\underline{w}^{\prime} \in f(H) \;\;\;\;\; \underline{v},\underline{v}^{\prime} \in H $$
+$$ \underline{w} = f(\underline{v}) \;\;\;\;\; \underline{w}^{\prime} = f(\underline{v}^{\prime}) $$
+$$ \underline{w}+\underline{w}^{\prime} = f(\underline{v})+f(\underline{v}^{\prime})= f(\underline{v}+\underline{v}^{\prime}) \in f(H) $$
+
+\subitem Stabilità Prodotto:
+TODO: DA FARE COME ESERCIZIO (un giorno lo farò)
+
 \end{itemize}
+
+\subsection{Kernel}
+
+Consideriamo la funzione lineare $f: V \rightarrow W$, denotiamo con $Im f$ il sottospazio immagine di $f$ cioé: $\{f(\underline{v})/\underline{v} \in V\}=f(V) = Im f$.\\
+
+Andiamo a definire un altro insieme chiamato \textbf{Kernel} o anche detto \textbf{ker}, cioé l'insieme di tutti i valori del dominio che vanno a finire nel neutro nella fattispecie: $ ker f = {\underline{v} \in V / f(\underline{v}) = \underline{0}} $\\
+
+Andiamo a dimostare che il ker sia un sottospazio:
+\begin{itemize}
+\item[Non vuoto:] Vero poiché il neutro gli appartiene
+
+\item[Stabilità Somma:]
+$$ \underline{v},\underline{v}^{\prime} \in ker f \Rightarrow \underline{v}+\underline{v}^{\prime} \in ker f $$
+
+$$ f(\underline{v})+f(\underline{v}^{\prime}) = f(\underline{v}+ \underline{v}^{\prime}) = \underline{0}+\underline{0} = \underline{0} $$
+
+\item[Stabile Prodotto:]
+$$ h \in \mathbb{R} \;\;\;\;\; h\underline{v} \in ker f$$
+$$ f(h\underline{v}) = hf(\underline{v}) = \underline{0} $$
+
+\end{itemize}
+
+
+Avendo definito questi due concetti possiamo sfruttare alcune propietà per capire più facilente l'iniettività o surriettività di un applicazione lineare:
+\begin{itemize}
+\item[•] Se l'immagine del dominio combacia col codominio allora la funzione è surriettivita
+$$ f(V) = Im f = W \Leftrightarrow \text{f è surriettiva} $$
+
+\item[•] Se il $ker f = \{\underline{0}\} \Leftrightarrow$ $f$ è iniettiva.\\
+
+\subitem \textbf{DIM $\Rightarrow$:}
+$$ \underline{v},\underline{w} \in V \; \text{con} \; f(\underline{v}) = f(\underline{w}) \Rightarrow \underline{v} = \underline{w} $$
+$$ f(\underline{v}-\underline{w}) = f(\underline{v})-f(\underline{w}) = \underline{0} \Rightarrow \underline{v}-\underline{w} \in ker f \Rightarrow \underline{v}-\underline{w} = \underline{0} \Rightarrow \underline{v} = \underline{w}$$
+
+\subitem \textbf{DIM $\Leftarrow$:}
+$$ \underline{0} \in ker f \;\;\;\;\; \{\underline{0}\} \subseteq ker f $$
+$$ \underline{v} in ker f \Rightarrow f(\underline{v}) = \underline{0} \Rightarrow \underline{v} = \underline{0} $$
+Tutti gli elementi combaciano con il neutro
+
+\end{itemize}
+
+
+\subsubsection{Esempi}
+
+
+
 
 
