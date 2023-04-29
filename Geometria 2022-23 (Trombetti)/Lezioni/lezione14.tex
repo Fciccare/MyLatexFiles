@@ -72,13 +72,12 @@ $$ f(h\underline{v}) = hf(\underline{v}) = \underline{0} $$
 
 \end{itemize}
 
-
 Avendo definito questi due concetti possiamo sfruttare alcune propietà per capire più facilente l'iniettività o surriettività di un applicazione lineare:
 \begin{itemize}
-\item[•] Se l'immagine del dominio combacia col codominio allora la funzione è surriettivita
+\item[•] Se l'immagine del dominio combacia col codominio allora la funzione \textbf{è surriettivita}
 $$ f(V) = Im f = W \Leftrightarrow \text{f è surriettiva} $$
 
-\item[•] Se il $ker f = \{\underline{0}\} \Leftrightarrow$ $f$ è iniettiva.\\
+\item[•] Se il $ker f = \{\underline{0}\} \Leftrightarrow$ $f$ è \textbf{iniettiva.}\\
 
 \subitem \textbf{DIM $\Rightarrow$:}
 $$ \underline{v},\underline{w} \in V \; \text{con} \; f(\underline{v}) = f(\underline{w}) \Rightarrow \underline{v} = \underline{w} $$
@@ -86,15 +85,89 @@ $$ f(\underline{v}-\underline{w}) = f(\underline{v})-f(\underline{w}) = \underli
 
 \subitem \textbf{DIM $\Leftarrow$:}
 $$ \underline{0} \in ker f \;\;\;\;\; \{\underline{0}\} \subseteq ker f $$
-$$ \underline{v} in ker f \Rightarrow f(\underline{v}) = \underline{0} \Rightarrow \underline{v} = \underline{0} $$
+$$ \underline{v} \in ker f \Rightarrow f(\underline{v}) = \underline{0} \Rightarrow \underline{v} = \underline{0} $$
 Tutti gli elementi combaciano con il neutro
 
 \end{itemize}
 
 
 \subsubsection{Esempi}
+\begin{itemize}
+\item[•] $\underline{0}_v: V \rightarrow V (\underline{v} \rightarrow \underline{0})$\\
+$$ Im f = f(V) = \{\underline{0}\} $$
+$$ Ker f = V$$ 
+$$ \text{INIETTIVA E SURRIETTIVA } \Leftrightarrow V = \{\underline{0}\}$$
+
+\item[•] $ id_v V \rightarrow V (\underline{v} \rightarrow \underline{v})  $
+$$ Im f = f(id_v) = V \; INIETTIVA$$
+$$ Ker f = \{\underline{0}\} \;  SURRIETTIVA$$
+
+\item[•] $\mathbb{R}^2 \rightarrow \mathbb{R}^2$
+$$ (x,y) \rightarrow \begin{pmatrix}1 & 2 \\ 0 & 1\end{pmatrix} \begin{pmatrix}x \\ y \end{pmatrix} = \begin{pmatrix}x+2y \\ y\end{pmatrix} $$
+
+\subitem • Per verificare l'iniettività dobbiamo verificare il $ker f$ sia formato solo dal vettore nullo, quindi vediamo per quali valori di $x,y$ $f(x,y) = 0$:
+$$ \systeme{x+2y=0, y=0} \Rightarrow \systeme{x=0,y=0} \; \text{È INIETTIVA} $$
+
+\subitem • Per verificare la surrietività prendiamo un sistema di generatori, in questo caso quella canonica:
+$$ <(1,0),(0,1)> \; dim=2$$
+$$ f(\mathbb{R}^2) = <f(1,0),f(0,1)> = <(1,0),(2,1)>$$
+Essendo indipendenti hanno $dim=2$ quindi è surriettiva visto che è rimasto un sistema di generatori.
+
+\item[•] $f: \mathbb{R}_2[x] \rightarrow \mathbb{R}[x] (ax^2+bx+c \rightarrow 2ax+b)$\\
+
+\subitem •  Per verificare l'iniettività dobbiamo verificare il $ker f$ sia formato solo dal vettore nullo, quindi vediamo per quali valori di $a,b,c$ $f(ax^2+bx+c) = 0$:
+$$ \underline(v) \in \mathbb{R}_2[x] / f(\underline{v})= \underline{0}$$
+$$ f(ax^2+bx+c) =  2ax+b = \underline{0} \Leftrightarrow a = 0 = b $$
+Quindi per $ker f$ sarà formato da tutti i valori $c \in \mathbb{R}$ quindi non è iniettiva.
+$$ ker f = \{c/c \in \mathbb{R}\} DIM=1$$
+
+\subitem •  Per verificare la surrietività prendiamo un sistema di generatori, in questo caso quella canonica:
+$$ <x^2,x,1> dim=3$$
+$$ f(<x^2,x,1>) = <2x,1,0> = <2x,1> dim = 2 \; \textbf{NON È SURRIETIVA}$$
+
+\item[•] $f: \mathbb{R}^2 \rightarrow \mathbb{R}^3 $
+$$ (x,y) \rightarrow \begin{pmatrix} 1&2\\3&4\\0&1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} $$
+
+\subitem •  Per verificare l'iniettività dobbiamo verificare il $ker f$ sia formato solo dal vettore nullo, quindi vediamo per quali valori di $x,y$ $f(x,y) = 0$:
+$$ \begin{pmatrix} 1&2\\3&4\\0&1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}  \Leftrightarrow \systeme{x+2y=0, 3x+4y=0, y=0} \Leftrightarrow \systeme{x=0,y=0} $$
+
+\end{itemize}
+
+\subsection{Altre propriepietà}
+Consideriamo una generica funzione lineare $f: V \rightarrow W$:
+\begin{itemize}
+\item[•] Il monomorfismo (omomorfismo iniettivo) mantiene l'indipendenza, cioè:
+$$  \underline{v}_1,...,\underline{v}_n \; INDIP. \Rightarrow f(\underline{v}_1),...,f(\underline{v}_n) \; INDIP.$$
+$$ \text{BASE DI V} \rightarrow \text{BASE DI }f(V) $$
+\textbf{DIM:}
+Prendiamo una combinazione lineare dei vettori immagine ed eguagliamola all’elemento
+neutro:
+$$ f(h_1\underline{v}_1+...+h_n\underline{v}_n) = h_1f(\underline{v}_1)+...+h_nf(\underline{v}_n) = \underline{0}   $$
+Possiamo leggerlo anche nel seguente modo:
+$$ h_1\underline{v}_1+...+h_n\underline{v}_n \in ker f $$
+Affinché questi vettori siano indipendenti bisogna dimostrare che tutti gli scalari siano necessariamente pari a zero ma essendo i vettori indipendenti per ipotesi ed avendolo uguagliato all'elemento neutro troviamo che tutti gli scalari sono nulli.
+
+\item[•] $$ dim(ker f) + dim(Im f) = dim (V) $$ 
+La dimensione del dominio è uguale alla somma delle dimensioni dell'immagine del dominio e del ker di f.\\
+\textbf{DIM:}\\
+Ragioniamo per casi:
+\subitem • $ker f = \{\underline{0}\}$\\
+Quindi la funzione ha $dim=0$ ed è iniettiva (monomorfismo) per quanto visto sopra conserva la base (indipendenza) e quindi la dimensione quindi:
+$$ 0 + dim(Im f) = dim (V) $$
+
+\subitem • $ker f = V$:\\
+Come abbiamo dagli esempi di prima l'unico caso in cui $ker f = V$ è quando $f$ è la funzione nulla e sempre per la precendente osservezione $dim (Im f) = 0$, quindi:
+$$ dim (ker f) + 0 = dim (V) $$
+
+\subitem • $\{0\} < ker f < V$\\
+\blindtext
+
+\end{itemize}
 
 
+\subsection{Cordinazione Associata}
+Preso uno spazio vettoriale $V$ e un suo riferimento $(\underline{e}_1,...,\underline{e}_n)$ possiamo considerare la seguente funzione lineare:
+$$ \underline{v} = h_1\underline{e}_1+...+h_n\underline{e}_n \rightarrow (h_1,...,h_n) \in \mathbb{R}^n $$
 
 
 
