@@ -147,7 +147,8 @@ Possiamo leggerlo anche nel seguente modo:
 $$ h_1\underline{v}_1+...+h_n\underline{v}_n \in ker f $$
 Affinché questi vettori siano indipendenti bisogna dimostrare che tutti gli scalari siano necessariamente pari a zero ma essendo i vettori indipendenti per ipotesi ed avendolo uguagliato all'elemento neutro troviamo che tutti gli scalari sono nulli.
 
-\item[•] $$ dim(ker f) + dim(Im f) = dim (V) $$ 
+\item[•] Conserando sempre la funzione linieare possiamo definire la seguente equivalenza:
+$$ dim(ker f) + dim(Im f) = dim (V) $$ 
 La dimensione del dominio è uguale alla somma delle dimensioni dell'immagine del dominio e del ker di f.\\
 \textbf{DIM:}\\
 Ragioniamo per casi:
@@ -160,14 +161,69 @@ Come abbiamo dagli esempi di prima l'unico caso in cui $ker f = V$ è quando $f$
 $$ dim (ker f) + 0 = dim (V) $$
 
 \subitem • $\{0\} < ker f < V$\\
-\blindtext
+Prendiamo un base per il $ker$ ed estendiamo a $V$:
+$$ \underbrace{\underline{e}_1,...,\underline{e}_m}_{\text{base di ker}},\underbrace{\underline{e}_{m+1},...,\underline{e}_n}_{\text{base estesa di V}}$$
+Quindi abbiamo le seguenti dimensioni:
+$$ \underbrace{dim(Ker f)}_m  + dim(Im f) = \underbrace{dim(V)}_n  $$
+Quindi $dim(Im f) = n-m$, dimostriamo che $f(\underline{e}_{m+1},..,\underline{e}_n)$ sia base di $Im f$\\
+Prendiamo un sistema di generatori per $Im f$:
+$$ Im f = <f(\underline{e}_1),...,f(\underline{e}_m),f(\underline{e}_{m+1}),...,f(\underline{e}_n)>$$
+Ma i vettori appartenenti al $ker f$ sono nulli quindi possono essere rimosso:
+$$ Im f = <f(\underline{e}_{m+1}),...,f(\underline{e}_n)>$$
+Non ci resta che dimostrare l'indipendenza:
+$$ h_1f(\underline{e}_{m+1})+...+h_nf(\underline{e}_{n}) = \underline{0}$$
+$$ f(h_1\underline{e}_{m+1}+...+h_n\underline{e}_{n}) = \underline{0} \Rightarrow$$
+$$ \Rightarrow  h_1\underline{e}_{m+1}+...+h_n\underline{e}_{n} \in Ker f$$
+
+
 
 \end{itemize}
-
+Piccolo tips: perché una funzione sia iniettiva la dimensione del dominio sia minore o uguale alla dimensione del codominio.
 
 \subsection{Cordinazione Associata}
-Preso uno spazio vettoriale $V$ e un suo riferimento $(\underline{e}_1,...,\underline{e}_n)$ possiamo considerare la seguente funzione lineare:
+Preso uno spazio vettoriale $V$ e un suo riferimento $(\underline{e}_1,...,\underline{e}_n)$ possiamo considerare la seguente funzione lineare $C_{\mathtt{R}}$:
 $$ \underline{v} = h_1\underline{e}_1+...+h_n\underline{e}_n \rightarrow (h_1,...,h_n) \in \mathbb{R}^n $$
+Andiamo a verificare che sia una funzione lineare:
+\begin{itemize}
+\item[Prodotto lineare:]
+$$ f(h\underline{v}) = hf(\underline{v}) $$
+$$ (h\underline{e}_1,...,h\underline{e}_n)= h(\underline{e}_1,...,\underline{e}_n)$$
+
+\item[Somma lineare:]
+$$ \underline{v} = h_1\underline{e}_1+...+h_n\underline{e}_n \;\;\; f(\underline{v})=(h_1,...,h_n) $$
+$$ \underline{w} = k_1\underline{e}_1+...+k_n\underline{e}_n \;\;\; f(\underline{w})=(k_1,...,k_n) $$
+$$ \underline{v}+\underline{w}= (h_1+k_1)\underline{e}_1+...+(h_n+k_n)\underline{e}_n $$
+$$ f(\underline{v} +\underline{w}) = (h_1+k_1,...,h_n+k_n) $$
+\end{itemize}
+
+Inoltre la funzione è \textbf{iniettiva} poiché il $Ker C_{\mathtt{R}}= \{\underline{0}\}$.\\
+È anche \textbf{suriettiva} poiché $C_{\mathtt{R}}(V) = <(1,0,...,0),(0,1,...,0),...,(0,0,...,1)> = \mathbb{R}^n$.\\
+Quindi questa funziona è un \textbf{isomorfismo} che conserva l'indipendenza.
+È grazie a questa funzione che precedentemente abbiamo considerato le terne associate.
+
+\subsubsection{Corolarrio}
+Ogni spazio vettoriale finitamente generato (diverso da 0) di dimensione $n$ è isomorfo ad $\mathbb{R}^n$:
+$$ \forall V \neq \{\underline{0}\} \exists n: V \simeq \mathbb{R}^n $$
+
+\subsubsection{Proposizione}
+Sia $f: V \rightarrow W$ un isomorfismo (funzione lineare biettiva) esiste la sua inversa $f^{-1}: W \rightarrow V$ anche sarà un isomorfimo.\\
+Dimostriamo che l'inversa sia una funzione lineare:
+\begin{itemize}
+\item[Somma lineare:]
+$$\underline{w},\underline{w}^{\prime} \in W(codominio) \;\;\; f^{-1}(\underline{w}+\underline{w}^{\prime}) = f^{-1}(\underline{w})+f^{-1}(\underline{w}^{\prime})$$
+Essendo per definizione surriettiva allora:
+$$ \exists \underline{v},\underline{v}^{\prime} \in V \;\;\;  \underline{w}=f(\underline{v}) \;\;\; \underline{w}^{\prime}=f(\underline{v}^{\prime}) $$
+Andando a sostituire esce:
+$$ f^{-1}(f(\underline{v})+f(\underline{v}^{\prime})) = f^{-1}(f(\underline{v}+\underline{v}^{\prime}))$$
+Quindi alla fine [DA RIVEREDER]:
+$$ f^{-1}(f(\underline{v}+\underline{v}^{\prime})) = \underline{v}+\underline{v}^{\prime} = f^{-1}(\underline{w})+f^{-1}(\underline{w}^{\prime})$$
+
+\item[Prodotto lineare:]
+$$ h \in \mathbb{R} \;\;\; \underline{w} \in W \;\;\; \exists \underline{v} \in V = \underline{w} = f (\underline{v}) $$
+$$ f^{-1}(h \underline{w}) = h f^{-1}(\underline{w}) = h \underline{v} $$
+$$ f^{-1}(h f(\underline{v})) = f^{-1}(f(h\underline{v})) = h \underline{v}$$
+
+\end{itemize}
 
 
 
