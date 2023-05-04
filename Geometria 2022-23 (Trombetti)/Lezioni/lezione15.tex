@@ -1,0 +1,146 @@
+\section{Lezione 15 - 03/05/2023}
+
+\subsection{Teorema Applicazioni Lineari}
+Consideriamo un applicazione lineare $f: V \rightarrow W$ essa si dice \textbf{nota} quando sono noti i corrispondenti dei vettori di una base (se conosco come agisce la funzione sui vettori della base allora possa risalire alla funzione).
+
+\subsubsection{Esempio}
+Consideriamo $f: \mathbb{R}^2 \rightarrow \mathbb{R}^3$, prendiamo uno base per $\mathbb{R}^2$ per semplicità scegliamo quella canonica $<(1,0),(0,1)>$:
+$$ f(1,0) = (2,0,0) \;\;\;\;\;\;\; f(0,1) = (1,0,0) $$
+Sapendo una base per $\mathbb{R}^2$ e note l'immagini possiamo risalire alla funzione:
+$$ (x,y)=x(1,0)+y(0,1) $$
+$$ f(x,y)=x(2,0,0)+y(1,0,0) = (2x+y,0,0)$$
+
+\subsection{Matrice di Passaggio Applicazioni Lineari}
+Consideriamo un applicazione lineare $f: V \rightarrow W$ e prendiamo un riferimento nel dominio e codominio, andiamo a scrivere per ogni vettore la sua immagine tramite combinazione lineare:
+$$ \mathtt{R}=(\underline{e}_1,...,\underline{e}_n) \;\;\; \text{rif. di V} $$
+$$ \mathtt{R}^{\prime}=(\underline{e}_1^{\prime},...,\underline{e}_n^{\prime}) \;\;\; \text{rif. di W} $$
+
+$$ f(\underline{e}_1) = a_{1,1}\underline{e}^{\prime}_1+a_{2,1}\underline{e}^{\prime}_2+...+a_{m,1}\underline{e}^{\prime}_n... $$
+$$ ... f(\underline{e}_n) = a_{1,n}\underline{e}^{\prime}_1+a_{2,n}\underline{e}^{\prime}_2+...+a_{m,n}\underline{e}^{\prime}_n $$
+
+Possiamo notare come gli indici di $a$ siano espressi come colonna, quindi possiamo costruire la \textbf{matrice associata ad $f$ nei rif di $\mathtt{R}$ e $\mathtt{R}^{\prime}$}:
+$$
+\begin{pmatrix}
+a_{1,1} & a_{1,2} & \dots & a_{1,n} \\
+a_{2.1} & \ddots & \ddots & \vdots \\
+\vdots & \ddots & \ddots & \vdots \\
+a_{m,1} & \dots & \dots & a_{m,n}
+\end{pmatrix}
+= M_{\mathtt{R},\mathtt{R}^{\prime}}(f)
+$$
+
+Adesso possiamo considerare la funzione matrice $F_A: \mathbb{R}^n \rightarrow \mathbb{R}^m$:
+
+$$ 
+(x_1,...,x_n) \rightarrow
+\begin{pmatrix}
+a_{1,1} & a_{1,2} & \dots & a_{1,n} \\
+a_{2.1} & \ddots & \ddots & \vdots \\
+\vdots & \ddots & \ddots & \vdots \\
+a_{m,1} & \dots & \dots & a_{m,n}
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\ \vdots \\ x_n \\
+\end{pmatrix}
+$$
+TODO: Aggiungere spiegazione qua:
+$$ \underline{v} \in V, \; \underline{v}=x_1\underline{e}_1+...+x_n\underline{e}_n $$
+Adesso possiamo passare dalle componenti in $\mathtt{R}$ di $\underline{v}$ alle componenti di $f(\underline{v})$ in $\mathtt{R}^{\prime}$
+
+$$ 
+(x_1,...,x_n) \rightarrow F_A(x_1,...,x_n)
+$$
+Andiamo a dimostrare:
+$$f(\underline{v}= x_1f(\underline{e}_1)+...+x_nf(\underline{e}_n) $$
+$$ x_1(a_{1,1}\underline{e}_1^{\prime}+...+a_{n,1}\underline{e}_n^{\prime}) + ... + x_n(a_{1,n}\underline{e}_1^{\prime}+...+a_{m,n}\underline{e}_n^{\prime}) $$
+$$ (x_1a_{1,1}+...+x_na_{1,n})\underline{e}_1^{\prime} +...+ (x_1a_{n,1}+...+x_na_{m,n})\underline{e}_n^{\prime} \; \; \; \text{per unicità di scrittura} $$
+TODO: CONTINUARE
+
+\subsection{Esempio}
+Consideriamo la seguente funzione lineare: $f: \mathbb{R}_2[x] \rightarrow M_2(\mathbb{R})$, andiamo a prendere una base per $\mathbb{R}_2[x]$ per semplicità quella canonica $<1,x,x^2>$.
+$$ 1 \rightarrow \begin{pmatrix}0 & 0 \\ 0 & 1 \end{pmatrix} $$
+$$ x \rightarrow \begin{pmatrix}0 & 0 \\ 0 & 0 \end{pmatrix} $$
+$$ x^2 \rightarrow \begin{pmatrix}1 & 0 \\ 0 & 1 \end{pmatrix} $$
+$$ f(ax^2+bx+c) = a\begin{pmatrix}1 & 0 \\ 0 & 1 \end{pmatrix} +b \begin{pmatrix}0 & 0 \\ 0 & 0 \end{pmatrix} +c \begin{pmatrix}0 & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} a & 0 \\ 0 & a+c \end{pmatrix}  $$
+Calcoliamo i valori per la matrice di passaggio:
+$$ 
+\mathtt{R}=(x^2,x,1) \;\;\;\;\; \mathtt{R}^{\prime}=(
+\begin{pmatrix}
+1 & 0 \\ 0 & 0
+\end{pmatrix},
+\begin{pmatrix}
+0 & 1 \\ 0 & 0
+\end{pmatrix},
+\begin{pmatrix}
+0 & 0 \\ 1 & 0
+\end{pmatrix},
+\begin{pmatrix}
+0 & 0 \\ 0 & 1
+\end{pmatrix}) $$
+
+$$ f(x^2) = \begin{pmatrix}1 & 0 \\ 0 & 1 \end{pmatrix} = 1*\begin{pmatrix}
+1 & 0 \\ 0 & 0
+\end{pmatrix}
++0*
+\begin{pmatrix}
+0 & 1 \\ 0 & 0
+\end{pmatrix}
++0*
+\begin{pmatrix}
+0 & 0 \\ 1 & 0
+\end{pmatrix}
++1*
+\begin{pmatrix}
+0 & 0 \\ 0 & 1
+\end{pmatrix} $$
+
+$$ f(x) = \begin{pmatrix}0 & 0 \\ 0 & 0 \end{pmatrix} = 0*\begin{pmatrix}
+1 & 0 \\ 0 & 0
+\end{pmatrix}
++0*
+\begin{pmatrix}
+0 & 1 \\ 0 & 0
+\end{pmatrix}
++0*
+\begin{pmatrix}
+0 & 0 \\ 1 & 0
+\end{pmatrix}
++0*
+\begin{pmatrix}
+0 & 0 \\ 0 & 1
+\end{pmatrix} $$
+
+$$ f(1) = \begin{pmatrix}0 & 0 \\ 0 & 1 \end{pmatrix} = 0*\begin{pmatrix}
+1 & 0 \\ 0 & 0
+\end{pmatrix}
++0*
+\begin{pmatrix}
+0 & 1 \\ 0 & 0
+\end{pmatrix}
++0*
+\begin{pmatrix}
+0 & 0 \\ 1 & 0
+\end{pmatrix}
++1*
+\begin{pmatrix}
+0 & 0 \\ 0 & 1
+\end{pmatrix} $$
+Adesso poossiamo costruire la matrice di passaggio:
+$$
+A = M_{\mathtt{R},\mathtt{R}^{\prime}}(f) = 
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 1 
+\end{pmatrix}
+$$
+Ora possiamo considerare la fuzione matrice:
+$$ F_A: \mathbb{R}^3 \rightarrow \mathbb{R}^4 $$
+$$ (x,y,z) \rightarrow A \begin{pmatrix}x \\ y \\ z \end{pmatrix} = (x,0,0,x+z)$$
+Adesso grazie alla funzione matrice possiamo passare dal dominio al codominio e viceversa in modo facile:
+$$ \underbrace{x^2+x+1}_{(1,1,1)} \rightarrow \underbrace{\begin{pmatrix}1 & 0 \\ 0 & 2\end{pmatrix}}_{(1,0,0,2)}  $$ 
+
+
+
+
