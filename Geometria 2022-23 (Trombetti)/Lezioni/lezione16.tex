@@ -1,0 +1,119 @@
+\section{Lezione 16 - 05/05/2023 (lez. online)}
+
+\subsection{Matrici (quadrate) Simili}
+Due matrici (quardrate) si dicono \textbf{simili} se e solo se esiste una matrice (quadrata) $P$ con $det \neq 0$ quindi invertibile tale che:
+$$ A \sim A^{\prime} \Leftrightarrow \exists P: |P| \neq 0 \Rightarrow P^{-1}AP=A^{\prime}$$
+La similitudine è \textbf{relazione d'equivalenza}, andiamo a dimostarlo:
+\begin{itemize}
+
+\item[•]\textbf{Riflessiva:} $A \sim A$
+$$  I_nAIIn \;\;\;\;\; |I_n| = 1 \;\;\;\;\; I_n^{-1} = I_n$$ 
+
+\item[•]\textbf{Simmetria:} $ A \sim A^{\prime} \Rightarrow A^{\prime} \sim A: P~{-1}AP=A^{\prime}$
+
+$$  P(P^{\prime}AP)P^{\prime} = PA^ {\prime}P^{\prime} $$
+$$ A = P(A^{\prime})P^{-1}$$
+$$ A = (P^{-1})^{-1}AP^{-1} $$
+
+\item[•]\textbf{Transitività:} $A \sim B ^ B \sim C \Rightarrow A \sim C$
+$$ P^{-1}AP = B \;\;\;\;\;\; P_1^{-1}BP_1 = C$$
+Combianiamo queste due equazioni:
+$$ C=P_1^{-1}BP_1 =^{sost. B} P_1^{-1}(P^{-1}AP)P_1 =^{assoc.} (P_1^{-1}P^{-1})A(PP_1) = (PP_1)^{-1})A(PP_1)  $$
+Dimostrichiamo che $P_1^{-1}P^{-1} = (PP)^{-1}$ sia la matrice identitica moltriplando per $P_1$:
+$$ (PP_1)(P_1^{-1}P^{-1)}) = I_n $$
+
+\end{itemize}
+
+\subsection{Teorema boh}
+Consideriamo un endormofismo $F: V \rightarrow V$ e siano $\mathtt{R}$ e $\mathtt{R}^{\prime}$ riferimenti di $V$ allora:
+$$ \underbrace{M_{\mathtt{R}}(f)}_A  \sim \underbrace{M_{\mathtt{R}^{\prime}}(f)}_{A^{\prime}}  $$
+Mettiamo in relazione le matrici associate tra due riferimenti di un endomorfismo.\\
+\textbf{DIM:}\\
+TODO: DA INSERIRE
+
+\subsection{Diagonaliizzazzione}
+Consideriamo $A = \begin{pmatrix}
+a_{11} & \dots & a_{1n}\\
+\vdots & \ddots & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{pmatrix} \in \mathbb{R}_n$
+possiamo considerare questa matrice con la variabile/incognita $t$:
+$$A-tI_n = \begin{pmatrix}
+a_{11}-t & \dots & a_{1n}\\
+\vdots & \ddots & \vdots \\
+a_{n1} & \dots & a_{nn}-t
+\end{pmatrix} \in \mathbb{R}_n$$
+(sottriamo $t$ alla diagonale principale)\\
+Il $det(A-tI_n)$ è detto \textbf{polinomio caratteristico} nella variabile $t$, e il $det(A-tI_n) = 0$ è detto \textbf{equazione caratteristica}.\\
+
+\textbf{LEMMA:} Matrici simili hanno lo stesso polinomio carattestico.\\
+\textbf{DIM:}\\
+TODO: DA INSERIRE DOPO
+
+Diamo delle definizioni:
+
+\begin{itemize}
+\item[•] Sia $f:V \rightarrow V$ un endomorfismo, prendo un riferimento $\mathtt{R}$ e la sua matrice associata $A=M_{\mathtt{R}}(f)$ allora il polonomio caratterestico di $f$ è il polinomio caratterstico di $A$.\\
+(Poiché per quanto visto sopra, due matrici associate sono simili, e che pur cambiando la matrice simile il polinomio carattestico è lo stesso)
+Quindi in definitiva:
+
+\begin{center}
+equazione carattestica di $f$ = equazione caratteristica di $A$
+\end{center}
+
+\subitem • Esempio: $f:(x,y) \in \mathbb{R}^2 \rightarrow (x+3y,-x-2y) \in \mathbb{R}^2$\\
+Dato che possiamo prendere qualcunque riferimento conviene scegliere quello canonico:
+$$ \mathtt{R}=((1,0),(0,1)) $$
+$$ f(1,0) = (1,-1) = 1*(1,0)-1(0,1)$$
+$$ f(0,1) = (3,-2) = 3*(1,0)-2*(0,1)$$
+Scriviamo la matrice associata (per colonna):
+$$ 
+\begin{pmatrix}
+1 & 3 \\ -1 & -2
+\end{pmatrix}
+$$
+Per ottenere il polinomio caratterestico dobbiamo sottrare alla diagonale ala variabile in questo caso $t$:
+$$ 
+\begin{pmatrix}
+1-t & 3 \\ -1 & -2-t
+\end{pmatrix}
+$$
+Andiamo a fare il determinante:
+$$ det = (1-t)(-2-t) +3 = -2-t+2t+2^2+3 = t^2+t+1 $$
+
+\item[•] Endomorfismo diagonalizzabile quando esiste un riferimento in cui la matrice associata è diagonale:
+$$ \mathtt{R}: M_{\mathtt{R}}(f) \; \text{è diagonale} $$
+
+\item[•] Una matrice è \textbf{diagonalizzabile} se è \textbf{simile} a una \textbf{diagonale}. 
+
+\item[•] Considirato un endomorfismo diagonalizzabile allora ogni matrice associata è diagonalizzabile\\
+\textbf{DIM:}
+$$ \exists \mathtt{R} \; rif. \; V: M_{\mathtt{R}}(f) \; \text{è diagonale} $$
+$$ \forall \mathtt{R}^{\prime} \; rif. \; V: M_{\mathtt{R}^{\prime}}(f) \sim M_{\mathtt{R}}(f) \Rightarrow M_{\mathtt{R}^{\prime}}(f) \; \text{è diagonaliizzabile} $$
+
+\item[•] Caso contrario, avendo una matrice associata diagonalizzabile allora questo vuol dire che $f$ endomorfismo è diagonalizzabile\\
+\textbf{DIM:}
+TODO: DA INSERIRE
+
+\item[•] Corollario: $f: V \rightarrow V$ endormismo è diagonalizzabile nel riferimento $\mathtt{R}$ $\Leftrightarrow$ $\; M_{\mathtt{R}}(f)$ è anche'essa diagonalizzabile (cominbianzione delle due proprosizioni precendenti)\\
+
+\item[•] Sia $f: V \rightarrow V$ endormismo e preso $\underline{v} \in V$ è \textbf{autovettore di autovale $\lambda$} $\Leftrightarrow$
+\subitem • $\underline{v} \neq \underline{0}$
+\subitem • $f(\underline{v}) = \lambda \underline{v}$ (proporzionale)
+
+\item[•] Se $\underline{v}$ è \textbf{autovettore di autovalore} di $\lambda_1, \lambda_2 \Rightarrow \lambda_1=\lambda_2$\\
+\textbf{DIM:}
+$$ f(\underline{v}) = \lambda_1 \underline{v} = \lambda_2 \underline{v} $$
+$$ (\lambda_1-\lambda_2)\underline{v} = \underline{0} $$
+$$ \lambda_1 = \lambda_2 $$
+
+
+\end{itemize}
+
+
+
+
+
+
+
+
