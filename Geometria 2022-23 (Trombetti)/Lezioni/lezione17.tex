@@ -1,0 +1,226 @@
+\section{Lezione 17 - 10/05/2023}
+
+\subsection{Criteri di Diagonalizzazione}
+Sia $f: V_n \rightarrow V_n$ un endomorfismo è diagonalizzabile $\Leftrightarrow$ $V_n$ ammette una base datta da autovettori.\\
+\textbf{DIM $\Rightarrow$:}\\
+Supponiamo esista un riferimento $\mathtt{R}$ e consideriamo la matrice associata:
+$$ 
+\exists \mathtt{R}=(\underline{e}_1,\underline{e}_2,...,\underline{e}_n): M_{\mathtt{R}}(f) = \begin{pmatrix}
+a_1 & 0 & 0 \\
+0 & \ddots & 0 \\
+0 & 0 & a_n
+\end{pmatrix}
+$$
+Andiamo fare l'immagini dei valori del riferimento come combinazione lineare rispetto le colonne
+$$ 
+f(\underline{e}_1) = a_1\underline{e}_1 + 0\underline{e}_2 + ...
+f(\underline{e}_2) = a_2\underline{e}_2
+...
+f(\underline{e}_n) = a_n\underline{e}_n
+$$
+Quindi i valori del riferimento sono tutti \textbf{autovettori}.
+
+\textbf{DIM $\Leftarrow$:}
+Supponiamo quindi di avere un riferimento di autovettori
+TODO: RIASCOLARE AUDIO
+
+
+\subsection{Esercizio: Trovare gli autovalori}
+Consideriamo il seguendo endomorfismo:
+$$ f:\mathbb{R}^3 \rightarrow \mathbb{R}^3  $$
+$$ (x,y,z) \rightarrow (-y,x,z) $$
+Prendiamo un riferimento in questo caso quello canonico/naturale:
+$$ \mathtt{R} = ((1,0,0),(0,1,0),(0,0,1)) $$
+Costruiamoci la matrice associate delle immagini per colonna
+$$ 
+M_{\mathtt{R}} = \begin{pmatrix}
+0 & -1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 1 
+\end{pmatrix}
+$$
+Andiamo a sotrarre la matrice diagonale con una variabile $t$:
+$$ 
+\begin{pmatrix}
+-t & -1 & 0 \\ 1 & 0-t & 0 \\ 0 & 0 & 1-t 
+\end{pmatrix}
+$$
+E andiamo a calcolarci il determinante 
+$$ 
+det (\begin{pmatrix}
+-t & -1 & 0 \\ 1 & 0-t & 0 \\ 0 & 0 & 1-t 
+\end{pmatrix}) 
+= (1-t)(t^2+1) = 0
+$$
+Quello che ci siamo ricavati è il \textbf{polinomio caratteristico}, l'unica sua soluzione è:
+$$ t = 1 \;\;\; \textbf{unico AUTOVALORES}$$
+
+\subsubsection{Trovare Autovettore}
+Avendo trovato che l'unico autovare è $t=1$ andiamo a sostiturlo nella matrice associata:
+$$
+\begin{pmatrix}
+-1 & -1 & 0 \\ 1 & -1 & 0 \\ 0 & 0 & 0 
+\end{pmatrix}
+$$
+Adesso andiamo a considerare il sistema di equazioni omogeneo:
+$$ 
+\begin{pmatrix}
+-1 & -1 & 0 \\ 1 & -1 & 0 \\ 0 & 0 & 0 
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix}
+$$
+$$
+\systeme{-x-y=0, x-y=0, 0=0}
+$$
+Il sistema è già risolto e quindi l'insieme delle soluzioni è:
+$$ 
+S = \{(0,0,z)/ z \in \mathbb{R} \} = <(0,0,1)>
+$$
+
+\subsection{Autospazio relativo ad autovalore h}
+Consideriamo il seguente endomorfismo $f: V_n \rightarrow V_n$ e $h$ un autovalore, definisco $V(h)$ lo \textbf{spazio relativo all'autovalore h}:
+$$ V(h) = \{\underline{v}/f(\underline{v}) = h\underline{v}\} = 
+\{\{\text{autovettori di autovalore h} \} \cup \{\underline{0}\} \} 
+$$
+È un sottospazio vettoriale (dimostazione da fare a casa :()
+\subsubsection{Proprietà}
+Elenchiamo le seguenti propietà:
+\begin{itemize}
+\item[•] $dim V(h) \ge 1 $ poiché c'è almeno un autovettore
+\item[•] $V(h)$ isomorfo a $\{X/(A-\underbrace{hI_n}_{M_{\mathtt{R}}(f)})X=0 \} = \overline{S} $ mediante cordinazione associata
+\item[•] Se $h \neq k$ allora $V(h) \cap V(k) = \{\underline{0}\}$\\
+\textbf{DIM:}\\
+Consideriamo $\underline{v} \neq \underline{0} \in  V(h) \cap V(k)$, allora può essere autovettore di autovalore di $h,k$, ma poiché un autovettore può avere un unico e solo autovalore si arriverebbe all’assurdo che $h = k$ quindi $\underline{v} = \underline{0}$ quindi l'intersezioni deve essere vuota.
+\item[•] Se $\underline{v}_1,...,\underline{v}_n$ sono autovattore di autovalori $h_1,...,h_n$ autovalori \textbf{distinti}, allora sono \textbf{indipendenti}.\\
+\textbf{DIM:}\\
+Poniamo per assurdo che non siano indipendenti, allora questo vuol dire che:
+$$ \underline{v}_1 = a_2\underline{v}_2+...+a_n\underline{e}_n $$
+$$ f(\underline{v}_1) = h_1\underline{v}_1 $$
+Sviluppiamo mantendendo l'uguaglianza:
+$$ a_2f(\underline{v}_2)+...+.a_nf(\underline{v}_n) = h_1a_2\underline{v}_2+...+h_1a_n\underline{v}_n $$
+$$ a_2h_2\underline{v}_2+...+a_nh_2\underline{v}_n = h_1a_2\underline{v}_2+...+h_1a_n\underline{v}_n $$
+$$ a_ih_1 = a_ih_i $$ 
+$$ h_1 = h_i$$
+Siamo arrivando ad uno assurdo poiché distinti
+
+\end{itemize}
+
+\subsection{Corolarrio}
+Consideriamo l'endomorfismo $f: V_n \rightarrow V_n$ allora:
+$$ f \; \text{ammette n autovalori distinti} \rightarrow f \; \text{diagonalizzabile}  $$
+\textbf{DIM:}\\
+$$ \underline{v}_1,...,\underline{v}_n $$
+Essendo distinti per quanto visto prima allora sono indipendenti, ma sempre per quanto osservato sono base di $V_n$, quindi è \textbf{diagonalizzabile}\\
+\paragraph{Esempio}
+Consideriamo $f: \mathbb{R}^3 \rightarrow \mathbb{R}^3$ quindi $n=3$
+$$ (x,y,z) \rightarrow \begin{pmatrix}
+2 & 0 & 0 \\ 1 & 3 & 0 \\ 0 & 0 & 1 
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix} $$
+Andiamo a calcolare il terminante andando a sottrarre alla diagonale $t$:
+$$
+det \begin{pmatrix}
+2-t & 0 & 0 \\
+1 & 3-t & 0 \\
+0 & 0 & 1-t
+\end{pmatrix}
+= (1-t)(3-t)(2-t)
+$$
+Quindi le soluzioni del polinomio caratteristico sono $t=1,2,3$ essendo $3=n$ e distinti allora è \textbf{diagonalazzabile}
+
+\subsection{Molteplicità Algebrica}
+Considerato un generico polinomio:
+$$ a_nx^n + a_{n-1}x^{n-1}+...+a_1x+a_0 = 0 $$
+Per il teorema fondamentale dell'algebra:
+$$ (x-c_1)...(x-c_n) \in \mathbb{C} $$
+Possiano riscriverlo come:
+$$ (x-c_1)^{n_1}...(x-c_n)^{n_m} $$
+Quindi $n_i$ sarà la nostra molteplicità algebrica
+
+\subsection{Relazione Moltiplicità Algebrica e Geometria}
+Oltre la molteplicità algebrica che indicheremo con $m_a(h)$, defininiamo la \textbf{molteplicità Geometrica}, come la dimensione di uno \textbf{autospazio relativo ad h}:
+$$ dimV(h) = m_g(h) $$
+Inoltre fissiamo una relazione tra molteplicità algebrica e geometriaìca:
+$$ 1 \le m_g(h) \le m_a(h) $$
+\textbf{DIM:}\\
+Prendiamo una base di $V(h)$ e completiamola a $V_n$s
+$$ \underline{v}_1,...,\underline{v}_e \; \text{base di V(h)}$$
+$$ \underline{v}_1,...,\underline{v}_e,...,\underline{v}_n \; \text{estesa a } V_n $$
+Andiamo a prendere un riferimento:
+$$\mathtt{R}=(\underline{v}_1,...,\underline{v}_e,...,\underline{v}_n)$$
+E calcoliamo la matrice associata:
+$$ M_{\mathtt{R}}(f) = 
+\begin{pmatrix}
+h & 0 & 0 & * & * \\
+0 & \ddots & \vdots & * & * \\
+0 & 0 & h_e & * & * \\
+\vdots & \vdots & \vdots & * & * \\
+0 & 0 & 0 & * & * 
+\end{pmatrix}
+$$
+Consideriamo solo la "sottomatrice" formata dala base fino a $\underline{v}_e$
+$$ f(\underline{v}_1) = h\underline{v}_1 $$
+Andiamo a calcolare il determinante:
+$$ det M_{\mathtt{R}}(f) = 
+\begin{pmatrix}
+h-t & 0 & 0\\
+0 & h-t & 0 \\
+0 & 0 & h-t \\
+\end{pmatrix} = \underbrace{(h-t)(h-t)...(h-t)}_{\text{l-volte}}  - detB $$
+(Con $det B$ indichiamo la matrice che siamo andati ad escludere)
+$$ (h-t)^{l} * det B $$
+Quindi $l$ sarà la nostra molteplicità algebrica, che sarà:
+$$ m_g(h) \le l \le m_a(h) $$
+
+\paragraph{PROPOSIZIONE:} Se la molteplicità algebrica è $1$ anche quella geometria lo è.
+$$ m_a(h)=1 \Rightarrow m_g(h) = 1 $$
+
+\subsubsection{Esempio}
+Consideriamo l'endomorfismo $f: \mathbb{R}^3 \rightarrow \mathbb{R}^3$
+$$ (x,y,z) \rightarrow \begin{pmatrix}
+1 & -1 & 2 \\
+-1 & 1 & 1 \\
+0 & 0 & 2
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix} $$
+Avendo già la matrice associata andiamo a calcolarci il determinante:
+$$ 
+det 
+\begin{pmatrix}
+1-t & -1 & 2 \\
+-1 & 1-t & 1 \\
+0 & 0 & 2-t
+\end{pmatrix}
+= (2-t)*[(1-t*1-t)+(-1*-1)] = (2-t)*(1-t)^2+1 = -(2-t)^2-t
+$$
+Quindi abbiamo i seguenti autovalori/radici:
+$$t=2 \rightarrow 2 \; \text{(molteplicità algebrica)} $$
+$$t=0 \rightarrow 1 \; \text{(molteplicità algebrica e geometria)} $$
+Dato che non sappiamo il valore geometrico $t=2$ allora andiamo a calcolarlo:
+$$ \begin{pmatrix}
+-1 & -1 & 2 \\
+-1 & -1 & 1 \\
+0 & 0 & 0 \\
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix} = \begin{pmatrix}
+0 \\ 0 \\ 0
+\end{pmatrix} $$
+Adesso possiamo andare a scrivere il sistema omogeneo:
+$$ 
+\systeme{-x-y-2z=0, -x-y+z=0}
+$$
+Quindi $z=0 \rightarrow x=-y$, quindi il sistema delle soluzioni è:
+$$ \overline{S}=\{(-y,y,0)/ y \in \mathbb{R} \} = <(-1,1,0)> $$
+La dimensione del sottospazio è $dim = 1$\\
+\textbf{ATTENZIONE:} Credo ci siano degli errori, considerarlo solo come metodo di risoluzione e non per i valori.
+
+
+
+
+
