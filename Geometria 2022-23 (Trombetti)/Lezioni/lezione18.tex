@@ -1,0 +1,33 @@
+\section{Lezione 18 - 12/05/2023}
+
+\subsection{Ultimo Criterio di Diagonalizazzione (Completo)}
+Consideriamo l'endomorfimo $f: V_n \rightarrow V_n$ è diagonalizzabile $\Leftrightarrow$:
+\begin{itemize}
+\item[1)]Il polinomio caratteristico ha tutte le radici in $\mathbb{R}$
+\item[2)]La molteplicità algebrica combancia con quella geometrica
+\end{itemize}
+\textbf{DIM:}
+$$ 
+\exists \underbrace{\mathtt{R}}_{\underline{e}_1,...,\underline{e}_n} di V_n/ M_{\mathtt{R}}(f) \; \text{è diagonale} 
+$$
+Sapendo che $f(\underline{e}_1) = a_1\underline{e}_1$ la matrice associata è:
+$$ 
+\begin{pmatrix}
+a_1 & 0 & 0\\
+0 & \ddots & 0 \\
+0 & 0 & a_n
+\end{pmatrix}
+$$
+Andiamo a calcolarci il polinomio caratteristico:
+$$ 
+det \begin{pmatrix}
+a_1 & 0 & 0\\
+0 & \ddots & 0 \\
+0 & 0 & a_n
+\end{pmatrix}
+= (a_1-x)(a_2-x)...(a_n-x)
+$$
+Essendo diagonale il determinante non è che il prodotto della diagonale.\\
+Il polinomio è già scomposto ed di grado $1$, ed ha tutti i fattori reali quindi abbiamo verificato il primo punto.\\
+\textbf{Andiamo a verificare il secondo punto:}\\
+
