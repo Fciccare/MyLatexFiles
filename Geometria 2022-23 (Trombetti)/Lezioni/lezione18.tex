@@ -30,4 +30,174 @@ $$
 Essendo diagonale il determinante non è che il prodotto della diagonale.\\
 Il polinomio è già scomposto ed di grado $1$, ed ha tutti i fattori reali quindi abbiamo verificato il primo punto.\\
 \textbf{Andiamo a verificare il secondo punto:}\\
+Consideriamo un polinomio di grado massimo $n$, possiamo riscriverlo nel seguente modo:
+$$ (a_1-x)(a_2-x)...(a_n-x) = (a_1-x)^{n_1}...(a_n-x)^{n_m} $$
+TODO: RIASCOLTARE AUDIO
+
+\textbf{DIM $\Leftarrow$:}
+Consideriamo $m$ autovalori e le loro rispettive molteplicità algebriche che combaciano con quelle geometriche:
+$$ \lambda_1,...,\lambda_m \; \text{autovalori} $$
+$$ n_1,...,n_m \; \text{moltep. algebrica = geometria} $$
+$$ n_1+...+n_m = n $$
+La \textbf{molteplicità algebrica sarà:} $n_1+...+n_m=n$\\
+Andiamo a calcolarci quella geometrica, sappiamo che la molt. geo. è compresa tra $1 \le m_g(h) \le m_a(h)$, quindi sappiamo che:
+$$ dim(V(a_1)),...,dim(V(a_n)) $$
+Sappiamo che ogni di questi autospazi ci sono gli autovettori:
+$$ \underline{e}_1,...,{\underline{e}_i}_1 $$
+
+
+\subsubsection{Esempio/Esercizi}
+Consideriamo il seguente endomorfismo $f: \mathbb{R}^3 \rightarrow \mathbb{R}^3$ $(x,y,z) \rightarrow (3y,3x,3t)$, e consideriamo come sempre il riferimento canonico $\mathtt{R}=((1,0,0),(0,1,0),(0,0,1))$, consideriamo la matrice di passaggio e facciamone il determinante:
+$$
+\begin{pmatrix}
+0 & 3 & 0 \\ 3 & 0 & 0 \\ 0 & 0 & 3
+\end{pmatrix} 
+det \begin{pmatrix}
+0-t & 3 & 0 \\ 3 & 0-t & 0 \\ 0 & 0 & 3-t
+\end{pmatrix} 
+=(3-t)(t^2-9)= (3-t)(t-3)(t+3)
+$$
+Avendo trovato il polinomio caratteristico ed avendolo scomposto andiamo a trovare le soluzioni:
+$$ t=3,3 $$
+$$ M_a(-3) = 1 = M_g(-3)$$
+$$ M_a(3) = 2$$
+Andiamo a calcolare la molteplicità geometrica di $3$:
+$$
+\begin{pmatrix}
+-3 & 3 & 0 \\ 3 & -3 & 0 \\ 0 & 0 & 0
+\end{pmatrix}
+$$
+Consideriamo il sistema associato:
+$$ 
+\systeme{-3x+3y=0, 3x-3y=0} \rightarrow \systeme{3x=y,y=y}
+$$
+Quindi il sistema delle soluzioni sarà:
+$$
+\overline{S} = \{(y,y,z)/y,z \in \mathbb{R}\}
+$$
+Quindi sappiamo che la $dim=2$ quindi $<(1,1,0),(0,0,1)>$
+Andiamo a sostituire anche $-3$ nella matrice:
+$$ 
+\begin{pmatrix}
+3 & 3 & 0  \\ 3 & 3 & 0 \\ 0 & 0 & 6
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\ 0 \\ 0
+\end{pmatrix}
+$$
+Quindi il sistema associato sarà:
+$$ 
+\systeme{3x+3y = 0, 3x+3y=0, 6z=0} \Rightarrow \systeme{x=-y,x=-y, z=0}
+$$
+L'insieme delle soluzioni sarà:
+$$ 
+\overline{S}=\{(-y,-y,0)/ y \in \mathbb{R} \} = <(-1,-1,0)>
+$$
+\textbf{Quindi alla fine:}
+$$ V(3) \uplus V(-3) = \mathbb{R}^3 $$
+
+\subsection{Diagonalizzazione Matrice}
+Fin ad ora abbiamo sempre visto la diagonalizzazione degli endomorfismi, invece ora parliamo di matrici.\\
+Come già sappiamo una matrice $A \; \text{è diagona.} \Leftrightarrow \sim \text{diagonale}$.
+Possiamo dire la matrice associata è diagonalizzabile se o solo se:
+$$ M(\mathtt{R}) \Leftrightarrow F_A \; \text{è diagonal.}$$
+$$ \mathbb{R}^n \rightarrow \mathbb{R}^n $$
+$$ X \rightarrow AX $$
+Diamo un paio di definizioni:
+\begin{itemize}
+\item[Autovettore di A] 
+$$ AX= \lambda X \; X \neq 0  \;\;\; F_A(x) = \lambda X $$
+
+\item[Autospazio di $\lambda$]
+$$ V(\lambda) = \{X/ AX = \lambda X \} $$
+
+\end{itemize}
+Diamo una definizione più corretta:
+$$ F_A \; \text{diagonaliz.} \Leftrightarrow \exists \mathtt{R}=(\underline{e}_1,...,\underline{e}_n) \; \text{rif. di} \; \mathbb{R}^n $$
+Quindi:
+$$ M_{\mathtt{R}}(F_A) = D \sim M_{\mathtt{R}}(F_A) = A $$
+$$ P^{-1}AP = D $$
+
+
+\subsubsection{Esempio/Esercizio}
+Consideriamo la funzione matriciale $F_A: \mathbb{R}^3 \rightarrow \mathbb{R}^3, (x,y,z) \rightarrow A\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix}$\\
+Consideriamo la matrice $A$ associatà già osservata in precendenza:
+$$
+\begin{pmatrix}
+0 & 3 & 0 \\ 3 & 0 & 0 \\ 0 & 0 & 3
+\end{pmatrix}
+$$
+Avendo già trovato tutto il necessario dall'esercizio precendente abbiamo:
+$$ p_x = det A = (3-t)(t^2-9) $$ 
+$$ \underbrace{(1,1,0),(0,0,1)}_3,\underbrace{(1,-1,0)}_{-3} $$
+Costruiamo la matrice per colonne:
+$$ 
+p = \begin{pmatrix}
+1 & 0 & 1 \\ 1 & 0 & -1 \\ 0 & 1 & 0
+\end{pmatrix}
+$$
+Quindi la matrice:
+$$
+{\begin{pmatrix}
+1 & 0 & 1 \\ 1 & 0 & -1 \\ 0 & 1 & 0
+\end{pmatrix}}^{-1}
+\begin{pmatrix}
+0 & 3 & 0 \\ 3 & 0 & 0 \\ 0 & 0 & 2
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 & 1 \\ 1 & 0 & -1 \\ 0 & 1 & 0
+\end{pmatrix}
+= 
+$$
+Quindi la matrice associatà sarà:
+$$
+=\begin{pmatrix}
+3 & 0 & 0 \\
+0 & 3 & 0 \\
+0 & 0 & -3
+\end{pmatrix}
+$$
+
+
+\subsection{Prodotto Diretto (Esterno)}
+%Simone Cerrone:
+Vediamo di seguito un procedimento per la costruzione di ulteriori spazi vettoriali ed è il concetto di prodotto
+esterno. Il prodotto che fino ad ora avevamo visto è il prodotto diretto interno (dove abbiamo già lo spazio
+vettoriale e scrivevamo un prodotto diretto da qualcosa interno allo spazio vettoriale).\\
+Presi due spazi vettoriali $V_1, V_2$ prendiamo il prodotto cartesiano:
+$$ V = V_1xV_2 = \{(\underline{v}_1,\underline{v}_2)/ \underline{v}_1 \in V_1, \underline{v}_2 \in V_2 \} $$
+Andiamo a definire somma e prodotto esterni:
+\begin{itemize}
+\item[•]$+:$
+$$ (\underline{v}_1, \underline{v}_2) + (\underline{v}_1^{\prime}, \underline{v}_2^{\prime} = (\underline{v}_1+\underline{v}_1^{\prime}, \underline{v}_2+\underline{v}_2^{\prime})$$
+
+\item[•]$\cdot:$
+$$ h(\underline{v}_1, \underline{v}_2) = (h\underline{v}_1, h \underline{v}_2$$
+\end{itemize}
+Possiamo dimostrare che sia un sotto spazio (omesso)\\
+
+\subsubsection{Esempio}
+$$ R_2[x]xM_{2,2}(\mathbb{R}) $$
+Prendiamo i riferimenti canonici:
+$$
+((a_2x^2+a_1x+a_0), \begin{pmatrix}
+b_1 & b_2 \\ b_3 & b_4
+\end{pmatrix}
+$$
+Quindi le basi sono
+$$ (1,0),(x,0),(x^2,0),(0, \begin{pmatrix}1&0\\0&0\end{pmatrix}),(0, \begin{pmatrix}0&1\\0&0\end{pmatrix}),(0, \begin{pmatrix}0&0\\1&0\end{pmatrix}), (0, \begin{pmatrix}0&0\\0&1\end{pmatrix})  $$
+Risuleterà essere isomorfo ad $\mathbb{R}^7$ poiché:
+$$ dim(R_2[x])+dim(M_{2,2}(\mathbb{R}) = dim(\mathbb{R}^7) $$
+$$ 3+4=7$$
+
+
+
+
+
 
