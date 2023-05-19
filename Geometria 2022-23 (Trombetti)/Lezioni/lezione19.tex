@@ -1,0 +1,87 @@
+\section{Lezione 19 - 17/05/2023 (Geometria Euclidea)}
+
+\subsection{Spazio Vettoriale dei Vettori Geoetrici Liberi}
+Gli spazi vettoriali dei vettori geometrici liberi nel piano(x,y) oppure nello spazio(x,y,z) sono classi di equipollenza in cui figurano
+tutti i vettori equipollenti ad un dato vettore geometrico.\\
+$$ \overline{AB} \; \text{CLASSI DI EQUIPOLLENZA} $$
+
+\subsection{Paralleli}
+Presi due vettori $ \underline{0} \neq \underline{a}, \underline{b} \in V_{\pi}$ allora si dicono paralleli se e solo se:
+$$ \underline{a} \; \text{È PARALLELO} \; \underline{b} \Leftrightarrow \vec{AB} // \vec{CD} $$
+Con la notazione $\vec{AB}$ indichiamo i vettori rappresentati.\\
+\paragraph{Paralleli $\Rightarrow$ Dipendenti}
+Preso un punto origine $O$ allora:
+$$ \equalto{\underline{a}}{\overline{OA}} // \equalto{\underline{B}}{\overline{OB}} \Leftrightarrow \vec{OA} // \vec{OB} \Leftrightarrow \vec{OA}, \vec{OB} \; \text{giaciano sulla stessa retta} \Leftrightarrow$$
+ 
+$$\Leftrightarrow \exists \alpha \neq \underline{0} \; \vec{OA} = \alpha \vec{OB} \Leftrightarrow \underline{0}=\alpha\underline{b} \Leftrightarrow \underline{a}, \underline{b} \; \text{SONO DIPENDENTI} $$
+Il vettore degenere $\vec{OO}$ è sempre parallelo.\\
+
+\subsection{Angolo}
+Presi $\underline{a}, \underline{v} \in V_{\pi}$ definiamo l'angolo compreso nel seguente modo:
+$$ \equalto{\underline{a}}{\overline{OA}} \wedge \equalto{\underline{b}}{\overline{OB}} = \; \text{misura in radianti dell'angolo convesso ($\le $180) formato dai due vettori} $$
+TODO:INSERIRE RAPPRESENTAZIONE GRAFICA
+
+\subsection{Prodotto Scalare Standard tra due Vettori}
+Definiamo il prodotto scalare standard nel seguente modo:
+$$ \underline{a} \cdot \underline{b} = |\underline{a}||\underline{b}|cos(\underline{a} \wedge \underline{b}) $$
+È bilineare, simmetrice definita positiva:
+\begin{itemize}
+
+\item[]\textbf{Bilineare:}\\
+$$ \underline{a} \cdot (h\underline{b}+k\underline{c}) = h(\underline{a} \cdot \underline{b}) + k (\underline{a} \cdot \underline{c}) $$
+
+\item[]\textbf{Simmetrica:}\\
+$$ \underline{a} \cdot \underline{b} = \underline{b} \cdot \underline{a} $$
+
+\item[]\textbf{Positiva:}\\
+$$ \underline{a} \cdot \underline{a} = \underline{0} \Leftrightarrow \underline{a} = \underline{0} $$
+DIM $\Leftarrow$: BANALE\\
+DIM $\Rightarrow$: Angolo=$0^{\circ}=(cos 0^{\circ}) = 1 \Rightarrow |a^2| = 0 \Rightarrow |\underline{a}| = \underline{0}$
+
+\end{itemize}
+$$\underline{a} \cdot \underline{a} = |\underline{a}^2| \Rightarrow |\underline{a}| = \sqrt{\underline{a} \cdot \underline{a}}$$
+
+\subsection{Perpendicolari/Ortogonali}
+$$ \underline{a} \bot \underline{b} \Leftrightarrow \vec{AB} \bot \vec{CB} $$
+Prendiamo un punto $0$ chiamato origine ed esprimiamo i vettori, sappiamo che un vettori perpendicolari formano un angolo di $90^{\circ}$, quindi:
+$$ \underline{a} \bot \underline{b} \Leftrightarrow \vec{OA} \bot \vec{OB} \Leftrightarrow \vec{OA} \wedge \vec{OB} = \frac{\pi}{2} \Leftrightarrow cos(\vec{OA} \wedge \vec{OB}) = 0 \Leftrightarrow \underline{a} \cdot \underline{b} = 0 $$
+
+\subsection{Riferimento Ortonormale}
+Con ortonormale andiamo ad indicare un vettore che è sia un \textbf{versore} che \textbf{ortogonale}(perpendicolare).\\
+\textbf{Un Versore} è un vettore unitario cioè: $|\underline{v}| = 1$ \\
+Preso un riferimento nel piano $(\underline{e}_x, \underline{e}_y)$ i vettori devono essere ortogonali quindi:
+$$ \underline{e}_x \cdot \underline{e}_y = 0 \;\;\;\; |\underline{e}_x|=1 \;\;\;\; |\underline{e}_y|=1 $$ 
+Invece preso un riferimo nello spazio $(\underline{e}_x,\underline{e}_y,\underline{e}_z)$ i vettori devono essere ortoganali quindi:
+$$ \underline{e}_x \cdot \underline{e}_y = 0 \;\;\;\; \underline{e}_x \cdot \underline{e}_z = 0 \;\;\;\; \underline{e}_z \cdot \underline{e}_y = 0 $$
+TODO: AGGIUNGERE BOH NON HO CAPITO CHE CI STA SCRITTO
+
+\subsection{Riduzione angolo Spazio Vettoriale}
+BOH
+
+\subsection{Riferimento Cartesiano Ortogonale Goniometrico}
+Fissata una origine $O$ possiamo definire il r.c.o.g come la coppia costituita dall'origine e il riferimento ortonormale del piano/spazio:
+$$ (0,(\underline{e}_x,\underline{e}_y)) $$
+$$ \underline{e}_x = OX = (1,0) \;\;\;\;\; \underline{e}_y = OY = (0,1) $$
+TODO:INSERIRE GRAFICO (punti unitare ecc...)
+
+\paragraph{Versore della Retta:} parallelo alla retta
+
+\subsection{Proposizione}
+$$ A(x_1,y_1), B(x_2,y_2) \Leftarrow \overline{AB}(x_2-x_1, y_2-y-1) $$
+\textbf{DIM:}
+$$ \overline{OA}(x_1,y_1) \;\;\;\; \overline{OB}(x_2,y_2) $$
+$$ \overline{OA}+\overline{OB} = \overline{OB}$$
+$$ \overline{AB} = \overline{OB} - \overline{OA} $$
+$$ (x,y) = (x_2,y_2)-(x_1,y_1) = (x_2-x_1, y_2-y_1) $$
+
+\subsection{Cambio di Riferimento}
+TODO:INSERIRE
+
+\subsection{Prodotto Vettoriale}
+
+
+
+
+
+
+
