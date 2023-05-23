@@ -77,10 +77,34 @@ $$ (x,y) = (x_2,y_2)-(x_1,y_1) = (x_2-x_1, y_2-y_1) $$
 \subsection{Cambio di Riferimento}
 TODO:INSERIRE
 
-\subsection{Prodotto Vettoriale}
-
-
-
+\subsection{Prodotto Vettoriale (Spazio)}
+Presi due riferimenti $\underline{V}$ e $\underline{W}$ definiti nel segunte modo:
+$$ \underline{V}(v_x,v_y,v_z) \;\;\;\;\; \underline{W}(w_x,w_y,w_z) $$
+Allora il prodotto cartesiano sarà uguale:
+$$ \underline{V}x\underline{W} = \begin{pmatrix}
+\underline{e}_x & \underline{e}_y & \underline{e}_z \\
+v_x & v_y & v_z \\
+w_x & w_y & w_z
+\end{pmatrix} =
+(v_yw_z - v_zw_y)\underline{e}_x - (v_xw_z - v_zw_x)\underline{e}_y + (v_xw_y - v_yw_x)\underline{e}_z $$
+(Il determinante sviluppato per la prima riga)\\
+Esempio: $\underline{V}(0,1,2)x\underline{W}(1,2,0) =$
+$$ 
+\begin{pmatrix}
+\underline{e}_x & \underline{e}_y & \underline{e}_z \\
+0 & 1 & 2 \\
+1 & 2 & 0 
+\end{pmatrix}
+= -3\underline{e}_x-2\underline{e}_y+1\underline{e}_z
+$$
+\paragraph{Proposizione:} $VxW = \underline{0}$ se parallelo oppure dipendenti
+DIM:\\
+\paragraph{Proposizione:} $(VxW) \bot V=0$
+Dim:\\
+\paragraph{Proposizione:} 
+$$ \underline{e}_x x \underline{e}_y = \underline{e}_z $$
+$$ \underline{e}_z x \underline{e}_y = \underline{e}_x $$
+$$ \underline{e}_z x \underline{e}_x = \underline{e}_y $$
 
 
 
