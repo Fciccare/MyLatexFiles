@@ -1,0 +1,62 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[a4paper, total={6in, 9.5in}]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{eucal}
+\usepackage{cancel}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{systeme}
+\usepackage{blindtext}
+\usepackage{hyperref}
+\usepackage{stackengine}
+\usepackage{soul}
+\usepackage{color}
+\newcommand{\mathcolorbox}[2]{\colorbox{#1}{$\displaystyle #2$}}
+\DeclareRobustCommand{\hlcyan}[1]{{\sethlcolor{cyan}\hl{#1}}}
+\DeclareRobustCommand{\hlblue}[1]{{\sethlcolor{blue}\hl{#1}}}
+\newcommand{\verteq}{\rotatebox{90}{$\,=$}}
+\newcommand{\equalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\verteq}{#2}}{#1}}
+\newcommand\aug{\fboxsep=-\fboxrule\!\!\!\fbox{\strut}\!\!\!}
+\hypersetup{linktoc=all}
+
+\title{Guida Esercizi Geometria 2022-23 (Trombetti)}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\newpage
+
+\section{Spazi Vettoriali}
+
+\subsection{Intersezione Spazi Vettoriali}
+Presi due sottospazi $H$ e $K$, un generico vettore $\underline{v}$ appartiene alla loro intersezione se e solo se si può esprimere CONTEMPORANEAMENE come combinazione lineare di $H$ e $k$.\\
+Esempio:\\
+$$ H=<(1,2,3),(1,2,4)> \;\;\;\;\; K=<(0,0,1),(1,3,2)> $$
+Possiamo esprimere $\underline{v}$ nei seguenti modi:
+$$ \underline{v}=\alpha_1(1,2,3)+\beta_1(1,2,4) \;\;\;\;\; \underline{v}=\alpha_2(0,0,1)+\beta_2(1,3,2)$$
+Come abbiamo detto prima queste due condizioni devo verificarsi CONTEMPORAMENTE quindi imponiamo l'uguaglianza:
+$$ 
+\systeme{1\alpha_1+1\beta_1 = 0\alpha_2+1\beta_1, 2\alpha_1+2\beta_1=0\alpha_2+3\beta_2, 3\alpha_1+4\beta_1 = 1\alpha_2+2\beta_2}
+\Rightarrow
+\systeme{\alpha_1+\beta_1 = \beta_1, 2\alpha_1+2\beta_1=3\beta_2, 3\alpha_1+4\beta_1 = \alpha_2+2\beta_2}
+$$
+Andando a risolvere il sistema (con il metodo che più ci aggrada) verrà:
+$$
+\systeme{\alpha_1=-\beta_1, \beta_1=\beta_1, \alpha_2=\beta_1, \beta_2=0}
+$$
+Possiamo notare come il sistema dipenda da $\beta_1$.\\
+L'intersezione sarà:
+$$ \underline{v}=\{(0,0,\beta_1)\} $$
+Questo perché andando a sostuire i valori precedentemente trovati ci viene:
+$$ \underline{v}=\beta_1(0,0,1)+\cancel{0(1,3,2)} \;\;\;\;\; \underline{v}=-\beta_1(1,2,3)+\beta_1(1,2,4) $$
+Andando a sviluppare entrambe le espressioni:
+$$ \underline{v}=\beta_1(0,0,1)+\cancel{0(1,3,2)} = (0,0,\beta_1)$$
+$$\underline{v}=-\beta_1(1,2,3)+\beta_1(1,2,4) = (-1\beta_1,-2\beta_1,-3\beta_1)+(\beta_1,2\beta_1,4\beta_1) = (0,0,\beta_1) $$
+Scegliendo la soluzione più semplice cioé $\beta_1=1$ avremo:
+$$ H \cap K = (0,0,1) \;\;\; dim=1 $$
+
+\end{document}
