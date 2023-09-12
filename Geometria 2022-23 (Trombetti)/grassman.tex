@@ -1,0 +1,41 @@
+\section{Relazione di Grassman}
+Se $H = {0}$ allora $H \cap K =\{\underline{0}\}$\\
+Sono in somma diretta quindi $$dim H+K = dim H + dim K$$
+L'abbiamo già dimostrato precedentemente.\\
+\textbf{Andiamo a dimostrare quando $H\cap K \neq \{\underline{0}\}$, quindi esiste una base:}
+\begin{itemize}
+     
+    \item Se $H=H \cap K \le K$:
+    
+    Possiamo rileggere la relazione nel seguente modo:
+    $$ \underbrace{dim(H+K)}_{K} = dim H + dim K - \underbrace{dim(H \cap K)}_{H} $$
+    Andando a semplificare ci viene:
+    $$ dim K = dim K $$\\
+    \item Se $K=H \cap K $:
+    Caso analogo a sopra. \\
+    \item Caso generale(?):
+    
+Posso supporre che $H \cap K < H$ e $H \cap K < K$:\\
+$$ Base H = <\underline{e}_1,.., \underline{e}_t, \underline{h}_1,..., \underline{h}_s> $$
+$$ Base K = <\underline{e}_1,.., \underline{e}_t, \underline{k}_1,..., \underline{k}_r> $$
+Quindi possiamo affermare che le dimensioni sono le seguenti:
+\begin{itemize}
+    \item $dim H = t+s$
+    \item $dim K = t+r$
+    \item $dim H \cap K=t$
+\end{itemize}
+Se consideriamo questo vettore:
+$$ <\underline{e}_1,.., \underline{e}_t, \underline{h}_1,..., \underline{h}_s, \underline{k}_1,..., \underline{k}_r>  $$
+Che ha come dimensione: $t+s+r$, rientra nella definizione della relazione di Grassman, quindi non ci resta da dimostrare che sia \textbf{una base per $H+K$}.\\
+Per essere una basa dobbiamo dimostrare che sia \textbf{un sistema di generatori} e che sia \textbf{indipendente}.\\
+\textbf{DIM S.G.:}\\
+Prendiamo un vettore che appartiene a $H+K$:
+$$ \underline{v} \in H+k $$
+Dobbiamo andare a dimostrare che si può scrivere come combinazione lineare di quella che vogliamo sia la nostra base, quindi:
+$$ \underline{v}=\underline{h}+\underline{k} $$
+Ovviamente $\underline{h} \in H$ e $\underline{k} \in K$.\\
+Andiamo ad esplicitare i due vettori tramite combinazione lineari delle loro basi:
+$$ \underline{h}= a_1\underline{e}_1,.., a_t\underline{e}_t, b_1\underline{h}_1,..., b_t\underline{h}_s $$
+$$ \underline{k}= a^{\prime}_1\underline{e}_1,.., a^{\prime}_t\underline{e}_t, c_1\underline{k}_1,..., c_r\underline{k}_r$$
+Andando a sostituire e mettendo in evidenza ci viene:
+\end{document}

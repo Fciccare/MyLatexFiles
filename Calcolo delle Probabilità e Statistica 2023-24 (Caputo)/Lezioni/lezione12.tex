@@ -1,0 +1,99 @@
+\section{Lezione 12 - 12/04/2023}
+
+\subsection{Relazione Indipendenza e Condizionamento}
+Presi $A,B \in \mathtt{R}$ (indipendenti) con $\mathbb{P}(A) > 0$ e $\mathbb{P}(B) > 0$ valgono le seguenti definizioni:
+\begin{itemize}
+\item[a)] $\mathbb{P}(A \cap B) = \mathbb{P}(A) \mathbb{P}(B)$
+\item[b)] $\mathbb{P}(A|B) = \mathbb{P}(A)$
+\item[c)] $\mathbb{P}(B|A) = \mathbb{P}(B)$
+\end{itemize}
+\footnote{Nella scorsa lezione abbiamo definito la probabilità condizionata con $P_B(A)$ ma d'ora in poi useremo quest'altra $P(A|B)$}
+\textbf{DIM:} $ a \Rightarrow b \Rightarrow b \Rightarrow c \Rightarrow a$
+\begin{itemize}
+\item[$a \Rightarrow b$)] $\mathbb{P}(A|B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)} =^\text{a)} \frac{\mathbb{P}(A) \mathbb{P}(B)}{\mathbb{P}(B)} = \mathbb{P}(A)$
+
+\item[$b \Rightarrow c$)]$ \mathbb{P}(B|A) =  \frac{\mathbb{P}(B \cap A)}{\mathbb{P}(A)} = \frac{\text{\hlcyan{$\mathbb{P}(A \cap B)$}}}{\mathbb{P}(A)} \frac{\mathbb{P}(B)}{\text{\hlcyan{$\mathbb{P}(B)$}}} = \frac{\text{\hlcyan{$\mathbb{P}(A|B)$}} \mathbb{P}(B)}{\mathbb{P}(A)} =^\text{b)} \frac{\mathbb{P}(A) \mathbb{P}(B)}{\mathbb{P}(A)} = \mathbb{P}(B)$
+
+\item[$c \Rightarrow b$)] $ \mathbb{P}(A \cap B) = \mathbb{P}(B \cap A) = \frac{\mathbb{P}(B \cap A) \mathbb{P}(A)}{\mathbb{P}(A)} = \mathbb{P}(B|A) \mathbb{P}(A) =^\text{c)} \mathbb{P}(A) \mathbb{P}(B)$
+
+\end{itemize}
+
+Riassumendo: Eventi indipedenti la probabilità condizionata è uguale alla probabilità senza condizionamento.\\
+
+\subsection{Probabilità Composta}
+Dalla definizione di probabilità condizionata segue la cosidetta legge delle \textbf{probabilità composta}:
+$$ \mathbb{P}(A \cap B) = \mathbb{P}(B) \mathbb{P}(A|B)  $$
+Osservazioni:\\
+La legge delle probabilità composte vale anche se $\mathbb{P}(B) = 0$.\\
+Se c'è indipendenza si riduce a $\mathbb{P}(B) \mathbb{P}(B)$.\\
+\subsubsection{Estensione a 3 casi}
+Avendo definito per due valori possiamo come sempre associare a due a due:
+$$ \mathbb{P}(A \cap B \cap C) = \mathbb{P}(C) \mathbb{P}(B|C) \mathbb{P}(A| B \cap C) $$
+Dim:
+$$ \mathbb{P}(A \cap B \cap C) = \mathbb{P}[A \cap (B \cap C)] = \mathbb{P}(B \cap C) \mathbb{P}(A| B \cap C) = \mathbb{P}(C) \mathbb{P}(B|C) \mathbb{P}(A| B \cap C) $$
+\subsubsection{Estensiona a n casi}
+
+\subsubsection{Esempio}
+Consideriamo un urna contenente 5 biglie numerate da 1 a 5, si estraggono "a caso" due biglie in sequenza senza rimettermerle nell'urna (senza rimpiazzamento), calcoliamo la probabilità dei seguenti eventi:
+\begin{itemize}
+\item[A:]"Escono due numeri pari"
+\item[B:]"Escono due numeri dispari"
+\item[C:]"Il secondo che esce è pari"
+\end{itemize}
+\begin{itemize}
+
+\item[•] $\mathbb{P}(A) = \mathbb{P}(P_1 \cap P_2) = \mathbb{P}(P_1)\mathbb{P}(P_2|P_1) = \frac{2}{5}*\frac{1}{4} = \frac{1}{10} \text{(sono dipendenti)}$
+
+\item[•] $ \mathbb{P}(B) = \mathbb{P}(D_1 \cap D_2) = \mathbb{P}(D_1) \mathbb{P}(D_2|D_1) = \frac{3}{5} * \frac{2}{4} = \frac{3}{10}$
+
+\item[•] Consideriamo l'evento $C$ come l'intersezioni di un evento qualsiasi e di pari alla seconda pescata: $C = \Omega \cap P_2 = (P_1 \cap P_2) \uplus (D_1 \cap P_2)$ \\ 
+$ \mathbb{P}(C) = \mathbb{P}(P_1 \cap P_2) + \mathbb{P} (D_1 \cap D_2) = \frac{1}{10} + \mathbb{P}(D_1) \mathbb{P}(P_2|D_1) = \frac{1}{10}+\frac{2}{5}*\frac{1}{2} = \frac{4}{10} $
+\end{itemize}
+
+\subsection{Teorema delle Alternanze}
+Sia $\{H_i\}_{i \in \mathbb{I}}$ un famiglia di eventi (al più numerabile) tali che: $ \mathbb{P}(H_i) > 0 $, $ \forall i \in \mathbb{I} $.\\
+Se $H_i \cap H_j = \emptyset$ per $i \neq j$ e se $\bigcup_{i \in \mathbb{I}}H_i = \Omega$.\\
+Diremo che la famiglia $\{H_i\}_{i \in \mathbb{I}}$ costituisce un \textbf{sistema completo di alternative per $\Omega$}
+$$ \mathbb{P}(A) = \sum_{i \in \mathbb{I}} \mathbb{P}(A|H_i) \mathbb{P}(H_i) $$
+Dim:
+$$ \mathbb{P}(A) = \mathbb{P}(A \cap \Omega) = \mathbb{P}(A \cap \uplus_{i \in \mathbb{I}} H_i) = \mathbb{P}(\uplus_{i \in \mathbb{I}} A \cap H_i) = \sum_{i \in \mathbb{I}} \mathbb{P}(A \cap H_i) = sum_{i \in \mathbb{I}} \mathbb{P}(H_i) \mathbb{P}(A|H_i) $$
+
+\subsection{Teorema di Bayes (teorema causa ed effetto)}
+Sia $\{H_i\}_{i \in \mathbb{J}}$ un sistema di completo di alternative per $\Omega$ e sia $A$ un evento tale che $\mathbb{P}(A) > 0$, allora vale che:
+$$ \forall i,j \mathbb{P}(H_i|A) = \frac{\mathbb{P}(A|H_i) \mathbb{P}(H_i)}{\sum_{j \in \mathbb{J}} \mathbb{P}(A|H_j) \mathbb{P}(H_j) } $$
+Dim:\\
+$$ \mathbb{P}(H_i|A) = \frac{\mathbb{P}(H_i \cap A)}{\mathbb{P}(A)} = \frac{\mathbb{P}(H_i \cap A)}{\mathbb{P}(A)} * \frac{\mathbb{P}(H_i)}{\mathbb{P}(H_i)} = \frac{\mathbb{P}(A|H_i) \mathbb{P}(H_i)}{\mathbb{P}(A)} $$
+
+\subsection{Esercitazione Prof. Caputo}
+
+\subsubsection{Esercizio 01}
+Il $20\%$ degli impiegati in azeinda è laureato, di questi il $75\%$ ha una posizione da supervisore, gli altri non laureati solo il $20\%$ ha una posizione da supervisore.\\
+Riassumiamo i dati:
+\begin{itemize}
+\item[•] $20\%$ laureati $\rightarrow$ $75\%$ supervisori
+\item[•] $80\%$ laureati $\rightarrow$ $20\%$ supervisori
+\end{itemize}
+Qual è la probabilità che scelto a caso un supervisori esso sia laureato?\\
+Consideriamo i seguenti eventi:
+\begin{itemize}
+\item[•] $\mathbb{L}=$ "L'impiegato scelto a caso è un laureato"
+\item[•] $\mathbb{L^c}=$ "L'impiegato scelto a caso non è un laureato"
+\item[•] $\mathbb{S}=$ "L'impiegato scelto a caso è un supervisore"
+\end{itemize}
+Ci verebbe naturale pensare all'intersezione (and) $\mathbb{P}(L \cap S)$ \textbf{MA 
+ È SBAGLIATO}.\\
+La forma \textbf{corretta} è al seguente: 
+$$ \mathbb{P}(L|S) $$
+I laureati condizionati dall'essere supervisori, poiché noi sappiamo già che è supervisore.\\
+Per usare Bayas abbiamo bisogno delle alternative cioè essere o non laurato:
+$$ \mathbb{P}(L) = \frac{20}{100} \;\; \mathbb{P}(L^c) = \frac{80}{100} $$
+Sempre per il teorema di Bayas l'unione di tutte le alternative deve essere certo (1):
+$$ \mathbb{P}(L^c) = \frac{20}{100} \cup \mathbb{P}(L^c) = \frac{80}{100} = \frac{100}{100} = \Omega$$
+Ora possiamo calcore la probabilità:
+$$ \mathbb{P}(L|S) = \frac{\mathbb{P}(S|L) * \mathbb{P}(L)}{(\mathbb{P}(S|L) * \mathbb{P}(L)) + (\mathbb{P}(S|L^c)*\mathbb{P}(L^c))} = \frac{\mathbb{P}(S|L) * \frac{20}{100}}{(\mathbb{P}(S|L) * \frac{20}{100}) + (\mathbb{P}(S|L^c)*\frac{80}{100})} = $$
+Dalla traccia sappiamo che $\mathbb{P}(S|L) = 75\%$:
+$$ \frac{ \frac{75}{100} * \frac{20}{100} }{ \frac{75}{100}*\frac{20}{100}+\frac{20}{100}*\frac{80}{100} } = \frac{15}{31}$$
+
+\subsubsection{Esercizio 02}
+Lezione prossima (risolto da Buonocore)
+

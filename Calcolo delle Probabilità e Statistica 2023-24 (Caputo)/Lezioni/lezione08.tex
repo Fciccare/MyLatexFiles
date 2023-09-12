@@ -1,0 +1,114 @@
+\section{Lezione 08 - 23/03/2023}
+
+\subsection{Recap}
+Sia $\phi$ e la terna: $(\Omega, F, P)$ spazio di probabilità:\\
+Assiomi:
+\begin{itemize}
+\item[a)] $F$ non è vuota (algebra)
+\item[b)] $F$ è stabile rispetto al complemento (algebra)
+\item[c)] $F$ è stabile rispetto a $\cup_{n \in N}A_n$ (algebra)
+\item[d)] $P$ è non negativa e finita
+\item[e)] $P(\Omega) = 1$
+\item[f)] è qualcosa additiva
+\end{itemize}
+Teoremi:
+\begin{itemize}
+\item[1)] $P(\emptyset) = 0$
+\item[2)] $P$ è finita additiva
+\item[3)] $P[(A)^C] = 1-P(A)$
+\item[4)] $P(A) <= 1$
+\item[5)] $P$ è monotona
+\end{itemize}
+
+\subsection{Spazi di Probabilità Finiti}
+$i)$ Posto $\Omega = \{a_1, a_2,...\}, F = \mathbb{P}(\Omega)$, posto $ i=1,2,...,n$ avremo:
+$$  \mathbb{P}(\{a_i\}) = \textit{p}_i \;\;\; \textbf{"probabilità di \{$a_i$\}"} $$
+Bisognerà avere:
+\begin{itemize}
+\item[1)] $ \textit{p}_i \underline{>} 0, i=1,2,...n $
+\item[2)] $ \textit{p}_1 +   \textit{p}_2 +  ... +  \textit{p}_n  = 1 $
+\end{itemize}
+La probabilità di un qualsiasi evento $A$ sarà dunque definita come la somma delle probabilità degli elementi di $A$.
+
+\subsection{Spazi Equiprobabili finiti}
+$ii)$ Posto $\Omega = \{a_1, a_2,...\}, F = P(\Omega)$, basta porre:
+$$ \textit{p}_i = \frac{1}{n} \;\;\; \text{ per } i=1,2,...,n $$
+Per ogni evento $A$ la probabilità sarà definita:
+$$ \mathbb{P}(A) = \frac{\#A}{n} $$
+
+\subsection{Spazi di Probabilità Numerabili}
+$iii)$ $\Omega = \{a_1, a_2,...\}, F = P(\Omega)$
+sia $n \in N, p_n:= P({a_n})$
+\begin{itemize}
+\item[1)] $n \in N, p_n >= 0$
+\item[2)] $ \sum_{n=1}^{\infty} p_n = 1$
+\end{itemize}
+boh: $ \sum_{n=0}^{\infty} h^n = \frac{1}{1-h}$
+
+\subsection{Spazio di Probabilità infiniti non Numerabili (da rivedere)}
+$iv)$ $\#\Omega > \#N$ \\
+$$ \Omega = (0,1)$$
+$$ F = \{ (a,b): a<b ^ a,b \in 0,1 \} $$
+Questa cosa si dice \textbf{sigma algebra di barel dell'intervallo 0,1}.\\
+$$ P[(a,b)] = \frac{1}{b-a} = b-a $$
+
+\subsection{Esempi Spazi di Probabilità Numberabili}
+\subsubsection{Esempio 01}
+Si ponga lo scalare $\lambda > 0 $  e $ n \in \mathbb{N}_0 $ definiamo: 
+$$ \textit{p}_n = e^{-\lambda} \frac{\lambda^n}{n!} $$
+Per verificare che sia una spazio di probabilità \textbf{numerabile}, dobbiamo verificare la $1)$ e la $2)$.
+\begin{itemize}
+\item[1)] È banalmente verificata poiché sono tutte quantità positive:
+$$  e^{- \lambda} > 0, \;\;\; n! > 0, \;\;\; \lambda^n > 0 $$
+\item[2)] Basta verificare che la serie di termine generale $\textit{p}_n$ si somma a 1:
+$$ \sum_{n=0}^{\infty} \textit{p}_n = \sum_{n=0}^{\infty} e^{-\lambda} \frac{\lambda^n}{n!} = e^{-\lambda} \sum_{n=0}^{\infty} \frac{\lambda^n}{n!} = e^{-\lambda} * e^{\lambda} = 1 $$
+L'ultimo passaggio si ottiene ricordando lo sviluppo in serie di Mc Laurin della funzione $e^x$.
+\end{itemize}
+\subsubsection{Esempio 02}
+Si ponga, con $\textit{p} \in (0,1)$, $n \in \mathbb{N}$, $\textit{p}^{\prime}_n = \textit{p} (1-\textit{p}){n-1}$.\\
+Procedendo come nell'esempio precedente, basta verificare che la serie di termini generale $\textit{p}^{\prime}_n$ si somma a 1:
+$$  \sum_{n=1}^{\infty} \textit{p}^{\prime}_n = \sum_{n=1}^{\infty} \textit{p} (1- \textit{p})^{n-1} = \textit{p} \sum_{n=1}^{\infty} (1-\textit{p})^{n-1} = \textit{p} \sum_{m=0}^{\infty}  (1-\textit{p})^m = \textit{p} \frac{1}{1-(1-\textit{p})} = \textit{p} \frac{1}{\textit{p}} = 1$$
+L'ultimo passaggio si ottiene ricordando la serie geometrica di ragione $h \in (-1,1)$ si somma a $\frac{1}{1-h}$
+
+\subsection{Eventi non Incompatibili}
+\subsubsection{Teorema 06}
+$ \forall A \in F, \forall B \in F $ si ha:
+$$ P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
+(se $A$ e $B$ sono disgiunti allora abbiamo la finita additività).\\
+Dim: 
+$$ A \cup B = A \cup (B \cap A^C) $$
+Inoltre dalla relazione:
+$$ B=B \cap \Omega = B \cap (A \uplus A^C) = (B \cap A) \uplus (B \cap A^C)$$
+si ricava, per la finita additività di $P$:
+$$ P(B) = P(B \cap A) + P(B \cap A^C)$$
+$$ P(B \cap A^C) = P(B) - P(A \cap B)$$
+In definitiva:
+$$ P(A \cup B) = P(A) + P(B \cap A^C) = P(A) + P(B) - P(A \cap B)$$
+Osservazione:\\
+Se $A \cap B = \emptyset$ allora $P(A \cap B) = P(\emptyset) = 0$ e il risultato coincide con la finita additività.
+
+\subsubsection{Teorema 07}
+$\forall A \in F$, $\forall B \in F$ e $\forall C \in F$ si ha:
+$$ P(A \cup B \cup C) = P(A) + P(B) + P(C) \;\; - [P(A \cap B) + P(A \cap C) + P(B \cap C)] \;\; + P(A \cap B \cap C)$$
+Dim: \\
+Applicando le propietà delle operazioni insiemistiche ed il risultato precedenti si ha:
+$$ P(A \cup B \cup C) = P[(A \cup B) \cup C)] = P(A \cup B) + P(C) - P[(A \cup B) \cup C] = $$
+$$ P(A) + P(B) - P(A \cap B) + P(C) - P[(A \cap C) \cup (B \cap C)]  = $$
+$$ P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P[(A \cap C) \cap (B \cap C))] = $$
+$$ P(A) + P(B) +P(C) - P[(A \cap B) + P (A \cap C) + P(B \cap C)] + P(A \cap B \cap C)$$
+
+\subsubsection{Teorema 08 (Caso Generale)}
+Se $A_i \in F$ per $i = 1,2,...,n$ si ha:
+$$ P(\bigcup_{i=i}^n A_i) = \sum_{i=i}^n P(A_i) - \sum_{i<j} P(Ai \cap A_j) + \sum_{i<j<k} P(A_i \cap A_j \cap A_k) +...+ (-1)^{n+1} P(A_1 \cap A_2 \cap ... \cap A_n)$$
+Questo risultato è noto come \textbf{formula di inclusione-esclusione}.
+
+(Mancano 2 teoremi che finisce di fare la lezione dopo)
+
+
+
+
+
+
+
+
+

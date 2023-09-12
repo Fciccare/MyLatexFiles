@@ -1,0 +1,156 @@
+\section{Lezione 02 - 08/03/2023}
+
+\subsection{Principio Fondamentale del Calcolo Combinatorio}
+Se una procedura di scelta si può suddividere in $r$ sottoprocedure allora il numero $n$ delle possibili scelte è dato da:
+$$ n = n_1*n_2*...*n_r$$
+Dove $i=1,2,...,r$ rappresenta il numero delle possibili scelte nella sottoprecedura i-sima.\\
+
+\subsection{Esempio Ristorante}
+Vogliamo sapere quante possibili combinazioni di menù un ristorante può avere date:
+\begin{itemize}
+\item 3 Antipasti ($n_1$)
+\item 4 Primi ($n_2$)
+\item 3 Secondi ($n_3$)
+\item 2 Dolci ($n_4$)
+\item Poniamo $r=4$ 
+\end{itemize}
+Il numero di combinazione possibile è:
+$$ n_1*n_2*n_3*n_4 = 3*4*3*2 = 72$$
+
+\iffalse
+\subsubsection{Esempio Cartellini Camicie}
+Vogliamo sapere quanti cartellini delle camicie dobbiamo fabbricare avendo i seguenti dati:
+4 Taglie, 2 Foggie, 7 Colori.\\
+Usando la regola moltiplicativa poniamo $r=3$ avendo tre possibili varianti, $n_1=4$ per le taglie, $n_2=2$ per le foggie, $n_3=7$ per i colori, ora calcoliamo il totale:
+$$ n = n_1*n_2*n_3 = 4*2*7 = 56 \:\:\: \textbf{CARTELLINI} $$
+\fi
+
+\subsection{Fattoriale}
+%Sia $n$ un intero positivo. Il prodotto dei primi $n$ interi positivi è chiamato fattoriale di n e si pone come
+Il fattoriale di $n \ge 0$ si esprime come $n!$ ed è definita come il prodotto di tutti i numeri precendenti, definiamo tramite ricorsione:
+\begin{equation*}
+n! = 
+\begin{cases}
+1 \: \: \: \text{SE} \: \: \: n=0\\
+n*(n-1)! \: \: \: \text{SE} \: \: \: n>0
+\end{cases}
+\end{equation*}
+Esempio: 
+$$6! = 1*2*3*4*5*6 = 720$$
+$$ \frac{13!}{11!} = \frac{13*12*\cancel{11!}}{\cancel{11!}} = 13*12 = 156 $$
+%$$ \frac{n!}{(n-1)!} = \frac{n(n-1)!}{(n-1)!} = n $$
+\newpage
+
+\subsection{Coifficiente Binomiale}
+Presi $n$ e $k$ con $k \le n$, definiamo il cofficiente binomiale in questo modo ($n$ su $k$):
+$$ \binom{n}{k} = \frac{n!}{k!(n-k)!} $$
+%Esempio:
+$$ \binom{6}{4} = \frac{6!}{4!(6-4)!} = \frac{6!}{4!*2!} = \frac{6*5*\cancel{4!}}{\cancel{4!}*2!} = \frac{\cancel{6}^3*5}{\cancel{2}} = 3*5 = 15 $$
+
+\subsubsection{Calcolare sottoinsiemi con C.B.}
+Un possibile uso del coifficiente binomiale è quello di poter sapere il numero dei sottoinsiemi di ordine $k$ con $n$ valori.\\
+Esempio poniamo di avere un insieme $S=\{1,2,3,4\}$ con cardilinità $\#S = 4$, vogliamo sapere quanti sono tutti i possibili sottoinsiemi di ordine due:
+
+$$ \binom{4}{2} = \frac{4!}{2!*(4-2)!} = \frac{\cancel{4}^2*3*\cancel{2!}}{\cancel{2}*\cancel{2!}} = 2*3 = 6$$
+
+$$ T={ \{1,2\}, \{1,3\}, \{1,4\}, \{2,3\}, \{2,4\}, \{3,4\}} \: \: \#T=6 $$
+
+\subsubsection{Propietà del C.B. con esempi}
+Andiamo ad elencare alcune propietà del coifficiente binomiale con i rispettivi esempi:
+\begin{description}
+  \item [Propietà 01] 
+  	$$ \binom{n}{n} = 1 = \binom{n}{0} $$
+	$$\binom{5}{5} = \frac{\cancel{5!}}{\cancel{5!}*\equalto{(5-5)}{0!=1}!} = 1 $$ 
+	$$ \binom{5}{0} = \frac{5!}{0!} = \frac{5!}{0!(5-0)!} = \frac{\cancel{5!}}{1*\cancel{5!}} = \frac{1}{1} = 1$$
+	
+  \item [Propietà 02] 
+  	$$ \binom{n}{n-1} = n $$
+	$$\binom{5}{4} = \frac{5*\cancel{4!}}{\cancel{4!}*\equalto{(5-4)}{1}!} = 5 $$ 
+  \item [Propietà 03]
+  $$ \binom{n}{k} = \binom{n}{n-k} $$
+  \textbf{DIM:}\\
+  $$ \binom{n}{n-k} = \frac{n!}{(n-k)!*(n-(n-k))!} = \frac{n!}{(n-k)!*(\cancel{n}-\cancel{n}+k)!} = \frac{n!}{(n-k)!*k!} = \binom{n}{k} $$
+  $$ \binom{12}{4} = \frac{12!}{4!*\equalto{(12-4)!}{8!}} = \frac{\cancel{12}^{\cancel{3}}*11*\cancel{10}^5*9*\cancel{8!}}{\cancel{2}*\cancel{3}*\cancel{4}*\cancel{8!}} = 5*9*11 = 495 = \frac{12!}{8!*\equalto{(12-8)!}{4!}} = \binom{12}{8} $$
+  \item [Propietà 04 Se $n \in \mathtt{N}_0 \: \: \: 1 \le k \le n-1 $]
+  $$ \binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1}$$
+\iffalse
+  \item [Propietà 05 ($n=6, k=3$)]
+  $$ \binom{n+1}{k} = \binom{n}{k} + \binom{n}{k-1}  $$
+\begin{equation*}
+\resizebox{\textwidth}{!}
+{%
+$\binom{7}{3} = \frac{7*\cancel{6}*5*\cancel{4!}}{\cancel{3!}*\cancel{4!}} = 7*5 = 35 = 20+15 =\frac{\cancel{2}*\cancel{3}*4*5*\cancel{6}}{\cancel{6} * \cancel{6}} + \frac{\cancel{6}^3*5*\cancel{4!}}{\cancel{2}*\cancel{4!}} = \frac{6!}{3!*3!} + \frac{6!}{2!*4!} = \binom{6}{3} + \binom{6}{2}$%
+}
+\end{equation*}
+\fi
+\end{description}
+
+
+\subsection{Problema del Contare}
+Sia $S$ un insieme costituito da un numero $n$ finito di elementi distinti. In problemi coinvolgenti la selezione occorre distungere il caso in cui questa è effettuata con o senza ripetizioni. Si può inoltre porre o meno l'attenzione sull'ordine con cui gli elementi di S si presentano nella selezioni.
+
+\subsection{Tartaglia}
+Applicando le propietà sul coifficienti binomiali è possibile costruire la tabella di Tartaglia:\\
+$$
+\begin{pmatrix}
+1 & * & * & * & * & * & * & * & * \\
+1 & 1 & * & * & * & * & * & * & *\\
+1 & 2 & 1 & * & * & * & * & * & *\\
+1 & 3 & 3 & 1 & * & * & * & * & *\\
+1 & 4 & 6 & 4 & 1 & * & * & * & *\\
+1 & 5 & 10 & 10 & 5 & 1 & * & * & *\\
+1 & 6 & 15 & 20 & 15 & 6 & 1 & * & *\\
+1 & 7 & 21 & 35 & 35 & 21 & 7 & 1 & *\\
+1 & 8 & 28 & 56 & 70 & 56 & 28 & 8 & 1 \\
+
+\end{pmatrix}
+$$
+Il valore dell'elemento di riga $(x_i,y_i)$ viene calcolato dalla somma tra gli elementi di coordinata $ (x_i,y_i-1) + (x_i-1, y_i-1)$ della riga precedente $y-1$.\\
+Ogni riga di Tartaglia rappresenta i coefficienti di $(a+b)^n$\\
+Esempio per $2$: $ (a+b)^2 = a^2+2ab+b^2$\\
+Andando a generalizzare:\\
+$$ (a+b)^n = \sum_{k=0}^{n} \binom{n}{k} a^k*b^{n-k}$$
+\paragraph{Proposizione}
+La somma degli elementi della $n-$esima riga vale $2^n$
+
+\iffalse
+\subsection{Coifficiente Multinomiale}
+Sia $n$ un intero posi+tivo e $n_1,n_2...n_r$ interi tali che $n_1+n_2+...+n_r = n$, possiamo scrivere il coifficiente multinomilae in questo modo:
+$$ \binom{n}{n_1,n_2,...,n_r} = \frac{n!}{n_1!*n_2!*...*n_r!} $$
+%Esempio:
+$$ \binom{7}{2,3,2} = \frac{7!}{2!*3!*2!} = \frac{7*6*5*\cancel{4}*\cancel{3!}}{\cancel{4}*\cancel{3!}} = 210 \:\:\:(2+3+2 = 7) $$
+\newpage
+
+\subsection{Disposizioni e Combinazioni}
+Per ovviare al problema del contare andiamo a definire le seguenti classificazioni:\\\\
+\textbf{Disposizione:} è una selezione dove l'ordinamento è \textbf{IMPORTANTE}.\\
+Possiamo suddividerla in:\\
+Disposizione: è ammessa la \textbf{ripetizione} di qualunque elemento\\
+Diposizione Semplice: \textbf{non è amessa} la ripezioni\\\\
+\textbf{Combinazioni: } è una selezione dove l'ordinamente \textbf{non è IMPORTANTE}.\\
+Possiamo suddividerla in:\\
+Combinazioni: è ammessa la \textbf{ripetizione} di qualunque elemento\\
+Combinazioni Semplice: \textbf{non è amessa} la ripezioni\\\\
+
+\subsection{Disposizioni semplici/ripetizioni}
+\label{sec:disposizioni}
+Per calcolare tutte le k-disposizioni con ripetizione di S usiamo questa formula:
+$$ D^{(r)}_{n,k} = n^k$$ 
+%$$ D^{(r)}_{n,k} = n^k \: \: \: \: \: (k>=n)$$ 
+
+Per calcolare tutte le k-disposizioni semplici di S usiamo questa formula:
+
+$$ D_{n,k} = \frac{n!}{(n-k)!} \: \: \: \: \: (k<=n)$$ 
+
+\begin{center}
+($n$ cardinalità dell'insieme, $k$ la lunghezza della disposizione)
+\end{center}
+
+\subsubsection{Esempio di Disposizione}
+Poniamo caso di voler sapere le possibili di dispozioni normali e semplici di un dato insieme di lettere.
+Per semplicità consideriamo l'insieme $S=\{c,a\}$, poniamo caso che vogliamo sapere tutte le possibili parole di lunghezza $2$.\\
+Quindi $n = \#S = 2$ e $k = 2$, allora:
+
+$$ D^{(r)}_{n,k} = n^k = 2^2 = 4 = \{(c,c),(a,a),(c,a),(a,c)\} $$
+$$ D_{n,k} = \frac{n!}{(n-k)!} = \frac{2!}{0!} = 2! = 2 = \{(c,a), (a,c)\}$$ 
+\fi

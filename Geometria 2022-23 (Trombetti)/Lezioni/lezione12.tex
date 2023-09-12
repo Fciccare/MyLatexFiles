@@ -29,9 +29,22 @@ a_{1m} \\ \vdots \\ a_{nm}
 \end{pmatrix}
 $$
 $$ (c_1,...,c_n) \; \text{DIPENDE DALLE COLONNE}$$
-DA FINIRE
-\textbf{DIM $\Leftarrow$:}
-Partiamo da "i due ranghi sono uguali" allora per il teorema degli orlati hanno lo stesso ordine/grado $(L)$.\\
+Quindi possiamo dire che appartiene al sottosp. gen. delle colonne da cui dipende:
+$$ (c_1,...,c_n) \in <\underline{a}^1,...,\underline{a}^n> $$
+Ci interessa prendere una base quindi consideriamo la matrice completa:
+$$
+\begin{pmatrix}
+a_{11} & \dots & a_{1n} &\aug& c_1 \\
+\vdots & \ddots & \vdots &\aug& \vdots \\
+a_{n1} & \dots & a_{nm} &\aug& c_n 
+\end{pmatrix}
+$$
+Noi sappiamo che la colonna dei termini noti dipende dalle colonne, allora una base sarà solo il sottospazio generato dalle colonne.\\
+Quindi la base della matrice incompleta è anche base della matrice completa, ergo le dimensioni combaciano quindi:
+$$ \underbrace{<\underline{a}^1,...,\underline{a}^n>}_\text{dim(rango di colonna matrice incompleta)} = \underbrace{<\underline{a}^1,...,\underline{a}^n, \underline{c}>}_\text{dim(rango di colonna matrice completa)}$$
+
+\textbf{DIM $\Leftarrow$:}\\
+Partiamo dalla ipotesi "i due ranghi sono uguali" allora per il teorema degli orlati hanno lo stesso ordine/grado/dimensione $(L)$ (stessa dim del minore fondametale).\\
 Consideriamo una matrice:
 $$
 \begin{pmatrix}
@@ -40,8 +53,10 @@ a_{11} & \dots & a_{1n} &\aug& c_1 \\
 a_{n1} & \dots & a_{nm} &\aug& c_n 
 \end{pmatrix}
 $$
-Consideriamo un minore fondamentale della matrice incompleta (base), ma dalla ipotesi lo è anche per la matrice completa.\\
-Allora per il teorema degli orlati: le colonne del minore fondamentale formano un sistema di generatori di tutta la matrice allora il sistema è compatibile-
+Prendiammo un minore fondamentale della matrice incompleta (forma una base), allora sarà m.f. anche per la matrice completa, poiché per ipotesi hanno lo stesso rango.\\
+Allora per il teorema degli orlati: le colonne del minore fondamentale sono una base per il sottospazio generato da tutte le colonne, quindi
+tutte le altre colonne sono combinazione lineare di quest'ultime, in particolare quella dei termini è combinazine lineare, quindi per il primo principio di compatibile il sistema è compatibile.
+%formano un sistema di generatori di tutta la matrice allora il sistema è compatibile.
 
 \subsubsection{Esempio Parametrico}
 Consideriamo il seguente sistema:

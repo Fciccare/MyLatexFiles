@@ -1,0 +1,100 @@
+\section{Lezione 07 - 22-03-2023}
+
+\subsection{Soggettività}
+La probabilità (soggetiva) di un evento è il prezzo p (compreso tra 0 e 1), che un individuo coerent ritiene "equo" pagare per ricevere 1 se l'evento A si verifica.\\
+(Non sarà possibile con nessun insieme assicurarsi perdita o vincita certe).\\
+Si fa uso di due principi:
+\begin{itemize}
+\item[equità)] Sia $A$ un evento sulla cui realizzazione scommettono due giocatori, di cui uno è il banco e l'altro e lo scommettitore. Supponiamo che spetti ad uno di essi, fissare la probabilità di $A$. Allora la scomessa è \textbf{equa} se al secondo giocatore è lasciata la possibilità di stabile se fare il banco oppure lo scommettitore.
+(questo permette ad entrambi di non avere una vittoria/perdita certa)·
+\item[coerenza)] Non è possibile individuare un sistema di
+eventi che possa assicurare vantaggio/svantaggio all’individuo che pone
+le probabilità.
+\end{itemize}
+
+\subsection{Recap Probabilità}
+Quindi riassumento possiamo esprimere la probabilità tramite tre diverse definizioni:
+\begin{itemize}
+\item Classica/Laplace: Se c'è simmetria.
+\item Frequentistica/Statistica: Se l'esperimento si può ripetere infinite volte.
+\item Soggettiva: Quando l'esperimento si può eseguire una sola volta.
+\end{itemize}
+
+\subsection{Propietà Comuni}
+Sia $A$ un evento, queste tre propietà di verificano in tutte e tre le definizioni:
+\begin{itemize}
+\item[•] $ \mathbb{P}_{c,f,s}(A) >= 0 $
+\item[•] $ \mathbb{P}_{c,f,s}(\Omega) = 1 $
+\item[•] $ \mathbb{P}_{c,f,s}(A \uplus B) = \mathbb{P}_{c,f,s}(A) + \mathbb{P}_{c,f,s}(B) \;\;\; \textbf{FINITA ADDITIVITÀ IMPORTANTE!!!} $ 
+%$ \mathcal{F}  \mathscr{F} $
+\end{itemize}
+
+\subsection{Impostazione Assiomatica}
+Gli eventi sono sottoinsiemi di uno spazio $\Omega$ e formano una $\sigma$-algebra $F$:
+\begin{itemize}
+\item[a)] $ F \neq \emptyset$
+\item[b)] $ A \in F \Rightarrow A^C \in F $
+\item[c)] $ \forall n \in F, \forall i \in N \Rightarrow \bigcup_{i=1}^{\infty} A_n \in F $
+\end{itemize}
+Una misura di probabilità sullo spazio $\Omega$ è una funzione $P: F -> R$ tale che:
+\begin{itemize}
+\item[d)] $\forall A \in F, P(A) >= 0 \:\:\: (\text{ma} < \infty$
+\item[e)] $ P(\Omega) = 1 $
+\item[f)] $ \text{se} \{A_n: n \in N \} \subseteq F: (i \neq j ) \: A_i \cap A_j \neq \emptyset \Rightarrow P(\bigcup_{n=1}^{\infty}A_n) = \sum_{n=1}^{\infty}P(A_n)$
+\end{itemize}
+La tripla $(\Omega, F, P)$ prende il nome di \textbf{spazio di probabilità}.
+
+\subsection{Conseguenze immediate degli assiomi}
+\subsubsection{Teorema 01}
+Teorema 01: $ P(\emptyset) = 0 $\\
+Dim:\\
+Il vuoto è un evento in quanto complementare del certo. Inoltre il vuoto può essere visto come unione numerabile di insiemi vuoti (per una delle propietà di indentità):
+$$ \emptyset = \emptyset \uplus \emptyset \emptyset \uplus ... = \uplus_{n=1}^{\infty} \emptyset $$
+Dall'assioma $f)$ si ottiene allora:
+$$ P(\emptyset) = P(\bigcup_{n=1}^{\infty} \emptyset = \sum_{n=1}^{\infty} P(\emptyset) = P(\emptyset) + P(\emptyset) + ...$$
+e per l'assioma $d)$ l'unico numero che soddisfa la precedente relazione è $P(\emptyset)=0$
+
+\subsubsection{Teorema 02}
+Se $A_1 \in F, A_2 \in F, ..., A_n \in F$ e $A_i \cap A_j = \emptyset$ per $i \neq j$ allora:
+$$ P(\uplus_{i=1}^n A_i) = \sum_{i=1}^n P(A_i)$$
+Dim:\\
+Poniamo $B_1 = A_1, B_2 = A_2,...,B_n = A_n$ e $B_{n+1} = B_{n+2} = ... = \emptyset$
+Ovviamente riesce $B_i \cap B_j = \emptyset$ per $i \neq j$ per cui dall'assioma $f)$ si ha:
+$$ P(\uplus_{i=i}^{\infty} B_i) = \sum_{i=i}^{\infty} P(B_i)$$
+Dall'altra parte:
+$$ \uplus_1^{\infty} B_i = B_1 \uplus B_2 \uplus ... \uplus B_n \uplus B_{n+1} \uplus B_{n+2} \uplus ... $$
+$$ = (A_1 \uplus A_2 \uplus ... \uplus A_n) \cup (\emptyset \uplus \emptyset \uplus ...) $$
+$$ = (A_1 \uplus A_2 \uplus ... \uplus A_n)\uplus \emptyset $$
+$$ = \uplus{n=1}^n A_i $$
+e:
+$$ \sum_{i=1}^{\infty} P(B_i) = P(B_1) + P(B_2) + ... + P(B_n) + P(B_{n+1}) + ... $$ 
+$$ = P(A_1) + P(A_2) + ... + P(A_n) + P(\emptyset) + P(\emptyset) + ... $$
+$$ = \sum_{i=1}^n P(A_i) + (0+0+...)$$
+$$ = \sum_{i=1}^n P(A_i) $$
+La tesi segue da $(i), (ii), (iii)$.\\
+La misura di probabilità $P$ e quindi anche finitamente additiva.
+
+\subsubsection{Teorema 03}
+$\forall A \in F, P(A^C) = 1 - P(A)$
+Dim: \\
+Per ogni $A \in F$ si ha $\Omega = A \cup A^C $ per cui essendo $P$ finitamente additivita si ha:
+$$ P(\Omega) = P(A \cup A^C) = P(A)+P(A^C)$$
+Ricordando l'assioma: $e) P(\Omega)=1$ otteniamo infine:
+$$ 1 = P(A)+P(A^C) \Rightarrow P(A^C) = 1 - P(A)$$
+
+\subsubsection{Teorema 04}
+$\forall A \in F, P(A) <=1$
+Dim:\\
+Dal precedente risultato e dall'assioma $d)$ discende immediatamente:
+$$ P(A)= 1-P(A^C) <= 1$$
+
+\subsubsection{Teorema 05}
+Se $A \in F$ e $B \in F$ sono tali che $A \subseteq B$ allora $P(A) <= P(B)$.
+Dim: \\
+Risulta allora:
+$$ B = B \cap \Omega = B \cap (A \cup A^C) = (B \cap A) \uplus (B \cap A^C) = A \uplus (B \cap A^C)$$
+in quanto dall'ipotesi $A \subseteq B$ si ha $B \cap A = A$.\\
+Dalla finita additività di $P$ e dall'assioma $d)$ si ha che:
+$$ P(B) = P(A) + P(B \cap A^C) >= P(A)$$
+
+
