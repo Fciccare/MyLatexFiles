@@ -1,0 +1,88 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[a4paper, total={6in, 9.5in}]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{eucal}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{svg}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{import}
+\usepackage[T1]{fontenc}
+\usepackage{blindtext}
+%\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{systeme}
+\usepackage{eqparbox}
+\newcommand{\verteq}{\rotatebox{90}{$\,=$}}
+\newcommand{\equalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\verteq}{#2}}{#1}}
+\newcommand{\mystackrel}[3][T]{\stackrel{\eqmakebox[#1]{\scriptsize#2}}{#3}}
+%\usepackage{lipsum}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{soul}
+\DeclareRobustCommand{\hlcyan}[1]{{\sethlcolor{cyan}\hl{#1}}}
+\hypersetup{linktoc=all}
+\title{Algoritmi e Strutture Dati 2023-24\\ (M. Benerecetti)}
+\author{}
+\date{}
+
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+%Define a custom style
+\lstdefinestyle{Style01}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=left,       
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+}
+
+\lstdefinestyle{Style02}{
+  frame=tb,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,       
+  numbersep=5pt,               
+  backgroundcolor=\color{backcolour},
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=2
+}
+
+
+
+% Use \lstset to make myStyle the global default
+\lstset{style=Style02}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+
+\include{Lezioni/lezione2}
+
+
+\end{document}

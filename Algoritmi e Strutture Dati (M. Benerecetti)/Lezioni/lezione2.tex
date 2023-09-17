@@ -1,0 +1,40 @@
+\section{Algoritmo di Conteggio}
+Descrivere un algoritmo che accetta come input un intero $N \ge 1 $ e produce in output il numero di coppie
+ordinate $i,j \in \mathbb{N} \; \, \; (i,j): 1 \le i \le j \le \mathbb{N} $\\
+Esempio:\\
+\begin{itemize}
+\item Input:N=$4$ 
+\item Output:$10$ \{(1,1),(1,2),(1,3),(1,4),(2,2),(2,3),(2,4),(3,3),(3,4),(4,4)\}
+\end{itemize}
+
+\begin{lstlisting}[language=Python]
+Conta(N):
+	ris = 0;
+	for i=1 to N do
+		for j=1 to N do
+			if i<=j then
+				ris = ris+1
+	return ris
+\end{lstlisting}
+
+Andiamo a definire per ogni riga un costo:
+\begin{itemize}
+\item 2) Assegnamento costante, 1 operazione elementare
+\item 3) Al primo giro: Assegnamento + confronto (2 operazioni elementari), successivi giri: Incremento+confronto (2 operazione elementari)
+\item 4) idem $3$
+\item 5) 2 letture + confronto (3 operazioni elementari)
+\item 6) lettura+scrittura+assegnamento (3 operazioni elementari)
+\item 7) 1 operazione elementare
+\end{itemize}
+
+Ognuna di queste operazioni (righe) vengono eseguite più di una volta, quindi il costo sarà maggiore, andiamo ad esprimerlo:\\
+
+\begin{itemize}
+\item 2) Costo = 1 (fuori dal ciclo)
+\item 3) La testa viene eseguita $n+1$ volte poiché abbiamo anche l'ultima operazione per uscire dal ciclo, quindi Costo = $2*(n+1) = 2 * \sum_{i=1}^{N+1} 1$
+\item 4) Questo for verrà ripetuto $N$ volte poiché il corpo del for viene eseguito $N$ volte, quindi il suo costo sarà:
+$$ \underbrace{2}_{\text{costo dell'operazione}}*\underbrace{\sum_{i=1}^{N}}_{\text{for esterno}} \underbrace{\sum_{j=1}^{N+1} 1}_{\text{for interno}}$$
+\item 5) L'if stando in entrambi i for avrà un costo di: $3*\sum_{i=1}^{N} \sum_{j=1}^{N+1} 1$
+\item 6) Quando $i=1$ il numero di esecuzioni della linea 5 è $N$, quando $i=2$ il numero di esecuzioni sarà $N-1$, perché quando $j=1$ non entriamo, quando $i=3$ il numero di esecuzioni sarà $N-2$, e cosi via, quindi in generale quando i è uguale ad un certo numero $k(con k<=N)$ il numero di volte in cui è soddisfatta la condizione dell’if è $N-(K - 1)$:
+\item 7) Costo = 1 (fuori dal ciclo)
+\end{itemize}
