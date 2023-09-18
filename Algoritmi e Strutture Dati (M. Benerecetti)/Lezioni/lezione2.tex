@@ -65,13 +65,13 @@ Come vediamo questa funzione e quadratica, quindi cresce esponenzialmente nel te
 Dopo aver ottenuto i risultati dell'analisi sopra, possiamo dire che e sicuramente possibile semplificare il nostro codice in modo tale da far eseguire meno operazioni al nostro processore e quindi utilizzare meno tempo.
 \\
 
-%\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python]
 Conta(N):
 	ris = 0;
 	for i=1 to N do
 		ris = ris + (N-i+1)
 	return ris
-%\end{lstlisting}
+\end{lstlisting}
 
 Cosi facendo abbiamo semplicemente detto al nostro codice che deve sommare soltanto gli elementi che al momento in cui $i$ e fissato, sono $le i$.
 
@@ -95,12 +95,12 @@ Il risultato della sommatoria e lo stesso, se andiamo a semplificarlo.
 
 $$\frac{N(N+1)}{2}$$
 
-%\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python]
 Conta(N):
 	ris = 0
 	ris = ris+(N-i+1)
 	return ris
-%\end{lstlisting}
+\end{lstlisting}
 
 In questo modo abbiamo eliminato qualsiasi ciclo e quindi il risultato sara un numero fisso di operazioni.
 
