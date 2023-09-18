@@ -73,14 +73,14 @@ Conta(N):
 	return ris
 \end{lstlisting}
 
-Cosi facendo abbiamo semplicemente detto al nostro codice che deve sommare soltanto gli elementi che al momento in cui $i$ e fissato, sono $le i$.
+Cosi facendo abbiamo semplicemente detto al nostro codice che deve sommare soltanto gli elementi che nel momento in cui $i$ e fissato, sono $\le$ di se stesso.
 
 Cosi facendo si dovrebbero eliminare molte operazion inutili, analizziamo.
 
 \begin{itemize}
 \item 2)sempre 1 operazione
-\item 3) $\sum_{i=1}^{N+1} 1$
-\item 4) $\sum_{i=1}^{N} N-i+1 = 7\cdot N $
+\item 3) $2*\sum_{i=1}^{N+1} 1$
+\item 4) $\sum_{i=1}^{N} 7 = 7\cdot N $
 \end{itemize}
 
 Come possiamo osservare abbiamo eliminato il secondo for, dunque abbiamo eliminato la quadraticita, ora l'operazionea riga 4 viene eseguita solamente $N$ volte, e il numero di operazioni semplici che esegue e fissato.
@@ -90,10 +90,10 @@ $$T(n) = 1 + 2(N+1) + 7N + 1 = 9N+4$$
 \subsection{Algoritmo di conteggio 3}
 Da come possiamo notare e possibile di nuovo semplificare l'ultima sommatoria della riga 4 dello scorso algoritmo.
 
-Da $$\sum_{i=1}^{N} N-i+1 \leftarrow \sum_{i=1^{N} i }$$
+Da $$\sum_{i=1}^{N} N-i+1 \rightarrow \sum_{i=1}^{N} i$$
 Il risultato della sommatoria e lo stesso, se andiamo a semplificarlo.
 
-$$\frac{N(N+1)}{2}$$
+$$\sum_{i=1}^{N} N-i+1 = \sum_{i=1}^{N}i = \frac{N(N+1)}{2}$$
 
 \begin{lstlisting}[language=Python]
 Conta(N):
@@ -111,5 +111,5 @@ In questo modo abbiamo eliminato qualsiasi ciclo e quindi il risultato sara un n
 
 $$T(n) = 5+1 = 6$$
 
-In questo caso la funzione tempo per eseguire queste operazioni e fissa, non dipendente da nessun N, dunque e la migliore soluzione possibile per questo algoritmo.
+In questo caso la funzione tempo per eseguire queste operazioni e costante, non dipendente da nessun N, dunque e la migliore soluzione possibile per questo algoritmo.
 
