@@ -113,3 +113,45 @@ $$T(n) = 5+1 = 6$$
 
 In questo caso la funzione tempo per eseguire queste operazioni e costante, non dipendente da nessun N, dunque e la migliore soluzione possibile per questo algoritmo.
 
+\section{Algoritmo per calcolare una somma massima di una sottosequenza contigua}
+
+Preso un array di $n$ elementi, vorremmo provare a trovare la sottosequenza la cui somma di tutti i valori e massima.\\
+
+Come fare? La soluzione piu naive possibile e effettuare 3 cicli for innestati:
+
+\begin{lstlisting}[language=Python]
+int Max_seq_sum_1(int N, array a[])
+	maxsum = 0
+		for i=1 to N
+			for j=i to N
+				sum = 0
+				for k=i to j
+					sum = sum + a[k]
+				maxsum = max(maxsum,sum)
+	return maxsum
+\end{lstlisting}
+
+Come possiamo notare l'avere 3 for innestati ci fa avere una complessita computazionale di $N^3$, comunemente rappresentato dalla formula della notazione asintotica $O(N^3)$.
+
+\subsection{Algoritmo 2 per la somma massima di una sottosequenza contigua}
+
+Come e facile notare, nel terzo for innestato c'e una ripetizione abbastanza inutile di operazioni che effettuiamo per andarci a sommare i valori delle sottosequenze. In particolare andiamo a ripetere scorrere piu volte lo stesso numero di celle, solamente per trovare la sottosequenza poco piu grande (a volte anche di una cella).\\
+
+Gli stessi valori delle sottosequenze possono essere semplicemente trovati scorrendo avanti l'indice e sommando alla sequenza precedente il valore successivo. Analiticamente ci troveremmo che:
+
+$$\sum_{k=i}^{j+1} a_k = a_{j+1} + \sum_{k=i}^{j}a_k$$
+
+Il valore sum rimarra inalterato, ma verra solamente aggiornato del valore successivo.
+
+Il codice si presentera in questo modo:
+
+\begin{lstlisting}[language=Python]
+int Max_seq_sum_1(int N, array a[])
+	maxsum = 0
+		for i=1 to N
+			sum = 0
+			for j=i to N
+				sum = sum + a[j]
+				maxsum = max(maxsum,sum)
+	return maxsum
+\end{lstlisting}
