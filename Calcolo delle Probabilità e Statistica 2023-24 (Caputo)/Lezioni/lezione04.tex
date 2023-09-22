@@ -1,2 +1,50 @@
 \section{Lezione 04 - 15/03/2023}
-\blindtext
+\subsection{Riassunto Algebra}
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{ |c|c|c| } 
+ \hline
+ Begin & Algebra degli Insiemi \\ 
+ $ \emptyset $ & Insieme Vuoto \\
+ $ \mathbb{N} $ & Interi positivi (senza zero)\\ 
+ $ \mathbb{N}_0 $ & Numeri Naturali (con zero)\\ 
+ $ \mathbb{Z}$ & Numeri Relativi \\
+ $ \mathbb{Q} $ & Numeri Razionali \\ 
+ $ \mathbb{R} $ & Numeri Reali \\ 
+ $\Omega$ & Insieme universo \\ 
+ $A$ & Insieme \\
+ $A \cup B$ & Unione di A e B \\
+ $A \setminus B $ & Differenza tra A e B \\
+ $A^C$ & Complementare di A  \\
+ $ A \cap B $ & Intersezione tra A e B \\
+ $ A \subset B $ & A contenuto in B  \\
+ $ ]a,b[ $ & Intervallo aperto \\
+ $ [a,b] $ & Intervallo chiuso \\
+ 
+ \hline
+\end{tabular}
+}
+Le operazioni di uninione e intersezione hanno propietà di idempotenza, associtività, commutatività, distrubutività, identità, complementanzione, de morgan.
+
+\newpage
+
+\subsection{Cardinalità Insiemi}
+\subsubsection{Insieme Finito}
+Un insieme è \textbf{finito} se è possibile mettere ogni elemento dell'insieme in corrispondenza biuniva.
+$$ |\Omega| = \#\Omega = n $$
+\subsubsection{Insieme Numerabile}
+$\Omega$ si dice \textbf{numerabile} se è possibile mettere ogni elemento dell'insieme in corrispondenza biuniva con $\mathbb{N}=\{1,2,...\}$
+$$ |\Omega| = \#\Omega = \alpha_0 $$
+\subsubsection{Insieme Continuo}
+$\Omega$ si dice \textbf{continuo} se non ne finito ne numerabile
+$$ |\Omega| = \#\Omega = c $$
+
+\subsection{Classi (Famiglie)}
+Quando gli elementi di un insieme $a$ sono a loro volta degli insiemi si usa per $a$ la parola \textbf{classe}.
+$$ a = \{ \{2,3\},\{2\},\{5,6\} \}$$
+In particolare se $\Omega$ è un insieme, la classe di tutti i sottinisiemi di $\Omega$ si dice l'insieme delle parti di $\Omega$ e si indica con $P(\Omega)$.\\
+Se $\Omega$ è un insieme e $a$ è una classe di sottinsimi di $\Omega$ tale che l'unione di essi ha come risultato $\Omega$ allora $a$ è detta essere un \textbf{ricoprimento} di $\Omega$.\\
+Un ricoprimento $a$ di $\Omega$ è detto essere una \textbf{partizione} di $\Omega$ se i suoi elementi a due a due disgiunti.\\
+Esempio:
+ $$ \Omega= \{1,2,3,4,5,6,7,8,9\} $$
+ $$ a = \{ \{1,3,5\},\{2,6\},\{4,7\},\{7,8,9\} \} \:\:\: \text{è un ricomprimento ma non una partizione}$$
+ $$ a = \{ \{1,3,5\},\{2,4,6,8\},\{7,9\} \} \:\:\: \text{è partizione poiché  tutti gli insiemi sono disgiunti}$$
