@@ -1,0 +1,36 @@
+\section{Lezione 03 - 21-09-2023}
+
+\subsection{Algoritmo v3}
+L'algoritmo può essere anche migliorato, riusciendo ad arrivare ad una complessità \textbf{lineare}, nel seguente modo:
+
+\begin{lstlisting}[language=Python]
+int Max_seq_sum_3(int N, array a[])
+	maxsum = 0
+	sum = 0
+	for j=1 to N
+		if (sum + a[j] > 0) then
+			sum = sum + a[j]
+		else
+			sum = 0
+		maxsum = max(maxsum,sum)
+	return maxsum
+\end{lstlisting}
+Il ragionamento è il seguente:
+Se prendiamo un insieme di numeri da sommare, (da i ad a), possiamo controllare se esso è positivo o negativo.
+Nel caso in cui $\sum_{e=i}^{a} A[e]$ risultasse positiva, andiamo a espandere il nostro range fintantochè il risultato della sommatoria riamanga positivo.
+Nel caso in cui invece il risultato fosse negativo, non ci conviene tenere traccia dei numeri più piccoli di quel range, dato che se quella sommatoria è minore del numero successivo alla sommatoria, non ha senso tenerne conto. E quindi invece ha senso tenere traccia del numero successivo. Da quel numero poi sommare i numeri successivi continuando il processo sopracitato.
+
+
+\subsection{Strutture Dati - Insieme Dinamico}
+Vediamo come rappresentare un insieme di dati dinamico $S$ (con insieme dinamico si intende una collezione di elementi variabile nel tempo, quindi è possibile aggiungere o rimuovere elementi);%Rubata da Simone Cerrone
+$$ S=\{a_1,a_2,...,a_n\} \;\;\; n \ge 0  $$
+Andiamo a definire alcune operazioni:
+\begin{itemize}
+\item Insert$(S,a) \rightarrow S^{\prime}$ ($ S^{\prime} = S \cup \{x\}$)
+\item Deletes$(S,a) \rightarrow S^{\prime}$ ($S^{\prime} = S \backslash \{x\}$)
+\item Search$(S,a) \rightarrow \{True,False\}$
+\item Massimo$(S) \rightarrow a$
+\item Minimo$(S) \rightarrow a$
+\item Successore$(S,a) \rightarrow a^{\prime}$
+\item Predecessore$(S,a) \rightarrow a^{\prime}$
+\end{itemize}
