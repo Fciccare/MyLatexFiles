@@ -1,0 +1,19 @@
+\section{Lezione 04 - 23/09/2023}
+\subsection{Array}
+Abbiamo un insieme $S$ che vogliamo rappresentare in $A$.\\
+$$ |S| = |A| $$
+La funzione $A.free$ ci restituirà la posizione della prima cella libera.\\
+
+
+\subsubsection{Search}
+Dato un array e un elemento da cercare, restituisce la posizione in cui è presente il valore
+\begin{lstlisting}[language=Java]
+Search(A,e)//A: array in input, e: elemento da cercare
+	pos = A.free-1
+	while A[pos] != e and pos >= 0 do
+		pos = pos-1
+	return pos
+\end{lstlisting}
+
+
+
