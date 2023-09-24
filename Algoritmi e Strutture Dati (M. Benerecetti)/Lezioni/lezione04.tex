@@ -1,19 +1,61 @@
 \section{Lezione 04 - 23/09/2023}
-\subsection{Array}
+\subsection{Array non ordinato}
 Abbiamo un insieme $S$ che vogliamo rappresentare in $A$.\\
 $$ |S| = |A| $$
 La funzione $A.free$ ci restituirà la posizione della prima cella libera.\\
 
 
-\subsubsection{Search}
+\subsubsection{Ricerca}
 Dato un array e un elemento da cercare, restituisce la posizione in cui è presente il valore
 \begin{lstlisting}[language=Java]
-Search(A,e)//A: array in input, e: elemento da cercare
+Search(A,e) //A: array in input, e: elemento da cercare
 	pos = A.free-1
 	while A[pos] != e and pos >= 0 do
 		pos = pos-1
 	return pos
 \end{lstlisting}
+Ci posizionamo all'ultima cella piena e mano a mano tornando all'indietro andiamo a cercare il valore che abbiamo in input, se non è presente nell'array andiamo a restistuire il valore $-1$. 
 
+\subsubsection{Inserimento}
+\begin{lstlisting}[language=Java]
+Inserimento(A,e) //A: array in input, e: elemento da cercare
+	pos = search(A,e) //-1: non trovato, >=0: indice del valore
+	if pos != -1 then
+		if(A.free < length(A))
+			A=resize(A)
+		A[A.free]=e
+		A.free=A.free+1
+\end{lstlisting}
 
+\subsubsection{Cancellazione}
+\begin{lstlisting}[language=Java]
+Inserimento(A,e) //A: array in input, e: elemento da cercare
+	pos = search(A,e) //-1: non trovato, >=0: indice del valore
+	if pos >= 0 then //Elemento trovato
+		A[pos]=A[A.free-1]
+		A.free=A.free-1
+\end{lstlisting}
 
+\subsection{Array Ordinato}
+Uno dei grosso problemi dell'array visto in precendenza era la ricerca, poiché al più avevo costo $n$ cioè la lunghezza di tutto l'array, con l'array ordinario andiamo a sopperire a questo problema ma ovviamente aggiungendone degli altri.
+
+\subsubsection{Ricerca Binaria}
+La ricerca binaria è un algoritmo applicabile solo ad array ordinariti che permetto una ricerca molto rapida.\\
+ L'algoritmo è simile al metodo usato per poter ricevere ambo i lati, ovvero trovare una parola sul dizionario: sapendo che il vocabolario è ordinato alfabeticamente, l'idea è quella di iniziare la ricerca non dal primo elemento, ma da quello centrale, cioè a metà del dizionario. Si confronta questo elemento con quello cercato:
+\begin{itemize}
+\item se corrisponde, la ricerca termina indicando che l'elemento è stato trovato;
+    \item se è superiore, la ricerca viene ripetuta sugli elementi precedenti (ovvero sulla prima metà del dizionario), scartando quelli successivi;
+    \item se invece è inferiore, la ricerca viene ripetuta sugli elementi successivi (ovvero sulla seconda metà del dizionario), scartando quelli precedenti.
+\end{itemize}
+Andiamo a definirlo per ricorsione:
+\begin{lstlisting}[language=Java]
+BinSearch(A, e, i, j) //i: punto inizio, j: punto fine
+	if i <= j then
+		q=(i+j)/2
+		if A[q] > e then
+			i=BinSearch(A, e, i, q-1)
+		else if A[q] < e then
+			i=BinSearch(A, e, q+1, j)
+		else return q
+	else return -1
+\end{lstlisting}
