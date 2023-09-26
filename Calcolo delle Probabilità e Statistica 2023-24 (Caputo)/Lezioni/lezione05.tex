@@ -7,8 +7,8 @@
  \hline
  Begin & Algebra degli Insiemi & Logica degli Eventi \\ 
  $\Omega$ & Insieme universo & Spazio Campione \\ 
- $A$ & Insieme & Evento \\
- $A^C$ & Complementare di A & Negato di A \\
+ $A \in F$ & Insieme & Evento \\
+ $A^C$ & Complementare di A & Si verifica quando non si verifica A \\
  $A \cup B$ & Unione di A e B & OR degli eventi, deve verificarli almeno uno tra A e B \\
  $ A \cap B $ & Intersezione tra A e B & AND degli eventi, devono verificarsi entrambi \\
  $ \bigcup_{k=1}^n A_k $ & Unione finita & n verifica almeno una tra $A_1, A_2,...,A_n$ \\
@@ -17,68 +17,33 @@
  $ \bigcap_{k=1}^{\infty} A_k$ & Unione numerabile & ""  \\
  $ \emptyset $ & Insieme Vuoto & Evento Impossibile \\
  $ A \cap B = \emptyset $ & A e B sono disgiunti & Eventi Incompatibili \\
- $ A \subset B $ & A contenuto in B & Il verificare di A implica il verificare di B \\
+ $ A \subset B $ & A contenuto in B & Il verificare di finita di due elementiA implica il verificare di B \\
  $ \uplus_k A_k = \Omega $ & Ricoprimento disgiunto (partizione) & $A_1, A_2,...,A_n$ eventi neccessari\\
  \hline
 \end{tabular}
 }
 
-
-\subsection{Esempio Lancio Moneta 1}
-Poniamo caso che vogliamo descrivere l'evento che al terzo lancio di una moneta esca Testa, per prima cosa scegliamo un spazio campione:
-$$ \Omega = {\{T,C\}}^{N} $$
-Una moneta ha solo due casi, testa oppure croce, ora descriviamo che testa esca al terzo lancio:
-$$ T_3 = \{ (w_1,w_2,...) \in \Omega: w_3 = "T" \} $$ 
-abbiamo descritto questo eveno tramite propietà degli insiemi, nel caso volessimo esprimere lo stesso concetto ma per le croci ci basta fare il comlemento:
-$$ T_3^C = C_3 = \{ (w_1,w_2,...) \in \Omega: w_3 = "C" \}  $$
-
-\subsection{Esempio Lancio Moneta 2}
-Poniamo invecere di voler complicare le cose, voglia esprimere l'evento che escano due Testa prima di due Croci, chiamiamo questo evento $A$, questo evento ha infinite possibilità, facciamo alcuni esempi:
-$$ A_2 = T_1, T_2, \Omega $$
-$$ A_3 = C_1, T_2, T_3, \Omega $$
-$$ A_4 = T_1, C_2, T_3, T_4, \Omega $$
-$$ A_5 = C_1, T_2, C_3, T_4, T_5 \Omega $$
-Possiamo fare alcune osservazioni, $A_2, A_3$ sono incompatibili, non possono verificarci contemporaneamente, invece $A_5$ è incompatibile con $A_2,A_3,A_4$ .
-Possiamo esprimere il verificarsi dell'evento $A$ in vari modi:\\
-$$ A = A_2 \cup A_3 $$
-$$ A = A_2 \cup A_3 \cup A_4 $$
-$$ A = A_2 \uplus A_3  \uplus A_4 $$
-$$ A = A_2 \uplus A_3 \uplus A_4 \uplus A_5 $$
-Possiamo esprimere questo evento $A$ tramite \textbf{Unione Numberabile}:
-\begin{equation*}
-A_n =
-\begin{cases}
-C_1,T_2,...,C_{n-2},T_{n-1},T_n  \:\:\:\:\:\text{n dispari inizia con una croce}\\
-T_1,C_2,...,C_{n-2},T_{n-1},T_n  \:\:\:\:\:\text{n pari inizia con una testa}
-\end{cases}
-\Rightarrow A = \bigcup_{n=2}^{\infty} \:\:\:\:\: \text{è un evento}
-\end{equation*}
-
-\subsection{Classi/Famiglie}
-Quando gli elementi di un insieme $a$ sono a loro volta degli insiemi si usa per $a$ la parola \textbf{classe}.
-$$ a = \{ \{2,3\},\{2\},\{5,6\} \}$$
-In particolare se $\Omega$ è un insieme, la classe di tutti i sottinisiemi di $\Omega$ si dice l'insieme delle parti di $\Omega$ e si indica con $P(\Omega)$.\\
-Se $\Omega$ è un insieme e $a$ è una classe di sottinsimi di $\Omega$ tale che l'unione di essi ha come risultato $\Omega$ allora $a$ è detta essere un \textbf{ricoprimento} di $\Omega$.\\
-Un ricoprimento $a$ di $\Omega$ è detto essere una \textbf{partizione} di $\Omega$ se i suoi elementi a due a due disgiunti.\\
-Esempio:
- $$ \Omega= \{1,2,3,4,5,6,7,8,9\} $$
- $$ a = \{ \{1,3,5\},\{2,6\},\{4,7\},\{7,8,9\} \} \:\:\: \text{è un ricomprimento ma non una partizione}$$
- $$ a = \{ \{1,3,5\},\{2,4,6,8\},\{7,9\} \} \:\:\: \text{è partizione poiché  tutti gli insiemi sono disgiunti}$$
+\subsection{Unione Finita/Numerabile}
+Unione finita cioè che preso $n$ finito di insiemi la loro unione è chiusa:
+$$ \bigcup_{i=n}^n A_i \rightarrow \;\;\; \text{ciclo finito con inizio e fine}$$
+Unione numerabile è un unione di un numero non finito di insiemi ma che si possono contare:
+$$ \bigcup_{n=1}^{\infty} A_n \rightarrow  \;\;\; \text{ciclo infinito di unione} $$ 
+Tutto questo vale anche per l'intersezione tramite \textbf{de morgan}.
 
 \subsection{Algebra e Sigma Algebra}
 Preso un $\Omega$ spazio campione e un $a$ (a tondo), classe non vuota di sottinsiemi di $\Omega$ allora:
 $$ a \: \text{è un algebra} \Leftrightarrow $$
 $$ i) A \in a \Rightarrow A^C \in a \:\:\: \text{(a è chiusa rispetto il complemento)} $$
-$$ ii) A_1, A_2 \in a \Rightarrow A_1 \cup A_2 \in a \:\:\: \text{(a è chiusa rispetto l'unione di due elementi)} $$
+$$ ii) A_1, A_2 \in a \Rightarrow A_1 \cup A_2 \in a \:\:\: \text{(a è chiusa rispetto l'unione finita di due elementi)} $$
 C'è un anche una sua variante chiamanta Sigma(numerabile) Algebra definita così:\\
 \begin{center}
 $a$ è una $\sigma$-algebra $\Leftrightarrow $
 \end{center}
 $$ i)uguale $$
-$$ ii) n \in N, A_n \in a \Rightarrow \bigcup_{n=1}^{\infty} A_n \in a$$
+$$ ii) n \in N, A_n \in a \Rightarrow \bigcup_{n=1}^{\infty} A_n \in a \:\:\: \text{(a è chiusa rispetto l'unione numerabile)}$$
 Riassumendo:\\
-"Un'algebra è chiusa rispetto all'unione di due suoi elementi e rispetto al complemento."\\
-"Una $\sigma$-algebra è chiusa rispetto all'unione numerabile di suoi elementi e rispetto al complemento."
+"Un'algebra è chiusa rispetto all'unione/intersezione di due suoi elementi e rispetto al complemento."\\
+"Una $\sigma$-algebra è chiusa rispetto all'unione/intersezione numerabile di suoi elementi e rispetto al complemento."
 \subsubsection{Osservazioni}
 Posto $a=\{\{2,3\}, \{6\}, \{4,5\}\}$, osserviamo i seguenti esempi:
 \begin{center}
@@ -103,7 +68,7 @@ Per contrapposizione la (sigma) algebra più grande è $P(\Omega)$, tutte le alt
 \begin{enumerate}
 \item $a$ è una algebra (sigma) $\Rightarrow \: \emptyset,\Omega \in \: a$ (come abbiamo osservato prima)\\Tutti gli elementi dell'algebra banale devono essere presenti in ogni algebra(sigma).
 \item L'unione finita di elementi di un algebra (sigma) appartiene comunque ad $a$\\ Per $ii)$ abbiamo visto come l'unione si applica per due elementi, ma essendo $\cup$ associativa nel caso di $n-elementi$ basta operarli a due a due e quindi portare questa propietà fino a n elementi.
-\item $ Sigma\:algebra \Rightarrow Algebra \:\:MA\:\: Sigma\: algebra \not \Leftarrow Algebra $\\
+\item $ Sigma\:algebra \Rightarrow Algebra \:\:\text{MA}\:\: Sigma\: algebra \not \Leftarrow Algebra $\\
 Questo poiché un unione finita da 0 a $+\infty$ non appartiene a tutte le algebra, cose che invece accade con le sigma algebra.
 \end{enumerate}
 

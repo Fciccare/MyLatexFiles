@@ -15,21 +15,29 @@ Search(A,e) //A: array in input, e: elemento da cercare
 	return pos
 \end{lstlisting}
 Ci posizionamo all'ultima cella piena e mano a mano tornando all'indietro andiamo a cercare il valore che abbiamo in input, se non è presente nell'array andiamo a restistuire il valore $-1$. 
+La complessità computazione sarà \textbf{lineare} nello specifico:
+$$ T_s(n)=c \cdot n $$
+Dove $c$ è il costo fisso delle operazione e $n$ è quante volte si ripete il ciclo.
 
 \subsubsection{Inserimento}
+Dato un array e un elemento da inserire, andiamo a verificare tramite la funzione \textbf{ricerca} se l'elemento non sia già presente poiché non vogliamo elementi duplicati.
 \begin{lstlisting}[language=Java]
 Inserimento(A,e) //A: array in input, e: elemento da cercare
 	pos = search(A,e) //-1: non trovato, >=0: indice del valore
-	if pos != -1 then
-		if(A.free < length(A))
+	if pos = -1 then
+		if(A.free < length(A)) then
 			A=resize(A)
 		A[A.free]=e
 		A.free=A.free+1
 \end{lstlisting}
+La complessità computazione sarà \textbf{lineare} nello specifico:
+$$ T_i(n)=2c \cdot n + c^{\prime} $$
+\newpage
 
 \subsubsection{Cancellazione}
+Dato un array e un elemento da cancellare, andiamo a verificare tramite la funzione \textbf{ricerca} se l'elemento sia presente in modo da portelo eliminare.
 \begin{lstlisting}[language=Java]
-Inserimento(A,e) //A: array in input, e: elemento da cercare
+Delete(A,e) //A: array in input, e: elemento da cercare
 	pos = search(A,e) //-1: non trovato, >=0: indice del valore
 	if pos >= 0 then //Elemento trovato
 		A[pos]=A[A.free-1]
@@ -37,11 +45,11 @@ Inserimento(A,e) //A: array in input, e: elemento da cercare
 \end{lstlisting}
 
 \subsection{Array Ordinato}
-Uno dei grosso problemi dell'array visto in precendenza era la ricerca, poiché al più avevo costo $n$ cioè la lunghezza di tutto l'array, con l'array ordinario andiamo a sopperire a questo problema ma ovviamente aggiungendone degli altri.
+Uno dei grosso problemi dell'array visto in precendenza era la ricerca, poiché al più avevo costo \textbf{lineare} cioè la lunghezza di tutto l'array, con l'array ordinario andiamo a sopperire a questo problema ma ovviamente aggiungendone degli altri.
 
 \subsubsection{Ricerca Binaria}
-La ricerca binaria è un algoritmo applicabile solo ad array ordinariti che permetto una ricerca molto rapida.\\
- L'algoritmo è simile al metodo usato per poter ricevere ambo i lati, ovvero trovare una parola sul dizionario: sapendo che il vocabolario è ordinato alfabeticamente, l'idea è quella di iniziare la ricerca non dal primo elemento, ma da quello centrale, cioè a metà del dizionario. Si confronta questo elemento con quello cercato:
+La ricerca binaria è un algoritmo applicabile solo ad array ordinato che permette una ricerca molto rapida.\\
+L'algoritmo è simile al metodo usato per poter trovare una parola sul dizionario: sapendo che il vocabolario è ordinato alfabeticamente, l'idea è quella di iniziare la ricerca non dal primo elemento, ma da quello centrale, cioè a metà del dizionario. Si confronta questo elemento con quello cercato:
 \begin{itemize}
 \item se corrisponde, la ricerca termina indicando che l'elemento è stato trovato;
     \item se è superiore, la ricerca viene ripetuta sugli elementi precedenti (ovvero sulla prima metà del dizionario), scartando quelli successivi;
@@ -51,11 +59,31 @@ Andiamo a definirlo per ricorsione:
 \begin{lstlisting}[language=Java]
 BinSearch(A, e, i, j) //i: punto inizio, j: punto fine
 	if i <= j then
-		q=(i+j)/2
+		q=(i+j)/2 //punto centrale
 		if A[q] > e then
-			i=BinSearch(A, e, i, q-1)
+			i=BinSearch(A, e, i, q-1) //ricerca a "destra"
 		else if A[q] < e then
-			i=BinSearch(A, e, q+1, j)
-		else return q
-	else return -1
+			i=BinSearch(A, e, q+1, j) //ricerca a "sinistra"
+		else return q //trovato
+	else return -1 //non trovato
 \end{lstlisting}
+Per studiare la complessità di questo algoritmo (ricorsivo), andiamo a rappresentare le varie chiamate tramite un "albero degenere" in cui ogni nodo ha un solo figlio e così via, il costo di ogni nodo sarà $c$, ad ogni chiamatà andiamo a dimezzare la lunghezza dell'array $n... n/2... n/4....$ il massimo delle chiamate possono essere $h+1$ dove $h$ è l'altezza dell'albero andiamo a generallizare con:
+$$ \frac{n}{2^h} \;\;\;\;\; h: \text{è il numero dei richiami} $$
+Dobbiamo trovare il valore di $h$ per il quale l'intervallo si riduce a $1$ elemento, in quanto l'elemento desiderato sarà stato trovato. Quindi, dobbiamo risolvere l'equazione:
+$$ \frac{n}{2^h} = 1$$
+Per risolvere questa equazione per $h$, possiamo moltiplicare entrambi i lati per $2^h$:
+
+$$n = 2^h$$
+
+Ora, per isolare $h$, possiamo applicare il logaritmo in base 2 ad entrambi i lati:
+
+$$h = log_2(n)$$
+
+Quindi, il numero di chiamate ricorsive necessarie per trovare l'elemento desiderato è logaritmico rispetto alla dimensione dell'array $n$. Pertanto, la complessità computazionale dell'algoritmo di ricerca binaria è $O(log n)$ nel caso peggiore.\\
+Quindi la ricerca binaria (logaritimica) è più efficente di quella normale (lineare).
+
+\subsubsection{Inserimento/Cancellazione}
+Abbiamo visto come in un array ordinato la ricerca (binario) è molto efficemente ma abbiamo come contro che l'inserimento/cancellazione hanno costo peggiore poiché dobbiamo mantenere l'ordinamento, quindi se vogliamo inserire un elemento dobbiamo andare a spostare i valpri per creare un posto disponibile.
+
+\subsection{Resize}
+La resize 
