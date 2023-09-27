@@ -1,0 +1,79 @@
+\section{Lezione 05 - 26-09-2023}
+
+\subsection{Ricerca Binaria Iterativa}
+Proviamo a riscrivere la ricerca binaria su un array ordinato in maniera iterativa:
+\begin{lstlisting}[language=Java]
+BinSearchIterative(A,e) //A: array in input, e: elemento da cercare
+	ret=-1
+	i=0
+	j=length(A)-1
+	while i <=j AND ret=-1 do
+		q=(i+j)/2
+		if A[q] < k then
+			i=q-1
+		else if A[q] > k then
+			j=q+1
+		else 
+			ret = q
+	return ret
+\end{lstlisting}
+Possiamo notare che a meno di piccoli cambiamenti il funzionamento di questo algoritmo rispetto alla sua versione ricorsiva è pressoche identico.
+
+\subsection{Somma}
+Andiamo a creare un algoritmo per sommare tutti i valori presenti in un array tramite ricorsione.\\
+Come tutti gli algortmi ricorsivi dobbiamo andare a trovare una base di induzione (caso base) e poi un passo di induzione, rappresentiamolo tramite sommatorie:
+\begin{equation*}
+ \sum_{i=i}^n i =
+  \begin{cases}
+  0 & \text{ se } n = 0 \; \text{ base induzione } \\
+  n+\sum_{i=1}^{n-1}i & \text{ se } n \ge 0 \; \text{ passo induttivo }
+  \end{cases}
+\end{equation*}
+Ora che abbiamo capito il ragionamento andiamo a scrivere l'algoritmo
+\begin{lstlisting}[language=Java]
+Sum(A,i,n) // i=inizio, n=fine
+	if n=0 then
+		ret = 0
+	else
+		x=sum(A,1,n-1)
+		ret=n+x
+	return ret
+\end{lstlisting}
+
+\newpage
+
+\subsection{Lista Linkata}
+La lista rappresenta una struttura dati dinamica dove le operazioni di inserimento e cancellazione sono meno dispendiose, a differenza di quanto accade negli array (che sono implementati come struttura statica, il che rende problematiche le suddette operazioni).\\
+La lista condivide con l’array la proprietà di linearità (o sequenzialità) ma è una struttura più flessibile poiché non richiede la contiguità in memoria come l’array. La lista permette di avere gli elementi in una qualsiasi area di memoria rendendo le operazioni di inserimento e cancellazione eseguibili in tempo costante; infatti, la sua struttura è composta da nodi, i quali contengono sia un certo dato (key), sia un’informazione su dove si trovi il nodo successivo (next).
+
+\subsubsection{Ricerca (interativo)}
+Andiamo a definire un algoritmo di ricerca su lista linkata tramite iterazione
+\begin{lstlisting}[language=Java]
+Search(L,k) // L=lista, k=elemento da cercare
+	ris=-1
+	temp=L // "puntatore" al primo elemento della lista
+	while temp != NIL and ris=-1 do
+		if temp->key = k then
+			ris=k
+		else
+			temp = temp->next
+	return ris
+\end{lstlisting}
+La variabile "temp" ci serve per evitare di andare a perdere "l'inizio" della lista in ingresso dato che la lista in questo caso può solo andare avanti, quindi se non ci salviamo il punto di inizio non possiamo più tornare all'inizio
+
+\subsubsection{Ricerca (ricorsiva)}
+Andiamo a rifare lo stesso algoritmo ma tramite la ricorsione
+\begin{lstlisting}[language=Java]
+Search(L,k) // L=lista, k=elemento da cercare
+	ris=NIL
+	if L != NIL then
+		if L->Key = k then
+			ris=L
+		else
+			search(L->Next, k)
+	return ris
+\end{lstlisting}
+In questo caso ad ogni prossima chiamata di "search" andiamo a passare una "sottolista" cioè la stessa ma partendo da un nodo più avanti fino ad arrivare alla sua fine.\\
+Andiamo a calcoalre la complessità computazione, dato che ad ogni chiamata andiamo a passare la lista ma ridotta di un nodo avremo $n, n-1, n-2, n-i$ dove $i$ sarà il numero di nodi, quindi abbiamo la sequenza dei primi $i$ numeri naturali (formula di Gauss) quindi l'algoritmo ha complessità \textbf{lineare}.
+\subsubsection{Parte che non capito}
+\blindtext
