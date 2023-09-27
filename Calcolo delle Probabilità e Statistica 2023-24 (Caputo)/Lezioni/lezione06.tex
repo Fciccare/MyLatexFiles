@@ -1,15 +1,33 @@
 \section{Lezionie 06 - 20/03/2023}
 
-\subsection{SigmaAlgebra Generata (DA REVISIONARE)}
-Sia $C$ una classe su $\Omega$, esiste una $\sigma$-algebra $F$ che contiene $\phi$ ed è contenuta in tutte le $\sigma$-algebra che contengono $\phi$.\\
-Tale minima $\sigma$-algebra contenente $C$ si dice \textbf{GENERATA DA $\phi$}.\\
+\subsection{SigmaAlgebra Generata}
+Sia $C$ una classe su $\Omega$, esiste una $\sigma$-algebra $F$ che contiene $C$ ed è contenuta in tutte le $\sigma$-algebra che contengono $C$.\\
+Tale minima $\sigma$-algebra contenente $C$ si dice \textbf{GENERATA DA $C$}.\\
 In primo luogo esiste, per ogni $C$, una $\sigma$-algebra che la contiene e l'insieme delle parti.
-Dopo di ciò:\\
+Dopo di ciò:
+$$ F = \bigcap_{i \in I} F_i  \text{ con } i \in I $$
+
+\subsubsection{Dimostrazione?}
+Sia $ \mathcal{F}_i $ una sigma algebra su $\Omega$, $\forall_i \in \mathcal{I}$\\
+Poniamo $\mathcal{F} = \cap_{i \in \mathcal{I}} \mathcal{F}_i$ è una classe di sottoinsiemi di $\Omega$ e in particolare:
+$$ \mathcal{F} \text{ è una sigma algebra di } \Omega $$
+Andiamo a verificare sia effettivamente una sigma algebra tramite i tre punti:
+\begin{itemize}
+\item Non Vuota\\
+$$ \Omega \in \mathcal{F}_i \;\;\; \forall_i \in \mathcal{I} \Rightarrow \Omega \in \mathcal{F} = \cap_{i \in \mathcal{I}} \mathcal{F}_i $$
 \begin{center}
-$ F = \bigcap_{i \in I} F_i $ con $i \in I$
+Quindi $\mathcal{F}$ \textbf{è una classe non vuota.}
 \end{center}
 
-\subsubsection{Esempio}
+\item i)\\
+$$ A \in \mathcal{F} \Rightarrow A \in \cap_{i \in \mathcal{I}} \mathcal{F}_i \Rightarrow  $$
+
+\item ii)\\
+
+\end{itemize}
+
+
+\subsubsection{Esempio (Buonocore)}
 Poniamo di lanciare due dadi onesti, assumiamo i possibili risultati:
 $$ A = \{2,4,6\} \:\:\:\:\:\: B=\{5,6\}$$
 Considerando la famiglia $G$ in questo modo:
@@ -28,20 +46,22 @@ $$ \{1,2,3,4\}, \{1,3,5,6\}, \{2,4,5,6\}, \{1,2,3,4,6\}, \{1,2,3,4,5\}, \Omega, 
 $ \emptyset,\Omega \in \sigma(G)$ per come abbiamo dimostrato un paio di lezioni fa.
 \end{center}
 
-\subsection{Probabilità di Laplace}
+\subsection{Probabilità di Laplace (Classica)}
 Sia $\Omega$ è finito, ed un evento appartente a una famiglia di eventi $E \in F$, allora la probabilità dell'evento $E$ si può rappresentare nel seguente modo:
 $$ P_c(E) = \frac{\#E}{\#\Omega} $$
 Questa è un ottima definizione ma solo se c'è simmetria.
+Considerando il caso di due eventi disgiunti cioé che non possono mai verifarsi insieme, in questo caso con l'unione disgiunta cioè che deve verifacarsi o uno o l'altro:
+$$ \mathbb{P}(A_1 \cupdot A_2) = \frac{N_{A_1} \cupdot A_2}{N} = \frac{N_{A_1}+N_{A_2}}{N} = \mathbb{P}(A_1)+\mathbb{P}(A_2)$$
 
-\subsection{Frequentista (Statistica)}
-Se un esperimento aleatorio $E$ si ripete un numero numerabile di volte, possiamo considerare il rapporto:
+\subsection{Probabilità Frequentista (Statistica)}
+Se un esperimento aleatorio $E$ si ripete un numero indefinito di volte, possiamo considerare il rapporto:
 $$ n \in N \:\:\: P_f(E) = \frac{n_E}{n}$$
 $n$ è il numero delle ripetizioni di $E$\\
 $n_E$ è il numero delle prove tra le quali $E_n$ si è presentato.\\
 Questo definizione però è molto approsimativa, quella più corretta e precisa è:\\
  \[ P_f(E) = \lim_{n\to\infty} \frac{n_E}{n} >= 0 \]
- 
- 
+Considerando il caso di due eventi disgiunti cioé che non possono mai verifarsi insieme, in questo caso con l'unione disgiunta cioè che deve verifacarsi o uno o l'altro:
+$$ \mathbb{P}(A_1 \cupdot A_2) = \frac{N_{A_1} \cupdot A_2}{N} = \frac{N_{A_1}+N_{A_2}}{N} = \mathbb{P}(A_1)+\mathbb{P}(A_2)$$
 
 
 
