@@ -137,3 +137,21 @@ Come possiamo notare l'avere 3 for innestati ci fa avere una complessita computa
 
 Come e facile notare, nel terzo for innestato c'e una ripetizione abbastanza inutile di operazioni che effettuiamo per andarci a sommare i valori delle sottosequenze. In particolare andiamo a ripetere scorrere piu volte lo stesso numero di celle, solamente per trovare la sottosequenza poco piu grande (a volte anche di una cella).\\
 
+Gli stessi valori delle sottosequenze possono essere semplicemente trovati scorrendo avanti l'indice e sommando alla sequenza precedente il valore successivo. Analiticamente ci troveremmo che:
+
+$$\sum_{k=i}^{j+1} a_k = a_{j+1} + \sum_{k=i}^{j}a_k$$
+
+Il valore sum rimarra inalterato, ma verra solamente aggiornato del valore successivo.
+
+Il codice si presentera in questo modo:
+
+\begin{lstlisting}[language=Python]
+int Max_seq_sum_1(int N, array a[])
+	maxsum = 0
+		for i=1 to N
+			sum = 0
+			for j=i to N
+				sum = sum + a[j]
+				maxsum = max(maxsum,sum)
+	return maxsum
+\end{lstlisting}
