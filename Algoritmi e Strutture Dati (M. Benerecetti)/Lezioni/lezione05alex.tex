@@ -1,0 +1,107 @@
+\section{Lezione 05 - 26/09/2023}
+
+\subsection{Sviluppo di un Algoritmo Ricorsivo}
+Per lo sviluppo di un algoritmo ricorsivo avremo sicuramente bisogno di una strategia diversa da quella di uno sviluppo di uno iterativo. Solitamente la strategia che si effettua e scrivere dapprima l'algoritmo in forma \textbf{iterativa} e poi convertirlo in forma \textbf{ricorsiva}.\\
+Nel nostro caso andremo ad affrontare un esempio di conversione da iterativo a ricorsivo di un algoritmo gia sviluppato, cioe la BinSearch(), in modo tale da comprendere le modalita di conversione.\\
+
+\begin{lstlisting}[language=Python]
+BinSearch(A, k) 
+	ret = -1
+	i=0
+	j= length(A)-1
+	while i<j and ret=-1 do
+		q=(i+j)/2
+		if A(q) < k then
+			i = q+1
+		else if A(q) > k then
+			j=q-1
+		else
+			ret = q
+	return ret
+\end{lstlisting}
+
+Come vediamo ad ogni esecuzione del while, avremo un nuovo campionamento del nostro array, similarmente a come facevamo per la versione ricorsiva, dove invece \textbf{ogni chiamata ricorsiva corrispondeva a un nuovo campionamento}.\\
+
+E facile e veloce notare che un algoritmo iterativo gioca sulle ripetizioni (o iterazioni) date dal ciclo (while in questo caso). Differentemente da questo approccio, l'algoritmo ricorsivo non presenta ripetizioni.
+
+Per crearne uno si ragiona per casi, a seconda di quali informazioni abbiamo all'interno della funzione.\\
+
+Nel nostro caso la funzione ha in input un Array (A) e un numero (k) da trovare all'interno.
+
+Suddividiamo l'intero procedimento in casistiche piu generali, tra le quali:
+\begin{enumerate}
+\item La sequenza e vuota $(i>j) \rightarrow$ In questo caso l'unica cosa da fare e di far tornare il risultato alla funzione chiamante, con un return negativo della chiamata (nel nostro caso di ragionameto return -1).
+
+\item La sequenza non e vuota : e in questo caso la risposta e piu complessa da dare ma la andiamo a studiare nelle sue sottocasistiche.
+	\begin{enumerate}
+	\item Se A(q) < k allora il risultato e uguale a Search(A, q+1, j)
+	\item Se A(q) > k allora il risultato e uguale a Search(A, i, q-1)
+	\item Il risultato e Q
+	\end{enumerate}
+\end{enumerate}
+
+\begin{lstlisting}[language=Java]
+BinSearch(A, k, i, j) //i: punto inizio, j: punto fine
+	ris = -1
+	if i <= j then
+		q=(i+j)/2 //punto centrale
+		if A[q] > k then
+			ris = BinSearch(A, k, i, q-1) //ricerca a "destra"
+		else if A[q] < e then
+			ris = BinSearch(A, k, q+1, j) //ricerca a "sinistra"
+		else ris = q //trovato
+	return ris //non trovato
+\end{lstlisting}
+
+\subsection{Le liste}
+
+Le liste sono una sequenza di nodi collegati, cioe aree di memoria suddivise in 2 parti:
+\begin{itemize}
+\item Dato
+\item riferimento ad altro nodo
+\end{itemize}
+
+Le liste possono essere operate sia in modalita iterativa che in modalita ricorsiva.
+
+Una sommatoria puo essere definita sia come numero ripetitivo di somme. Oppure la andremo a definire in forma induttiva come:
+
+\[
+\sum_{i=1}^{n}i =
+\begin{cases}
+    0 \text{ se } n=0\\
+   	n+\sum_{i=1}^{n-1} i \text{ } \text{se } n \ge 1
+\end{cases}
+\]
+
+
+%\begin{lstlisting}[language=Java]
+%Somma(A,i,n)
+%	if n=0 then 
+%		ret = 0
+%	else
+%		x = Somma(A,1,n-1)
+%		ret = n+x
+%	return ret
+%\end{lstlisting}
+
+
+
+Nel nostro caso possiamo dire che la lista L, in input puo essere dunque:
+\begin{itemize}
+\item $\emptyset$ [NIL]
+\item Lista di elementi rappresentabile da una sola cella contenente chiave e puntatore a successivo 
+\end{itemize}
+
+Un elemento della lista e dunque il piu piccolo elemento nella quale la lista puo essere decomposta.
+\\
+Un algoritmo di ricerca in questo tipo di struttura dati devfinito \textbf{sequenziale} non e consigliabile per l'elevata quantita di tempo che potrebbe impiegare il processore nello scorrere tutte le celle.
+
+\subsubsection{Algoritmo iterativo per la ricerca di un valore nella lista dinamica}
+
+Comunque sia iterativamente parlando potremmo scrivere questo algoritmo:
+
+\begin{lstlisting}[language=Java]
+Search(L,k)
+	ris = NIL
+	
+\end{lstlisting}
