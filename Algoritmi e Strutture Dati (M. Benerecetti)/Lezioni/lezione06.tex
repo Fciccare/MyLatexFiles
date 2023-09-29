@@ -2,7 +2,7 @@
 Continuiamo i nostri algoritmi sulle liste linkate
 \subsection{Inserimento}
 Andiamo a scrivere un algoritmo per l'inserimento in testa, cioè andiamo ad "attaccare" il nostro nuovo nodo all'inizio della lista, è il tipo di inserimento più semplice perché non prevede particolari modifiche alla struttura.
-\paragraph{Funzione Ausiliaria} Useremo una funziona ausiliare per aiutarci in tutte le situazione di creazioni di un nuovo nodo:
+\paragraph{Funzione Ausiliaria} Useremo una funzione ausiliare per aiutarci in tutte le situazione di creazioni di un nuovo nodo:
 \begin{lstlisting}[language=Java]
 newNode(K,L) //K: Elemento, L:  Lista
 	temp = allocanodo() //tipo una malloc
@@ -73,7 +73,7 @@ Delete(L,K)
 	P=NIL //creiamo una variabile di appoggio
 	while [temp != NIL and temp->key != k] do 
 		P=temp //mettiamo P sul nodo "precedente" a quello da cancellare
-		temp=temp->next //mettiamo temp sul nodo "successivo"
+		temp=temp->next //mettiamo temp sul nodo da cancellare
 		
 	if temp != NIL then 
 		if P != NIL then 
