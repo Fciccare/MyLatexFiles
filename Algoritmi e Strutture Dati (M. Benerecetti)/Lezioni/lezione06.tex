@@ -1,13 +1,13 @@
 \section{Lezione 06 - 29/09/2023}
-Continiamo i nostri algoritmi sulle liste linkate
+Continuiamo i nostri algoritmi sulle liste linkate
 \subsection{Inserimento}
 Andiamo a scrivere un algoritmo per l'inserimento in testa, cioè andiamo ad "attaccare" il nostro nuovo nodo all'inizio della lista, è il tipo di inserimento più semplice perché non prevede particolari modifiche alla struttura.
 \paragraph{Funzione Ausiliaria} Useremo una funziona ausiliare per aiutarci in tutte le situazione di creazioni di un nuovo nodo:
 \begin{lstlisting}[language=Java]
 newNode(K,L) //K: Elemento, L:  Lista
 	temp = allocanodo() //tipo una malloc
-	temp->key = k //assegnamento valores
-	temp->next = L //attachiamo il nodo al primo elemento della lista in input
+	temp->key = k //assegnamento valore
+	temp->next = L //attacchiamo il nodo al primo elemento della lista in input
 	return temp
 \end{lstlisting}
 Ora che abbiamo definito la nostra funzione ausiliaria andiamo a scrivere l'algoritmo di inserimento
@@ -19,8 +19,8 @@ Insert(L,K)
 	return L
 \end{lstlisting}
 
-\subsection{Inserimento Ordinato (interativo)}
-Per sfrutturare al meglio le liste possiamo prevedere un inserimento ordinato, fare questo nelle liste è molto più efficiente rispetto a un array poiché non dobbiamo spostare tutti i valori per fare spazio al valore da inserire ma possiamo banalmente staccare i puntatori e "riattarcali" nel modo corretto:
+\subsection{Inserimento Ordinato (iterativo)}
+Per strutturare al meglio le liste possiamo prevedere un inserimento ordinato, fare questo nelle liste è molto più efficiente rispetto a un array poiché non dobbiamo spostare tutti i valori per fare spazio al valore da inserire ma possiamo banalmente staccare i puntatori e "riattaccarli" nel modo corretto:
 \begin{center}
 \includegraphics[width=0.6\textwidth]{insertAfterAGivenNode}
 \end{center}
@@ -31,13 +31,13 @@ InsertO(L,K)
 	temp=L //salviamo il puntatore al primo elemento
 	P=NIL //creiamo una variabile di appoggio
 	while [temp != NIL and temp->key < k] do 
-		P=temp //mettiamo P sul nodo "precendente" a dove inseriamo
+		P=temp //mettiamo P sul nodo "precedente" a dove inseriamo
 		temp=temp->next //mettiamo temp sul nodo "successivo"
 		
 	if [temp = NIL or temp->key > k] then
-		new=newNode(k,temp) //creiamo il nodo attacandolo al "successivo"
+		new=newNode(k,temp) //creiamo il nodo attaccandolo al "successivo"
 		if P != NIL then //se "esiste" il precedente allora
-			P->next = new //attachiamo il "precedente" al nuovo
+			P->next = new //attacchiamo il "precedente" al nuovo
 		else //se non esiste
 			L=new //spostiamo la testa al nuovo valore 
 			
@@ -49,7 +49,7 @@ Come sempre per scrivere un buon algoritmo ricorsivo bisogna ragionare per casi,
 \begin{itemize}
 \item Inserimento in testa (valore minimo)
 \item Inserimento "centrale" (valore compreso tra due numeri)
-\item Inseriemento in coda (valore massimo)
+\item Inserimento in coda (valore massimo)
 \end{itemize}
 Sulla base di ciò andiamo a scrivere il nostro algoritmo:
 \begin{lstlisting}[language=Java]
@@ -65,14 +65,14 @@ InsertOR(L,K)
 \end{lstlisting}
 
 \subsection{Cancellazione (iterativa)}
-Andiamo a scrivere un algoritmo di cancellazione simile a quello visto per l'inserimento, cioè andiamo a cercare il valore e ci posiziamo sia "prima" che "dopo" il valore da cancellare.
+Andiamo a scrivere un algoritmo di cancellazione simile a quello visto per l'inserimento, cioè andiamo a cercare il valore e ci posizioniamo sia "prima" che "dopo" il valore da cancellare.
 \newpage
 \begin{lstlisting}[language=Java]
 Delete(L,K)
 	temp=L //salviamo il puntatore al primo elemento
 	P=NIL //creiamo una variabile di appoggio
 	while [temp != NIL and temp->key != k] do 
-		P=temp //mettiamo P sul nodo "precendente" a quello da cancellare
+		P=temp //mettiamo P sul nodo "precedente" a quello da cancellare
 		temp=temp->next //mettiamo temp sul nodo "successivo"
 		
 	if temp != NIL then 
