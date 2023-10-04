@@ -26,8 +26,73 @@ Ma quanto puo essere complesso fare una cosa del genere? Le operazioni all'inter
 
 \begin{itemize}
 	\item Nel caso peggiore l'albero e un albero degenere, in questo caso la coda avra tutti gli elementi della lista all'interno di essa. Il costo computazionale dunque, a seconda dell'altezza, sara il \textbf{tetto frazionario} di n/2. Dunque la memoria necessaria in questo caso potrebbe richiedere una quantita lineare (per la coda).
-	\item Nel caso migliore l'albero e bilanciato, cioe ogni nodo ha 2 figli. A livello di memoria invece la memoria utilizzata sara costante.
+	\item Nel caso migliore l'albero e bilanciato, cioe ogni nodo ha 2 figli. A livello di memoria invece sara costante.
 \end{itemize}
 
 \subsection{Albero Binario di Ricerca}
+E un tipo di albero ordinato, con una relazione che lega tutti i nodi figli. Il vincolo sta a indicare che preso un qualsiasi nodo, esso sara sempre piu piccolo del suo sottoalbero destro, e piu grande del suo sottoalbero sinistro.
+L'acronimo per questo albero sara \textbf{BST}. Il motivo per cui e stato introdotto questo albero e per facilitare la ricerca di dati, infatti il suo algoritmo di ricerca e uno dei piu efficienti.
+
+\subsubsection{Search Ricorsiva - BST}
+
+\begin{lstlisting}[language=Java]
+	SearchBSTr(T,k)
+	ret=T
+	if T!= NIL then
+		if T->key < k then
+			ret = SearchBSTr(T->dx, k)
+		else if T->key > k then
+			ret = SearchBSTr(T-sx, k)
+	return ris	
+\end{lstlisting}
+
+Questo algoritmo, sicuramente ci permettera di cercare in modo piu efficiente il dato poiche, un po come la ricerca binaria (ma non propriamente), ci permette di andare a "dimezzare" l'area di ricerca ogni volta che si fa un confronto.\\
+
+Esiste anche la versione iterativa di questo algoritmo:
+
+\begin{lstlisting}[language=Java]
+	SearchBSTi(T,k)
+	Tmp = T
+	while Tmp != NIl && Tmp-> key != k do
+		if Tmp->key < k then
+			Tmp=Tmp->dx
+		else
+			Tmp=Tmp->sx
+	return Tmp	
+\end{lstlisting}
+
+Proprio come l'algoritmo ricorsivo andremo a dividere l'albero in due, ma ci avvarremo di un puntatore temporale per lo scorrimento dell'albero.
+
+\subsubsection{Min - BST}
+La ricerca del minimo in un albero binario di ricerca (dunque ordinato) e molto semplice. Se semplicemente seguendo la regola secondo cui "l'elemento piu piccolo si trova a sinistra". Allora andremo a scorrere continuamente a sinistra finche non troveremo l'elemento piu piccolo dell'albero.
+
+\begin{lstlisting}[language=Java]
+	MinR(T)
+	ret = T
+	if ret->sx != NIL then
+		ret= MinR(ret->sx)
+	return ret
+\end{lstlisting}
+
+\subsubsection{Algoritmo del Successore - BST}
+Il successore di un numero e il primo numero piu grande dello stesso. In questo caso l'algoritmo diventa un po piu complesso nelle casistiche:
+\begin{itemize}
+	\item  Caso in cui l'elemento di cui vogliamo il successore e uguale alla chiave dell'elemento in cui siamo. Caso T->key = k. In questo caso l'elemento che sicuramente sara successore si trovera nel sottoalbero destro. E il piu piccolo elemento del sottoalbero destro sara il nostro risultato che cerchiamo quindi $\rightarrow$ Min(T->dx)
+	\item Caso T->key < k. Se il numero di cui cerchiamo il successore si trova ancora in un nodo piu piccolo di esso allora dovremmo spostarci a destra con la stessa funzione. Succ(T->dx).
+	\item Caso T->key > k. Se il numero sara piu grande di quello che cerchiamo allora dovremmo spostarci sulla sinistra. (T->sx, k)
+\end{itemize}
+
+\begin{lstlisting}[language=Java]
+	SuccR(T,k)
+	ret = NIL
+	if ret != NIL then
+		if ret->key = k then
+			ret = Min(ret->dx)
+		else if ret->key < k then
+			ret = SuccR(ret->dx,k)
+		else 
+			ret = SuccR(T->sx,k)
+			if ret= NIL then
+				ret = T
+\end{lstlisting}
 
