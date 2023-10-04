@@ -1,0 +1,94 @@
+\section{Lezione 07 - 29/09/2023}
+\subsection{Albero Binario}
+L'albero binario è una particolare struttura dati composto da nodi, ogni nodo ha tre campi:
+\begin{itemize}
+\item Valore
+\item Figlio Sinistro (puntatore)
+\item Figlio Destro (puntatore)
+\end{itemize}
+Ogni nodo può avere al più due figli, il primo nodo è chiamato \textbf{radice} e i nodi finali (senza figli) sono chiamati \textbf{foglie}.\\
+Immagine\\
+Andiamo a dare una definizione più corretta:
+$$
+T
+\begin{cases}
+  1) T=NIL\\
+  2) T=\text{ nodo + sottoalbero }
+  \end{cases}
+$$
+
+\subsection{Altezza di un Albero}
+Definiamo l'altezza di un albero come la \textbf{quantità} di nodi che scorreremo per raggiungere il nodo desiderato.
+Nota bene: Ad ogni livello (di altezza) il numero di nodi dell'albero aumenta esponenzialmente con un ritmo di $$2^i$$. Questo vale solo per un albero bilanciato. Osserveremo la sua complessità tra poco.
+
+\subsection{Complessità Computazione}
+Un albero binario può essere degenere, cioè un albero i cui nodi hanno solo un figlio. Questo tipo di albero, come si vede in foto, creano in un certo senso una lista dinamica. Infatti questo tipo di albero condividerà la stessa complessità computazionale di una lista ordinata.
+\\
+Analizziamo l'equazione che definisce quanti nodi ha ogni livello di un albero.
+
+$n=\sum_{i=0}^{n}2^i$
+Questa sommatoria è risolvibile con una serie.
+$$n=\sum_{i=0}^{k} x^i = \frac{x^{k+1}-1}{x-1}$$
+Diventerà nel nostro caso:
+$$n=\sum_{i=0}^{n}2^i = \frac{2^{n+1}-1}{2-1} = 2^{n+1}-1$$
+Il risultato che abbiamo ottenuto è il valore della tabellina del 2 $2^{n+1}$, a meno di un numero per il $-1$.
+
+Per andare dunque a calcolare la complessità computazione per la creazione di ogni nodo per ogni grado d'altezza dell'albero è dunque utile andare a prendere il risultato di questa funzione qui sopra scritta e risolverlo.
+
+$$n=2^{n+1}-1 \rightarrow \log_{2}n = \log_{2}2^{n+1}-1 \rightarrow \rightarrow$$
+
+Sapendo che $n = 2^{n+1}-1$ allora potremmo sostituirlo all'interno della seconda parte dell'equazione, facendo in modo che l'equazione diventi
+$$\log_{2}n = \log_{2}n $$
+
+Andiamo a ragionare su quando possa valere $2^{n+1}-1$ andiamo a considerare in quale spazio esso può essere compreso:
+$2^h\le 2^{n+1}-1\le 2^{n+1}$
+
+
+ 
+\subsection{Visite}
+Esistono vari tipi di visita ognuna con i suoi pregi e difetti
+\subsubsection{PreOrder}
+L'algoritmo di visita pre-order è un particolare algoritmo usato per l'esplorazione in profondità dei nodi di un albero. L'esplorazione dell'albero parte dalla radice per poi scendere alle foglie, prima il sotto albero sinistro poi quello destro, che sono gli ultimi nodi ad essere visitati.
+\begin{lstlisting}[language=Java]
+PreOrder(T):
+	T != NIL then
+		Visita(T->key) //funzione qualsiasi
+		PreOrder(T->sx)
+		Preorder(t->dx)	
+\end{lstlisting}
+\subsubsection{InOrder}
+L'algoritmo di visita in-order è un particolare algoritmo usato per l'esplorazione in profondità dei nodi di un albero binario. In questo tipo di visita, per ogni nodo, si esplora prima il sottoalbero sinistro poi si visita il nodo corrente ed infine si passa al sottoalbero destro. Più precisamente, l'algoritmo esplora i rami di ogni sottoalbero fino ad arrivare alla foglia più a sinistra dell'intera struttura, solo a questo punto si accede al nodo. Terminata la visita del nodo corrente si procede poi con l'esplorazione del sottoalbero a destra, visitando sempre i nodi a cavallo dell'esplorazione del sottoalbero sinistro e quello destro. 
+\begin{lstlisting}[language=Java]
+InOrder(T):
+	T != NIL then
+		InOrder(T->sx)
+		Visita(T->key) //funzione qualsiasi
+		InOrder(t->dx)	
+\end{lstlisting}
+
+\subsubsection{PostOrder}
+L'algoritmo esplora i rami dell'albero fino ad arrivare alle foglie prima di accedere ai singoli nodi, ad esempio si supponga di essere alla ricerca di alcuni oggetti molto pesanti e che per trovarli si debba esplorare un sentiero che comporta diverse diramazioni (albero).
+
+Essendo gli oggetti pesanti non conviene raccoglierli subito e portarli con sé lungo il cammino ma conviene prima esplorare tutto il territorio quindi prelevarli quando si torna indietro.
+
+L'algoritmo post-order visita un albero nello stesso modo, arrivando prima più in fondo possibile ad ogni diramazione ed accedendo agli elementi solamente al ritorno, il che corrisponde ad un'implementazione ricorsiva al fronte di risalita della ricorsione. 
+\begin{lstlisting}[language=Java]
+PostOrder(T):
+	T != NIL then
+		PostOrder(T->sx)
+		PostOrder(t->dx)	
+		Visita(T->key) //funzione qualsiasi
+\end{lstlisting}
+
+\subsection{Ricerca Albero Binario}
+Andiamo a definire la ricerca su l'albero binario, la miglior visita per eseguire una ricerca è la \textbf{preorder} poiché è la visita che subito controlla i nodi senza aspettare la visita dei sottoalberi.
+\begin{lstlisting}[language=Java]
+Search(T,k):
+	ret=T
+	if T != NIL then
+		if T->key != k then //se il valore non c'e' in testa
+			ret=Search(T->sx, k)  //allora cerchiamo nel sottoalbero sinistro
+			if ret=NIL then //se non c'e' a sinistra
+				ret=Search(T->dx,k) //cerchiamo a destra
+	return ret
+\end{lstlisting}
