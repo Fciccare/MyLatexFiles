@@ -1,0 +1,33 @@
+\section{Lezione 08 - 03/10/2023}
+\subsection{Nomi Utilizzati delle visite}
+Questo piccolo inserto legenda servira per identificare i 2 particolari tipi di visita che effettueremo.
+\begin{itemize}
+	\item \textbf{DFS} o visite in profondita sono i tipi di visite che prevedono prima la visita dei figli e poi l'operazione che si vuole effettuare.
+	\item \textbf{BFS} o visite di \textbf{ampiezza} sono tipi di visite che prevedono l'utilizzo di una coda per l'esplorazione dei figli. Infatti questa visita prevedera prima l'esplorazione del nodo padre e poi la messa in coda dei figli.
+\end{itemize}
+
+\subsection{Visita In Ampiezza Albero}
+La visita in ampiezza dell'albero e un tipo di visita che prevede la visita dei nodi in modo "orizzontale". Questa visita di prim'occhio potrebbe sembrare piu complessa, poiche rispetto alle altre che abbiamo visto fino ad ora non e possibile effettuarla con un algoritmo ricorsivo/iterativo e basta. Infatti per questa visita ci sara utile l'utilizzo di una struttura dati astratta gia studiata in precedenza che ci consentira l'esplorazione. \textbf{La coda} ci sara utile per effettuare questi tipi di visite.
+La coda ci serve per inserire i figli del nodo selezionato all'interno di essa e poi prelevarli per andare a visitarli e a sua volta inserire i suoi figli.
+
+\begin{lstlisting}[language=Java]
+	BFS(T):
+	Q=NIL
+	Q=Accoda(Q,T)
+	while(Q!=NIL) DO
+		X=Testa(Q)
+		"Visita del nodo"
+		Q=Accoda(Q,X->sx)
+		Q=Accoda(Q,X->dx)
+		Q=Decode(Q) //Toglie della coda il primo	
+\end{lstlisting}
+
+Ma quanto puo essere complesso fare una cosa del genere? Le operazioni all'interno e prima del while sono a tempo costante perche sono operazioni di assegnazione. Il while pero dipende dalla quantita di nodi all'interno dell'albero. In particolare a seconda se l'albero e bilanciato o meno.
+
+\begin{itemize}
+	\item Nel caso peggiore l'albero e un albero degenere, in questo caso la coda avra tutti gli elementi della lista all'interno di essa. Il costo computazionale dunque, a seconda dell'altezza, sara il \textbf{tetto frazionario} di n/2. Dunque la memoria necessaria in questo caso potrebbe richiedere una quantita lineare (per la coda).
+	\item Nel caso migliore l'albero e bilanciato, cioe ogni nodo ha 2 figli. A livello di memoria invece la memoria utilizzata sara costante.
+\end{itemize}
+
+\subsection{Albero Binario di Ricerca}
+

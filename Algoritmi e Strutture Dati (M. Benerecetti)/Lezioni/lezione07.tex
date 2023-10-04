@@ -40,8 +40,17 @@ $$n=2^{n+1}-1 \rightarrow \log_{2}n = \log_{2}2^{n+1}-1 \rightarrow \rightarrow$
 Sapendo che $n = 2^{n+1}-1$ allora potremmo sostituirlo all'interno della seconda parte dell'equazione, facendo in modo che l'equazione diventi
 $$\log_{2}n = \log_{2}n $$
 
-Andiamo a ragionare su quando possa valere $2^{n+1}-1$ andiamo a considerare in quale spazio esso può essere compreso:
+Andiamo a ragionare su quando possa valere $2^{n+1}-1$. Andiamo a considerare in quale spazio esso può essere compreso (a seconda dell'altezza h):
 $2^h\le 2^{n+1}-1\le 2^{n+1}$
+
+In questo caso potremmo dire che sicuramente esso sara piu grande di $2^h$ quindi andiamo a suddividere la disequazione per trovarci la h.
+
+$$\log_{2}2^h \le \log_{2}2^{h+1}-1 \rightarrow h = \log_{2}2^{h+1}-1 $$
+
+Ma per quanto abbiamo visto prima:
+
+$$(n=2^{h+1}-1) \text{e in questo modo avremo che :} \rightarrow n = \log_{2}n$$
+E questa sara la nostra complessita dell'algoritmo.
 
 
  
