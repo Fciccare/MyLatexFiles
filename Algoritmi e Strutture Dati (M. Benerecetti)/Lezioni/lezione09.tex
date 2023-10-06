@@ -1,0 +1,45 @@
+\subsection{Lezione 9 - 05/10/2023}
+
+\subsubsection{Successore Iterativo - BST}
+
+Per questo tipo di algoritmo, dobbiamo ragionare in modo diverso. In questo caso non iterativo non possiamo permetterci di omettere determinati controlli a posteriori. In particolare il controllo nel caso in cui il valore di cui vogliamo il successore non ha figli destri ed e una foglia. In questo caso particolare non abbiamo la possibilita di risalire a ritroso ricorsivamente ma dobbiamo tenere traccia ogni volta che il nodo scende a sinistra, segnandoci il puntatore di quest'ultimo.
+
+\begin{lstlisting}[language=Java]
+	SuccI(T,k)
+	Tmp = T
+	ret = NIL
+	while Tmp != NIL andd TMP->key != k then
+	if Tmp->key < k then
+	Tmp = Tmp->dx
+	else 
+	ret = Tmp
+	Tmp = Tmp->sx
+	if Tmp != NIL && Tmp->dx != NIL then
+	ret = Min(Tmp->dx)
+	return ret
+\end{lstlisting}
+
+\subsubsection{Predecessore Ricorsivo - BST}
+TODO
+
+\subsubsection{Insert Ricorsiva - BST}
+
+L'algoritmo dell'inserimento in un albero in un albero binario di ricerca puo vantare del fatto che e piu facile trovare il nodo nel quale si puo aggiungere il valore che abbiamo in input alla funzione. Ci bastera semplicemente scorrere a destra o a sinistra il nostro puntatore per poi arrivare nel primo punto NIL favorevole e "returnare" a cascata i puntatori dei padri.
+
+\subsubsection{Algoritmo del Successore Iterativo - BST}
+
+Per questo tipo di algoritmo, dobbiamo ragionare in modo diverso. In questo caso non iterativo non possiamo permetterci di omettere determinati controlli a posteriori. In particolare il controllo nel caso in cui il valore di cui vogliamo il successore non ha figli destri ed e una foglia. In questo caso particolare non abbiamo la possibilita di risalire a ritroso ricorsivamente ma dobbiamo tenere traccia ogni volta che il nodo scende a sinistra, segnandoci il puntatore di quest'ultimo.
+
+\begin{lstlisting}[language=Java]
+	InsertR(T,k)
+	ret = T
+	if T = NIL then
+		ret = new_node(k)
+	else if T->key < k then
+		T->dx = InsertR(T->dx,k)
+	else if T->key > k then
+		T->sx = InsertR(T->sx,k)
+	return ret
+\end{lstlisting}
+
+\subsubsection{New Node - Generico}

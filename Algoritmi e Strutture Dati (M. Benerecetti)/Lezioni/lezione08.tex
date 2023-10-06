@@ -74,7 +74,7 @@ La ricerca del minimo in un albero binario di ricerca (dunque ordinato) e molto 
 	return ret
 \end{lstlisting}
 
-\subsubsection{Algoritmo del Successore - BST}
+\subsubsection{Algoritmo del Successore Ricorsivo - BST}
 Il successore di un numero e il primo numero piu grande dello stesso. In questo caso l'algoritmo diventa un po piu complesso nelle casistiche:
 \begin{itemize}
 	\item  Caso in cui l'elemento di cui vogliamo il successore e uguale alla chiave dell'elemento in cui siamo. Caso T->key = k. In questo caso l'elemento che sicuramente sara successore si trovera nel sottoalbero destro. E il piu piccolo elemento del sottoalbero destro sara il nostro risultato che cerchiamo quindi $\rightarrow$ Min(T->dx)
@@ -88,11 +88,29 @@ Il successore di un numero e il primo numero piu grande dello stesso. In questo 
 	if ret != NIL then
 		if ret->key = k then
 			ret = Min(ret->dx)
-		else if ret->key < k then
 			ret = SuccR(ret->dx,k)
+		else if ret->key < k then
 		else 
 			ret = SuccR(T->sx,k)
 			if ret= NIL then
 				ret = T
 \end{lstlisting}
 
+\subsubsection{Algoritmo del Successore Iterativo - BST}
+
+Per questo tipo di algoritmo, dobbiamo ragionare in modo diverso. In questo caso non iterativo non possiamo permetterci di omettere determinati controlli a posteriori. In particolare il controllo nel caso in cui il valore di cui vogliamo il successore non ha figli destri ed e una foglia. In questo caso particolare non abbiamo la possibilita di risalire a ritroso ricorsivamente ma dobbiamo tenere traccia ogni volta che il nodo scende a sinistra, segnandoci il puntatore di quest'ultimo.
+
+\begin{lstlisting}[language=Java]
+	SuccI(T,k)
+	Tmp = T
+	ret = NIL
+	while Tmp != NIL andd TMP->key != k then
+		if Tmp->key < k then
+			Tmp = Tmp->dx
+		else 
+			ret = Tmp
+			Tmp = Tmp->sx
+	if Tmp != NIL && Tmp->dx != NIL then
+		ret = Min(Tmp->dx)
+	return ret
+\end{lstlisting}
