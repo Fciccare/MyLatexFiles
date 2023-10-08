@@ -1,0 +1,72 @@
+\section{Lezione 10 - 06/10/2023}
+\subsection{Alberi Perfettamente Bilanciati}
+Gli alberi perfettamente bilanciati sono particolare tipi di albero binario in cui vale la seguente condizione:
+$$ | |T->sx| - |T->dx| |  \le 1 $$ 
+La cardinalità (numeri di elementi) del sottoalbero sinistro deve differire di \textbf{al più 1} elemento del sottoalbero destro.\\
+Non tutti gli alberi completi sono perfettamente bilanciati ma tutti gli alberi perfettamente bilanciati sono pieni.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{APB} 
+        \caption{È un APB}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{NAPB} 
+        \caption{NON è un APB}
+    \end{subfigure}
+    %\caption{Didascalia generale per entrambe le immagini}
+\end{figure}
+
+
+\subsection{Alberi AVL}
+Gli alberi AVL sono particolare tipi di albero binario in cui vale la seguente condizione:
+$$ | h(T->sx) - h(|T->dx) |  \le 1 $$ 
+Quindi l'altezza del sottoalbero sinistro di T e quella del sottoalbero destro di T differiscono al più di uno, ovviamente si applica ad ogni sottonodo.\\
+A differenza degli alberi perfettamente bilanciati, non si pone un limite sulla cardinalità dell'insieme ma bensi sull'\textbf{altezza} dei sottoalberi.\\
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{AVL} 
+        \caption{È un AVL}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{NAVL} 
+        \caption{NON è un AVL}
+    \end{subfigure}
+    %\caption{Didascalia generale per entrambe le immagini}
+\end{figure}
+\begin{center}
+    \textbf{Un albero pieno è sia ABL che AVL}    
+\end{center}
+
+\subsection{Alberi AVL Minimi}
+Fissato $h$, l'albero AVL minimo di altezza $h$ è l'albero AVL di altezza $h$ col minor numero di nodi possibile.\\
+Per ogni altezza andiamo a mostrare un possibile albero:
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.35\textwidth}
+        \includegraphics[width=\textwidth]{AVLh1} 
+        \caption{AVL minimo di altezza 1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{AVLh2} 
+        \caption{AVL minimo di altezza 2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{AVLh3} 
+        \caption{AVL minimo di altezza 3}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{AVLh4} 
+        \caption{AVL minimo di altezza 4}
+    \end{subfigure}
+\end{figure}
+Possiamo notare un certo pattern che si ripeto, nello specifico dato un albero di altezza $h$ il sottoalbero sinistro sarà $h-1$ e il sottoalbero destro $h-2$.\\
