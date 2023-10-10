@@ -69,4 +69,28 @@ Per ogni altezza andiamo a mostrare un possibile albero:
         \caption{AVL minimo di altezza 4}
     \end{subfigure}
 \end{figure}
-Possiamo notare un certo pattern che si ripeto, nello specifico dato un albero di altezza $h$ il sottoalbero sinistro sarà $h-1$ e il sottoalbero destro $h-2$.\\
+Possiamo notare un certo pattern che si ripeto, nello specifico dato un albero di altezza $h$ il sottoalbero sinistro sarà $h-1$ e il ciaosottoalbero destro $h-2$.\\
+Andiamo a generalizzare questa osservazione:
+$$ N(h)= \begin{cases}
+    h+1 & \text{se } h=0,1\\
+    1+N(h-1)+N(h-2) & \text{e poniamo per assurse } h \ge 2
+\end{cases} $$
+\textbf{DIM $h \ge 2$:}\\
+Prediamo un generico AVL $T$ minimo, e poniamo per assurdo che il suo sottoalbero sinistro \textbf{è un AVL non minimo}, dunque esisterà un albero $T^{\prime}$ con sottoalbero sinistro che sarà \textbf{AVL minimo}. Quindi è un assurdo il fatto che esisterà un sottoalbero di $T^{\prime}$ di altezza $h-1$ con un numero minore di nodi rispetto al sottoalbero di $T$. In generale dunque se andiamo a dire che $T$ è un Albero AVL minimo, non è possibile che esiste un $T^{\prime}$ con un numero di nodi \textbf{minore} di un albero AVL minore.
+
+Data la formula precendete facciamo una considerazione:\\
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|} % Sostituisci 'c' con 'l' se vuoi l'allineamento a sinistra
+        \hline
+        Altezza & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+        \hline
+        Numeri Nodi & 1 & 2 & 4 & 7 & 12 & 20 & 33 & 54 & 88 \\
+        \hline
+        Fibonacci & 0 & 1 & 1 & 2 & 3 & 5 & 8 & 13 & 21 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+Possiamo notare come ci siamo un certo collegamento tra i numeri di nodi e la sequenza di fibonacci, nello specifico notiamo come:
+$$ N(h) = F(h+3)-1$$
+\textbf{DIM:}
