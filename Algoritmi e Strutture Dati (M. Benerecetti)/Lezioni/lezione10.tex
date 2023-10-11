@@ -93,4 +93,32 @@ Data la formula precendete facciamo una considerazione:\\
 
 Possiamo notare come ci siamo un certo collegamento tra i numeri di nodi e la sequenza di fibonacci, nello specifico notiamo come:
 $$ N(h) = F(h+3)-1$$
+Facciamo un ragionamento su come ricaverci l'altezza dato  la formula chiusa di Fibonacci:
+$$ F(x)= \frac{1}{\sqrt{5}} [(\frac{1+\sqrt{5}}{2})^x - \cancel{(\frac{1-\sqrt{5}}{2})^x}]  $$
+Andiamo a rimuovere la seconda parte poiché tende a zero.\\
+$$ F(x)=c \cdot k^x $$
+$$ N(h) = F(h+3)-1 $$
+$$ N(h) = c \cdot k^{h+3}-1$$
+$$ \frac{N(h)-1}{c} = k^{h+3} $$ 
+$$ h =  \log_k (\frac{N(h)-1}{c}) -3 $$
+Abbiamo dimostrato che l'altezza è logaritmica sul numero di nodi.\\
+Adesso andiamo a dimostrare che la formula dei nodi vale per ogni $h$\\
 \textbf{DIM:}
+\begin{itemize}
+    \item \textbf{Caso base:} $N(0) = F(0+3) - 1 = 1$
+    \item \textbf{Caso induttivo:}
+    \[
+    N(h) = 1 + N(h-1) + N(h-2)
+    \]
+    Per ipotesi:
+    \[
+    N(h-1) = F(h+2) - 1
+    \]
+    \[
+    N(h-2) = F(h+1) - 1
+    \]
+    Quindi:
+    \[
+    1 + (F(h+2) - 1) + (F(h+1) - 1) = F(h+3) - 1
+    \]
+\end{itemize}
