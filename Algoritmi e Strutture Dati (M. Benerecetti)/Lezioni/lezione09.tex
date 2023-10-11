@@ -19,28 +19,111 @@ Per questo tipo di algoritmo, dobbiamo ragionare in modo diverso. In questo caso
 	return ret
 \end{lstlisting}
 
+
 \subsubsection{Predecessore Ricorsivo - BST}
-TODO
+L'algoritmo del predecessore e simile al successore strutturalmente parlando ma invertendo segni e qualche operazione
+
+\begin{lstlisting}[language=Java]
+	PredR(T,k)
+		ret = NIL
+			if ret != NIL then
+				if ret->key = k then
+					ret = Max(ret->sx)
+				else if ret->key < k then
+					ret = PredR(ret->dx,k)
+				else 
+					ret = PredR(T->sx,k)
+					if ret = NIL then
+						ret = T
+		return ret
+\end{lstlisting}
 
 \subsubsection{Insert Ricorsiva - BST}
 
 L'algoritmo dell'inserimento in un albero in un albero binario di ricerca puo vantare del fatto che e piu facile trovare il nodo nel quale si puo aggiungere il valore che abbiamo in input alla funzione. Ci bastera semplicemente scorrere a destra o a sinistra il nostro puntatore per poi arrivare nel primo punto NIL favorevole e "returnare" a cascata i puntatori dei padri.
 
-\subsubsection{Algoritmo del Successore Iterativo - BST}
-
-Per questo tipo di algoritmo, dobbiamo ragionare in modo diverso. In questo caso non iterativo non possiamo permetterci di omettere determinati controlli a posteriori. In particolare il controllo nel caso in cui il valore di cui vogliamo il successore non ha figli destri ed e una foglia. In questo caso particolare non abbiamo la possibilita di risalire a ritroso ricorsivamente ma dobbiamo tenere traccia ogni volta che il nodo scende a sinistra, segnandoci il puntatore di quest'ultimo.
-
 \begin{lstlisting}[language=Java]
 	InsertR(T,k)
 	ret = T
-	if T = NIL then
-		ret = new_node(k)
-	else if T->key < k then
-		T->dx = InsertR(T->dx,k)
-	else if T->key > k then
-		T->sx = InsertR(T->sx,k)
+		if T = NIL then
+			ret = new_node(k)
+		else if T->key < k then
+			T->dx = InsertR(T->dx,k)
+		else if T->key > k then
+			T->sx = InsertR(T->sx,k)
 	return ret
 \end{lstlisting}
 
 \subsubsection{New Node - Generico}
+La funzione new node va a creare un nuovo nodo dinamico all'interno dell'albero.
+
+\begin{lstlisting}[language=Java]
+	new_node(k)
+		ret = alloca_nodo() //andiamo a restituire il puntatore a nuovo nodo allocato in memoria a ret
+		ret->key = k
+		ret->sx = NIL
+		ret->dx = NIL
+		return ret
+\end{lstlisting}
+
+\subsubsection{Insert Iterativa - BST}
+Versione iterativa della insert prevede dei controlli in piu per quanto riguarda la ricerca e inserimento. In questo caso specifico abbiamo bisogno di un puntatore in piu che ci segue nello scorrimento, chiamato \textbf{P} e sta a indicare il Padre del nodo a cui stiamo scorrendo.
+
+\begin{lstlisting}[language=Java]
+	InsertI(T,k)
+	ret = T
+	P = NIL
+	Tmp = T
+	while Tmp != NIL && Tmp->key != k do
+		P = Tmp
+		if Tmp->key < k then
+			Tmp = Tmp->dx
+		else
+			Tmp = Tmp->sx
+	
+	If Tmp = NIL then
+		x = new_node(k)
+		if P->key < k then
+			P->dx = x
+		else
+			P->sx = x
+	else 
+		P-sx = x
+	return ret
+\end{lstlisting}
+
+\subsubsection{DeleteR - BST}
+La delete prevede la delete del nodo e la restituzione dell'albero con quel nodo mancante. A primo acchitto non sembra un'operazione cosi difficile ma dobbiamo come sempre andare a ragionare per casi.
+
+\begin{itemize}
+	\item Caso albero vuoto. In questo caso dobbiamo semplicemente restituire T, il puntatore (vuoto) alla radice dell'alberoe
+	\item Caso albero non vuoto. In questo caso la radice del sottoalbero ha un sottoalbero destro e sinistro.
+		\begin{itemize}
+			\item Se T->key < k then Delete(T->dx,k)
+			\item Se T->key > k then Delete(T->sx,k)
+			\item Se T->key = k, dobbiamo distinguere dei casi
+			\begin{itemize}
+				\item Nel caso in cui il nodo non ha figli allora, si puo procedere all'eliminazione del nodo
+				\item Il caso in cui il nodo o ha figlio destro o figlio sinistro e basta.
+				\item Il caso in cui il nodo ha entrambi i figli collegati. In questo caso specifico deleghiamo la distruzione del nodo a un'altra funzione chiamata \textbf{Stacca(T->dx,k)}.
+			\end{itemize}
+		\end{itemize}
+\end{itemize}
+
+In particolare questa funzione sara formata in questo modo:
+
+\begin{lstlisting}[language=Java]
+	StaccaMin(T,P)
+		ret = T
+		If T != NIL then
+			ret = StaccaMin(T->sx,P)
+			if ret = NIL then
+				if P != NIL then
+					if P->sx = T then
+						P->sx = T->dx
+					else
+						P->dx = T->dx
+		return ret
+\end{lstlisting}
+
 
