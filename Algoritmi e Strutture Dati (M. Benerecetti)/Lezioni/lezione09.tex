@@ -6,16 +6,16 @@ Per questo tipo di algoritmo, dobbiamo ragionare in modo diverso. In questo caso
 
 \begin{lstlisting}[language=Java]
 	SuccI(T,k)
-	Tmp = T
-	ret = NIL
-	while Tmp != NIL andd TMP->key != k then
-	if Tmp->key < k then
-	Tmp = Tmp->dx
-	else 
-	ret = Tmp
-	Tmp = Tmp->sx
-	if Tmp != NIL && Tmp->dx != NIL then
-	ret = Min(Tmp->dx)
+		Tmp = T
+		ret = NIL
+		while Tmp != NIL andd TMP->key != k then
+			if Tmp->key < k then
+				Tmp = Tmp->dx
+			else 
+				ret = Tmp
+				Tmp = Tmp->sx
+			if Tmp != NIL && Tmp->dx != NIL then
+				ret = Min(Tmp->dx)
 	return ret
 \end{lstlisting}
 
@@ -105,24 +105,62 @@ La delete prevede la delete del nodo e la restituzione dell'albero con quel nodo
 			\begin{itemize}
 				\item Nel caso in cui il nodo non ha figli allora, si puo procedere all'eliminazione del nodo
 				\item Il caso in cui il nodo o ha figlio destro o figlio sinistro e basta.
-				\item Il caso in cui il nodo ha entrambi i figli collegati. In questo caso specifico deleghiamo la distruzione del nodo a un'altra funzione chiamata \textbf{Stacca(T->dx,k)}.
+				\item Il caso in cui il nodo ha entrambi i figli collegati. In questo caso specifico deleghiamo la distruzione del nodo a un'altra funzione chiamata \textbf{StaccaMin(T->dx,T)}.
 			\end{itemize}
 		\end{itemize}
 \end{itemize}
 
-In particolare questa funzione sara formata in questo modo:
+Dunque per il richiamo della funzione Delete ricorsiva abbiamo bisogno di due funzioni ausiliarie. La prima e utilizzata nel caso in cui vogliamo eliminare un nodo che ha entrambi i figli.
+
+\textbf{StaccaMin(T->sx, T)}
 
 \begin{lstlisting}[language=Java]
 	StaccaMin(T,P)
 		ret = T
 		If T != NIL then
-			ret = StaccaMin(T->sx,P)
+			ret = StaccaMin(T->sx,T)
 			if ret = NIL then
 				if P != NIL then
 					if P->sx = T then
 						P->sx = T->dx
 					else
 						P->dx = T->dx
+		return ret
+\end{lstlisting}
+
+La seconda e chiamata per l'eliminazione del nodo andando a operare sull'intero sottoalbero dove quel nodo e radice.
+
+\textbf{DeleteRoot(T)}
+
+\begin{lstlisting}[language=Java]
+	DeleteRoot(T)
+		if T!= NIL then
+			Tmp = T
+			if T->sx = Nil then
+				ret = T->dx
+			else if T->dx = NIL then
+				ret = T->sx
+			else
+				Tmp = StaccaMin(T->dx,T)
+				T->key = Tmp->key
+				delete(tmp)
+		return ret
+\end{lstlisting}
+
+In questo modo la chiamata a questa funziona delega il compito di capire in quale caso dei tre possibili si e dentro e di conseguenza deallocare in modo sicuro.
+
+Infine andiamo a scrivere la funzione generale per la distruzione di un nodo nel modo seguente:
+
+\begin{lstlisting}[language=Java]
+	DeleteR(T,k)
+		ret = T
+		if T!= NIL then
+			if T->key < k then
+				T->dx = Delete(T->dx,k)
+			else if T->key > k then
+				T->sx = Delete(T->sx,k)
+			else
+				ret = DeleteRoot(T)
 		return ret
 \end{lstlisting}
 
