@@ -1,0 +1,79 @@
+\section{Lezione 12 12/10/2023}
+\subsection{Cancellazione albero AVL}
+
+Per la cancellazione di un elemento nell'albero AVL dobbiamo sempre fare delle considerazioni simili a quelle dell'aggiunta di un elemento nell'AVL. Nel caso specifico pero c'e bisogno di considerare che la DeleteAVL del nodo.
+Nella diminuzione di un elemento K del sottoalbero, \textbf{il padre} dell'elemnto K puo essere attaccato facilmente a uno dei due sottoalberi di sinistra o destra.
+Nel farlo andiamo a diminuire di pesantezza uno dei due sottoalberi rendendo il successivo piu pesante. In quel caso la strategia che potremmo attuare e quella del ribilanciamento, ma condizionato dal fatto che ci troviamo in un AVL.\\
+
+I tre algoritmi sono concettualmente gli stessi che usiamo per il bilanciamento di un BST.
+
+\subsubsection{DeleteAVL}
+Questa funzione e pressoche simile a quella vista negli Alberi binari di ricerca con l'aggiunta del bilanciamento.
+
+\begin{lstlisting}[language=Java]
+	DeleteAVL(T,k)
+		if T != NIL then
+			if T->key > k then
+				T->sx = DeleteAVL(T->sx,k)
+				T = BilanciaDx(T)
+			else if T->key < k then
+				T->dx = DeleteAVL(T->dx,k)
+				T = BilanciaSx(T)
+			else 
+				T = DeleteRootAVL(T)
+		return T
+\end{lstlisting}
+
+\subsubsection{DeleterootAVL}
+La delete Root, chiamata quando viene trovato il nodo da eliminare, non solo copiera il valore del piu piccolo elemento del sottoalbero destro di T, ma andra a bilanciare nuovamente a sinistra (perche piu pesante) il sottoalbero di T.
+
+	\begin{lstlisting}[language=Java]
+		DeleteRootAVL(T)
+			if T != NIL then
+				tmp = T
+				if T->sx = NIL then
+					T = T->dx
+				else if T->dx = NIL then
+					T = T->sx
+				else
+					tmp = stacca\_minAVL(T->dx,T)
+					T->key = tmp->key
+					T = BilanciaSx(T)
+					dealloca(tmp)
+			return T
+	\end{lstlisting}
+
+\subsubsection{Stacca\_min}
+Per lo staccamin abbiamo bisogno di una variabile in piu in questo caso perche non ci e possibile andare a salvare l'elemento da cancellare dopo il bilanciamento, che si perderebbe nell'albero. In tal caso l'uso di una variabile e il controllo successivo se si trova nel nodo figlio di destra o sinistra ci verra in aiuto.
+
+\begin{lstlisting}[language=Java]
+	Stacca\_minAVL(T,P)
+		if T != NIL then
+			If T->sx != NIL then
+				ret = Stacca\_minAVL(T->sx, T)
+				newt = BilanciaDx(T)
+			else
+				ret = T
+				newt = T->dx
+			if T = P->sx then
+				P->sx = newt
+			else
+				P->dx = newt
+		return ret
+\end{lstlisting}
+
+Le operazioni di cancellazione andranno a effettuare una operazione di diminuizione dell'altezza di un albero e conseguentemente un'altra a cascata per il bilanciamento, che solitamente cambia le dimensioni dell'albero finale. Questo solitamente non ci dara problemi, ma solo in caso di alberi AVL ci dara problemi, poiche ci fara perdere le proprieta di quest'ultimo. \\
+In un esempio di AVL minimo la cancellazione di un nodo nel sottoalbero meno pesante andrebbe a comportare un ribilanciamento che va a peggiorare la differenza delle altezze tra alberi, portandola a 2, e qundi perdendo la proprieta di albero.
+
+\subsection{Alberi Red - Black}
+Gli alberi Red - Black, un po come One Piece, sono alberi che associano dei colori ai loro nodi. Come ogni tipo di struttura dati ha le sue caratteristiche. La colorazione ovviamente andra a braccetto con alcune proprieta che di seguito andremo a definire.
+
+\begin{itemize}	
+	\item Ogni nodo deve essere rosso o nero.
+	\item I nodi rossi potranno essere soltanto all'interno. In poche parole \textbf{i nodi foglie possono essere solo neri}.
+	\item Ogni nodo rosso ha \textbf{solo} figli neri.
+	\item Per ogni nodo X preso all'interno dell'albero, ogni percorso da X al nodo foglia contiene \textbf{lo stesso numero} di nodi neri.
+\end{itemize}
+
+Foto
+

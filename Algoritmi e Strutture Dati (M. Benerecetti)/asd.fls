@@ -1008,6 +1008,9 @@ INPUT Lezioni/lezione09.aux
 INPUT ./Lezioni/lezione10.aux
 INPUT Lezioni/lezione10.aux
 INPUT Lezioni/lezione10.aux
+INPUT ./Lezioni/lezione11.aux
+INPUT Lezioni/lezione11.aux
+INPUT Lezioni/lezione11.aux
 OUTPUT asd.aux
 INPUT /usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -1243,6 +1246,16 @@ INPUT ./images//AVLh4.png
 INPUT ./images//AVLh4.png
 INPUT ./images//AVLh4.png
 INPUT ./images//AVLh4.png
+INPUT ./Lezioni/lezione11.tex
+INPUT ./Lezioni/lezione11.tex
+INPUT ./Lezioni/lezione11.tex
+OUTPUT Lezioni/lezione11.aux
+INPUT ./Lezioni/lezione11.tex
+INPUT ./Lezioni/lezione11.tex
+INPUT ./Lezioni/lezione11.tex
+INPUT Lezioni/lezione11.tex
+INPUT ./Lezioni/lezione11.tex
+INPUT Lezioni/lezione11.tex
 INPUT asd.aux
 INPUT ./Lezioni/lezione02.aux
 INPUT Lezioni/lezione02.aux
@@ -1271,6 +1284,9 @@ INPUT Lezioni/lezione09.aux
 INPUT ./Lezioni/lezione10.aux
 INPUT Lezioni/lezione10.aux
 INPUT Lezioni/lezione10.aux
+INPUT ./Lezioni/lezione11.aux
+INPUT Lezioni/lezione11.aux
+INPUT Lezioni/lezione11.aux
 INPUT ./asd.out
 INPUT ./asd.out
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
