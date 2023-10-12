@@ -1,0 +1,61 @@
+\section{Lezione 11 - 10/10/2023}
+%\subsection{Bilaciamento Albero AVL}
+%Dato che l'inserimento/cancellazione può sbilanciare l'albero cioé 
+
+\subsection{Altezza}
+Per aiutarci nel bilanciamento andiamo a scrivere una funzione ausilaria che ci sarà molto utile:
+\begin{lstlisting}[language=Java]
+Altezza(T)
+    ret=-1
+    if T != NIL then
+        sx=Altezza(T->sx)
+        dx=Altezza(T->dx)
+        ret=1+max(sx,dx)
+return ret
+\end{lstlisting}
+Questa funzione è \textbf{lineare} ma nel nostro caso voglio che sia logaritmo, quindi per ovviare a questo problema andiamo a inserire un valore $h$ all'interno di ogni nodo.
+
+\begin{lstlisting}[language=Java]
+Altezza(T)
+    if T = NIL then
+        ret=-1
+    else
+        ret=T->h
+return ret
+\end{lstlisting}
+
+\subsection{Inserimento AVL}
+Andiamo a vedere come scrivere un algoritmo per l'inserimento, essendo l'AVL un albero binario di ricerca sfruttiamo un ragionamento simile, ma con l'aggiunta del bilanciamento per rispettare la condizone degli AVL.
+\begin{lstlisting}[language=Java]
+InsertAVL(T, k)
+if T != NIL then
+    if T-key < k then
+        T->dx=InsertAVL(T->dx, k)
+        T=Bilanciadx(T)
+    else if T->key > k then
+        T->sx=InsertAVL(T->sx, k)
+        T=Bilanciasx(T)
+else 
+    T=newnodo(k)
+    T->h=0
+return T
+\end{lstlisting}
+
+\subsection{Bilaciamento}
+Dato che l'inserimento/cancellazione può sbilanciare un albero abbiamo bisogno di bilanciare l'albero in modo da far rispettare sempre la condizione, abbiamo diversi casi di bilanciamento andiamo ad esaminarli:
+
+\subsubsection{Bilanciamento Sinistro}
+\begin{lstlisting}[language=Java]
+Bilanciasx(T)
+if T != NIL then
+    if Altezza(T->sx) - Altezza(T->dx) = 2 then
+        if Altezza(T->sx->sx) > Altezza(T->dx->dx) then
+            T=Rotazionesx(T)
+        else 
+            T->sx=Rotazionedx(T->sx)
+            T=Rotazionesx(T)
+    else 
+        T->h=1+max(Altezza(T->sx), Altezza(T->dx))
+return T
+\end{lstlisting}
+
