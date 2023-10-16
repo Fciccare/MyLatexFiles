@@ -47,6 +47,90 @@ Dimostriamo per induzione
 	Noi sappiamo che 
 	$$ ni(x)=1+ni(y)+ni(z) $$
 	
+	In questo caso, ragionando analiticamente possiamo dire che l'altezza nera di X, il nostro nodo padre del sottoalbero dipende dal fatto che y, il suo sottoalbero sinistro, sia nero o rosso.
+	\begin{itemize}
+		\item Nel caso in cui il nodo sia rosso, allora l'altezza nera di x e y sono uguali.
+		\item Nel caso in cui il nodo sia nero, allora l'altezza nera di x e uguale a quella di y + 1.
+	\end{itemize}
+	
+	Esplicitiamo $bh(y)$ dalle due equazioni perche ci interessa esplicitare tutto per $bh(x)$
 
+	In questo caso vedremo che $bh(y) > bh(y) - 1$ poiche o e uguale, o e sicuramente maggiore di $bh(x) - 1$.
+	
+	Questo vale anche per z, dunque avremo:
+	
+	$$bh(y) \ge bh(x) -1$$
+	$$bh(z) \ge bh(x) -1$$
+
+	Questo vuol dire che scendendo di altezza, andro a diminuire al massimo di uno l'altezza del sottoalbero. Grazie a queste equazioni possiamo ritornare a ritroso alla tesi.
+	
+
+	Usiamo questo ragionamento matematico: Se io so che $n \ge m$, allora avro anche che $ 2^{n} \ge 2^{m}$ poiche l'esponenziale e crescente e non andiamo a modificare il risultato comunque finale. 
+	
+	Applichiamo dunque la stessa proprieta alle stesse equazioni scritte sopra. In tal caso avremo 
+	
+	$$bh(y) \ge bh(x) -1 \rightarrow 2^{bh(y)} \ge 2^{bh(x)-1} $$
+	sottraiamo una stessa quantita a entrambi i membri
+	$$2^{bh(y)}-1  \ge 2^{bh(x)-1}$$
+	Dunque entrambi vedremo che la somma tra $2^{bh(y)} e 2^{bh(z)}$ sono maggiori o uguali di $2^{bh(x)-1}$.
+	
+	Il numero di nodi interni di X e dato da $1 + ni(y)+ ni(z)$. Sostituendo abbiamo che $1 + 2^{bh(x) - 1} -1 + 2^{bh(x)-1}-1 \rightarrow 2*2^{bh(x)-1}$. Il "-1" puo essere semplificato portando dentro il 2 moltiplicato avanti all'espressione. In tal modo avremmo che indipendentemente dall'altezza che io ho in entrata, il numero di nodi interni di quel sottoalbero e almeno uguale a $2^{bh(x)}-1$, quindi la tesi inziale e dimostrata.
+	
+	
 \end{itemize}
 
+\subsubsection{Considerazioni sull'altezza nera di un albero}
+
+Se sappiamo che il numero di nodi n e maggiore o uguale a $2^bh -1$, possiamo intuitivamente e approssimativamente andare a trovare l'altezza nera dell'albero.
+
+Nel caso in cui avesse tutti i nodi neri allora l'altezza nera e $\le h$, mentre se ha alternati rossi e neri, abbiamo il limite minimo dell'altezza nera, cioe $\frac{h}{2}$.
+
+Dunque l'altezza nera e compresa tra : $\frac{h}{2} \le bh \le h$.
+
+Usando la matematica e le nozioni della dimostrazione precedente...
+$$bh \ge \frac{h}{2} \rightarrow 2^{bh} -1 \ge 2^{\frac{h}{2}-1}$$
+Se sappiamo che n e $\ge 2^{bh}-1$ allora,
+$$n \ge 2^{\frac{h}{2}-1}$$
+$$n+1 \ge 2^{\frac{h}{2}}$$
+$$\log_{2} h+1 \ge \frac{h}{2}$$
+$$h \ge 2\log_{2} n+1$$
+
+\subsubsection{Inserimento Albero R-B}
+Gli algoritmi di inserimento e bilanciamento usati fino ad ora non andranno piu bene per questo tipo di struttura. Nonostante abbiamo piu liberta da un certo punto di vista, dobbiamo considerare che la proprieta 4 degli alberi Red-Black ci impedisce di fare degli inserimenti nella struttura dati in modo efficiente.
+
+In particolare nell'inserimento di un valore in un nodo NIL, l'algoritmo deve occuparsi di creare il nodo,colorarlo e di creare e colorare a sua volta i figli NIL (di nero ovviamente). Successivamente la colorazione del nodo k non e immediata e semplice, va considerato il colore del padre e non va rotto il vincolo dello stesso numero di nodi neri per ogni percorso dei sottoalberi.
+ 
+Abbiamo due possibilita di colore all'inserimento. Solitamente per non creare problemi con il padre del sottoalbero a cui dobbiamo inserire, si inserisce nero. Anche in quel caso non e detto che l'inserimento del nero non abbia creato problemi per la proprieta 4 dei R-B.
+
+Nei Red - Black la violazione di una di questi due algoritmi puo essere scoperta solo ricorsivamente.
+
+\begin{lstlisting}[language=Java]
+	InsertRB(T,k)
+		If T != NIL then
+			If T->key < k then
+				T->dx = InsertRB(T->dx, k)
+				T = BilanciaRBdx(T)
+			else if T->key > k then
+				T->sx = InsertRB(T->sx, k)
+				T = BilanciaRBsx(T)
+			else
+				T = new_nodeRB(k,r) //Esemplificazione di una funzione che mette a NIL i figli, e colora
+		return T
+\end{lstlisting}
+
+Questa funzione verra supportata dalle funzioni di bilanciamento che sono specificatamente scritte apposta per la R-B. In tal caso abbiamo 3 casistiche generali di problemi.
+Nel caso in cui il nodo che andiamoa  inserire sia rosso...
+
+\begin{itemize}
+	\item Caso 1) Il padre rosso e il fratello rosso. Sia a destra che a sinistra del padre rosso.
+	\item Caso 2) Inserimento a destra del sottoalbero il cui padre e rosso e il fratello nero.
+	\item Caso 3) Inserimento a sinistra del sottoalbero il cui padre e rosso e il fratello e nero.
+\end{itemize}
+
+La risoluzione del Caso 1, si scambia il nodo padre rosso con il nonno nero, in tal caso abbiamo che i figli diventeranno perforza di cose neri. In questo modo non andiamo a violare la proprieta 4, poiche i percorsi sia a destra che a sinistra avranno lo stesso numero di nodi neri, ma andiamo soltanto ad aumentare l'altezza nera.
+
+Il Caso 2 si risolve ruotando in modo tale da arrivare al caso 3.
+
+Per il caso 3 ci conviene ruotare l'albero a destra e sostituire il nodo radice (precendetemente nero) con un nodo rosso (visto che era figlio di nero). In tal modo abbiamo la radice nera, i figli rossi e i sottoalberi non cambiano.
+
+Aggiustare assolutamente
