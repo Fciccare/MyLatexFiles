@@ -1,0 +1,52 @@
+\section{Lezione 13 - 13/10/2023}
+
+\subsection{Alberi Red - Black}
+Gli alberi Red - Black, sono alberi che associano dei colori ai loro nodi. Come ogni tipo di struttura dati ha le sue caratteristiche. La colorazione ovviamente andra a braccetto con alcune proprieta che di seguito andremo a definire.
+
+\begin{itemize}	
+	\item Ogni nodo deve essere rosso o nero.
+	\item I nodi rossi potranno essere soltanto all'interno. In poche parole \textbf{i nodi foglie possono essere solo neri}.
+	\item Ogni nodo rosso ha \textbf{solo} figli neri.
+	\item Per ogni nodo X preso all'interno dell'albero, ogni percorso da X al nodo foglia contiene \textbf{lo stesso numero} di nodi neri.
+\end{itemize}
+
+Foto
+
+\subsubsection{Non tutti gli alberi possono essere colorabili}
+
+Per vedere se un albero è colorabile ci sono delle considerazioni da fare:
+
+\begin{itemize}
+    \item Colorare subito le foglie e la radice di nero.
+    \item Osservare se esiste un sottoalbero è visibilmente piu pesante di un altro. In tal caso l'albero è quasi sicuramente non colorabile. Teoricamente se la differenza di altezza di alberi è maggiore di due allora probabilmente non è colorabile.
+\end{itemize}
+
+\subsubsection{Altezza Nera di un albero R-B}
+L'altezza nera, di un albero R-B, è il numero di nodi neri che, preso un nodo X, si contano da X fino alle foglie escludendo X.
+
+L'altezza nera è sicuramente minore dell'altezza dell'albero e al massimo uguale.
+
+Dimostriamo dunque che l'altezza è sicuramente:
+
+$$h \le 2^{bh(x)}-1$$
+
+Preso un nodo all'interno di un albero il numero di nodi interni non può essere più piccolo di un albero completamente nero.
+$$ n i(x) \ge 2^{bh(x)} -1 $$
+
+Dimostriamo per induzione
+
+\begin{itemize}
+	\item Base Induttiva: Albero di altezza zero, quindi il numero di nodi interni di un albero di $h=0$ è \textbf{zero}, andiamo a svolgere l'equazione con la base induttiva:
+	$$ 0 \ge 2^{bh(x)}-1 \Rightarrow 2^0-1 = 0 \Rightarrow \text{ VERO }$$
+	
+	
+	\item Caso Induttivo $h > 0$: L'albero contiene almeno un nodo interno. 
+	Andiamo a scomporre il nostro albero come sottoalbero sx del figlio sinistro e sottoalbero dx del figlio destro.
+	$$ ni(y) \ge 2^{bh(y)}-1 $$
+	$$ ni(z) \ge 2^{bh(z)}-1 $$
+	Noi sappiamo che 
+	$$ ni(x)=1+ni(y)+ni(z) $$
+	
+
+\end{itemize}
+
