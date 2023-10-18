@@ -1,0 +1,16 @@
+\subsection{Lezione 14 17/10/2023}
+
+\subsubsection{Bilanciamento All'inserimento in Albero R-B}
+
+\begin{lstlisting}[language=Java]
+	BilanciaInsSx(T)
+		If !NIL(T->sx) and (!NIL(T->sx->sx) or !NIL(T->sx->dx)) then
+			v = ViolazioneSxInsRB(T->sx,T->dx)
+			Case V of :
+				1: T = Caso1(T)
+				2: T = Caso2(T)
+				3: T= Caso3(T)
+		return T
+\end{lstlisting}
+
+La violazione verifica se esiste una violazione di regola numero 4 (degli R-B), mandando il sottoalbero sinistro e destro rispettivamente all'interno di una funzione controllo che restituira il tipo di caso di violazione che stiamo riscontrando in quel sottoalbero.
