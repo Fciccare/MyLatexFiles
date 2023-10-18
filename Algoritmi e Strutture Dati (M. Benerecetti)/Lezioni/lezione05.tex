@@ -8,13 +8,13 @@ BinSearchIterative(A,e) //A: array in input, e: elemento da cercare
 	i=0
 	j=length(A)-1
 	while i <=j AND ret=-1 do
-		q=(i+j)/2
+		q=(i+j)/2 //punto medio
 		if A[q] < k then
-			i=q-1
+			i=q+1 //ricerca a "destra"
 		else if A[q] > k then
-			j=q+1
+			j=q-1 //ricerca a "sinistra"
 		else 
-			ret = q
+			ret=q //trovato
 	return ret
 \end{lstlisting}
 Possiamo notare che a meno di piccoli cambiamenti il funzionamento di questo algoritmo rispetto alla sua versione ricorsiva è pressoche identico.
@@ -54,12 +54,12 @@ Search(L,k) // L=lista, k=elemento da cercare
 	temp=L // "puntatore" al primo elemento della lista
 	while temp != NIL and ris=-1 do
 		if temp->key = k then
-			ris=k
+			ris=temp
 		else
 			temp = temp->next
 	return ris
 \end{lstlisting}
-La variabile "temp" ci serve per evitare di andare a perdere "l'inizio" della lista in ingresso dato che la lista in questo caso può solo andare avanti, quindi se non ci salviamo il punto di inizio non possiamo più tornare all'inizio
+L'algoritmo è molto semplice tramite la variabiale "temp" andiamo a scorrerci tutta la lista tramite i puntatori \textbf{next}, se troviamo il valore lo restituiamo il nodo in cui è presente altrimenti restituiamo -1.
 
 \subsubsection{Ricerca (ricorsiva)}
 Andiamo a rifare lo stesso algoritmo ma tramite la ricorsione
@@ -70,7 +70,7 @@ Search(L,k) // L=lista, k=elemento da cercare
 		if L->Key = k then
 			ris=L
 		else
-			search(L->Next, k)
+			ris=search(L->Next, k)
 	return ris
 \end{lstlisting}
 In questo caso ad ogni prossima chiamata di "search" andiamo a passare una "sottolista" cioè la stessa ma partendo da un nodo più avanti fino ad arrivare alla sua fine.\\

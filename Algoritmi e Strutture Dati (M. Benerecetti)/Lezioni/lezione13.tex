@@ -1,18 +1,25 @@
 \section{Lezione 13 - 13/10/2023}
 
 \subsection{Alberi Red - Black}
-Gli alberi Red - Black, sono alberi che associano dei colori ai loro nodi. Come ogni tipo di struttura dati ha le sue caratteristiche. La colorazione ovviamente andra a braccetto con alcune proprieta che di seguito andremo a definire.
+Gli alberi Red - Black, sono alberi binari di ricerca che associano dei colori ai loro nodi. 
+%Come ogni tipo di struttura dati ha le sue caratteristiche. 
+La colorazione ovviamente andrà a braccetto con alcune proprieta (vincoli) che di seguito andremo a definire.
 
 \begin{itemize}	
-	\item Ogni nodo deve essere rosso o nero.
-	\item I nodi rossi potranno essere soltanto all'interno. In poche parole \textbf{i nodi foglie possono essere solo neri}.
-	\item Ogni nodo rosso ha \textbf{solo} figli neri.
-	\item Per ogni nodo X preso all'interno dell'albero, ogni percorso da X al nodo foglia contiene \textbf{lo stesso numero} di nodi neri.
+	\item[1)] Ogni nodo deve essere rosso o nero.
+	\item[2)] \textbf{I nodi foglie possono essere solo neri (NIL)}, quindi i nodi rossi potranno essere soltanto all'interno. 
+	\item[3)] Ogni nodo rosso ha \textbf{solo} figli neri.
+	\item[4)] Per ogni nodo X preso all'interno dell'albero, ogni percorso da X al nodo foglia contiene \textbf{lo stesso numero} di nodi neri.
 \end{itemize}
 
-Foto
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{AlberoRB} 
+	\caption{Questo è un albero RB perché soddisfa tutti e 4 i vincoli}
+\end{figure}
 
-\subsubsection{Non tutti gli alberi possono essere colorabili}
+\paragraph{Non tutti gli alberi possono essere colorabili}
+\mbox{}
+\smallskip
 
 Per vedere se un albero è colorabile ci sono delle considerazioni da fare:
 
@@ -96,25 +103,30 @@ $$\log_{2} h+1 \ge \frac{h}{2}$$
 $$h \ge 2\log_{2} n+1$$
 
 \subsubsection{Inserimento Albero R-B}
-Gli algoritmi di inserimento e bilanciamento usati fino ad ora non andranno piu bene per questo tipo di struttura. Nonostante abbiamo piu liberta da un certo punto di vista, dobbiamo considerare che la proprieta 4 degli alberi Red-Black ci impedisce di fare degli inserimenti nella struttura dati in modo efficiente.
+Gli algoritmi di inserimento e bilanciamento usati fino ad ora non andranno più bene per questo tipo di struttura. Nonostante abbiamo più libertà da un certo punto di vista, dobbiamo considerare che la proprieta 4 degli alberi Red-Black ci impedisce di fare degli inserimenti nella struttura dati in modo efficiente.
+\smallskip
 
-In particolare nell'inserimento di un valore in un nodo NIL, l'algoritmo deve occuparsi di creare il nodo,colorarlo e di creare e colorare a sua volta i figli NIL (di nero ovviamente). Successivamente la colorazione del nodo k non e immediata e semplice, va considerato il colore del padre e non va rotto il vincolo dello stesso numero di nodi neri per ogni percorso dei sottoalberi.
- 
-Abbiamo due possibilita di colore all'inserimento. Solitamente per non creare problemi con il padre del sottoalbero a cui dobbiamo inserire, si inserisce nero. Anche in quel caso non e detto che l'inserimento del nero non abbia creato problemi per la proprieta 4 dei R-B.
+In particolare nell'inserimento di un valore in un nodo NIL, l'algoritmo deve occuparsi di creare il nodo, colorarlo e di creare e colorare a sua volta i figli NIL (di nero ovviamente).
+\smallskip
+
+Successivamente la colorazione del nodo k non è immediata e semplice, va considerato il colore del padre e non va rotto il vincolo dello stesso numero di nodi neri per ogni percorso dei sottoalberi.
+\smallskip
+
+Abbiamo due possibilità di colore all'inserimento. Solitamente per non creare problemi con il padre del sottoalbero a cui dobbiamo inserire, si inserisce nero. Anche in quel caso non e detto che l'inserimento del nero non abbia creato problemi per la proprieta 4 dei R-B.
 
 Nei Red - Black la violazione di una di questi due algoritmi puo essere scoperta solo ricorsivamente.
 
 \begin{lstlisting}[language=Java]
 	InsertRB(T,k)
-		If T != NIL then
-			If T->key < k then
+		if T != NIL then
+			if T->key < k then
 				T->dx = InsertRB(T->dx, k)
 				T = BilanciaRBdx(T)
 			else if T->key > k then
 				T->sx = InsertRB(T->sx, k)
 				T = BilanciaRBsx(T)
 			else
-				T = new_nodeRB(k,r) //Esemplificazione di una funzione che mette a NIL i figli, e colora
+				T = new_nodeRB(k,r) //Creazione nodo rosso (r) e figli a NIL
 		return T
 \end{lstlisting}
 

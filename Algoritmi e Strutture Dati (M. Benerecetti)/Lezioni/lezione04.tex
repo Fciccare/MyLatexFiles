@@ -1,7 +1,7 @@
 \section{Lezione 04 - 23/09/2023}
 \subsection{Array non ordinato}
 Abbiamo un insieme $S$ che vogliamo rappresentare in $A$.\\
-$$ |S| = |A| $$
+$$ |S| = A.free $$
 La funzione $A.free$ ci restituirà la posizione della prima cella libera.\\
 
 
@@ -61,9 +61,9 @@ BinSearch(A, e, i, j) //i: punto inizio, j: punto fine
 	if i <= j then
 		q=(i+j)/2 //punto centrale
 		if A[q] > e then
-			i=BinSearch(A, e, i, q-1) //ricerca a "destra"
+			i=BinSearch(A, e, i, q-1) //ricerca a "sinistra"
 		else if A[q] < e then
-			i=BinSearch(A, e, q+1, j) //ricerca a "sinistra"
+			i=BinSearch(A, e, q+1, j) //ricerca a "destra"
 		else return q //trovato
 	else return -1 //non trovato
 \end{lstlisting}
