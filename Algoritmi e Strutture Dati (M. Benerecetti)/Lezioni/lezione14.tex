@@ -14,3 +14,19 @@
 \end{lstlisting}
 
 La violazione verifica se esiste una violazione di regola numero 4 (degli R-B), mandando il sottoalbero sinistro e destro rispettivamente all'interno di una funzione controllo che restituira il tipo di caso di violazione che stiamo riscontrando in quel sottoalbero.
+
+\subsubsection{Controllo Violazione a Sinstra Inserimento R-B}
+
+\begin{lstlisting}[language=Java]
+	ViolazioneSxInsRB(s,d)
+		v=0
+		If s->col = R then
+			if d->col = R then
+				if s->sx->col = R or s->dx->col = R then
+					v=1
+			else if s->dx->col = R then
+				v=2
+			else if s->sx->col = R then
+				v=3
+		return v
+\end{lstlisting}
