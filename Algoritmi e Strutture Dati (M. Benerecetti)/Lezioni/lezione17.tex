@@ -1,6 +1,6 @@
-\subsection{Lezione 17 24/10/2023}
+\section{Lezione 17 24/10/2023}
 
-\subsubsection{I Grafi}
+\subsection{I Grafi}
 I grafi sono una coppia di insiemi definita come:(V,E) (chiamato oggetto), dove V e un insieme finito di elementi che compongono il grafo chiamati \textbf{vertici}. L'insieme E rappresenta l'insieme degli \textbf{archi}.
 
 L'insieme E e costituito da una coppia composta cosi definita: $E \subset V x V$, quindi una coppia formata da due vertici dell'insieme \textbf{V}.
@@ -17,7 +17,7 @@ $V = \{A,B,C,D,E,F\}$
 
 $E = \{(A,D), (B,E)\}$
 
-\subsubsection{Grafo Orientato}
+\subsection{Grafo Orientato}
 Un grafo orientato e un grafo che ha gli archi direzionati, cioe che vanno da una direzione all'altra, solitamente nella rappresentazione grafica a coppie, la direzione va dal primo elemento verso il secondo.
 
 (I secondi elementi nella coppia sono i cosiddetti "Carrier della relazione").
@@ -28,15 +28,15 @@ Per "tornare" al caso in cui il grafo non e orientato, bisogna avere aggiungere 
 
 %immagine
 
-\subsubsection{Alberi e Grafi}
+\subsection{Alberi e Grafi}
 
 Gli alberi sono particolari tipi di grafi dove la relazione che vige tra i nodi e quella di parentela (padre figli). In esso i tragitti non sono infiniti come possono essere in un grafo.
 Un grafo non puo essere ricostruito come un albero nel caso in cui un nodo si perde, poiche non sappiamo quanti e quali archi abbia perso a differenza di un nodo di un albero che puo avere un solo padre e uno o 2 figli.
 
-\subsubsection{Grafi Pesati}
+\subsection{Grafi Pesati}
 I grafi pesati sono un'applicazione dei grafi ordinati e non, dove ad ogni arco viene associato un numero (peso).
 
-\subsubsection{Grado di un Vertice}
+\subsection{Grado di un Vertice}
 
 Il grado di un vertice puo dividersi in 
 \begin{itemize}
@@ -50,7 +50,7 @@ P.S. un cappio e un arco che esce e entra nello stesso nodo.
 Ogni vertice puo avere come massimo numero di archi (entranti e uscenti), il numero di vertici del grafo.
 $$n = |V|$$
 
-\subsubsection{Percorsi - Paths}
+\subsection{Percorsi - Paths}
 Sia $v,w \in V$ e definito $\pi$ = il percorso da $v \text{in} w$ nel grafo G. Per percorso si intende la sequenza di vertici che si impegnano per arrivare al vertice stabilito. 
 
 $$\pi = v_0,v_1,v_2,\dots,v_k$$ tale che 
@@ -63,7 +63,7 @@ $$\pi = v_0,v_1,v_2,\dots,v_k$$ tale che
 
 La coppia di valori tali che il secondo e il successivo del primo.
 
-\subsubsection{Raggiungibilita di un nodo}
+\subsection{Raggiungibilita di un nodo}
 
 Un nodo $v $ e detto raggiungibile da $u$ un un grafico $G \iff \exists \pi | \pi \text{e un percorso da }u \text{in } v$.
 
@@ -78,12 +78,12 @@ La raggiungibilita puo essere scritta come funzione $\text{Reach} \in V x V$. La
 			Se esiste un percorso che da $u$ va in $z$ e da $z$ in $v$, allora esistera un percorso che raggiunge $(u,z)$, concatenando i percorsi dei due.
 \end{itemize}  
 
-\subsubsection{Percorsi Ciclici}
+\subsection{Percorsi Ciclici}
 Un grafo orientato in cui non esistono cicli semplici e detto \textbf{Grafo Ciclico}, dove per ciclo semplice si intende una "ripetizione di un vertice in una sequenza".
 
 %foto
 
-\subsubsection{Sottografo}
+\subsection{Sottografo}
 Dato $G = (V,E)$, allora $G^{\prime} = (V^{\prime},E^{\prime})$ e detto sottografo di $G$.
 La condizione principale per far si che $G^{\prime}$ sia sottografo e che $V^{\prime} \in V$.
 In questo caso il numero degli archi e : $E^{\prime} \in E \cap (V^{\prime} x V^{\prime})$.

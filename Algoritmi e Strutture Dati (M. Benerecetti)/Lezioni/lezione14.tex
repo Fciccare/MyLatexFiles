@@ -1,6 +1,6 @@
-\subsection{Lezione 14 17/10/2023}
+\section{Lezione 14 17/10/2023}
 
-\subsubsection{Bilanciamento All'inserimento in Albero R-B}
+\subsection{Bilanciamento All'inserimento in Albero R-B}
 
 \begin{lstlisting}[language=Java]
 	BilanciaInsSx(T)
@@ -15,7 +15,7 @@
 
 La violazione verifica se esiste una violazione di regola numero 4 (degli R-B), mandando il sottoalbero sinistro e destro rispettivamente all'interno di una funzione controllo che restituira il tipo di caso di violazione che stiamo riscontrando in quel sottoalbero.
 
-\subsubsection{Controllo Violazione a Sinstra Inserimento R-B}
+\subsection{Controllo Violazione a Sinstra Inserimento R-B}
 
 \begin{lstlisting}[language=Java]
 	ViolazioneSxInsRB(s,d)
@@ -32,9 +32,9 @@ La violazione verifica se esiste una violazione di regola numero 4 (degli R-B), 
 \end{lstlisting}
 
 
-\subsubsection{Risoluzione Violazione Inserimento a sinistra}
+\subsection{Risoluzione Violazione Inserimento a sinistra}
 Quando andiamo ad inserire un nodo in un albero RB è facile violare le propietà, quindi andiamo a indentificare i 3 casi in cui avvengono e come andare a risolverli. Generalmente il problema principale è non rompere la proprieta 4. Per far si che non si rompa la proprieta diamo al nodo appena creato il colore rosso, che potrebbe compromettere i sottoalberi destro e sinistro.
-\subsubsection{Caso 1}
+\subsection{Caso 1}
 Possiamo indentificare il \textbf{Caso 1}, osservando solamente se il figlio destro è un nodo rosso. La violazione puo avvenire sia sul sottoalbero sinistro del nodo sinistro della radice, sia nel destro.
 
 \begin{figure}[H]
@@ -75,7 +75,7 @@ In questo tipo di soluzione eliminiamo la violazione sui sottofigli, facciamo in
 \end{figure}
 
 
-\subsubsection{Caso 2}
+\subsection{Caso 2}
 
 Il caso 2 (vedi foto) comporta il fatto che il \textbf{figlio destro} del sottoalbero su cui stiamo operando e \textbf{nero}. La strategia di risoluzione per il caso 2 prevede di far "ruotare" il problema a sinistra (quindi far salire di altezza la violazione) e far si che diventi caso 3, in questo modo andiam semplicemente a richiamare la strategia di risoluzione del caso 3.
 
@@ -99,7 +99,7 @@ Il caso 2 (vedi foto) comporta il fatto che il \textbf{figlio destro} del sottoa
 		return T
 \end{lstlisting}
 
-\subsubsection{Caso 3}
+\subsection{Caso 3}
 
 Il caso 3, come nel caso 2, si verifica nel momento in cui, il figlio destro del sottoalbero su cui stiamo operando e nero. La differenza col caso 2 e che il figli del sottoalbero sinistro non sono entrambi rossi, ma il rosso si trova soltanto nel sottoalbero destro (come si nota in foto).
 La strategia di risoluzione e dunque andare a ruotare sulla sinistra l'albero e scambiare i colori della radice e del figlo destro.
@@ -114,7 +114,7 @@ La strategia di risoluzione e dunque andare a ruotare sulla sinistra l'albero e 
 
 Ovviamente queste stesse violazioni sono possibili sul sottoalbero destro. Analogamente le soluzioni sono le stesse con opportune inversioni di nodi su cui devono essere fatte le operazioni.
 
-\subsubsection{Delete Albero R-B}
+\subsection{Delete Albero R-B}
 Per la distruzione del nodo di un albero R-B ci vogliono molte piu accortezze della creazione poiche:
 \begin{itemize}
 	\item La distruzione di un nodo nero comporterebbe una failure nella proprieta 4 dell'altezza nera.
