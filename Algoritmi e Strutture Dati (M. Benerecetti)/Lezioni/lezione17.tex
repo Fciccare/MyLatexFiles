@@ -13,9 +13,9 @@ Un grafo si dice \textbf{completo} quando il suo numero di archi e uguale a n.
 
 %immagine 
 
-$V = {A,B,C,D,E,F}$
+$V = \{A,B,C,D,E,F\}$
 
-$E = {(A,D), (B,E)}$
+$E = \{(A,D), (B,E)\}$
 
 \subsubsection{Grafo Orientato}
 Un grafo orientato e un grafo che ha gli archi direzionati, cioe che vanno da una direzione all'altra, solitamente nella rappresentazione grafica a coppie, la direzione va dal primo elemento verso il secondo.
@@ -58,15 +58,35 @@ $$\pi = v_0,v_1,v_2,\dots,v_k$$ tale che
 \begin{itemize}
 	\item $v_0$ = $u$
 	\item $v_k$ = $v$
-	\item $\forall 0\le i \le k-1 = (v_i,v_{i+1})$
+	\item $\forall  0\le i \le k-1 = (v_i,v_{i+1})$
 \end{itemize}
 
 La coppia di valori tali che il secondo e il successivo del primo.
 
 \subsubsection{Raggiungibilita di un nodo}
 
+Un nodo $v $ e detto raggiungibile da $u$ un un grafico $G \iff \exists \pi | \pi \text{e un percorso da }u \text{in } v$.
 
+Quindi solo se esiste un percorso (insieme di nodi raggiungibili attraverso degli archi) da u in v.
 
+La raggiungibilita puo essere scritta come funzione $\text{Reach} \in V x V$. La funzione Reach possiede delle proprieta:
+\begin{itemize}
+	\item Riflessiva
+			$v \text{ e raggiungibile da } v$ poiche $(v,v)$ e una coppia $\in E$, ed e chiamato percorso senza archi. 
+	\item Transitiva
+			Se $(u,z) \in Reach$ e $(z,v) \in Reach$ allora avremo che sicuramente $(u,v) \in Reach$.
+			Se esiste un percorso che da $u$ va in $z$ e da $z$ in $v$, allora esistera un percorso che raggiunge $(u,z)$, concatenando i percorsi dei due.
+\end{itemize}  
 
+\subsubsection{Percorsi Ciclici}
+Un grafo orientato in cui non esistono cicli semplici e detto \textbf{Grafo Ciclico}, dove per ciclo semplice si intende una "ripetizione di un vertice in una sequenza".
+
+%foto
+
+\subsubsection{Sottografo}
+Dato $G = (V,E)$, allora $G^{\prime} = (V^{\prime},E^{\prime})$ e detto sottografo di $G$.
+La condizione principale per far si che $G^{\prime}$ sia sottografo e che $V^{\prime} \in V$.
+In questo caso il numero degli archi e : $E^{\prime} \in E \cap (V^{\prime} x V^{\prime})$.
+Nel caso in cui $E^{\prime} = E$, allora ci troviamo in un \textbf{sottografo indotto}.
 
 
