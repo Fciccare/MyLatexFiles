@@ -1,0 +1,30 @@
+\section{Lezione 15 - 19/10/2023}
+\subsubsection{Conversione Ricorsiva->Iterativo}
+%Rubato da Simone Cerrone + ChatGPT
+Sappiamo che in una chiamata ricorsiva, ogni istanza mantiene le proprie variabili, e prima di procedere con la successiva chiamata ricorsiva, deve conservare il proprio contesto. Questo contesto si può salvare memorizzando le variabili utilizzate prima di passare alla chiamata successiva. 
+\smallskip
+
+Quando la chiamata ricorsiva figlia completa la sua esecuzione, la memoria precedentemente occupata può essere liberata, e il controllo ritorna alla chiamata precedente. Questo processo segue una logica LIFO (Last-In-First-Out), il che significa che l'ultima chiamata effettuata è quella a cui verrà restituito il controllo per prima. Per emulare efficacemente questo meccanismo in un'iterazione, è necessario utilizzare una struttura dati di tipo stack.
+\smallskip
+
+Il numero di iterazioni del blocco di codice in una chiamata ricorsiva dipende dall'input fornito, quindi non è possibile conoscere in anticipo quante iterazioni saranno necessarie per un determinato algoritmo. Questo implica che non è appropriato utilizzare un ciclo for, ma è invece necessario implementare un ciclo while per gestire dinamicamente il processo ricorsivo in base all'input specifico.
+\subsection{Struttura Conversione}
+
+\begin{lstlisting}[language=Java]
+	while start || st != NIL do //start:partenza, st: ripresa
+    if start then
+      Simula codice fino alla prima chiamata ricorsiva
+
+      Se caso base -> Termina simulazione chiamata (start=false)
+
+      Se chiamata ricorsiva -> Salva contesto e instanza parametri formali
+    else 
+      Riprende contesto da stack
+
+      Individua punto di ritorno
+
+      Se richiesta chiamata
+        Se necessario aggiorna stack imposta parametri formali (start=true)
+      Altrimenti tornare e pulire lo stack
+\end{lstlisting}
+
