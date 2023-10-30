@@ -1,0 +1,42 @@
+\section{Lezione 19 - 27/10/2023}
+\subsection{Visite Grafi}
+Come per gli alberi anche sui grafi esistono vari tipi di visite, avendo maggiore libertà di "movimento" dato che ogni vertice può essere raggiunto da più percorsi dobbiamo a definire alcuni concetti importati.
+
+\paragraph{Vertice Sorgente}
+Dato che in un grafo non esiste un punto di partenza come la radice negli alberi assegniamo questo ruolo ad un considetto \textbf{vertice sorgente} $s$ che avrà il ruolo di farci esplorare tutti gli altri nodi del grafo (frontiera).
+
+\paragraph{Colorazione}
+Come abbiamo detto ogni nodo può essere raggiunto da diversi percorsi per evitare di visitare più volte lo stesso vertice assoceremo ad ognuno di essi un colore che ci permetterà di capire lo "stato" di esplorazione:
+\begin{itemize}
+    \item Bianco: Vertice non ancora scoperto (caso base)
+    \item Grigio: Vertice scoperto ma non visitato
+    \item Nero: Vertice scoperto e visitato (caso finale)
+\end{itemize}
+
+\subsubsection{BFS}
+Rispetto agli alberi la visità in ampiezza non può sfruttare il concetto di "livello" poiché in un grafo non abbiamo questo tipo di concetto ma sfrutteremo la \textbf{distanza}, quindi verranno esplorati prima i vertici più vicini al \textbf{vertice sorgente} e poi quelli più distanti.
+
+\begin{lstlisting}[language=Java]
+Init(G) //G:grafo
+    for each v in V do //per ogni vertice del grafo
+        color[v]=b //coloriamo di bianco il vertice
+\end{lstlisting}
+La funziona \textbf{init} ha lo scopo di colorare tutti i nodi di bianco, il costo di questa funzione è $|V|$ cioè il numeri dei vertici del grafo.
+
+\begin{lstlisting}[language=Java]
+BFS(G, s) //G:grafo, s: vertice sorgente
+    Init(G)
+    Q={s} //creiamo una coda con dentro s 
+    color[s]=g //coloriamo di grigio 
+    while Q != NIL do 
+        x=Testa(Q) //prendiamo l'elemento in testa 
+        for each v in ADJ(x) do //scorriamo gli adiacenti
+            if color[v] = b then //se e' bianco 
+                Q=Accoda(Q,v) //mettiamo il nodo bianco nella frontiera 
+                color[v]=g //mettiamo a grigio 
+        //operazione su x
+        Q=Decoda(Q) //x ha finito gli adiacenti e quindi lo togliamo
+        color[x]=n //lo mettiamo a nero (stato finale)
+\end{lstlisting}
+La funzione \textbf{BFS} ha un costo $|V| + (|E|+|V|) = |V|+|E|=|G|$
+    

@@ -81,7 +81,16 @@
 }
 
 % Use \lstset to make myStyle the global default
-\lstset{style=Style02}
+\lstset{
+  style=Style02,
+  extendedchars=true,
+  mathescape = true,
+  basicstyle = \ttfamily,
+  literate=%
+    {€}{\euro}1%
+}
+
+
 
 \begin{document}
 \maketitle
@@ -102,7 +111,6 @@
 \include{Lezioni/lezione13}
 \include{Lezioni/lezione14}
 \include{Lezioni/lezione17}
-\include{Lezioni/lezione18}
 
 
 
