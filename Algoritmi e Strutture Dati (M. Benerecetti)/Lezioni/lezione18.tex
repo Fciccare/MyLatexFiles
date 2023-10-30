@@ -1,0 +1,70 @@
+\section{Lezione 18 26/10/2023}
+
+\subsection{Complessità sui grafi}
+I grafi hanno una ciclicità variabile, ovviamente dal numero di archi che ognuno di essi avrà. In un grafo completo ad esempio c'è una probabilità certa di trovare delle ripetizioni (ciclicità) in un percorso.
+
+Data una famiglia di grafi $\{G_i\}_{i<N}$ (grafo finito) e dove i è il numero di vertici del grafo.
+Ciclicamente avremo che i grafi completi con "i" numeri di vertici avranno:
+%foto
+Il grafo con 2 vertici:
+
+Il grafo con 3 vertici:
+
+Il grafo con 4 vertici:
+
+Generalmente il numero dei percorsi che si hanno per un grafo è uguale alla somma del numero di percorsi che si hanno nei sottografi piu piccoli insieme al suo, che avrà i percorsi.
+
+%foto del grafo dei percorsi
+
+$$P_{(i)} = \sum_{k=1}^{i-1}P(k)$$
+
+ovviamente questo vale se $i>2$.
+
+Se andiamo a esprimere questa somma avremo che:
+$$P(i) =  
+		\begin{cases}
+			1 \text{ se } i\le 2\\
+			2P(i-1) \text{ se } i > 2
+		\end{cases}$$
+		
+		Questa equazione è chiamata \textbf{Equazione di ricorrenza}, equazione che si risolve con algoritmo ricorsivo per verificare il numero di percorsi in un grafo completo.
+
+Questa stessa equazione è utilizzabile per un albero binario di ricerca completo poichè, ogni nodo ha due figli e quindi due sottoalberi dove al massimo possono essere di $2^{i-1}$ nodi. Anche in questo caso dunque avremo che:
+
+$$P(i) =  
+\begin{cases}
+	1 \text{ se } i\le 2\\
+	2nf(i-1) \text{ se } i > 2
+\end{cases}$$
+
+Quindi il numero di percorsi in un grafo è uguale a $2^{i-1}$.
+
+Questo risultato ci rende impossibile l'esplorazione totale del grafo (come anche in un caso analogo di un albero completo), poiché è esponenziale sul numero di nodi.
+
+\subsection{Come Rappresentiamo un Grafo?}
+Come possiamo andare a "disegnare un grafo" e quali informazioni minime abbiamo bisogno per farlo?
+Un modo abbastanza semplice e intuitivo è quello di andarlo a descrivere come lo abbiamo definito in precedenza quindi come $E \in V x V$. In questo modo abbiamo coppie di nodi a cui abbiamo associato i propri archi.
+
+Un altro modo di rappresentare un grafo è attraverso l'uso della \textbf{funzione caratteristica}, cioè quella funzione "booleana" che dato in input un dato ci restituirà 0 o 1 a seconda della presenza o meno di quel dato nella struttura dati su cui vogliamo cercare.
+
+\subsubsection{Matrice di bit}
+
+Possiamo dunque andare a creare una specie di scacchiera (matrice) dove dal risultato della casella potremmo capire se quel nodo è collegato o meno con un altro.
+
+La matrice è chiamata \textbf{Matrice di Bit}, che ci permette di avere un \textbf{vantaggio} nella ricerca di un eventuale arco (a tempo costante).Lo \textbf{svantaggio} invece è quello che dovremmo creare una matrice con $nxn$ con l'eventuale utilizzo di memoria indesiderata in più. Inoltre non sappiamo dapprima quandi archi potremmo trovare nella matrice, non abbiamo un'informazione a tempo costante ma a tempo \textbf{lineare} in questo caso. E nella costruzione non c'è da dimenticarsi che è quadratica sul numero intero di bit.
+
+Alternativamente un altro modo per visualizzare il nostro grafo è quello di sfruttare la proprietà di adiacenza dei grafi, e quindi creare una struttura dati che ci tiene traccia di tutte le adiacenze che ogni vertice ha.
+
+In questo caso ci viene in aiuto un array unidimensionale dove ogni cella punta a ogni vertice del grafo e da lì poi tutte le adiacenze saranno messe all'interno di ogni struttura.
+
+%foto
+
+\subsubsection{Liste di adiacenza}
+
+Questa struttura dati è chiamata Lista di adiacenza. Lo \textbf{svantaggio} rispetto alla matrice è che per trovare un arco bisogna scorrere linearmente sul numero dei vertici della lista.
+Il \textbf{vantaggio} è che lo spazio impiegato per la lista intera è logaritmico sul numero di vertici $\log_2 n$.
+
+Solitamente la soluzione scelta è la lista di adiacenza per convenzione e comodità. Le liste hanno una migliore esplorazione dei grafi, se non sono densi. In generale però è una ottima scelta di compattezza.
+
+%foto
+
