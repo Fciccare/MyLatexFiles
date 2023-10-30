@@ -1245,6 +1245,9 @@ INPUT Lezioni/lezione14.aux
 INPUT ./Lezioni/lezione17.aux
 INPUT Lezioni/lezione17.aux
 INPUT Lezioni/lezione17.aux
+INPUT ./Lezioni/lezione18.aux
+INPUT Lezioni/lezione18.aux
+INPUT Lezioni/lezione18.aux
 INPUT ./Lezioni/lezione19.aux
 INPUT Lezioni/lezione19.aux
 INPUT Lezioni/lezione19.aux
@@ -1606,6 +1609,16 @@ INPUT ./images//grafo_non_orientato_doppio.png
 INPUT ./images//grafo_non_orientato_doppio.png
 INPUT ./images//grafo_non_orientato_doppio.png
 INPUT ./images//grafo_non_orientato_doppio.png
+INPUT ./Lezioni/lezione18.tex
+INPUT ./Lezioni/lezione18.tex
+INPUT ./Lezioni/lezione18.tex
+OUTPUT Lezioni/lezione18.aux
+INPUT ./Lezioni/lezione18.tex
+INPUT ./Lezioni/lezione18.tex
+INPUT ./Lezioni/lezione18.tex
+INPUT Lezioni/lezione18.tex
+INPUT ./Lezioni/lezione18.tex
+INPUT Lezioni/lezione18.tex
 INPUT ./Lezioni/lezione19.tex
 INPUT ./Lezioni/lezione19.tex
 INPUT ./Lezioni/lezione19.tex
@@ -1659,6 +1672,9 @@ INPUT Lezioni/lezione14.aux
 INPUT ./Lezioni/lezione17.aux
 INPUT Lezioni/lezione17.aux
 INPUT Lezioni/lezione17.aux
+INPUT ./Lezioni/lezione18.aux
+INPUT Lezioni/lezione18.aux
+INPUT Lezioni/lezione18.aux
 INPUT ./Lezioni/lezione19.aux
 INPUT Lezioni/lezione19.aux
 INPUT Lezioni/lezione19.aux
