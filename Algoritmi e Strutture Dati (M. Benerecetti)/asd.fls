@@ -1251,6 +1251,9 @@ INPUT Lezioni/lezione18.aux
 INPUT ./Lezioni/lezione19.aux
 INPUT Lezioni/lezione19.aux
 INPUT Lezioni/lezione19.aux
+INPUT ./Lezioni/lezione20.aux
+INPUT Lezioni/lezione20.aux
+INPUT Lezioni/lezione20.aux
 OUTPUT asd.aux
 INPUT /usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -1629,6 +1632,16 @@ INPUT ./Lezioni/lezione19.tex
 INPUT Lezioni/lezione19.tex
 INPUT ./Lezioni/lezione19.tex
 INPUT Lezioni/lezione19.tex
+INPUT ./Lezioni/lezione20.tex
+INPUT ./Lezioni/lezione20.tex
+INPUT ./Lezioni/lezione20.tex
+OUTPUT Lezioni/lezione20.aux
+INPUT ./Lezioni/lezione20.tex
+INPUT ./Lezioni/lezione20.tex
+INPUT ./Lezioni/lezione20.tex
+INPUT Lezioni/lezione20.tex
+INPUT ./Lezioni/lezione20.tex
+INPUT Lezioni/lezione20.tex
 INPUT asd.aux
 INPUT ./Lezioni/lezione02.aux
 INPUT Lezioni/lezione02.aux
@@ -1678,6 +1691,9 @@ INPUT Lezioni/lezione18.aux
 INPUT ./Lezioni/lezione19.aux
 INPUT Lezioni/lezione19.aux
 INPUT Lezioni/lezione19.aux
+INPUT ./Lezioni/lezione20.aux
+INPUT Lezioni/lezione20.aux
+INPUT Lezioni/lezione20.aux
 INPUT ./asd.out
 INPUT ./asd.out
 INPUT /home/francy/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk
