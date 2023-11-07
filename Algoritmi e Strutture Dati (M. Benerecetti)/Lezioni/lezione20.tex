@@ -1,0 +1,110 @@
+\section{Lezione 20 03/11/2023}
+
+\subsection{Dimostrazione Teorema delle parentesi}
+
+La dimostrazione della condizione di sufficienza ($\rightarrow$) del teorema delle parentesi.
+
+Per induzione sulla lunghezza di $\pi$ (che rappresenta la lunghezza del percorso tra u e v):
+
+Base d'induzione: $|\pi| = 1$. IN questo caso esiste un arco che va direttamente da v a u. Essendo che u e figlio di v e v = prev[u], allora sicuramente avremo che $d[v] < d[u]$. Ora ci rimane da capire quando vengono chiuse entrambe. Per coerenza con il nostro algoritmo di DFSvisit, sappiamo che sicuramente verranno chiusi prima i discendenti e poi gli antenati a ritroso, in questo caso dunque verra chiuso prima $u$ che $v$.
+In questo modo abbiamo dimostrato la nostra tesi, cioe che $d[v] < d[u] < f[u] < f[v]$.
+
+Caso $|\pi| > 1$:
+In questo caso abbiamo che $\exists z \in V: v\rightarrow z \rightarrow u$. In questo caso allora abbiamo un sotto-percorso $\pi\prime$ costituito da un solo elemento, come nella base induttiva. In tal senso abbiamo dunque che $d[v] < d[z] < d[z] < d[v]$.
+Possiamo estendere questo ragionamento agli n nodi che dividono $v$ da $u$ e creare quindi una catena di $d e di f$, ma quello che vedremo semplificando tutti i nodi che non interessano alla dimostrazione che $d[v] < d[u] < f[u] < f[v]$.
+
+\subsection{Teorema del percorso bianco}
+
+Dato un grafo $G = (V,E)$ ed eseguita una DFS su G per ogni coppia di vertici $v,u \in V$ e con $v\div u$:
+$u$ e detto discendente di v nella FDF $se e solo se $ al tempo $d[v]$ esiste un percorso (da u a v) fatto da solo vertici bianchi.
+
+\subsubsection{Dimostrazione Teorema - Condizione Necessaria $\rightarrow$}
+
+La foresta ha gia almeno un percorso con vertici bianchi, quindi quel percorso puo stare nella foresta.
+Se prendiamo un arbitrario vertice $z \in V$ del percorso, vedremo che $z$ e discendente di $v$ solo se $d[v] < d[z] < f[z] < f[v]$. E questo e verificato dal teorema precedente. Se la condizione e rispettata, tutti i vertici fino a z erano bianchi (a tempo v), e quindi rispetta una parte della tesi. Lo stesso ragionamento si puo applicare a tempo z per tutti i vertici fino a $u$.
+
+\subsubsection{Dimostrazione Teorema - Condizione Sufficiente $\leftarrow$}
+
+Abbiamo un percorso fatto da tutti i vertici bianchi, dimostreremo per assurdo che non esista discendenza di $u$ su $v$.
+
+Ipotizziamo dunque che esiste un vertice che non e discendente da $v$, nel percorso di tutti  bianchi fino a $u$ e lo chiameremo $t$.
+
+L'ultimo vertice discendete da $v$ lo chiameremo $z$ e si trovera prima di $t$, quindi $d[v] < d[z] < f[z] < f[v]$. Ci chiediamo ora quando verra scoperto $t$, non essendo discendente di $v$ o di $z$. Non potrebbe essere scoperto prima di $z$ poiche a tempo di $d[v]$, sono tutti bianchi per la tesi del teorema. Non potrebbe essere scoperto al ritorno (durante la chiusura di $v$), perche dovrebbe essere gia stato scoperto in chiusura, senno andrebbe in contrasto con il teorema delle parentesi.
+Il punto piu probabile di scoperta e tra $d[z] e f[z]$, e cio andrebbe in tesi con cio che abbiamo detto poiche diventerebbe $d[v] < d[z] < d[t] < d[u] < f[u] < f[t] < f[z] < f[v]$. Andando a semplificare i nodi che non ci interessano, abbiamo che il nodo $t$ rispetta il teorema delle parentesi e quindi il concetto di discendenza.
+
+\subsection{I problemi dell'algoritmo DFS}
+L'algoritmo DFS non prende in considerazione un ordine di scoperta dei nodi, ma fa come piu gli piace, o "scopre il primo che trova". In questo modo posiamo incorrere in problemi sugli archi. In tal senso andiamo a distinguere vari tipi di archi che possiamo trovare all'interno dell'albero.
+Tra i vari tipi abbiamo:
+\begin{itemize}
+	\item Archi dell'albero, cioe archi che scoprono un nodo \textbf{bianco} a partire da un nodo \textbf{grigio}. E il normale metodo di scoperta dei nodi durante una DFS.
+	\item Archi all'indietro, cioe archi che connettono un discendente appena scoperto (quindi \textbf{grigio}) a un vertice gia scoperto \textbf{grigio}.
+	\item Archi in avanti, sono archi che connettono un antenato in fase di scoperta Deep (\textbf{grigio}), e un discendente gia scoperto e usato \text{nero}.
+	\item Archi di attraversamento, sono archi che connettono 2 nodi  di FDF differenti, quindi non si trovano mai nello stesso albero, ma hanno gli stessi colori degli archi in avanti : da \textbf{grigio} a \textbf{nero}.
+\end{itemize}
+
+Gli archi all'indietro sono archi che rispettano questa formula: $d[v] < d[u] < f[u] < f[v]$. E la scoperta dell'arco all'indietro avviene al centro della disequazione.
+
+I tipi di archi 3 e 4 hanno lo stesso vertice su cui puntano di colore nero, per distinguerli abbiamo bisogno di discriminare i loro tempi:
+	>Per un arco in avanti (da $v$ a $u$), la scoperta dello stesso avviene dopo che u e terminato (quindi dopo f[u]) e sempre prima della terminazione di v (prima di f[v]).
+	>Per un arco di attraversamento i tempi di discovery possono essere disgiunti : d[v] < f[v] < d[u] < f[u].
+	
+\subsection{Come aggiungere queste informazini all'algoritmo DFS}
+
+Per far si che questi nostri ragionamenti sui tipi di archi dobbiamo aggiungere delle righe di codice alla nostra DFS visit.
+
+
+\begin{lstlisting}[language=Java]
+	DFSvisit(G,s)
+		Col[s] = g
+		d[s] = tempo++ // il tempo viene prima incrementato e poi aggiunto a d[s]
+		for each v in Adj[s] do 
+			if col[v] = b then
+				pred[v] = s
+				DFS_visit(G,v)
+			else
+				if Col[v] = g then
+					print '(s,v) e un arco all'indietro'
+				else if d[s] < d[v] then
+					print '(s,v) e arco in avanti'
+				else}
+					print '(s,v) e un arco di attraversamento'
+		f[s] = tempo++
+		col[s] = n
+\end{lstlisting}
+
+\subsection{Proprieta archi di ritorno}
+(Questa sezione ha fonte solo da valentina che era presente a lezione li)
+
+\begin{itemize}
+	\item Se all'interno di una DFS incontriamo un arco di ritorno, allora c'e necessariamente un ciclo.
+		Dimostriamola prendendo $\pi$ che rappresenta il percorso tra $(v,u)$. Se in questo percorso esiste un arco $(u,v)$, allora c'e un ciclo.
+	\item La non esistenza di un arco all'indietro implica che non esiste ciclo all'interno del percorso.
+		Per dimostrare questa proprieta consideriamo $G = (V,E)$, cioe un grafo che contiene un ciclo. Supponiamo che $v_1$ sia il primo vertice del percorso e che per il teorema dei percorsi bianchi allora tutti i suoi vertici discendenti ancora dovranno essere scoperti. A seconda di quale dei vertici discendenti abbia un arco di ritorno allora avremo che esistera ciclo. Quindi e dimostrato che se esiste almeno 1 arco all'indietro esiste un ciclo e viceversa se non esiste.
+\end{itemize}
+
+\subsection{Algoritmo del grafico Aciclico}
+
+
+\begin{lstlisting}[language=Java]
+	Acicliclo(G)
+		For Each v $\in$ V do
+			if Col[v]=b then
+				ret  = Acicliclo_Visit(G,v)
+				if ret = false then
+					return false
+		return true
+\end{lstlisting}
+
+
+\begin{lstlisting}[language=Java]
+	Aciclico_Visit(G,s)
+		Col[s] = g
+			For Each v in Adj[s] do 
+				if Col[v] = b then
+					ret = Aciclico_Visit(G,v)
+					if ret = false then
+						return False
+				else if Col[v] = g then
+					return false
+			return true
+\end{lstlisting}
