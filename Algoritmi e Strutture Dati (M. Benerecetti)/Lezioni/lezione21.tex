@@ -1,0 +1,48 @@
+\section{Lezione 21 - 02/11/2023}
+
+\subsection{Visita in Profondità - DFS}
+La Depth-First Search (DFS) è un algoritmo di esplorazione dei grafi il cui funzionamento consiste nel visitare prima i nodo più lontani dal nodo sorgente e poi tornando progressivamente verso il punto di partenza. 
+\smallskip
+
+Rispetto alla BFS vista in precedenza, la DFS viene impiegata per scopi diversi. Mentre la BFS è utilizzata per scoprire percorsi minimi, la DFS può essere usato per verifica la ciclicità di un Grafo.
+\smallskip
+Come per la BFS useremo di "strutture ausiliarie":
+\begin{itemize}
+    \item Col[ ]: $V \rightarrow \{b,g,n\}$ (array dei colori)
+    \item Pred[ ]: $V \rightarrow V$ (array dei predec., cioè quale vertice è stato scoperto da chi)
+    \item d[ ]: $V \Rightarrow \mathbb{N}[\{1,2,...,2n\}]$ (il tempo in cui il vertice è stato scoperto)
+    \item f[ ]: $V \Rightarrow \mathbb{N}[\{1,2,...,2n\}]$ (il tempo in cui il vertice è stato visitato)
+\end{itemize}
+\smallskip
+
+Dato che per la DFS vogliamo visitare tutti i vertici di un grafo, dato che non sempre un vertice sorgente ci permette di farlo, andiamo a definire due funzioni:
+
+\begin{lstlisting}[language=Java]
+Init(G) //G:grafo
+    for each v in V do //ogni vertice del Grafo
+        col[v]=b  
+        prev[v]=NIL
+    tempo=1 //variabile globale
+\end{lstlisting}
+La funzione DFS ci permette di far ripartire la visita da un nuovo vertice sorgente (bianco) in modo da poter esplorare ogni parte del grafo. 
+\begin{lstlisting}[language=Java]
+DFS(G) //G:grafo
+    Init(G)
+    for each v in V do //ogni vertice del Grafo
+        if col[v]=b then 
+            DFS_Visit(G,v)
+\end{lstlisting}
+Ogni volta che troviamo un nuovo nodo (bianco) andiamo a richiamare ricorsivamente la visita in modo da scendere in Profondità nel grafo e poi successivamente "risalire".
+\begin{lstlisting}[language=Java]
+DFS_Visit(G, s) //G:grafo, s: vertice sorgente
+    col[s]=g //coloriamo di grigio 
+    d[s]=tempo++ //scoperto a tempo corrente (+1)
+    for each v in ADJ[s] do
+        if col[v]=b then
+            pred[v]=s
+            DFS_Visit(G,v) //visita ricorsiva
+    f[s]=tempo++ //visitato a tempo corrente (+1)
+    col[s]=n
+\end{lstlisting}
+
+\paragraph{Costo} Come visto per la BFS possiamo anche qua ogni nodo viene visatato una solo volta quindi il costo sarà sempre |V|+|E|=|G|

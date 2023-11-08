@@ -81,14 +81,14 @@ Versione iterativa della insert prevede dei controlli in piu per quanto riguarda
 		else
 			Tmp = Tmp->sx
 	
-	If Tmp = NIL then
+	if Tmp = NIL then
 		x = new_node(k)
-		if P->key < k then
+		if P = NIL then
+			ret = x
+		else if P->key < k then
 			P->dx = x
 		else
 			P->sx = x
-	else 
-		P-sx = x
 	return ret
 \end{lstlisting}
 
@@ -103,14 +103,14 @@ La delete prevede la delete del nodo e la restituzione dell'albero con quel nodo
 			\item Se T->key > k then Delete(T->sx,k)
 			\item Se T->key = k, dobbiamo distinguere dei casi
 			\begin{itemize}
-				\item Nel caso in cui il nodo non ha figli allora, si puo procedere all'eliminazione del nodo
-				\item Il caso in cui il nodo o ha figlio destro o figlio sinistro e basta.
-				\item Il caso in cui il nodo ha entrambi i figli collegati. In questo caso specifico deleghiamo la distruzione del nodo a un'altra funzione chiamata \textbf{StaccaMin(T->dx,T)}.
+				\item Nel caso in cui il nodo non ha figli allora, si puo procedere all'eliminazione del nodo.
+				\item Nel caso in cui il nodo o ha figlio destro o figlio sinistro e basta, questo diventerà la nuova radice. 
+				\item Nel caso in cui il nodo ha entrambi i figli, deleghiamo la distruzione del nodo ad un'altra funzione chiamata \textbf{StaccaMin(T->dx,T)}.
 			\end{itemize}
 		\end{itemize}
 \end{itemize}
 
-Dunque per il richiamo della funzione Delete ricorsiva abbiamo bisogno di due funzioni ausiliarie. La prima e utilizzata nel caso in cui vogliamo eliminare un nodo che ha entrambi i figli.
+Dunque per il richiamo della funzione Delete ricorsiva abbiamo bisogno di due funzioni ausiliarie. La prima è utilizzata nel caso in cui vogliamo eliminare un nodo che ha entrambi i figli.
 
 \textbf{StaccaMin(T->sx, T)}
 
@@ -134,6 +134,7 @@ La seconda e chiamata per l'eliminazione del nodo andando a operare sull'intero 
 
 \begin{lstlisting}[language=Java]
 	DeleteRoot(T)
+		ret = T
 		if T!= NIL then
 			Tmp = T
 			if T->sx = Nil then
@@ -143,7 +144,8 @@ La seconda e chiamata per l'eliminazione del nodo andando a operare sull'intero 
 			else
 				Tmp = StaccaMin(T->dx,T)
 				T->key = Tmp->key
-				delete(tmp)
+
+			dealloca(tmp)
 		return ret
 \end{lstlisting}
 
