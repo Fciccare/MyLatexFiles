@@ -1,4 +1,4 @@
-\section{Lezione 22 03/11/2023}
+\section{Lezione 20 03/11/2023}
 
 \subsection{Dimostrazione Teorema delle parentesi}
 
@@ -58,9 +58,9 @@ I tipi di archi 3 e 4 hanno lo stesso vertice su cui puntano di colore nero, per
 	\item Per un arco in avanti (da $v$ a $u$), la scoperta dello stesso avviene dopo che u e terminato (quindi dopo f[u]) e sempre prima della terminazione di v (prima di f[v]).
 	\item Per un arco di attraversamento i tempi di discovery possono essere disgiunti : d[v] < f[v] < d[u] < f[u].
 \end{itemize}
-
-
-
+	
+	
+	
 \subsection{Come aggiungere queste informazini all'algoritmo DFS}
 
 Per far si che questi nostri ragionamenti sui tipi di archi dobbiamo aggiungere delle righe di codice alla nostra DFS visit.
@@ -68,56 +68,56 @@ Per far si che questi nostri ragionamenti sui tipi di archi dobbiamo aggiungere 
 
 \begin{lstlisting}[language=Java]
 	DFSvisit(G,s)
-	Col[s] = g
-	d[s] = tempo++ // il tempo viene prima incrementato e poi aggiunto a d[s]
-	for each v in Adj[s] do 
-	if col[v] = b then
-	pred[v] = s
-	DFS_visit(G,v)
-	else
-	if Col[v] = g then
-	print '(s,v) e un arco all'indietro'
-	else if d[s] < d[v] then
-	print '(s,v) e arco in avanti'
-	else}
-print '(s,v) e un arco di attraversamento'
-f[s] = tempo++
-col[s] = n
+		Col[s] = g
+		d[s] = tempo++ // il tempo viene prima incrementato e poi aggiunto a d[s]
+		for each v in Adj[s] do 
+			if col[v] = b then
+				pred[v] = s
+				DFS_visit(G,v)
+			else
+				if Col[v] = g then
+					print '(s,v) e un arco all'indietro'
+				else if d[s] < d[v] then
+					print '(s,v) e arco in avanti'
+				else}
+					print '(s,v) e un arco di attraversamento'
+		f[s] = tempo++
+		col[s] = n
 \end{lstlisting}
 
 \subsection{Proprieta archi di ritorno}
 (Questa sezione ha fonte solo da valentina che era presente a lezione li)
 
 \begin{itemize}
-\item Se all'interno di una DFS incontriamo un arco di ritorno, allora c'e necessariamente un ciclo.
-Dimostriamola prendendo $\pi$ che rappresenta il percorso tra $(v,u)$. Se in questo percorso esiste un arco $(u,v)$, allora c'e un ciclo.
-\item La non esistenza di un arco all'indietro implica che non esiste ciclo all'interno del percorso.
-Per dimostrare questa proprieta consideriamo $G = (V,E)$, cioe un grafo che contiene un ciclo. Supponiamo che $v_1$ sia il primo vertice del percorso e che per il teorema dei percorsi bianchi allora tutti i suoi vertici discendenti ancora dovranno essere scoperti. A seconda di quale dei vertici discendenti abbia un arco di ritorno allora avremo che esistera ciclo. Quindi e dimostrato che se esiste almeno 1 arco all'indietro esiste un ciclo e viceversa se non esiste.
+	\item Se all'interno di una DFS incontriamo un arco di ritorno, allora c'e necessariamente un ciclo.
+		Dimostriamola prendendo $\pi$ che rappresenta il percorso tra $(v,u)$. Se in questo percorso esiste un arco $(u,v)$, allora c'e un ciclo.
+	\item La non esistenza di un arco all'indietro implica che non esiste ciclo all'interno del percorso.
+		Per dimostrare questa proprieta consideriamo $G = (V,E)$, cioe un grafo che contiene un ciclo. Supponiamo che $v_1$ sia il primo vertice del percorso e che per il teorema dei percorsi bianchi allora tutti i suoi vertici discendenti ancora dovranno essere scoperti. A seconda di quale dei vertici discendenti abbia un arco di ritorno allora avremo che esistera ciclo. Quindi e dimostrato che se esiste almeno 1 arco all'indietro esiste un ciclo e viceversa se non esiste.
 \end{itemize}
 
 \subsection{Algoritmo del grafico Aciclico}
 
 
 \begin{lstlisting}[language=Java]
-Acicliclo(G)
-For Each v $\in$ V do
-if Col[v]=b then
-ret  = Acicliclo_Visit(G,v)
-if ret = false then
-return false
-return true
+	Acicliclo(G)
+		For Each v $\in$ V do
+			if Col[v]=b then
+				ret  = Acicliclo_Visit(G,v)
+				if ret = false then
+					return false
+		return true
 \end{lstlisting}
 
 
 \begin{lstlisting}[language=Java]
-Aciclico_Visit(G,s)
-Col[s] = g
-For Each v in Adj[s] do 
-if Col[v] = b then
-ret = Aciclico_Visit(G,v)
-if ret = false then
-return False
-else if Col[v] = g then
-return false
-return true
+	Aciclico_Visit(G,s)
+		Col[s] = g
+			For Each v in Adj[s] do 
+				if Col[v] = b then
+					ret = Aciclico_Visit(G,v)
+					if ret = false then
+						return False
+				else if Col[v] = g then
+					return false
+			return true
 \end{lstlisting}
