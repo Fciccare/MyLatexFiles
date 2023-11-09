@@ -2,51 +2,64 @@
 
 \subsection{Dimostrazione Teorema delle parentesi}
 
-La dimostrazione della condizione di sufficienza ($\rightarrow$) del teorema delle parentesi.
+La dimostrazione della condizione di sufficienza ($\Rightarrow$) del teorema delle parentesi.
 
 Per induzione sulla lunghezza di $\pi$ (che rappresenta la lunghezza del percorso tra u e v):
 
-Base d'induzione: $|\pi| = 1$. IN questo caso esiste un arco che va direttamente da v a u. Essendo che u e figlio di v e v = prev[u], allora sicuramente avremo che $d[v] < d[u]$. Ora ci rimane da capire quando vengono chiuse entrambe. Per coerenza con il nostro algoritmo di DFSvisit, sappiamo che sicuramente verranno chiusi prima i discendenti e poi gli antenati a ritroso, in questo caso dunque verra chiuso prima $u$ che $v$.
-In questo modo abbiamo dimostrato la nostra tesi, cioe che $d[v] < d[u] < f[u] < f[v]$.
+\begin{itemize}
+	\item \textbf{Base d'induzione}: $|\pi| = 1$. IN questo caso esiste un arco che va direttamente da v a u. Essendo che u e figlio di v e v = prev[u], allora sicuramente avremo che $d[v] < d[u]$. Ora ci rimane da capire quando vengono chiuse entrambe. Per coerenza con il nostro algoritmo di DFSvisit, sappiamo che sicuramente verranno chiusi prima i discendenti e poi gli antenati a ritroso, in questo caso ,dunque, verra chiuso prima $u$ che $v$.
+	In questo modo abbiamo dimostrato la nostra tesi, cioe che $d[v] < d[u] < f[u] < f[v]$.
+	\item \textbf{Passo d'induzione} : Caso $|\pi| > 1$:
+	In questo caso abbiamo che $\exists z \in V: v\Rightarrow z \Rightarrow u$. In questo caso allora abbiamo un sotto-percorso $\pi^{\prime}$ costituito da un solo elemento, come nella base induttiva. In tal senso abbiamo dunque che $d[v] < d[z] < d[z] < d[v]$.
+	Possiamo estendere questo ragionamento agli n nodi che dividono $v$ da $u$ e creare quindi una catena di $d e di f$, ma quello che vedremo semplificando tutti i nodi che non interessano alla dimostrazione che $d[v] < d[u] < f[u] < f[v]$.
+\end{itemize}
 
-Caso $|\pi| > 1$:
-In questo caso abbiamo che $\exists z \in V: v\rightarrow z \rightarrow u$. In questo caso allora abbiamo un sotto-percorso $\pi\prime$ costituito da un solo elemento, come nella base induttiva. In tal senso abbiamo dunque che $d[v] < d[z] < d[z] < d[v]$.
-Possiamo estendere questo ragionamento agli n nodi che dividono $v$ da $u$ e creare quindi una catena di $d e di f$, ma quello che vedremo semplificando tutti i nodi che non interessano alla dimostrazione che $d[v] < d[u] < f[u] < f[v]$.
 
-\subsection{Teorema del percorso bianco}
 
-Dato un grafo $G = (V,E)$ ed eseguita una DFS su G per ogni coppia di vertici $v,u \in V$ e con $v\div u$:
-$u$ e detto discendente di v nella FDF $se e solo se $ al tempo $d[v]$ esiste un percorso (da u a v) fatto da solo vertici bianchi.
 
-\subsubsection{Dimostrazione Teorema - Condizione Necessaria $\rightarrow$}
+
+\subsection{Teorema del percorso bianco - Definizione}
+
+Dato un grafo $G = (V,E)$ ed eseguita una DFS su G per ogni coppia di vertici $v,u \in V$ e con $v \neq u$: \newline
+$u$ e detto discendente di v nella FDF $ \iff $ al tempo $d[v]$ esiste un percorso (da u a v) fatto da solo vertici bianchi.
+
+\subsubsection{Dimostrazione Teorema - Condizione Necessaria $\Rightarrow$}
 
 La foresta ha gia almeno un percorso con vertici bianchi, quindi quel percorso puo stare nella foresta.
 Se prendiamo un arbitrario vertice $z \in V$ del percorso, vedremo che $z$ e discendente di $v$ solo se $d[v] < d[z] < f[z] < f[v]$. E questo e verificato dal teorema precedente. Se la condizione e rispettata, tutti i vertici fino a z erano bianchi (a tempo v), e quindi rispetta una parte della tesi. Lo stesso ragionamento si puo applicare a tempo z per tutti i vertici fino a $u$.
 
-\subsubsection{Dimostrazione Teorema - Condizione Sufficiente $\leftarrow$}
+\subsubsection{Dimostrazione Teorema - Condizione Sufficiente $\Leftarrow$}
 
 Abbiamo un percorso fatto da tutti i vertici bianchi, dimostreremo per assurdo che non esista discendenza di $u$ su $v$.
 
 Ipotizziamo dunque che esiste un vertice che non e discendente da $v$, nel percorso di tutti  bianchi fino a $u$ e lo chiameremo $t$.
 
-L'ultimo vertice discendete da $v$ lo chiameremo $z$ e si trovera prima di $t$, quindi $d[v] < d[z] < f[z] < f[v]$. Ci chiediamo ora quando verra scoperto $t$, non essendo discendente di $v$ o di $z$. Non potrebbe essere scoperto prima di $z$ poiche a tempo di $d[v]$, sono tutti bianchi per la tesi del teorema. Non potrebbe essere scoperto al ritorno (durante la chiusura di $v$), perche dovrebbe essere gia stato scoperto in chiusura, senno andrebbe in contrasto con il teorema delle parentesi.
+L'ultimo vertice discendete da $v$ lo chiameremo $z$ e si trovera prima di $t$, quindi $d[v] < d[z] < f[z] < f[v]$. Ci chiediamo ora quando verra scoperto $t$, non essendo discendente di $v$ o di $z$. 
+\begin{itemize}
+	\item Non potrebbe essere scoperto prima di $z$ poiche a tempo di $d[v]$, sono tutti bianchi per la tesi del teorema.
+	\item Non potrebbe essere scoperto al ritorno (durante la chiusura di $v$), perche dovrebbe essere gia stato scoperto in chiusura, senno andrebbe in contrasto con il teorema delle parentesi.
+\end{itemize} 
 Il punto piu probabile di scoperta e tra $d[z] e f[z]$, e cio andrebbe in tesi con cio che abbiamo detto poiche diventerebbe $d[v] < d[z] < d[t] < d[u] < f[u] < f[t] < f[z] < f[v]$. Andando a semplificare i nodi che non ci interessano, abbiamo che il nodo $t$ rispetta il teorema delle parentesi e quindi il concetto di discendenza.
 
 \subsection{I problemi dell'algoritmo DFS}
-L'algoritmo DFS non prende in considerazione un ordine di scoperta dei nodi, ma fa come piu gli piace, o "scopre il primo che trova". In questo modo posiamo incorrere in problemi sugli archi. In tal senso andiamo a distinguere vari tipi di archi che possiamo trovare all'interno dell'albero.
+L'algoritmo DFS non prende in considerazione un ordine di scoperta dei nodi, ma fa "come piu gli piace", o "scopre il primo che trova". In questo modo posiamo incorrere in problemi sugli archi. In tal senso andiamo a distinguere vari tipi di archi che possiamo trovare all'interno dell'albero.
 Tra i vari tipi abbiamo:
 \begin{itemize}
-	\item Archi dell'albero, cioe archi che scoprono un nodo \textbf{bianco} a partire da un nodo \textbf{grigio}. E il normale metodo di scoperta dei nodi durante una DFS.
-	\item Archi all'indietro, cioe archi che connettono un discendente appena scoperto (quindi \textbf{grigio}) a un vertice gia scoperto \textbf{grigio}.
-	\item Archi in avanti, sono archi che connettono un antenato in fase di scoperta Deep (\textbf{grigio}), e un discendente gia scoperto e usato \text{nero}.
-	\item Archi di attraversamento, sono archi che connettono 2 nodi  di FDF differenti, quindi non si trovano mai nello stesso albero, ma hanno gli stessi colori degli archi in avanti : da \textbf{grigio} a \textbf{nero}.
+	\item \textbf{Archi dell'albero}, cioe archi che scoprono un nodo \textbf{bianco} a partire da un nodo \textbf{grigio}. E il normale metodo di scoperta dei nodi durante una DFS.
+	\item \textbf{Archi all'indietro}, cioe archi che connettono un discendente appena scoperto (quindi \textbf{grigio}) a un vertice gia scoperto \textbf{grigio}.
+	\item \textbf{Archi in avanti}, sono archi che connettono un antenato in fase di scoperta Deep (\textbf{grigio}), e un discendente gia scoperto e usato \textbf{nero}.
+	\item \textbf{Archi di attraversamento}, sono archi che connettono 2 nodi  di FDF differenti, quindi non si trovano mai nello stesso albero, ma hanno gli stessi colori degli archi in avanti : da \textbf{grigio} a \textbf{nero}.
 \end{itemize}
 
-Gli archi all'indietro sono archi che rispettano questa formula: $d[v] < d[u] < f[u] < f[v]$. E la scoperta dell'arco all'indietro avviene al centro della disequazione.
+Gli archi all'indietro sono archi che rispettano questa formula: $d[v] < d[u] < f[u] < f[v]$. E la scoperta dell'arco all'indietro avviene al centro delle disequazioni.
 
 I tipi di archi 3 e 4 hanno lo stesso vertice su cui puntano di colore nero, per distinguerli abbiamo bisogno di discriminare i loro tempi:
-	>Per un arco in avanti (da $v$ a $u$), la scoperta dello stesso avviene dopo che u e terminato (quindi dopo f[u]) e sempre prima della terminazione di v (prima di f[v]).
-	>Per un arco di attraversamento i tempi di discovery possono essere disgiunti : d[v] < f[v] < d[u] < f[u].
+\begin{itemize}
+	\item Per un arco in avanti (da $v$ a $u$), la scoperta dello stesso avviene dopo che u e terminato (quindi dopo f[u]) e sempre prima della terminazione di v (prima di f[v]).
+	\item Per un arco di attraversamento i tempi di discovery possono essere disgiunti : d[v] < f[v] < d[u] < f[u].
+\end{itemize}
+	
+	
 	
 \subsection{Come aggiungere queste informazini all'algoritmo DFS}
 
