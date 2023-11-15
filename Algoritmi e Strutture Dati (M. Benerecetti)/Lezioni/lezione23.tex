@@ -1,0 +1,107 @@
+\section{Lezione 14/11/2023}
+
+\subsection{Ordinamento Topologico}
+Come da titolo il grafo avra bisogno di un tipo di ordinamento per far si che il grafo venga scoperto in maniera tale da rispettare determinate caratteristiche.
+Dunque sia dato un grafo $G = (V,E)$ esso e in ordinamento topologico $iff \exists$ permutazione di $V$, cioe una sequenza senza ripetizioni di nodi, tale che $\forall (v,u) \in V : (v,u) \in E \Rightarrow v$ sta prima di $u$. E non vi siano ripetizioni
+
+Esempio:
+	%foto
+	In questo esempio possiamo notare che abbiamo 2 modi di descrivere un ordinamento topologico:
+	\begin{itemize}
+		\item ABC 
+		\item ACB 
+	\end{itemize}
+Come riconoscere l'ordinamento topologico?\newline
+Bisogna andare a osservare soltanto gli archi uscenti. Nel caso in cui un nodo non ha archi entranti, allora da li partira l'ordinamento. Verranno a catena eliminati (dallo scorrimento), il nodo e tutti i suoi archi uscenti associati.
+E cosi via per tutti i nodi aggiornati.
+
+%foto di un ciclo
+
+In questo esempio possiamo notare che ogni nodo ha almeno un nodo entrante, tolgiendone qualsiasi dei 3, non possiamo fare a meno di riscrivere uno dei 3 nodi cancellati, in questo caso incapperemo in un ciclo.
+
+Proprieta : Quando ci troveremo in un ciclo non e possibile avere ordinamento topologico.
+
+
+\subsubsection{Dimostriamo che in un grafo aciclico esiste almeno un ordinamento topologico}
+
+\begin{itemize}
+	\item Se $G$ e un grafo aciclico e $G^{\prime}$ un sottografo di $G$, allora  $G^{\prime}$  e aciclico $G^{\prime} = (V^{\prime}, E^{\prime}) \text{ con } V^{\prime} \subseteq V \text{ e } E^{\prime} \subseteq E \cap (V^{\prime} x V^{\prime})$.
+		Questa proprieta si dimostra per assurdo. Allora supponiamo che esiste un percorso ciclico in $G^{\prime}$ tale che $\pi = v_{1},v_{2},\dots,v_{k},\dots,v_{1}$. Se e un sottografo di $G$, allora si trattera di sottovertici di $G$, ma se si tratta di sottovertici di $G$, allora anche gli archi associati faranno anche parte in $G$. Dunque se abbiamo che il grafo di partenza e aciclico, non e possibile che il suo sottografo (con gli stessi archi) abbia un ciclo. Questa proprieta pero non vale quando $G^{\prime} \supseteq G$.
+	\item Se $G$ aciclico allora esiste un vertice $v \in V$ tale che $v$ ha grado entrante 0, ma non viceversa.
+		La dimostrazione di questa sconda proprieta si puo fare negando sia ipotesi che tesi, cosi avremo una dimostrazione equivalente a quando entrambe erano vere.
+		Ogni vertice ha almeno un arco entrante, quindi preso $v_{1} \in V$, vertice arbitrario. sappiamo che a quel vertice e attaccato almeno 1 arco e cosi via viceversa per ogni vertice, ma ricostruendo la catena di archi vedremo che i vertici si ripeteranno e quindi ci sara un ciclo. Questo va in contraddizione con la nostra prima proprieta.
+\end{itemize}
+
+Il metodo di creazione di un ordinamento topologico e costruire continuamente un sottografo $G^{\prime}$, tale che 
+$G^{\prime} = (V \backslash \{v_{1}\}, E) \backslash \{(v_{1},v) \in E \vert u \in V\}$
+
+Dunque ad ogni ciclo andiamo e eliminare il vertice con grado 0 con tutti i suoi archi.
+
+\subsection{Topologic Order}
+Per sapere dunque che la struttura possa ammettere un ordine topologico abbiamo bisogno di una struttura per tenerci traccia di tutti i gradi entranti dei nodi. Attraverso la matrice di adiacenza possiamo sapere se un nodo e stato esplorato o meno.
+
+La struttura di cui ci avvarremo e un array dove in ogni cella corrisponde un vertice e al suo interno il numero di archi entranti che ha.
+
+\begin{lstlisting}[language=Java]
+	OrdinamentoTopologico(G)
+		GE = GradoEntrante(G)
+		ForEach v $\in$ V do
+			if GE[v]=0 then
+				Q=Accoda(Q,v)
+		While Q!=NIL Do
+			v = Testa(Q)
+			print(v)
+			ForEach u $\in$ Adj[v] do 
+				GE[u] = GE[u] -1
+				if GE[u] = 0 then
+					Q = Accoda(Q,u)
+		Q=Decoda(Q)
+\end{lstlisting}
+
+\subsubsection{Grado Entrante}
+
+\begin{lstlisting}[language=Java]
+	GradoEntrante(G)
+		ForEach v $\in$ V do
+			GE[v] = 0
+		ForEach v $\in$ V do
+			ForEach u $\in$ Adj[v] do
+				GE[u]=GE[u]+1
+\end{lstlisting}
+
+Abbiamo usato uno stack ma e possibile anche usare una coda, basta che poi tutte le operazioni siano a tempo costante e siano coerenti con le caratteristiche della Topologic order.
+
+\subsection{Ordinamento Topologico in una DFS}
+\begin{lstlisting}[language=Java]
+	OTDFS(G)
+		Init(G)
+		ForEach v $\in$ V do
+			if Col[v]=b then
+				s = OTDFSvisit(G,v,s)
+		printStack(S)
+\end{lstlisting}
+
+\begin{lstlisting}[language=Java]
+	OTDFSvisit(G,v,s)
+		Col[v]=g
+		d[v]=tempo++
+		ForEach v $\in$ Adj[v] do
+			if Col[v] = b then
+				s = OTDFSvisit(G,v,s)
+		f[v]=tempo++
+		Col[v]=n
+		s=push(s,v)
+\end{lstlisting}
+
+Lo stack andra a tenere conto di ogni vertice che e stato appena visitato e messo a nero. Il push nello stack avviene precisamente nel momento in cui il tempo di fine e stato dichirato per quel vertice.
+Per ogni arco dunque ($(u,v) \in E$) avremmo che il tempo di inserimento di $u$ (da cui parte l'arco) e piu avanti del vertice $v$ a cui punta l'arco poiche viene inserito prima quello piu in fondo e poi quello piu in alto nel percorso.
+
+Questa considerazione ci permette essere in regola con il teorema delle parentesi visto che $f[u]>f[v]$. Ma questa condizione non vale per tutti gli archi di un grafo che viene visitato in DFS...
+
+Andremo dunque a distinguere 3 tipologie di archi che possono emergere presi\newline
+$\forall (v,u) \in E$:
+\begin{itemize}
+	\item u e \textbf{bianco}, questo, come appena detto precedentemente rispetta il teorema delle parentesi e quindi la condizione per cui e possibile ordinarlo in modo topologico.
+	\item u e \textbf{nero}, in questo caso il nodo piu profonodo o e scoperto da un altro nodo di un altro albero FDF oppure gia scoperto da un adiacente del nodo da cui stiamo cercando. In questo caso ancora abbiamo la condizione di Topologic Order perche viene comunque scoperto prima del nodo che stiamo visitando ora.
+	\item u e \textbf{grigio}, in questo caso vuol dire che il nodo e stato scoperto perforza gia da un adiacente di $v$. A questo punto vuol dire che un nodo nella Deep avra come adiacente il nodo u, e quindi vuol dire che un arco punta da quel nodo $x$ a $u$, questo comporta un ciclo.
+\end{itemize}
