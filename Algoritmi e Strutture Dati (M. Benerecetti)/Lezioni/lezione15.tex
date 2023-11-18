@@ -1,5 +1,5 @@
 \section{Lezione 15 - 19/10/2023}
-\subsubsection{Conversione Ricorsiva->Iterativo}
+\subsection{Conversione Ricorsiva->Iterativo}
 %Rubato da Simone Cerrone + ChatGPT
 Sappiamo che in una chiamata ricorsiva, ogni istanza mantiene le proprie variabili, e prima di procedere con la successiva chiamata ricorsiva, deve conservare il proprio contesto. Questo contesto si può salvare memorizzando le variabili utilizzate prima di passare alla chiamata successiva. 
 \smallskip
@@ -26,5 +26,46 @@ Il numero di iterazioni del blocco di codice in una chiamata ricorsiva dipende d
       Se richiesta chiamata
         Se necessario aggiorna stack imposta parametri formali (start=true)
       Altrimenti tornare e pulire lo stack
+\end{lstlisting}
+
+\begin{lstlisting}[language=Java]
+  MergeSortRisorsivo(A,p,r):
+    if p<r then
+      q=(p+r)/2
+      MergeSortRisorsivo(A,p,q)
+      MergeSortRisorsivo(A,q+1,p)
+      Merge(A,p,q,r)
+\end{lstlisting}
+
+\begin{lstlisting}[language=Java]
+  MergeSortIterativo(A,p,r):
+    cp=p //copia di p 
+    cr=r //copia di r 
+    STKp=STKq=STKr=NIL //uno stack per variabile
+    while start or STKr != NIL do
+      if start then //Simuliamo una nuova chiamata
+        if cp < cr then
+          q=(cp+cr)/2
+          STKp=Push(STKp,cp)
+          STKr=Push(STKr,cr)
+          STKq=Push(STKq,q)
+          cr=q
+        else
+          last=cr //ci serve per discriminare
+          start=false //fine nuove chiamate
+      else //recupero contesto chiamata vecchia
+        cp=top(STKp)
+        cr=top(STKr)
+        q=top(STKq)
+        if last != cr then
+          cp=q+1
+          start=true
+        else
+          Merge(A, cp, q, cr)
+          STKp=pop(STKp)
+          STKr=pop(STKr)
+          STKq=pop(STKq)
+          last=cr
+    
 \end{lstlisting}
 
