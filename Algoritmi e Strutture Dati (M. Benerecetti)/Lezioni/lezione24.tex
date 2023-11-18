@@ -1,0 +1,117 @@
+\section{Componenti Fortemente Connesse}
+Dato un Grafo $G = (V,E)$ esso e detto fortemente connesso $\iff \forall (u,v) \in V$, $(u,v)$ sono recipprocamente raggiungibili.
+
+Un caso molto favorevole alle componenti fortemente connesse sono i grafi non orientati, quindi quei grafi che hanno archi sia entranti che uscenti con un simbolo solo, poiche $u \Rightarrow v$ e $u \Leftarrow v$.
+
+In questo caso dunque la \textbf{reciproca raggiungibilita}(RR) coincide con la \textbf{raggiungibilita}(R) nei grafi non orientati. $RR = R$.
+
+%foto grafi connessi e foto grafi non connessi%
+
+\subsection{Componenti Fortemente Connesse tra grafi orientati e non orientati}
+
+Per un grafo orientato, 2 vertici sono mutualmente raggiungibili solamente se esiste un ciclo.
+Ogni coppia di vertici nella mutua raggiungibilita e compresa nell'insieme della raggiungibilita tra vertici
+ $$RR \subseteq R$$ ma non $$RR not \supseteq R$$.
+
+\newtheorem{proprieta}{Proprieta}
+
+\begin{proprieta}
+	Anche in grafi che non hanno una forte connessione (insieme di archi al suo interno), possono esistere sottografi fortemente connessi.
+\end{proprieta}
+
+\subsection{Componente Fortemente Connessa - Definizione}
+\newtheorem{compfortconn}{Definizione}
+
+\begin{compfortconn}
+	Dato un grafo $G$, $\exists G^{\prime}$ CFC di $G \iff$ 
+		-Esso e fortemente connesso
+		-Esso e massimale
+\end{compfortconn}
+
+\subsubsection{Cosa significa Massimale?}
+Un grafo fortemente connesso e massimale significa che:
+\newtheorem{massimale}{Definizione}
+\begin{massimale}
+	$\nexists$ un altro sottografo fortemente connesso di $G$ che contiene $G^{\prime}$ come sottografo.
+\end{massimale}
+In poche parole vuol dire che non esiste un altro sottografo CFC con gli stessi vertici e stessi archi. Nel caso in cui si aggiungesse un vertice si verrebbe a perdere la proprieta.
+
+\subsection{Raggiungibilita nei CFC}
+\newtheorem{raggiungibilita}{Definizione}
+Dato $u$ e $v$ in un grafo $G$
+\begin{raggiungibilita}
+	$u$ e raggiungibile da $v$ in $G \iff \exists$ un percorso $\pi$ da un qualsiasi vertice della CFC($u$) a un qualsiasi vertice della CFC($v$).
+\end{raggiungibilita}
+In altre parole gli unici vertici che andremo a collegare sono vertici di entrambe le CFC, senza nessun altro tra le due. Dunque presi due vertici qualsiasi ($z$ per CFC($u$) e k per CFC($v$)), allora il percorso andra a connettere entrambe le CFC.
+
+Il motivo per cui queste definizioni vengono date e il fatto di poter rappresentare il grafo (magari pieno di vertici), in maniera piu compatta e leggera per un programma.
+
+Dunque rappresenteremo un grafo con i suoi vertici le componenti fortemente connesse e per archi, gli archi che vanno a connettere le componenti.
+
+$$G_{CFC} = (V_{CFC}, E_{CFC})$$.
+
+\newtheorem{corollcfc}{Proprieta}
+\begin{corollcfc}
+	La proprieta di questo GrafoCFC e che nella rappresentazione non esisteranno cicli.
+\end{corollcfc} 
+
+\newtheorem{parallelCFC}{Parallelismo}
+
+\begin{parallelCFC}
+	Se fossimo in Algebra, i sottografi CFC sarebbero delle sottoclassi dell'insieme quoziente che e il grafo G stesso. In poche parole i $V_{CFC}$ vanno a rappresentare una classe di equivalenza nella quale tutti i vertici sono in relazione con la classe attraverso la reciproca raggiungibilita (RR).
+	La RR dunque sara una relazione di equivalenza.
+\end{parallelCFC}
+
+\subsection{Costruire un Grafo CFC}
+Per la costruzione del grafo avremo bisogno delle componenti fortemente connesse ($V_{CFC}$) e degli archi che le connettono. La parte piu difficile e quella di trovare le componenti fortemente connesse.
+
+Per lo scorrimento degli archi devo verificare se $\forall(u,v)$, $u$ ha arco in $v$ e $v$ ha arco in $u$.
+
+Il problema e trovare gli elementi di $V$, e si complica nel caso in cui ci troviamo in un arco orientato.
+
+\subsubsection{Ragionamento per Grafo Non Orientato}
+Per un grafo non orientato e piu semplice trovare questo grafo poiche avremo la proprieta sopra menzionata che $RR = R$, quindi qualsiasi arco sara automaticamente reciproco.
+
+\newtheorem{ragnonorientato}{Ragionamento}
+
+\begin{ragnonorientato}
+	Possiamo eseguire dunque la DFS sul grafo non orientato per trovare la raggiungibilita, che ricordiamo equivalere alla raggiungibilita reciproca.
+\end{ragnonorientato}
+
+La DFS creera un insieme di alberi che andranno a stabilire il numero di CFC.
+Ogni albero ha dunque l'insieme dei vertici fortemente connessi ($V_{CFC}$). E ognuno di essi costituira un array(CC) che associa un numero naturale ad ogni sottoalbero creato dalla DFS.
+
+$$CC : V_{CFC} \rightarrow N$$
+
+
+\begin{lstlisting}[language=Java]
+	DFS_Visit(S,i)
+		CC[s]=i
+		DFS_Visit(...,i)
+\end{lstlisting}
+
+Con questa modifica del codice possiamo cosi costruire $V_{u}$, dove $V_u = {v \in V | CC[v] = CC[u]}$
+
+
+Questo algoritmo impieghera tempo lineare su G e tempo di costruzione dell'array sempre lineare, sommato alla visita.
+
+L'array $k$ non sara vuoto, ma avra come elemento minimo di creazione 1 e elemento massimo $|V|$.
+
+\newtheorem{consCFCnonorientato}{Suggerimento}
+
+\begin{consCFCnonorientato}
+	Nella DFS normale si partira con i = 1 e incrementera ogni volta che incontra una sorgente bianca.
+\end{consCFCnonorientato}
+
+\subsubsection{Ragionamento per un grafo Orientato}
+Questo stesso ragionamento non puo valere per un grafo orientato poiche da subito non e vero che ogni albero Della DFS e CFC di G.
+Dobbiamo ragionare quindi su diverse proprieta che abbiamo a disposizione:
+\newtheorem{ideaorientato}{Idea}
+\begin{ideaorientato}
+	\item Al termine di una DFS su G siamo sicuri che 
+		\subitem Se $u$ e $v \in$ alla stessa componente, allora $u$ e $v \in$  allo stesso albero
+		Questo vuol dire che una stessa componente non puo stare in piu alberi diversi. Il problema che si propone dunque e dividere gli alberi nelle loro CC diverse, nonstante la DFS crei un albero con piu CC insieme.
+		Dimostrazione nella prossima lezione
+\end{ideaorientato}
+
+
