@@ -7,7 +7,7 @@ $$ \forall (u,v) \in V, (u,v) \text{ sono reciprocamente raggiungibili}$$
 
 %In questo caso dunque la \textbf{reciproca raggiungibilita}(RR) coincide con la \textbf{raggiungibilita}(R) nei grafi non orientati. $RR = R$.
 
-Nel caso di grafi \textbf{non orientati} la \textbf{reciproca raggiungibilita}(RR) coincide con la "normale" \textbf{raggiungibilita}(R), dato che se $u \sim v \Rightarrow v \sim u $.
+Nel caso di grafi \textbf{non orientati} la \textbf{reciproca raggiungibilita}(RR) coincide con la "normale" \textbf{raggiungibilita}(R), (RR=R), dato che se $u \sim v \Rightarrow v \sim u $.
 
 \begin{figure}[H]
     \centering
@@ -22,7 +22,7 @@ Nel caso di grafi \textbf{non orientati} la \textbf{reciproca raggiungibilita}(R
     \end{subfigure}
 \end{figure}
 
-\subsubsection{Sottografi (fortemente) Connessi}
+\subsubsection{Sottografi (Fortemente) Connessi}
 In un Grafo non (fortemente) connesso, può essere presente un \textbf{sottografo} (fortemente) connesso, nella figura seguente possiamo notare un grafo non connesso ma che presenta due sottografi connessi.
 \begin{figure}[H]
     \centering
@@ -153,15 +153,26 @@ Possiamo notare come per ogni CFC è stato preso un vertice che lo rappresenta, 
 Se fossimo in Algebra, i sottografi CFC sarebbero delle sottoclassi dell'insieme quoziente che è il grafo G stesso. In poche parole i $V_{CFC}$ vanno a rappresentare una classe di equivalenza nella quale tutti i vertici sono in relazione con la classe attraverso la reciproca raggiungibilita (RR).
 La RR dunque sarà una relazione di equivalenza.
 
-FINE CORREZIONE PARTE DI ALEX 
+%FINE CORREZIONE PARTE DI ALEX 
 \subsection{Costruire un Grafo CFC}
-Per la costruzione del grafo avremo bisogno delle componenti fortemente connesse ($V_{CFC}$) e degli archi che le connettono. La parte piu difficile e quella di trovare le componenti fortemente connesse.
+Dato un grafo $G=(V,E)$ vogliamo calcolare l'insieme delle componenti fortemente connesse, ognuno degli elementi appartente all'insieme è \textbf{un sottografo \underline{indotto}}, poiché se prendiamo come esempio $CFC(U)$ sarà composto da:\smallskip
 
-Per lo scorrimento degli archi devo verificare se $\forall(u,v)$, $u$ ha arco in $v$ e $v$ ha arco in $u$.
+\begin{itemize}
+    \item $V_u$=$\{v \in V| \text{ v è reciprocamente raggiungibile con } u\}$
+    
+    \item $E_u$=$E \cap (V_u x V_u)$ [è proprio la definizione di grafo indotto]
+\end{itemize}\medskip
 
-Il problema e trovare gli elementi di $V$, e si complica nel caso in cui ci troviamo in un arco orientato.
+Come possiamo notare la difficoltà sta nel calcolare $V_u$ poiché $E_u$ è facilmente ricavabile dalla definizione.
 
-\subsection{Ragionamento per Grafo Non Orientato}
+%Per la costruzione del grafo avremo bisogno delle componenti fortemente connesse ($V_{CFC}$) e degli archi che le connettono. La parte piu difficile e quella di trovare le componenti fortemente connesse.
+%Per lo scorrimento degli archi devo verificare se $\forall(u,v)$, $u$ ha arco in $v$ e $v$ ha arco in $u$.
+
+Inoltre c'è la complessità di calcolo è diversa a secondo del grafo, per un grafo orientato, due vertici sono mutualmente raggiungibili solamente se esiste un ciclo.
+Ogni coppia di vertici nella mutua raggiungibilita è compresa nell'insieme della raggiungibilita tra vertici.
+ $$RR \subseteq R \text{ ma non } RR \not \supseteq R$$.
+
+\subsection{Costruzione Grafo CFC - Caso non Orientato}
 Per un grafo non orientato e piu semplice trovare questo grafo poiche avremo la proprieta sopra menzionata che $RR = R$, quindi qualsiasi arco sara automaticamente reciproco.
 
 \newtheorem{ragnonorientato}{Ragionamento}
