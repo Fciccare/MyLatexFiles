@@ -1,0 +1,30 @@
+\section{Lezione 26 - 21/11/2023}
+\subsection{TODO}
+
+\subsection{Algoritmi visita Grafi Pesati}
+Dato un grafo pesato tramite un Algoritmo di visita BFS possiamo andare a calcolare la stima del peso di un percorso $\pi$, ne possiamo distinguere due:
+\paragraph{Algoritmo di Dijkstra} è usato solo per grafi con pesi non negativi.
+\paragraph{Algoritmo Bellman-Ford} per grafi pesati arbitrari.
+Entrambi sono basati sul concetto di "rilassamento" degli archi.
+
+\subsection{Rilassamento}
+Il rilassamento è una tecnica che consente di stimare il percorso con peso minore.\smallskip
+
+Consideriamo la funzione:
+$$ d: V \rightarrow \mathbb{R} $$
+che ad ogni vertice viene associato un reale che corrisponde a una stima del peso.
+\begin{lstlisting}[language=Java]
+relax(u,v,w):
+    if d[v] > d[u] + w(u,v) then //d: distanza, w: peso
+        d[v]=d[u]+w(u,v)
+        pred[v]=u
+\end{lstlisting}
+Se la nuova stima è migliore aggiorno, ovviamente esistono casi in cui la stima è migliore anche se bisogna percorrere più archi.
+
+\subsection{Propietà Percorsi Minini su Grafi Pesati}
+\subsubsection{Lemma 1}
+Dato $G=(V,E,w)$ e $\pi=v_1v_2...v_{k-1}v_k$ un percorso minimo da $v_1$ a $v_k$
+$$ \forall 1 \le i \le j \le k, \pi_{ij}=v_iv_{i+1}...v_j$$
+$$ \pi_{ij} \text{ è un percorso minimale da } v_i \text{ a } v_j$$
+
+\paragraph{Dimostazione}
