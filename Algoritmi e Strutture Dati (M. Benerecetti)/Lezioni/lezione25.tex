@@ -197,4 +197,60 @@ Questo algoritmo di so occupa di scorrere tutte le liste di adiacenza di ogni ve
 
 \subsection{Esempio}
 
+%Lezione25EsempioFinale1
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.40\textwidth}
+		\includegraphics[width=\textwidth]{Lezione25EsempioFinale1} 
+		%\caption{Grafo non Connesso}
+	\end{subfigure}
+\end{figure}
+Dato questo grafo, vogliamo provare a trovare le sue componenti fortemente connesse. Dunque, come abbiamo detto andiamo ad eseguire la DFS(a) e la DFS(d) (Partiamo con il primo vertice del grafo $a$ e continuiamo con il primo non visitato in ordine alfabetico $d$), visto  che con una DFS non si riesce a visitare tutto l'albero.
 
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.40\textwidth}
+		\includegraphics[width=\textwidth]{Lezione25Esempio2.png} 
+		%\caption{Grafo non Connesso}
+	\end{subfigure}
+\end{figure}
+
+Durante questo processo di DFS, andiamo a prenderci ogni vertice della DFSVisit', che corrisponde a ogni vertice dell'albero di adiacenti creato, in ordine di visita. In particolare andremo ad inserire (Push) dal primo vertice che viene terminato (f[c]) all'ultimo (f[d]) dato che f[d]>f[c].
+
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.20\textwidth}
+		\includegraphics[width=\textwidth]{Lezione25Esempio3.png} 
+		%\caption{Grafo non Connesso}
+	\end{subfigure}
+\end{figure}
+
+Dopodichè andiamo a costruire il grafo trasposto grazie alla nostra funzione di trasposizione.
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.40\textwidth}
+		\includegraphics[width=\textwidth]{Lezione25Esempio4.png} 
+		%\caption{Grafo non Connesso}
+	\end{subfigure}
+\end{figure}
+
+A questo punto prendiamo dallo stack da noi creato il primo elemento e da li creiamo la DFS, continuamo cosi finchè lo stack non diventa vuoto.
+A quel punto come vedremo avremo creato i nostri alberi C(F)C, come da foto qui sotto.
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.30\textwidth}
+		\includegraphics[width=\textwidth]{Lezione25Esempio5.png} 
+		%\caption{Grafo non Connesso}
+	\end{subfigure}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.25\textwidth}
+		\includegraphics[width=\textwidth]{Lezione25Esempio6.png} 
+		%\caption{Grafo non Connesso}
+	\end{subfigure}
+\end{figure}
