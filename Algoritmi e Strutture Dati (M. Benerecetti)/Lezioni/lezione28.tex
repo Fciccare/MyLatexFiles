@@ -93,6 +93,16 @@ Extract_Min(Q): //Q: albero come array
         ret=NIL 
     return ret
 \end{lstlisting}
-Tutte queste operazione sono a tempo costante ma dobbiamo aggiungere il costo di Heapify.
+Tutte queste operazione sono costanti ma dobbiamo aggiungere il costo di Heapify.
 
 \subsection{Inserimento Heap}
+Per andare ad inserire i valori nello heap andiamo a considerare ogni valore come una coppia formato da (valore, priorità), 
+\begin{lstlisting}[language=Java]
+DecreaseKey(Q,i,k): //Q: array, i: indice attuale, k: valore
+    if Q[i].val > k then 
+        O=Q[i].obj //oggetto coppia
+        while i > 1 AND Q[Parent(i)].val > k DO 
+            Q[i]=Q[Parent(i)]
+            i=Parent(i)
+        Q[i]=(O,k)
+\end{lstlisting}

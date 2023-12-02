@@ -1,0 +1,46 @@
+\section{Lezione 30 - 01/12/2023}
+\subsection{Insertion Sort}
+
+\begin{lstlisting}[language=Java]
+InsertionSort(A, N): //A: array, N: dimensione max array 
+    //primo valore gia' "ordinato", partiamo dal secondo
+    for j=2 to N do
+        i=j-1 //valore precedente
+        x=A[j] //valore "corrente"
+        //se il valore precedente e' maggiore del corrente
+        while (i>0 AND A[i]>x) do 
+            A[i+1]=A[i] //nella cella corrente metto il valore prec.
+            i=i-1 //mettiamo i al prec. prec.
+        A[i+1]=x
+\end{lstlisting}
+
+
+\subsubsection{Caso Peggiore}
+Il caso peggiore è quando la sequenza è totalmente in disordine cioé quando i valori sono in ordine decrescente, in questo caso $t_j=j$ e quindi avremo:
+$$ 4n-3+2\sum_{j=2}^n (j+1) + \sum_{j=2}^n j $$
+Andiamo a spezzare la prima sommatoria:
+$$ 4n-3+2\sum_{j=2}^n j - 2\sum_{j=2}^n 1 + \sum_{j=2}^n j $$
+Accorpiamo la prima e terza sommatoria
+$$ 4n-3+3\sum_{j=2}^n j - 2\sum_{j=2}^n 1 $$
+La prima sommatoria è la somma dei prima n numeri naturali (formula di gauss) meno uno perché partiamo da 2, la seconda è banalemente n tranne uno sempre perché cominciamo da due:
+$$ 4n -3 +3(\frac{n(n+1)}{2}-1) - 2(n-1) = \theta(n^2) $$
+Nel caso peggiore è \textbf{quadratica}
+
+\subsubsection{Caso Medio}
+Nel caso medio andiamo a fare appunto la media dei possibili valori di $t_j=1,2,...,j$:
+$$ \frac{\sum_{i=1}^j i}{j} = \frac{1}{\cancel{j}}*\frac{\cancel{j}(j+1)}{2} = \frac{j+1}{2} $$
+
+Ora che sappiamo il valore di $j$ andiamo a sostituirlo qua:
+$$ 4n-3+2\sum_{j=1}^n (j-1) + \sum_{j=2}^n j $$
+Quindi avremo:
+$$ 4n-3+2\sum_{j=1}^n (\equalto{\frac{j+1}{2}-1}{\frac{j-1}{2}}) + \sum_{j=2}^n \frac{j+1}{2} $$
+Andiamo a spezzare le sommatorie:
+$$ 4n-3+2\sum_{j=2}^{n} \frac{j}{2} - 2 \sum_{j=2}^n \frac{1}{2} + \sum_{j=2}^{n} \frac{j}{2} + \sum_{j=2}^{n} \frac{1}{2}$$max
+Sommiamo le sommatorie simili:
+$$ 4n-3+3\sum_{j=2}^{n} \frac{j}{2} - \sum_{j=2}^n \frac{1}{2} $$
+Andiamo a sviluppare le due sommatorie, per $\frac{j}{2}$ possiamo portale il mezzo fuori dalla sommatoria dato che non dipende da $j$:
+$$ 4n-3+\frac{3}{2}\sum_{j=2}^{n} j - \sum_{j=2}^n \frac{1}{2} $$
+La prima sommatoria è sempre la formula di gauss meno uno, invece la seconda è sempre n meno uno ma diviso due:
+$$ 4n-3+\frac{3}{2}(\frac{n(n+1)}{2} -1) - \frac{n-1}{2} = \theta(n^2)$$
+Il caso medio è \textbf{quadratico}
+
