@@ -1,0 +1,26 @@
+\section{Lezione 33 - 14/12/2023}
+\subsection{Tempo minimo per calcolare una sequenza in input}
+Come detto svariate volte dal professore è stato più volte dimostrato che è impossibile ordinare una sequenza in input in un $\theta$ più veloce di $\theta(n\log_2 n)$.
+
+\subsubsection{Rappresentazione di un insieme di permutazioni di QS}
+Proviamo a racchiudere in un insieme, l'interezza di tutte le permutazioni che un array può avere. L'ordinamento che ci interessa è ovviamente una delle tante permutazioni che quell'insieme ha. \smallskip
+Ovviamente come per tutte gli algoritmi di ordinamento, un elemento fondamentale per arrivare al risultato finale sono i \textbf{confronti}. Dunque se andassimo a fare un confronto tra due elementi dell'array, avremmo sicuramente che la metà di quelle permutazioni ci sarà utile, mentre l'altra (che corrisponderà al caso che non ci interessa di quel confronto), potremmo scartarla. Ogni confronto dunque che andremo ad effettuare per quell'array andrà a dimezzare la grandezza dell'insieme.\smallskip
+
+Quindi schematizzeremo un confronto con un albero, alla cui radice abbiamo l'insieme totale delle permutazioni, e come figli quegli insiemi dimezzati dalla condizione. Continuando cosi andremo a creare un albero binario completo, di grandezza dimezzata per ogni livello. L'albero in questione è chiamato \textbf{Albero di decisione}.\smallskip
+
+La grandezza di questo albero dipende ovviamente dal numero di nodi $n = |A|$.
+
+Le caratteristiche di questo albero di decisione sono tali:
+\begin{itemize}
+    \item Ogni nodo ha perforza due figli, dettati dal confronto che viene effettuato per ogni coppia di indici.
+    \item Ogni percorso da radice a foglia è una possibile soluzione dell'algoritmo.
+    \item Nello stesso percorso non avremo (probabilmente) lo stesso confronto tra indici, ma ha senso trovarlo su percorsi diversi.
+    \item Le foglie vanno a rappresentare l'array modificato e quindi un percorso.
+\end{itemize}\medskip
+
+
+A questo punto della realizzazione dell'albero, come facciamo a decretare la miglior soluzione del peggior caso? Il caso peggiore è la soluzione più lunga di tutte quindi $\sigma(\pi_n)$. Quindi la complessità si basa sull'altezza dell'albero, cioè il numero di confronti  che dobbiamo effettuare per arrivare a soluzione.\smallskip
+
+Le soluzioni dell'albero ovviamente deve avere $n!$ numero di foglie (cioè appunto il numero di permutazioni dello stesso array), per essere ben costruito, quindi il numero minimo di percorsi possibili dall'array è $n!$. Nel caso ci dovessero essere più alberi, vuol dire che la stessa soluzione è ripetuta più volte.\smallskip
+
+Essendo un albero completo, l'altezza dell'albero può rientrare nel range massimo $h-1 \le i \le h$. Quindi possiamo avere a massimo h-1 confronti. Questo può essere dimostranto andando a confrontare coppie di array diverse. Se prendiamo a,b,c indici, se $a \le b $ e $b \le c$, per transitività potremmo già saltarci un confronto ($a \le c$). Questo ci rende l'algoritmo salvo soltanto di un confronto a finale, quindi avremo come minimo $n-1$ confronti.
