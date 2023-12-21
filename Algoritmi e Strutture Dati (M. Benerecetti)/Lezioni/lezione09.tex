@@ -59,7 +59,7 @@ La funzione new node va a creare un nuovo nodo dinamico all'interno dell'albero.
 
 \begin{lstlisting}[language=Java]
 	new_node(k)
-		ret = alloca_nodo() //andiamo a restituire il puntatore a nuovo nodo allocato in memoria a ret
+		ret = alloca_nodo()
 		ret->key = k
 		ret->sx = NIL
 		ret->dx = NIL
@@ -67,7 +67,7 @@ La funzione new node va a creare un nuovo nodo dinamico all'interno dell'albero.
 \end{lstlisting}
 
 \subsection{Insert Iterativa - BST}
-Versione iterativa della insert prevede dei controlli in piu per quanto riguarda la ricerca e inserimento. In questo caso specifico abbiamo bisogno di un puntatore in piu che ci segue nello scorrimento, chiamato \textbf{P} e sta a indicare il Padre del nodo a cui stiamo scorrendo.
+
 
 \begin{lstlisting}[language=Java]
 	InsertI(T,k)
@@ -80,7 +80,6 @@ Versione iterativa della insert prevede dei controlli in piu per quanto riguarda
 			Tmp = Tmp->dx
 		else
 			Tmp = Tmp->sx
-	
 	if Tmp = NIL then
 		x = new_node(k)
 		if P = NIL then
@@ -91,6 +90,8 @@ Versione iterativa della insert prevede dei controlli in piu per quanto riguarda
 			P->sx = x
 	return ret
 \end{lstlisting}
+
+Versione iterativa della insert prevede dei controlli in piu per quanto riguarda la ricerca e inserimento. In questo caso specifico abbiamo bisogno di un puntatore in piu che ci segue nello scorrimento, chiamato \textbf{P} e sta a indicare il Padre del nodo a cui stiamo scorrendo.
 
 \subsection{DeleteR - BST}
 La delete prevede la delete del nodo e la restituzione dell'albero con quel nodo mancante. A primo acchitto non sembra un'operazione cosi difficile ma dobbiamo come sempre andare a ragionare per casi.
@@ -115,12 +116,13 @@ Dunque per il richiamo della funzione Delete ricorsiva abbiamo bisogno di due fu
 \textbf{StaccaMin(T->sx, T)}
 
 \begin{lstlisting}[language=Java]
-	StaccaMin(T,P)
+	StaccaMin(T,P) //T: Sottoalbero, P: Padre sottoalbero
 		ret = T
 		If T != NIL then
 			ret = StaccaMin(T->sx,T)
 			if ret = NIL then
 				if P != NIL then
+					ret=T
 					if P->sx = T then
 						P->sx = T->dx
 					else
@@ -129,6 +131,7 @@ Dunque per il richiamo della funzione Delete ricorsiva abbiamo bisogno di due fu
 \end{lstlisting}
 
 La seconda e chiamata per l'eliminazione del nodo andando a operare sull'intero sottoalbero dove quel nodo e radice.
+\newpage
 
 \textbf{DeleteRoot(T)}
 
